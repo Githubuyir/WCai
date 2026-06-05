@@ -6,8 +6,8 @@ The platform is designed as a real-world football intelligence product where use
 
 ## Live Links
 
-Frontend Live URL: _Add after deployment_  
-Backend API URL: _Add after deployment_
+Frontend Live URL: https://wc-ai-khaki.vercel.app/ 
+Backend API URL: https://wcai-backend.onrender.com
 
 ## Project Status
 
@@ -19,28 +19,28 @@ This keeps the public website focused on World Cup 2026 while still demonstratin
 ## Features
 
 ### Home Page
-World Cup-inspired hero section with modern visual design
-Featured match intelligence cards
-Match prediction previews
-World Cup overview section
-Group standings and tournament statistics
-AI-style explanation of how predictions work
+World Cup-inspired hero section with modern visual design.
+Featured match intelligence cards.
+Match prediction previews.
+World Cup overview section.
+Group standings and tournament statistics.
+AI-style explanation of how predictions work.
 ### Matches Page
-Match listing with filters
-Match cards with win probability, draw probability, xG estimate, AI confidence, and intensity
-Upcoming, completed, top games, knockouts, and final-stage sections
-Detailed match analysis page for each fixture
+Match listing with filters.
+Match cards with win probability, draw probability, xG estimate, AI confidence, and intensity.
+Upcoming, completed, top games, knockouts, and final-stage sections.
+Detailed match analysis page for each fixture.
 ### Match Analysis Page
-Team-versus-team prediction view
-Interactive probability slider
-Tactical summary overview
-AI tactical simulation report
-Predictive metric breakdown
-Recent form comparison
-Formation layout
-Momentum timeline
-Heat-zone visualization
-Match simulation engine summary
+Team-versus-team prediction view.
+Interactive probability slider.
+Tactical summary overview.
+AI tactical simulation report.
+Predictive metric breakdown.
+Recent form comparison.
+Formation layout.
+Momentum timeline.
+Heat-zone visualization.
+Match simulation engine summary.
 ### Teams Page
 AI power rankings
 Group standings
@@ -292,16 +292,16 @@ The tournament simulator currently uses WCai project data and is prepared for fu
 OpenAI/Gemini integration is planned as a future enhancement and is not currently included.
 
 ## Future Enhancements
-OpenAI/Gemini integration for dynamic tactical summaries
-Real-time FIFA World Cup 2026 data sync when API access is available
-Scheduled backend sync using cron jobs
-Live match status updates
-Live standings updates
-Player-level statistics
-Advanced AI prediction model
-Admin dashboard for controlled data updates
-Team comparison feature
-Enhanced tournament simulator with real qualification logic
+OpenAI/Gemini integration for dynamic tactical summaries.
+Real-time FIFA World Cup 2026 data sync when API access is available.
+Scheduled backend sync using cron jobs.
+Live match status updates.
+Live standings updates.
+Player-level statistics.
+Advanced AI prediction model.
+Admin dashboard for controlled data updates.
+Team comparison feature.
+Enhanced tournament simulator with real qualification logic.
 
 ## Purpose
 
