@@ -33,54 +33,35 @@ function getMatchesData() {
 }
 
 function getTeamsData() {
-  const teamAnalysisPath = path.join(__dirname, '../../frontend/src/pages/TeamAnalysis.jsx');
-  if (!fs.existsSync(teamAnalysisPath)) {
-    console.error("TeamAnalysis.jsx not found at " + teamAnalysisPath);
+  const teamsDataPath = path.join(__dirname, '../../frontend/src/data/teamsData.js');
+  if (!fs.existsSync(teamsDataPath)) {
+    console.error("teamsData.js not found at " + teamsDataPath);
     return {};
   }
   
-  let content = fs.readFileSync(teamAnalysisPath, 'utf8');
-  const startIdx = content.indexOf("const teamsDatabase = useMemo(() => {");
-  if (startIdx === -1) {
-    console.error("teamsDatabase block not found in TeamAnalysis.jsx");
-    return {};
-  }
+  let content = fs.readFileSync(teamsDataPath, 'utf8');
+  // Convert ES modules export syntax to CommonJS
+  content = content.replace(/export\s+const\s+/g, 'const ');
+  content = content.replace(/export\s+function\s+/g, 'function ');
+  content += '\nmodule.exports = { TEAMS_LINEUPS, REAL_TEAMS_DATA, getStartingXIForFormation, parsePlayers, getStartingXI, teamsDatabase };';
   
-  const returnIdx = content.indexOf("return {", startIdx);
-  if (returnIdx === -1) {
-    console.error("return block inside teamsDatabase not found");
-    return {};
-  }
+  const tempTeamsFile = path.join(__dirname, 'tempTeamsData.js');
+  fs.writeFileSync(tempTeamsFile, content, 'utf8');
   
-  const endUseMemoIdx = content.indexOf("  }, []);", returnIdx);
-  if (endUseMemoIdx === -1) {
-    console.error("end of useMemo inside teamsDatabase not found");
-    return {};
-  }
-  
-  const returnBlock = content.substring(returnIdx, endUseMemoIdx).trim();
-  let objectStr = returnBlock.substring(7).trim(); // remove 'return '
-  if (objectStr.endsWith(';')) {
-    objectStr = objectStr.substring(0, objectStr.length - 1);
-  }
-  
-  const tempTeamsFile = path.join(__dirname, 'tempTeams.js');
-  // Define mock heroImages and stadiumBg variables that are referenced in the object structure
-  const fileContent = `const heroImages = {};\nconst stadiumBg = "";\nmodule.exports = ${objectStr};`;
-  fs.writeFileSync(tempTeamsFile, fileContent, 'utf8');
-  
-  let teams = {};
+  let teamsModule = {};
   try {
-    teams = require('./tempTeams');
+    teamsModule = require('./tempTeamsData');
   } catch (err) {
-    console.error("Error loading teamsDatabase from TeamAnalysis.jsx:", err);
+    console.error("Error loading teamsData.js:", err);
+    return {};
   } finally {
     try {
       fs.unlinkSync(tempTeamsFile);
     } catch (e) {}
   }
   
-  return teams;
+  const { teamsDatabase } = teamsModule;
+  return teamsDatabase || {};
 }
 
 module.exports = {

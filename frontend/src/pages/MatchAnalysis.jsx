@@ -2,6 +2,16 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { matchesData as fallbackMatches, generateFlagSVG } from '../data/mockData';
 import { getMatchById, getMatches } from '../api/api';
+import { TEAMS_LINEUPS, getStartingXI } from '../data/teamsData';
+
+const FIFA_RANKS = {
+  FRA: 1, ESP: 2, ARG: 3, ENG: 4, POR: 5, BRA: 6, MAR: 7, NED: 8, BEL: 9, GER: 10,
+  CRO: 11, COL: 13, SEN: 14, MEX: 15, USA: 16, URU: 17, JPN: 18, SUI: 19, IRN: 21,
+  TUR: 22, AUT: 23, ECU: 24, KOR: 25, AUS: 27, ALG: 28, EGY: 29, CAN: 30, NOR: 31,
+  PAN: 33, CIV: 34, SWE: 38, PAR: 40, CZE: 41, SCO: 43, COD: 45, TUN: 46, UZB: 50,
+  QAT: 55, IRQ: 57, RSA: 60, KSA: 61, JOR: 63, BIH: 64, CPV: 68, GHA: 73, HAI: 82,
+  CUR: 83, NZL: 85
+};
 
 export default function MatchAnalysis() {
   const { id } = useParams();
@@ -44,12 +54,12 @@ export default function MatchAnalysis() {
   // Set document body class and handle entrance transitions
   useEffect(() => {
     document.body.className = 'analysis-body-page';
-    
+
     // Entrance animations
     document.body.style.opacity = '0';
     document.body.style.transform = 'scale(0.99)';
     document.body.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-    
+
     const animationFrame = requestAnimationFrame(() => {
       document.body.style.opacity = '1';
       document.body.style.transform = 'scale(1)';
@@ -111,67 +121,29 @@ export default function MatchAnalysis() {
     };
   }, [sliderVal, drawPercentage, team2Percentage]);
 
-  // Formation assignment
-  const formations = useMemo(() => {
-    if (!match) return { f1: "4-3-3", f2: "4-2-3-1" };
-    let f1 = "4-3-3";
-    let f2 = "4-2-3-1";
-
-    if (match.id % 3 === 0) {
-      f1 = "3-5-2";
-      f2 = "4-4-2";
-    } else if (match.id % 2 === 0) {
-      f1 = "4-2-3-1";
-      f2 = "3-4-3";
-    }
-    return { f1, f2 };
+  // Get starting XIs for both teams
+  const team1XI = useMemo(() => {
+    if (!match) return [];
+    return getStartingXI(match.team1.code);
   }, [match]);
 
-  // Coords generator for formations
-  const playerDots = useMemo(() => {
-    const dots = [];
-    // Goalkeepers
-    dots.push({ left: 8, top: 50, team: 1 });
-    dots.push({ left: 92, top: 50, team: 2 });
+  const team2XI = useMemo(() => {
+    if (!match) return [];
+    return getStartingXI(match.team2.code);
+  }, [match]);
 
-    // Team 1 Coords
-    if (formations.f1 === '4-3-3') {
-      dots.push({ left: 20, top: 20, team: 1 }, { left: 20, top: 40, team: 1 }, { left: 20, top: 60, team: 1 }, { left: 20, top: 80, team: 1 });
-      dots.push({ left: 32, top: 30, team: 1 }, { left: 28, top: 50, team: 1 }, { left: 32, top: 70, team: 1 });
-      dots.push({ left: 45, top: 20, team: 1 }, { left: 45, top: 50, team: 1 }, { left: 45, top: 80, team: 1 });
-    } else if (formations.f1 === '3-5-2') {
-      dots.push({ left: 20, top: 30, team: 1 }, { left: 20, top: 50, team: 1 }, { left: 20, top: 70, team: 1 });
-      dots.push({ left: 30, top: 15, team: 1 }, { left: 30, top: 35, team: 1 }, { left: 28, top: 50, team: 1 }, { left: 30, top: 65, team: 1 }, { left: 30, top: 85, team: 1 });
-      dots.push({ left: 44, top: 35, team: 1 }, { left: 44, top: 65, team: 1 });
-    } else { // 4-2-3-1
-      dots.push({ left: 20, top: 20, team: 1 }, { left: 20, top: 40, team: 1 }, { left: 20, top: 60, team: 1 }, { left: 20, top: 80, team: 1 });
-      dots.push({ left: 28, top: 35, team: 1 }, { left: 28, top: 65, team: 1 });
-      dots.push({ left: 38, top: 20, team: 1 }, { left: 38, top: 50, team: 1 }, { left: 38, top: 80, team: 1 });
-      dots.push({ left: 45, top: 50, team: 1 });
-    }
+  // Formations
+  const team1Formation = useMemo(() => {
+    if (!match) return "4-3-3";
+    const team = TEAMS_LINEUPS[match.team1.code];
+    return team ? team.formation : "4-3-3";
+  }, [match]);
 
-    // Team 2 Coords
-    if (formations.f2 === '4-3-3') {
-      dots.push({ left: 80, top: 20, team: 2 }, { left: 80, top: 40, team: 2 }, { left: 80, top: 60, team: 2 }, { left: 80, top: 80, team: 2 });
-      dots.push({ left: 68, top: 30, team: 2 }, { left: 72, top: 50, team: 2 }, { left: 68, top: 70, team: 2 });
-      dots.push({ left: 55, top: 20, team: 2 }, { left: 55, top: 50, team: 2 }, { left: 55, top: 80, team: 2 });
-    } else if (formations.f2 === '4-4-2') {
-      dots.push({ left: 80, top: 20, team: 2 }, { left: 80, top: 40, team: 2 }, { left: 80, top: 60, team: 2 }, { left: 80, top: 80, team: 2 });
-      dots.push({ left: 68, top: 15, team: 2 }, { left: 68, top: 38, team: 2 }, { left: 68, top: 62, team: 2 }, { left: 68, top: 85, team: 2 });
-      dots.push({ left: 56, top: 35, team: 2 }, { left: 56, top: 65, team: 2 });
-    } else if (formations.f2 === '3-4-3') {
-      dots.push({ left: 80, top: 30, team: 2 }, { left: 80, top: 50, team: 2 }, { left: 80, top: 70, team: 2 });
-      dots.push({ left: 70, top: 15, team: 2 }, { left: 68, top: 38, team: 2 }, { left: 68, top: 62, team: 2 }, { left: 70, top: 85, team: 2 });
-      dots.push({ left: 55, top: 20, team: 2 }, { left: 55, top: 50, team: 2 }, { left: 55, top: 80, team: 2 });
-    } else { // 4-2-3-1
-      dots.push({ left: 80, top: 20, team: 2 }, { left: 80, top: 40, team: 2 }, { left: 80, top: 60, team: 2 }, { left: 80, top: 80, team: 2 });
-      dots.push({ left: 72, top: 35, team: 2 }, { left: 72, top: 65, team: 2 });
-      dots.push({ left: 62, top: 20, team: 2 }, { left: 62, top: 50, team: 2 }, { left: 62, top: 80, team: 2 });
-      dots.push({ left: 55, top: 50, team: 2 });
-    }
-
-    return dots;
-  }, [formations]);
+  const team2Formation = useMemo(() => {
+    if (!match) return "4-2-3-1";
+    const team = TEAMS_LINEUPS[match.team2.code];
+    return team ? team.formation : "4-2-3-1";
+  }, [match]);
 
   // Expected Momentum Timeline graph path
   const momentumPath = useMemo(() => {
@@ -246,7 +218,7 @@ export default function MatchAnalysis() {
             {/* Team 1 */}
             <div className="hero-team left">
               <div className="hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
-              <h1 className="hero-team-name">{match.team1.name}</h1>
+              <h1 className="hero-team-name">{match.team1.name} (#{FIFA_RANKS[match.team1.code] || '—'})</h1>
               <span className="hero-prob">{sliderVal}%</span>
             </div>
 
@@ -259,7 +231,7 @@ export default function MatchAnalysis() {
             {/* Team 2 */}
             <div className="hero-team right">
               <div className="hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
-              <h1 className="hero-team-name">{match.team2.name}</h1>
+              <h1 className="hero-team-name">{match.team2.name} (#{FIFA_RANKS[match.team2.code] || '—'})</h1>
               <span className="hero-prob">{team2Percentage}%</span>
             </div>
           </div>
@@ -272,12 +244,12 @@ export default function MatchAnalysis() {
             </div>
             <div className="interactive-slider-wrapper">
               <label htmlFor="prob-balance-slider" className="slider-label">Simulate Interactive Match Balance (Tweak Probability)</label>
-              <input 
-                type="range" 
-                id="prob-balance-slider" 
-                min="10" 
-                max="90" 
-                value={sliderVal} 
+              <input
+                type="range"
+                id="prob-balance-slider"
+                min="10"
+                max="90"
+                value={sliderVal}
                 className="hero-slider"
                 onChange={(e) => setSliderVal(parseInt(e.target.value))}
               />
@@ -320,10 +292,10 @@ export default function MatchAnalysis() {
       <section className="analysis-grid-section">
         <div className="section-container">
           <div className="analysis-grid-layout">
-            
+
             {/* LEFT COLUMN: Tactical Intelligence Visualizations */}
             <div className="left-analysis-column">
-              
+
               {/* AI Tactical Simulation Report */}
               <div className="analysis-card">
                 <h3 class="card-heading">
@@ -332,8 +304,8 @@ export default function MatchAnalysis() {
                 </h3>
                 <div className="report-content-box">
                   <p>
-                    Our neural network's deep-tactical engine has compiled a projected match simulation outline. 
-                    In this matchup, <strong>{match.team1.name}</strong> will confront <strong>{match.team2.name}</strong> at <strong>{match.stadium.split(',')[0]}</strong> under advanced strategic profiles. 
+                    Our neural network's deep-tactical engine has compiled a projected match simulation outline.
+                    In this matchup, <strong>{match.team1.name}</strong> will confront <strong>{match.team2.name}</strong> at <strong>{match.stadium.split(',')[0]}</strong> under advanced strategic profiles.
                     <br /><br />
                     <strong>Pressing Intensity:</strong> AI simulations predict a pressing intensity rating of <strong>{match.intensity}%</strong>. {match.team1.name} is forecast to implement a high-block recovery press, locking central passing corridors. In response, {match.team2.name}'s transition schemes will rely heavily on lateral switching networks to bypass central congestion.
                     <br /><br />
@@ -344,16 +316,16 @@ export default function MatchAnalysis() {
                 </div>
               </div>
 
-              {/* Predicted Formation Visualization */}
+              {/* Predicted Lineups Visualization */}
               <div className="analysis-card">
-                <h3 class="card-heading">
-                  <svg className="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="12" x2="21" y2="12"></line><circle cx="12" cy="12" r="4"></circle></svg>
-                  Predicted Formation Layout
+                <h3 className="card-heading">
+                  <svg className="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="12" x2="21" y2="12"></line><circle cx="12" cy="12" r="4"></circle></svg>
+                  Predicted Lineups
                 </h3>
                 <div className="formation-teams-header">
-                  <span className="formation-t-name left-align">{match.team1.name} ({formations.f1})</span>
+                  <span className="formation-t-name left-align">{match.team1.name} ({team1Formation})</span>
                   <span className="vs-text">VS</span>
-                  <span className="formation-t-name right-align">{match.team2.name} ({formations.f2})</span>
+                  <span className="formation-t-name right-align">{match.team2.name} ({team2Formation})</span>
                 </div>
                 <div className="pitch-visualization-container">
                   <div className="pitch-border">
@@ -361,15 +333,48 @@ export default function MatchAnalysis() {
                     <div className="pitch-center-line"></div>
                     <div className="pitch-penalty-left"></div>
                     <div className="pitch-penalty-right"></div>
-                    {/* Dynamic players dots */}
+                    {/* Dynamic players nodes */}
                     <div className="pitch-players-field">
-                      {playerDots.map((dot, index) => (
-                        <div
-                          key={index}
-                          className={`player-dot p-team${dot.team}`}
-                          style={{ left: `${dot.left}%`, top: `${dot.top}%` }}
-                        ></div>
-                      ))}
+                      {team1XI.map((p, index) => {
+                        // Map vertical (x, y) to horizontal pitch left side
+                        const left = 8 + (88 - p.y) / 72 * 37;
+                        const top = p.x;
+                        return (
+                          <div
+                            key={`t1-${index}`}
+                            className="player-node-horizontal"
+                            style={{ left: `${left}%`, top: `${top}%` }}
+                          >
+                            <div className="player-dot p-team1">
+                              <span className="player-pulse"></span>
+                            </div>
+                            <div className="player-label-horizontal left-team">
+                              <span className="p-name">{p.name}</span>
+                              <span className="p-role">{p.role}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                      {team2XI.map((p, index) => {
+                        // Map vertical (x, y) to horizontal pitch right side
+                        const left = 55 + (p.y - 16) / 72 * 37;
+                        const top = p.x;
+                        return (
+                          <div
+                            key={`t2-${index}`}
+                            className="player-node-horizontal"
+                            style={{ left: `${left}%`, top: `${top}%` }}
+                          >
+                            <div className="player-dot p-team2">
+                              <span className="player-pulse"></span>
+                            </div>
+                            <div className="player-label-horizontal right-team">
+                              <span className="p-name">{p.name}</span>
+                              <span className="p-role">{p.role}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -390,20 +395,20 @@ export default function MatchAnalysis() {
                     <span className="m-t-lbl team1-color">{match.team1.name} Attack Index</span>
                     <span className="m-t-lbl team2-color">{match.team2.name} Attack Index</span>
                   </div>
-                  
+
                   {/* Timeline graph container */}
                   <div className="momentum-graph-area">
                     <svg className="momentum-svg-graph" viewBox="0 0 600 160" preserveAspectRatio="none">
-                      <path 
-                        className="momentum-graph-path" 
-                        d={momentumPath} 
-                        fill="none" 
-                        stroke="#00D1FF" 
+                      <path
+                        className="momentum-graph-path"
+                        d={momentumPath}
+                        fill="none"
+                        stroke="#00D1FF"
                         strokeWidth="3"
                       ></path>
                       <line x1="0" y1="80" x2="600" y2="80" stroke="rgba(255,255,255,0.06)" strokeDasharray="4" strokeWidth="1"></line>
                     </svg>
-                    
+
                     {/* Timeline indicator points */}
                     <div className="graph-nodes-row">
                       <div className="graph-node-label" style={{ left: '15%' }}>
@@ -464,7 +469,7 @@ export default function MatchAnalysis() {
 
             {/* RIGHT COLUMN: Compact AI Metrics & Statistics */}
             <div className="right-analysis-column">
-              
+
               {/* Predictive Metric Breakdown */}
               <div className="analysis-card">
                 <h3 className="card-heading">
@@ -556,7 +561,7 @@ export default function MatchAnalysis() {
                       ))}
                     </div>
                   </div>
-                  
+
                   {/* Team 2 Form */}
                   <div className="team-form-row">
                     <span className="form-t-lbl">{match.team2.name}</span>
@@ -625,12 +630,12 @@ export default function MatchAnalysis() {
             <h3 className="card-heading text-center" style={{ marginBottom: '24px' }}>
               Side-by-Side Tactical Matrix Ratings
             </h3>
-            
+
             <div className="ratings-comparison-stack">
               {tacticalMatrix.map((cat, i) => {
                 const val1 = Math.round(cat.t1);
                 const val2 = Math.round(cat.t2);
-                
+
                 return (
                   <div key={i} className="rating-comparison-row">
                     <div className="team-rating-lbl text-left">{match.team1.name}</div>
@@ -666,7 +671,7 @@ export default function MatchAnalysis() {
         <div className="section-container">
           <h2 className="section-title">More <span class="cyan-highlight">Match Intelligence Hub</span></h2>
           <p className="section-subtitle">Navigate directly to other upcoming match simulation breakdowns.</p>
-          
+
           <div className="matches-grid related-grid" id="related-matches-grid">
             {relatedMatches.map((m, index) => {
               const dateParts = m.date.split(' - ');
@@ -675,14 +680,14 @@ export default function MatchAnalysis() {
               const stadiumNameShort = m.stadium.split(',')[0];
 
               return (
-                <div 
+                <div
                   key={m.id}
                   className={`match-grid-card stadium-${m.stadiumAtmosphere}`}
                   style={{ animationDelay: `${index * 0.1}s`, minHeight: '320px' }}
                 >
                   <div className="card-stadium-bg"></div>
                   <div className="card-glow-overlay"></div>
-                  
+
                   <div className="card-header-row">
                     <span className="card-date-badge">{dateString}</span>
                     <span className="card-group">{m.group}</span>
@@ -718,8 +723,8 @@ export default function MatchAnalysis() {
                     <span className="card-venue-text">{stadiumNameShort} • {timeString}</span>
                   </div>
 
-                  <button 
-                    className="btn-grid-analyze" 
+                  <button
+                    className="btn-grid-analyze"
                     onClick={() => handleRelatedNavigate(m.id)}
                     style={{ width: '100%', textAlign: 'center', justifyContent: 'center', marginTop: 'auto' }}
                   >

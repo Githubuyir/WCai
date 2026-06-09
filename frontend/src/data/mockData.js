@@ -1472,3 +1472,66 @@
     }
   }
 
+  // Real recent forms of the 48 teams
+  const realTeamForms = {
+    'MEX': ["W", "W", "W", "D", "W"],
+    'KOR': ["W", "W", "D", "D", "D"],
+    'RSA': ["W", "D", "D", "W", "W"],
+    'CZE': ["W", "W", "W", "L", "D"],
+    'SUI': ["D", "W", "D", "W", "W"],
+    'CAN': ["L", "W", "D", "W", "W"],
+    'BIH': ["W", "W", "D", "W", "D"],
+    'QAT': ["W", "D", "L", "W", "L"],
+    'BRA': ["L", "W", "W", "D", "L"],
+    'MAR': ["W", "W", "W", "W", "D"],
+    'SCO': ["W", "L", "W", "W", "W"],
+    'HAI': ["W", "W", "L", "W", "D"],
+    'USA': ["L", "W", "W", "W", "W"],
+    'AUS': ["W", "W", "W", "W", "D"],
+    'TUR': ["W", "W", "D", "W", "W"],
+    'PAR': ["W", "D", "L", "W", "D"],
+    'GER': ["W", "W", "W", "W", "W"],
+    'ECU': ["W", "D", "D", "D", "D"],
+    'CIV': ["W", "W", "D", "W", "W"],
+    'CUR': ["D", "W", "D", "W", "W"],
+    'NED': ["W", "D", "W", "W", "W"],
+    'JPN': ["W", "L", "D", "W", "W"],
+    'SWE': ["W", "W", "D", "L", "L"],
+    'TUN': ["W", "W", "W", "W", "W"],
+    'BEL': ["W", "D", "W", "D", "W"],
+    'IRN': ["W", "L", "D", "W", "W"],
+    'EGY': ["L", "L", "W", "W", "D"],
+    'NZL': ["W", "W", "W", "W", "W"],
+    'ESP': ["D", "W", "W", "W", "W"],
+    'URU': ["D", "W", "W", "L", "D"],
+    'KSA': ["D", "L", "W", "L", "W"],
+    'CPV': ["W", "D", "W", "W", "W"],
+    'FRA': ["W", "W", "D", "W", "W"],
+    'SEN': ["L", "W", "W", "W", "W"],
+    'NOR': ["W", "W", "W", "W", "W"],
+    'IRQ': ["W", "W", "D", "D", "W"],
+    'ARG': ["L", "W", "D", "W", "W"],
+    'ALG': ["L", "W", "W", "W", "W"],
+    'AUT': ["D", "W", "L", "W", "W"],
+    'JOR': ["L", "W", "W", "W", "W"],
+    'POR': ["W", "L", "D", "W", "W"],
+    'COL': ["W", "W", "D", "D", "L"],
+    'UZB': ["W", "D", "D", "W", "L"],
+    'COD': ["W", "W", "W", "W", "W"],
+    'ENG': ["W", "W", "W", "W", "W"],
+    'CRO': ["W", "W", "W", "D", "W"],
+    'GHA': ["W", "W", "W", "D", "W"],
+    'PAN': ["W", "W", "D", "W", "D"]
+  };
+
+  // Override forms in matchesData dynamically
+  matchesData.forEach(m => {
+    if (realTeamForms[m.team1.code]) {
+      m.form1 = [...realTeamForms[m.team1.code]];
+    }
+    if (realTeamForms[m.team2.code]) {
+      m.form2 = [...realTeamForms[m.team2.code]];
+    }
+  });
+
+

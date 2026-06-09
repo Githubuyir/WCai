@@ -28,3 +28,10 @@ pnpm-debug.log*
 node-env/
 venv/
 .envrc
+
+#temp / generated files
+test-results/
+
+#local notes
+css.md
+css-layout.md  

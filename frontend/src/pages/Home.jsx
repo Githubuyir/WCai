@@ -46,76 +46,76 @@ export default function Home() {
   // Standings data
   const groupStandings = {
     A: [
-      { team: 'Mexico', code: 'MEX', p: 3, w: 2, d: 1, l: 0, gd: '+3', pts: 7, form: ['W', 'D', 'W'], rating: '8.4' },
-      { team: 'South Korea', code: 'KOR', p: 3, w: 2, d: 0, l: 1, gd: '+1', pts: 6, form: ['W', 'L', 'W'], rating: '7.9' },
-      { team: 'Czechia', code: 'CZE', p: 3, w: 1, d: 1, l: 1, gd: '0', pts: 4, form: ['L', 'D', 'W'], rating: '7.2' },
-      { team: 'South Africa', code: 'RSA', p: 3, w: 0, d: 0, l: 3, gd: '-4', pts: 0, form: ['L', 'L', 'L'], rating: '6.5' }
+      { team: 'Mexico', code: 'MEX', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.4' },
+      { team: 'South Korea', code: 'KOR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'W'], rating: '7.9' },
+      { team: 'Czechia', code: 'CZE', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'W'], rating: '7.2' },
+      { team: 'South Africa', code: 'RSA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'L'], rating: '6.5' }
     ],
     B: [
-      { team: 'Canada', code: 'CAN', p: 3, w: 2, d: 1, l: 0, gd: '+4', pts: 7, form: ['W', 'W', 'D'], rating: '8.2' },
-      { team: 'Switzerland', code: 'SUI', p: 3, w: 1, d: 2, l: 0, gd: '+2', pts: 5, form: ['D', 'W', 'D'], rating: '8.0' },
-      { team: 'Bosnia', code: 'BIH', p: 3, w: 1, d: 0, l: 2, gd: '-2', pts: 3, form: ['L', 'L', 'W'], rating: '7.1' },
-      { team: 'Qatar', code: 'QAT', p: 3, w: 0, d: 1, l: 2, gd: '-4', pts: 1, form: ['L', 'D', 'L'], rating: '6.4' }
+      { team: 'Canada', code: 'CAN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'W', 'D'], rating: '8.2' },
+      { team: 'Switzerland', code: 'SUI', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['D', 'W', 'D'], rating: '8.0' },
+      { team: 'Bosnia', code: 'BIH', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'W'], rating: '7.1' },
+      { team: 'Qatar', code: 'QAT', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'L'], rating: '6.4' }
     ],
     C: [
-      { team: 'Brazil', code: 'BRA', p: 3, w: 3, d: 0, l: 0, gd: '+6', pts: 9, form: ['W', 'W', 'W'], rating: '9.2' },
-      { team: 'Morocco', code: 'MAR', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['W', 'L', 'W'], rating: '8.1' },
-      { team: 'Scotland', code: 'SCO', p: 3, w: 1, d: 0, l: 2, gd: '-2', pts: 3, form: ['L', 'W', 'L'], rating: '7.3' },
-      { team: 'Haiti', code: 'HAI', p: 3, w: 0, d: 0, l: 3, gd: '-6', pts: 0, form: ['L', 'L', 'L'], rating: '6.0' }
+      { team: 'Brazil', code: 'BRA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'W', 'W'], rating: '9.2' },
+      { team: 'Morocco', code: 'MAR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'W'], rating: '8.1' },
+      { team: 'Scotland', code: 'SCO', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'L'], rating: '7.3' },
+      { team: 'Haiti', code: 'HAI', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'L'], rating: '6.0' }
     ],
     D: [
-      { team: 'United States', code: 'USA', p: 3, w: 2, d: 1, l: 0, gd: '+3', pts: 7, form: ['W', 'D', 'W'], rating: '8.5' },
-      { team: 'Australia', code: 'AUS', p: 3, w: 1, d: 2, l: 0, gd: '+1', pts: 5, form: ['D', 'W', 'D'], rating: '7.7' },
-      { team: 'Türkiye', code: 'TUR', p: 3, w: 1, d: 0, l: 2, gd: '-1', pts: 3, form: ['L', 'L', 'W'], rating: '7.5' },
-      { team: 'Paraguay', code: 'PAR', p: 3, w: 0, d: 1, l: 2, gd: '-3', pts: 1, form: ['L', 'D', 'L'], rating: '6.9' }
+      { team: 'United States', code: 'USA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.5' },
+      { team: 'Australia', code: 'AUS', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['D', 'W', 'D'], rating: '7.7' },
+      { team: 'Türkiye', code: 'TUR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'W'], rating: '7.5' },
+      { team: 'Paraguay', code: 'PAR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'L'], rating: '6.9' }
     ],
     E: [
-      { team: 'Germany', code: 'GER', p: 3, w: 2, d: 1, l: 0, gd: '+4', pts: 7, form: ['W', 'D', 'W'], rating: '8.7' },
-      { team: 'Ecuador', code: 'ECU', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['L', 'W', 'W'], rating: '7.8' },
-      { team: 'Ivory Coast', code: 'CIV', p: 3, w: 1, d: 1, l: 1, gd: '0', pts: 4, form: ['W', 'D', 'L'], rating: '7.4' },
-      { team: 'Curaçao', code: 'CUR', p: 3, w: 0, d: 0, l: 3, gd: '-6', pts: 0, form: ['L', 'L', 'L'], rating: '6.2' }
+      { team: 'Germany', code: 'GER', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.7' },
+      { team: 'Ecuador', code: 'ECU', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'W'], rating: '7.8' },
+      { team: 'Ivory Coast', code: 'CIV', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'L'], rating: '7.4' },
+      { team: 'Curaçao', code: 'CUR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'L'], rating: '6.2' }
     ],
     F: [
-      { team: 'Netherlands', code: 'NED', p: 3, w: 2, d: 1, l: 0, gd: '+3', pts: 7, form: ['W', 'D', 'W'], rating: '8.3' },
-      { team: 'Japan', code: 'JPN', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['W', 'L', 'W'], rating: '8.1' },
-      { team: 'Sweden', code: 'SWE', p: 3, w: 1, d: 1, l: 1, gd: '0', pts: 4, form: ['L', 'W', 'D'], rating: '7.6' },
-      { team: 'Tunisia', code: 'TUN', p: 3, w: 0, d: 0, l: 3, gd: '-5', pts: 0, form: ['L', 'L', 'L'], rating: '6.8' }
+      { team: 'Netherlands', code: 'NED', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.3' },
+      { team: 'Japan', code: 'JPN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'W'], rating: '8.1' },
+      { team: 'Sweden', code: 'SWE', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'D'], rating: '7.6' },
+      { team: 'Tunisia', code: 'TUN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'L'], rating: '6.8' }
     ],
     G: [
-      { team: 'Belgium', code: 'BEL', p: 3, w: 2, d: 1, l: 0, gd: '+3', pts: 7, form: ['W', 'D', 'W'], rating: '8.4' },
-      { team: 'Egypt', code: 'EGY', p: 3, w: 1, d: 2, l: 0, gd: '+1', pts: 5, form: ['D', 'W', 'D'], rating: '7.7' },
-      { team: 'Iran', code: 'IRN', p: 3, w: 1, d: 0, l: 2, gd: '-1', pts: 3, form: ['L', 'L', 'W'], rating: '7.0' },
-      { team: 'New Zealand', code: 'NZL', p: 3, w: 0, d: 1, l: 2, gd: '-3', pts: 1, form: ['L', 'D', 'L'], rating: '6.3' }
+      { team: 'Belgium', code: 'BEL', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.4' },
+      { team: 'Egypt', code: 'EGY', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['D', 'W', 'D'], rating: '7.7' },
+      { team: 'Iran', code: 'IRN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'W'], rating: '7.0' },
+      { team: 'New Zealand', code: 'NZL', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'L'], rating: '6.3' }
     ],
     H: [
-      { team: 'Spain', code: 'ESP', p: 3, w: 2, d: 1, l: 0, gd: '+5', pts: 7, form: ['W', 'W', 'D'], rating: '8.9' },
-      { team: 'Uruguay', code: 'URU', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['L', 'W', 'W'], rating: '8.2' },
-      { team: 'Saudi Arabia', code: 'KSA', p: 3, w: 1, d: 0, l: 2, gd: '-3', pts: 3, form: ['W', 'L', 'L'], rating: '7.1' },
-      { team: 'Cabo Verde', code: 'CPV', p: 3, w: 0, d: 1, l: 2, gd: '-4', pts: 1, form: ['L', 'D', 'L'], rating: '6.6' }
+      { team: 'Spain', code: 'ESP', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'W', 'D'], rating: '8.9' },
+      { team: 'Uruguay', code: 'URU', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'W'], rating: '8.2' },
+      { team: 'Saudi Arabia', code: 'KSA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'L'], rating: '7.1' },
+      { team: 'Cabo Verde', code: 'CPV', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'L'], rating: '6.6' }
     ],
     I: [
-      { team: 'France', code: 'FRA', p: 3, w: 3, d: 0, l: 0, gd: '+7', pts: 9, form: ['W', 'W', 'W'], rating: '9.3' },
-      { team: 'Senegal', code: 'SEN', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['W', 'L', 'W'], rating: '7.9' },
-      { team: 'Norway', code: 'NOR', p: 3, w: 1, d: 0, l: 2, gd: '-3', pts: 3, form: ['L', 'W', 'L'], rating: '7.8' },
-      { team: 'Iraq', code: 'IRQ', p: 3, w: 0, d: 0, l: 3, gd: '-6', pts: 0, form: ['L', 'L', 'L'], rating: '6.5' }
+      { team: 'France', code: 'FRA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'W', 'W'], rating: '9.3' },
+      { team: 'Senegal', code: 'SEN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'W'], rating: '7.9' },
+      { team: 'Norway', code: 'NOR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'L'], rating: '7.8' },
+      { team: 'Iraq', code: 'IRQ', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'L'], rating: '6.5' }
     ],
     J: [
-      { team: 'Argentina', code: 'ARG', p: 3, w: 3, d: 0, l: 0, gd: '+8', pts: 9, form: ['W', 'W', 'W'], rating: '9.4' },
-      { team: 'Austria', code: 'AUT', p: 3, w: 1, d: 1, l: 1, gd: '0', pts: 4, form: ['L', 'W', 'D'], rating: '7.7' },
-      { team: 'Algeria', code: 'ALG', p: 3, w: 1, d: 1, l: 1, gd: '-1', pts: 4, form: ['W', 'D', 'L'], rating: '7.6' },
-      { team: 'Jordan', code: 'JOR', p: 3, w: 0, d: 0, l: 3, gd: '-7', pts: 0, form: ['L', 'L', 'L'], rating: '6.3' }
+      { team: 'Argentina', code: 'ARG', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'W', 'W'], rating: '9.4' },
+      { team: 'Austria', code: 'AUT', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'D'], rating: '7.7' },
+      { team: 'Algeria', code: 'ALG', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'L'], rating: '7.6' },
+      { team: 'Jordan', code: 'JOR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'L', 'L'], rating: '6.3' }
     ],
     K: [
-      { team: 'Portugal', code: 'POR', p: 3, w: 2, d: 1, l: 0, gd: '+4', pts: 7, form: ['W', 'D', 'W'], rating: '8.8' },
-      { team: 'Colombia', code: 'COL', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['L', 'W', 'W'], rating: '8.3' },
-      { team: 'Uzbekistan', code: 'UZB', p: 3, w: 1, d: 0, l: 2, gd: '-2', pts: 3, form: ['W', 'L', 'L'], rating: '7.0' },
-      { team: 'DR Congo', code: 'COD', p: 3, w: 0, d: 1, l: 2, gd: '-4', pts: 1, form: ['L', 'D', 'L'], rating: '6.7' }
+      { team: 'Portugal', code: 'POR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.8' },
+      { team: 'Colombia', code: 'COL', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'W'], rating: '8.3' },
+      { team: 'Uzbekistan', code: 'UZB', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'L'], rating: '7.0' },
+      { team: 'DR Congo', code: 'COD', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'L'], rating: '6.7' }
     ],
     L: [
-      { team: 'England', code: 'ENG', p: 3, w: 2, d: 1, l: 0, gd: '+5', pts: 7, form: ['W', 'D', 'W'], rating: '8.9' },
-      { team: 'Croatia', code: 'CRO', p: 3, w: 2, d: 0, l: 1, gd: '+2', pts: 6, form: ['W', 'L', 'W'], rating: '8.2' },
-      { team: 'Ghana', code: 'GHA', p: 3, w: 1, d: 0, l: 2, gd: '-3', pts: 3, form: ['L', 'W', 'L'], rating: '7.4' },
-      { team: 'Panama', code: 'PAN', p: 3, w: 0, d: 1, l: 2, gd: '-4', pts: 1, form: ['L', 'D', 'L'], rating: '6.8' }
+      { team: 'England', code: 'ENG', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'D', 'W'], rating: '8.9' },
+      { team: 'Croatia', code: 'CRO', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['W', 'L', 'W'], rating: '8.2' },
+      { team: 'Ghana', code: 'GHA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'W', 'L'], rating: '7.4' },
+      { team: 'Panama', code: 'PAN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: ['L', 'D', 'L'], rating: '6.8' }
     ]
   };
 
@@ -525,10 +525,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">48 <span className="mini-total">/ 104</span></div>
+                  <div className="mini-value">0 <span className="mini-total">/ 104</span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,20 Q15,10 30,18 T60,5 T90,12 L100,8" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -543,10 +543,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">Argentina <span className="mini-meta">10 gls</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,15 Q25,8 50,22 T100,5" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -562,10 +562,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">Brazil <span className="mini-meta">76%</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,22 Q30,12 60,8 T100,2" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -580,10 +580,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">Morocco <span className="mini-meta">Index: High</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,20 Q20,22 40,5 T80,18 L100,4" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -599,10 +599,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">2.85 <span className="mini-meta">per game</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,15 Q35,18 70,5 T100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -617,10 +617,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">USA <span className="mini-meta">PPDA 7.2</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,5 Q30,22 60,10 T100,15" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -638,10 +638,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">K. Mbappé <span className="mini-meta">5 goals</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,20 Q20,10 40,2 T70,18 L100,5" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -658,10 +658,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">K. De Bruyne <span className="mini-meta">4 asts</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,15 Q30,5 60,22 T100,8" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>
@@ -676,10 +676,10 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">M. Maignan <span className="mini-meta">18 saves</span></div>
+                  <div className="mini-value">— <span className="mini-meta"></span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
-                      <path d="M0,5 Q20,18 40,8 T80,22 L100,10" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
+                      <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
                     </svg>
                   </div>
                 </div>

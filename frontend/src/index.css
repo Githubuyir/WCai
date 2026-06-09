@@ -365,6 +365,7 @@ a {
 .glow-text {
   background: linear-gradient(135deg, #ffffff 50%, rgba(0, 240, 255, 0.4));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   position: relative;
@@ -843,6 +844,7 @@ a {
 .headline-animated {
   background: linear-gradient(90deg, #ffffff 40%, var(--primary-accent) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
   position: relative;
@@ -1079,6 +1081,7 @@ a {
   gap: 28px;
   scroll-behavior: smooth;
   overflow-x: auto;
+  overflow-y: hidden !important;
   scrollbar-width: none;
   padding: 25px 10px 30px 10px;
   margin-top: -10px;
@@ -1931,8 +1934,7 @@ a {
     height: 38px;
   }
   
-  .workflow-icon svg {
-  }
+
 }
 
 /* World Cup Overview Section Styling */
@@ -3898,6 +3900,7 @@ a {
 
 .modal-slider {
   -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   height: 6px;
   border-radius: 9999px;
@@ -4974,16 +4977,100 @@ a {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.heat-glow-node {
+.heat-glow-node,
+.heat-spot-node {
   position: absolute;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: pulse-heatmap 2.5s infinite ease-in-out alternate;
+  background: radial-gradient(circle, rgba(255, 60, 0, 0.85) 0%, rgba(255, 120, 0, 0.5) 45%, rgba(255, 220, 0, 0.2) 75%, transparent 100%) !important;
+  box-shadow: 0 0 15px rgba(255, 60, 0, 0.4), inset 0 0 8px rgba(255, 220, 0, 0.3) !important;
+  border: 1px dashed rgba(255, 220, 0, 0.2) !important;
+  mix-blend-mode: screen !important;
 }
 
 @keyframes pulse-heatmap {
-  0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.6; }
-  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.95; }
+  0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1.0; }
+}
+
+/* Horizontal Player Nodes for Match Analysis Lineup Pitch */
+.player-node-horizontal {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.player-node-horizontal .player-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+.player-node-horizontal .player-dot.p-team1 {
+  background: var(--primary-accent);
+  box-shadow: 0 0 10px var(--primary-accent), inset 0 0 3px #fff;
+}
+
+.player-node-horizontal .player-dot.p-team2 {
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), inset 0 0 3px var(--primary-accent);
+}
+
+.player-label-horizontal {
+  position: absolute;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.player-label-horizontal .p-name {
+  font-family: var(--font-main);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 1), 0 2px 6px rgba(0, 0, 0, 0.9);
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.player-label-horizontal .p-role {
+  font-family: var(--font-main);
+  font-size: 0.48rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 0.4px;
+  margin-top: 1px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.player-node-horizontal .player-pulse {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 1px solid var(--primary-accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: player-ring-pulse 2s infinite ease-out;
+}
+
+.player-node-horizontal:hover .player-dot {
+  transform: scale(1.35);
+  z-index: 15;
 }
 
 .pitch-tag {
@@ -7822,606 +7909,487 @@ a {
   }
 }
 
+/* ====== TABLET INSIGHTS TELEMETRY: <=1024px ====== */
+@media (max-width: 1024px) {
+  /* ---- Insights Page Telemetry Stack ---- */
+  .telemetry-cards-wrapper {
+    height: auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .card-float-1,
+  .card-float-2,
+  .card-float-3,
+  .card-float-4 {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    animation: none !important;
+  }
+
+  .telemetry-val {
+    font-size: 1.25rem !important;
+  }
+}
+
 /* ====== MOBILE: 320px–767px ====== */
-@media (max-width: 767px) {
-  /* Global mobile */
+@media (max-width: 768px) {
+  /* Global Spacing & Padding resets */
   body {
     overflow-x: hidden;
   }
 
   .section-container {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  /* ---- Navbar ---- */
-  .header {
-    padding: 14px 4%;
+  section,
+  .match-intelligence-section,
+  .ai-intelligence-section,
+  .overview-section,
+  .rankings-section,
+  .groups-section,
+  .tactical-evolution-section,
+  .simulator-section,
+  .matchup-intelligence-section,
+  .narrative-insights-section,
+  .related-teams-section {
+    padding: 48px 16px !important;
   }
 
-  .header.scrolled {
-    padding: 10px 4%;
+  /* Remove fixed desktop dimensions & set card fluid width */
+  .match-card,
+  .match-grid-card,
+  .featured-match-card,
+  .group-card,
+  .tactical-trend-card,
+  .superlative-card,
+  .narrative-card-item,
+  .player-card-hud,
+  .similar-team-card,
+  .analysis-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 16px !important;
   }
 
-  .logo {
-    font-size: 1.4rem;
+  /* Single-column grid layouts */
+  .matches-grid,
+  .groups-grid,
+  .tactical-trends-grid,
+  .superlatives-grid,
+  .narratives-grid,
+  .stats-grid,
+  .dossier-hero-grid,
+  .dossier-split-layout,
+  .players-grid,
+  .similar-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
   }
 
-  .live-badge {
-    padding: 4px 10px;
+  /* Responsive Spacing & Gaps */
+  .card-grid,
+  .related-grid,
+  .rankings-list {
+    gap: 16px !important;
   }
 
-  .live-badge-text {
-    font-size: 0.7rem;
-  }
-
-  /* ---- Home Page Hero ---- */
-  .hero-section {
-    padding: 90px 5% 40px 5%;
-    min-height: auto;
-  }
-
-  .hero-title {
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
-    margin-bottom: 16px;
-  }
-
-  .hero-subtitle-tag {
-    font-size: 0.75rem;
-    margin-bottom: 16px;
-  }
-
-  .hero-description {
-    font-size: 0.95rem;
-    margin-bottom: 28px;
-  }
-
-  .hero-ctas {
-    flex-direction: column;
-    width: 100%;
-    max-width: 320px;
-    margin-bottom: 36px;
-  }
-
-  .btn-primary, .btn-secondary {
-    justify-content: center;
-    width: 100%;
-    padding: 12px 20px;
-    font-size: 0.9rem;
-  }
-
-  .hero-social-proof {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .hero-visual {
-    height: 300px;
-  }
-
-  .hud-frame {
-    max-width: 280px;
-  }
-
-  .card-top-right {
-    width: 140px;
-    top: 5%;
-    right: 0;
-  }
-
-  .card-bottom-left {
-    width: 130px;
-    bottom: 5%;
-    left: 0;
-  }
-
-  .card-center-top {
-    width: 150px;
-  }
-
-  .tactical-overlays {
-    display: none;
-  }
-
-  /* ---- Featured Match Carousel ---- */
-  .match-intelligence-section {
-    padding: 80px 4% 40px 4%;
-  }
-
-  .match-card {
-    flex: 0 0 260px;
-    padding: 20px;
-  }
-
-  .carousel-btn {
-    display: none;
-  }
-
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 32px;
+  /* Typography Scale */
+  .hero-title,
+  .insights-hero-title,
+  .matches-hero-title,
+  .dossier-team-name {
+    font-size: clamp(34px, 8vw, 44px) !important;
+    line-height: 1.25 !important;
   }
 
   .section-title {
-    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    font-size: clamp(24px, 6vw, 32px) !important;
+    line-height: 1.25 !important;
   }
 
-  /* ---- Overview Section (Home) ---- */
-  .overview-section {
-    padding: 60px 4% 80px 4%;
+  .hero-description,
+  .insights-hero-description,
+  .matches-hero-subtitle,
+  .section-subtitle,
+  .workflow-card-desc,
+  .trend-desc,
+  .superlative-desc,
+  .narrative-summary,
+  .insight-text,
+  .card-mini-insight p,
+  .workflow-card-title,
+  .trend-title,
+  .narrative-title,
+  .dossier-archetype-desc {
+    font-size: clamp(14px, 4vw, 16px) !important;
+    line-height: 1.55 !important;
   }
 
-  .overview-layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  /* Prevent text overflow and awkward line breaks */
+  h1, h2, h3, h4, h5, h6, p, span, a {
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
   }
 
-  .stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+  /* ---- Navbar / Header ---- */
+  .header {
+    padding: 14px 16px !important;
+    background: rgba(5, 10, 48, 0.9) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
   }
 
-  .stat-mini-card {
-    min-height: 90px;
-    padding: 10px 12px;
+  .header.scrolled {
+    padding: 10px 16px !important;
   }
 
-  .standings-card {
-    padding: 14px;
+  .logo {
+    font-size: 1.4rem !important;
   }
 
-  .standings-table td, .standings-table th {
-    padding: 8px 4px;
-    font-size: 0.72rem;
+  .live-badge {
+    padding: 4px 10px !important;
   }
 
-  /* ---- Matches Page ---- */
-  .matches-hero-section {
-    padding-top: 100px;
+  .live-badge-text {
+    font-size: 0.7rem !important;
   }
 
-  .matches-hero-title {
-    font-size: clamp(1.8rem, 6vw, 2.4rem);
-  }
-
-  .matches-hero-subtitle {
-    font-size: 0.9rem;
-  }
-
-  .matches-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .filters-layout-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .search-sort-wrapper {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .featured-match-card {
-    padding: 18px;
-  }
-
-  .featured-team-name {
-    font-size: 1.2rem;
-  }
-
-  .featured-teams-row {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-
-  .featured-team.left,
-  .featured-team.right {
-    align-items: center;
-    text-align: center;
-  }
-
-  .featured-vs-center {
-    order: -1;
-  }
-
-  .featured-card-footer {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 16px;
-  }
-
-  .featured-stats-row {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .btn-analyze-match {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .match-grid-card {
-    min-height: auto;
-    padding: 18px;
-  }
-
-  /* ---- Match Analysis Page ---- */
+  /* ---- Hero Mobile Background & Buttons ---- */
+  .hero-section,
+  .insights-hero-section,
+  .matches-hero-header,
   .analysis-hero-section {
-    padding-top: 80px;
+    padding-top: 110px !important;
+    min-height: auto !important;
   }
 
-  .analysis-hero-section .section-container {
-    padding-left: 4%;
-    padding-right: 4%;
+  .hero-bg-video,
+  .insights-hero-bg-video {
+    object-fit: cover !important;
+    object-position: center top !important;
   }
 
-  .hero-teams-row {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .video-overlay,
+  .insights-video-overlay {
+    background: rgba(2, 4, 18, 0.75) !important; /* augments readability */
   }
 
-  .hero-team.left,
-  .hero-team.right {
-    align-items: center;
-    text-align: center;
+  .hero-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+    margin-bottom: 36px !important;
   }
 
-  .hero-vs-center {
-    order: -1;
+  .btn-primary, .btn-secondary {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
   }
 
-  .analysis-grid-layout {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .rating-comparison-row {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .formation-teams-header {
-    flex-direction: column;
-    gap: 8px;
-    text-align: center;
-  }
-
-  .formation-pitch-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .momentum-timeline-box {
-    overflow-x: visible;
-  }
-
-  .momentum-graph-area {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .momentum-svg-graph {
-    min-width: 500px;
-  }
-
-  .momentum-teams-labels {
-    flex-direction: column;
-    gap: 6px;
-    align-items: flex-start;
-  }
-
-  .left-analysis-column,
-  .right-analysis-column {
-    min-width: 0;
-  }
-
-  /* ---- Teams Page ---- */
-  .teams-body-page .section-container {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-
-  .teams-hero-content h1 {
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
-  }
-
-  /* Rankings */
-  .rankings-glass-card {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .rankings-glass-card .rankings-header-row,
-  .rankings-glass-card .ranking-row {
-    min-width: 600px;
-  }
-
-  /* Groups */
-  .groups-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .group-meta-stats, .team-details-right {
-    gap: 3px;
-  }
-
-  /* Dark horses */
-  .dark-horse-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  /* Team modal */
-  .modal-grid-layout {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .modal-grid-layout .modal-column-box:last-child {
-    grid-column: auto;
-  }
-
-  /* Teams slideshow */
-  .teams-slideshow-wrapper {
-    height: 240px;
-  }
-
-  /* ---- Team Analysis Page ---- */
-  .team-analysis-body-page .section-container {
-    padding-left: 4%;
-    padding-right: 4%;
-  }
-
-  /* ---- Insights Page ---- */
-  .insights-hero-section {
-    padding-top: 100px;
-    padding-bottom: 50px;
-  }
-
-  .insights-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .insights-hero-title {
-    font-size: clamp(1.8rem, 6vw, 2.4rem);
-  }
-
-  .insights-hero-description {
-    font-size: 0.92rem;
-  }
-
-  .telemetry-cards-wrapper {
-    height: 260px;
-  }
-
-  .telemetry-card {
-    padding: 10px 12px;
-  }
-
-  .card-float-1,
-  .card-float-2,
-  .card-float-3,
-  .card-float-4 {
-    width: 160px !important;
-  }
-
-  .telemetry-val {
-    font-size: 1.1rem;
-  }
-
-  /* Tactical evolution */
-  .tactical-evolution-section {
-    padding: 48px 0;
-  }
-
-  .tactical-trends-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  /* Simulator */
-  .simulator-section {
-    padding: 48px 0;
-  }
-
-  .simulator-workspace-layout {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .bracket-tree-container {
-    overflow-x: auto;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    max-height: 500px;
-    padding: 14px;
-  }
-
-  .bracket-rounds-container {
-    min-width: 800px;
-  }
-
-  .simulator-telemetry-panel {
-    width: 100%;
-  }
-
-  /* Matchup Intelligence */
-  .matchup-intelligence-section {
-    padding: 48px 0;
-  }
-
-  .superlatives-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  /* Narrative Insights */
-  .narrative-insights-section {
-    padding: 48px 0 60px 0;
-  }
-
-  .narratives-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  /* ---- Footer ---- */
-  .footer-section {
-    padding: 40px 4%;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-
-  /* ---- General ---- */
-  .btn-back-matches span {
-    font-size: 0.8rem;
-  }
-
-  .analysis-header .btn-back-matches {
-    padding: 6px 12px;
-  }
-}
-
-/* ====== SMALL MOBILE: 320px–480px ====== */
-@media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.7rem;
-  }
-
-  .hero-subtitle-tag {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-  }
-
-  .hero-description {
-    font-size: 0.88rem;
+  .hero-social-proof {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .hero-visual {
-    height: 260px;
+    height: 300px !important;
+  }
+
+  .hud-frame {
+    max-width: 280px !important;
   }
 
   .card-top-right,
   .card-bottom-left,
   .card-center-top {
-    display: none;
+    display: none !important; /* Simplify HUD decoration on mobile screen sizes */
   }
 
-  .section-title {
-    font-size: 1.3rem;
+  .tactical-overlays {
+    display: none !important;
   }
 
-  .section-subtitle {
-    font-size: 0.82rem;
+  /* ---- Featured Matches Carousel ---- */
+  .carousel-track-container {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
   }
 
-  /* Stats grid 1 column */
-  .stats-grid {
-    grid-template-columns: 1fr;
+  .carousel-track {
+    flex-direction: column !important;
+    overflow-x: visible !important;
+    gap: 16px !important;
   }
 
-  /* Match card carousel */
   .match-card {
-    flex: 0 0 240px;
-    padding: 16px;
+    flex: unset !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  .match-intelligence-section {
-    padding: 60px 4% 30px 4%;
+  .carousel-btn {
+    display: none !important;
   }
 
-  /* Matches page  */
-  .match-grid-card {
-    padding: 14px;
+  .section-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 24px !important;
   }
 
-  .matches-hero-title {
-    font-size: 1.6rem;
+  /* ---- Image & Visual Aspect Ratios ---- */
+  .heatmap-pitch-small,
+  #dossier-heatmap-pitch {
+    aspect-ratio: 1 / 1 !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
 
-  /* Insights */
-  .insights-hero-title {
-    font-size: 1.6rem;
+  .pitch-visualization-container,
+  .tactical-pitch-vertical {
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  .momentum-svg-graph {
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-width: 0 !important;
+  }
+
+  /* ---- Completed Matches visuals ---- */
+  .match-grid-card.completed,
+  .match-card.completed {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    opacity: 0.85 !important;
+  }
+
+  .match-grid-card.completed .card-date-badge,
+  .match-card.completed .match-time {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-muted) !important;
+  }
+
+  /* ---- Group Standings (Option A: Scroll Container) ---- */
+  .table-container {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .standings-table {
+    min-width: 580px !important;
+  }
+
+  .standings-table td, .standings-table th {
+    padding: 8px 6px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Teams Hub groups standings scroll */
+  .group-card {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .group-card-header,
+  .group-teams-stack {
+    min-width: 580px !important;
+  }
+
+  /* ---- Vertical Bracket Simulator ---- */
+  .bracket-scroll-wrapper {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .bracket-rounds-container {
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
+  .bracket-round {
+    width: 100% !important;
+  }
+
+  .round-matches-list {
+    min-height: auto !important;
+    gap: 12px !important;
+  }
+
+  /* ---- Match & Team Analysis Column Stack ---- */
+  .analysis-grid-layout,
+  .dossier-split-layout {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .hero-teams-row {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .hero-team.left,
+  .hero-team.right {
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-vs-center {
+    order: -1 !important;
+  }
+
+  .hero-right-col {
+    justify-content: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+
+  .archetype-card {
+    padding: 20px !important;
+    margin-top: 24px !important;
+  }
+
+  .starting-xi-section,
+  .strength-metrics-section {
+    width: 100% !important;
+  }
+
+  .tactical-dossier-details .dossier-split-layout {
+    gap: 16px !important;
+  }
+
+  .form-momentum-section .dossier-split-layout {
+    gap: 24px !important;
+  }
+
+  .similar-team-card {
+    padding: 14px !important;
+  }
+
+  .similar-team-card span {
+    font-size: 0.82rem !important;
+  }
+
+  /* ---- Footer ---- */
+  .footer-section {
+    padding: 40px 16px !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+}
+
+/* ====== SMALL MOBILE SPECIFICS ====== */
+@media (max-width: 480px) {
+  .hero-title,
+  .insights-hero-title,
+  .matches-hero-title,
+  .dossier-team-name {
+    font-size: clamp(28px, 9vw, 36px) !important;
+  }
+
+  .hero-subtitle-tag {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .hero-visual {
+    height: 240px !important;
   }
 
   .telemetry-cards-wrapper {
-    height: 220px;
+    grid-template-columns: 1fr !important;
   }
 
-  .card-float-1,
-  .card-float-2,
-  .card-float-3,
-  .card-float-4 {
-    width: 140px !important;
+  .stats-grid {
+    grid-template-columns: 1fr !important;
   }
 
-  .telemetry-val {
-    font-size: 0.95rem;
+  .standings-table td, .standings-table th {
+    padding: 6px 4px !important;
+    font-size: 0.7rem !important;
   }
 
-  .telemetry-lbl {
-    font-size: 0.58rem;
-  }
-
-  /* Rankings minimal on very small screens */
   .rankings-glass-card .rankings-header-row,
   .rankings-glass-card .ranking-row {
-    min-width: 520px;
-  }
-
-  /* Teams hero */
-  .teams-hero-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .teams-slideshow-wrapper {
-    height: 200px;
+    min-width: 520px !important;
   }
 }
 
-/* ====== PREVENT HORIZONTAL OVERFLOW (global) ====== */
+/* ====== GLOBAL OVERFLOW & STABILITY UTILITIES ====== */
 html, body, #root {
   max-width: 100vw;
-  overflow-x: hidden;
-}
-
-.section-container {
-  max-width: 100%;
-}
-
-/* Ensure images/videos never overflow */
-img, video {
-  max-width: 100%;
-  height: auto;
-}
-
-video {
-  object-fit: cover;
+  overflow-x: hidden !important;
 }
 
 /* Ensure tables/brackets can scroll independently */
 .rankings-glass-card,
 .bracket-tree-container,
 .momentum-timeline-box,
-.formation-pitch-container {
-  max-width: 100%;
+.formation-pitch-container,
+.table-container,
+.group-card,
+.momentum-graph-area {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Reusable Utility Classes */
+.mobile-scroll {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.responsive-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.responsive-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+}
+
+.visual-panel {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.table-scroll {
+  min-width: 580px !important;
 }
 

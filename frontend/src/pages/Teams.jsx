@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { generateFlagSVG } from '../data/mockData';
 import { getTeams } from '../api/api';
+import { teamsDatabase } from '../data/teamsData';
 
 // Import local image assets for slideshow
 import teamWinning1 from '../assets/team-winning-1.png';
@@ -12,11 +13,11 @@ import teamWinning5 from '../assets/team-winning-5.jpg';
 
 // Hardcoded fallback for power rankings
 const fallbackPowerRankings = [
-  { rank: 1, name: "Argentina", code: "ARG", score: 94.2, prob: "18.5%", style: "Fluid Possession Block", form: ["W", "W", "W", "D", "W"] },
-  { rank: 2, name: "Brazil", code: "BRA", score: 93.5, prob: "16.8%", style: "Lateral Wing Overload", form: ["W", "W", "W", "W", "D"] },
-  { rank: 3, name: "France", code: "FRA", score: 92.1, prob: "15.2%", style: "Rapid Vertical Counter", form: ["W", "W", "L", "W", "W"] },
-  { rank: 4, name: "England", code: "ENG", score: 89.8, prob: "12.4%", style: "Balanced Midfield Press", form: ["W", "D", "W", "W", "D"] },
-  { rank: 5, name: "Spain", code: "ESP", score: 88.5, prob: "10.9%", style: "Central Zonal Overloads", form: ["W", "D", "W", "W", "L"] }
+  { rank: 1, name: "Argentina", code: "ARG", score: 94, prob: "18.5%", style: "Tiki-Taka Overloads", form: ["L", "W", "D", "W", "W"] },
+  { rank: 2, name: "France", code: "FRA", score: 92, prob: "16.8%", style: "Vertical Transitions", form: ["W", "W", "D", "W", "W"] },
+  { rank: 3, name: "Spain", code: "ESP", score: 89, prob: "15.2%", style: "Tiki-Taka Overloads", form: ["D", "W", "W", "W", "W"] },
+  { rank: 4, name: "Portugal", code: "POR", score: 88, prob: "12.4%", style: "Technical Possession", form: ["W", "L", "D", "W", "W"] },
+  { rank: 5, name: "Brazil", code: "BRA", score: 93, prob: "10.9%", style: "Lateral Wing Overload", form: ["L", "W", "W", "D", "L"] }
 ];
 
 export default function Teams() {
@@ -81,95 +82,139 @@ export default function Teams() {
     return list;
   }, []);
 
-  // 3. World Cup Groups Data
+  // 3. World Cup Groups Data (dynamically resolved from teamsDatabase to ensure 100% Q% and rating consistency)
   const groupsData = useMemo(() => {
-    return {
+    const standingsConfig = {
       "Group A": [
-        { name: "Mexico", code: "MEX", tactical: "High Block Press", form: ["W", "D", "W", "W", "L"], gd: 4, pts: 7, rating: 82, qual: 88, stats: { Attack: 81, Midfield: 82, Defense: 83 }, players: [{num: 11, name: "Santiago Giménez", role: "Striker"}, {num: 4, name: "Edson Álvarez", role: "Defensive Mid"}, {num: 22, name: "Hirving Lozano", role: "Winger"}] },
-        { name: "Korea Republic", code: "KOR", tactical: "Fluid Transitions", form: ["W", "W", "L", "D", "W"], gd: 2, pts: 5, rating: 78, qual: 76, stats: { Attack: 80, Midfield: 76, Defense: 78 }, players: [{num: 7, name: "Son Heung-min", role: "Forward"}, {num: 18, name: "Lee Kang-in", role: "Attacking Mid"}, {num: 4, name: "Kim Min-jae", role: "Center Back"}] },
-        { name: "South Africa", code: "RSA", tactical: "Compact Low Block", form: ["L", "W", "D", "D", "W"], gd: 1, pts: 4, rating: 71, qual: 58, stats: { Attack: 70, Midfield: 72, Defense: 71 }, players: [{num: 11, name: "Percy Tau", role: "Forward"}, {num: 4, name: "Teboho Mokoena", role: "Central Mid"}, {num: 20, name: "Khuliso Mudau", role: "Right Back"}] },
-        { name: "Czechia", code: "CZE", tactical: "Direct Crosses", form: ["D", "L", "W", "W", "D"], gd: -7, pts: 1, rating: 74, qual: 28, stats: { Attack: 73, Midfield: 74, Defense: 75 }, players: [{num: 10, name: "Patrik Schick", role: "Striker"}, {num: 22, name: "Tomas Soucek", role: "Box-to-box Mid"}, {num: 5, name: "Vladimir Coufal", role: "Right Back"}] }
+        { code: "MEX", gd: 4, pts: 7 },
+        { code: "KOR", gd: 2, pts: 5 },
+        { code: "RSA", gd: 1, pts: 4 },
+        { code: "CZE", gd: -7, pts: 1 }
       ],
       "Group B": [
-        { name: "Switzerland", code: "SUI", tactical: "Zonal Mid-Block", form: ["W", "W", "D", "W", "D"], gd: 5, pts: 7, rating: 81, qual: 84, stats: { Attack: 78, Midfield: 83, Defense: 82 }, players: [{num: 10, name: "Granit Xhaka", role: "Midfielder"}, {num: 7, name: "Breel Embolo", role: "Striker"}, {num: 1, name: "Yann Sommer", role: "Goalkeeper"}] },
-        { name: "Canada", code: "CAN", tactical: "Direct Wing Play", form: ["L", "W", "W", "D", "L"], gd: 2, pts: 6, rating: 77, qual: 72, stats: { Attack: 79, Midfield: 75, Defense: 77 }, players: [{num: 19, name: "Alphonso Davies", role: "Left Winger"}, {num: 9, name: "Jonathan David", role: "Forward"}, {num: 7, name: "Stephen Eustáquio", role: "Midfielder"}] },
-        { name: "Bosnia & Herz.", code: "BIH", tactical: "Physical Low Block", form: ["W", "L", "D", "L", "W"], gd: -1, pts: 3, rating: 72, qual: 45, stats: { Attack: 71, Midfield: 72, Defense: 73 }, players: [{num: 11, name: "Edin Dzeko", role: "Striker"}, {num: 10, name: "Miralem Pjanic", role: "Midfielder"}, {num: 6, name: "Sead Kolasinac", role: "Defender"}] },
-        { name: "Qatar", code: "QAT", tactical: "Deep Zonal Block", form: ["L", "D", "W", "L", "L"], gd: -6, pts: 1, rating: 69, qual: 22, stats: { Attack: 68, Midfield: 70, Defense: 69 }, players: [{num: 11, name: "Akram Afif", role: "Forward"}, {num: 19, name: "Almoez Ali", role: "Striker"}, {num: 10, name: "Hassan Al-Haydos", role: "Midfielder"}] }
+        { code: "SUI", gd: 5, pts: 7 },
+        { code: "CAN", gd: 2, pts: 6 },
+        { code: "BIH", gd: -1, pts: 3 },
+        { code: "QAT", gd: -6, pts: 1 }
       ],
       "Group C": [
-        { name: "Brazil", code: "BRA", tactical: "Wing Overloads", form: ["W", "W", "W", "W", "D"], gd: 8, pts: 9, rating: 93, qual: 96, stats: { Attack: 95, Midfield: 91, Defense: 93 }, players: [{num: 10, name: "Neymar Jr", role: "Playmaker"}, {num: 7, name: "Vinícius Júnior", role: "Winger"}, {num: 5, name: "Bruno Guimarães", role: "Midfielder"}] },
-        { name: "Morocco", code: "MAR", tactical: "Compact Low Block", form: ["W", "D", "L", "W", "W"], gd: 3, pts: 6, rating: 84, qual: 82, stats: { Attack: 81, Midfield: 85, Defense: 86 }, players: [{num: 2, name: "Achraf Hakimi", role: "Right Back"}, {num: 7, name: "Hakim Ziyech", role: "Winger"}, {num: 4, name: "Sofyan Amrabat", role: "Defensive Mid"}] },
-        { name: "Scotland", code: "SCO", tactical: "Direct Crosses", form: ["W", "D", "W", "L", "D"], gd: -3, pts: 3, rating: 75, qual: 35, stats: { Attack: 73, Midfield: 76, Defense: 75 }, players: [{num: 4, name: "Scott McTominay", role: "Central Mid"}, {num: 7, name: "John McGinn", role: "Attacking Mid"}, {num: 3, name: "Andrew Robertson", role: "Left Back"}] },
-        { name: "Haiti", code: "HAI", tactical: "Deep Zonal block", form: ["L", "L", "W", "D", "L"], gd: -8, pts: 0, rating: 67, qual: 12, stats: { Attack: 69, Midfield: 66, Defense: 67 }, players: [{num: 9, name: "Duckens Nazon", role: "Striker"}, {num: 10, name: "Frantzdy Pierrot", role: "Forward"}, {num: 4, name: "Carlens Arcus", role: "Defender"}] }
+        { code: "BRA", gd: 8, pts: 9 },
+        { code: "MAR", gd: 3, pts: 6 },
+        { code: "SCO", gd: -3, pts: 3 },
+        { code: "HAI", gd: -8, pts: 0 }
       ],
       "Group D": [
-        { name: "USA", code: "USA", tactical: "High Intensity Press", form: ["W", "W", "W", "L", "W"], gd: 5, pts: 7, rating: 83, qual: 90, stats: { Attack: 84, Midfield: 82, Defense: 83 }, players: [{num: 10, name: "Christian Pulisic", role: "Winger"}, {num: 8, name: "Weston McKennie", role: "Box-to-box Mid"}, {num: 4, name: "Tyler Adams", role: "Defensive Mid"}] },
-        { name: "Australia", code: "AUS", tactical: "Physical Low Block", form: ["D", "W", "L", "W", "D"], gd: 1, pts: 5, rating: 75, qual: 68, stats: { Attack: 72, Midfield: 75, Defense: 77 }, players: [{num: 15, name: "Mitchell Duke", role: "Striker"}, {num: 19, name: "Harry Souttar", role: "Center Back"}, {num: 22, name: "Jackson Irvine", role: "Central Mid"}] },
-        { name: "Türkiye", code: "TUR", tactical: "Technical Possession", form: ["L", "W", "W", "D", "L"], gd: 0, pts: 4, rating: 79, qual: 62, stats: { Attack: 80, Midfield: 81, Defense: 76 }, players: [{num: 10, name: "Hakan Çalhanoğlu", role: "Playmaker"}, {num: 19, name: "Kenan Yıldız", role: "Winger"}, {num: 4, name: "Arda Güler", role: "Attacking Mid"}] },
-        { name: "Paraguay", code: "PAR", tactical: "Compact Low Block", form: ["D", "D", "L", "W", "L"], gd: -6, pts: 0, rating: 73, qual: 24, stats: { Attack: 71, Midfield: 74, Defense: 74 }, players: [{num: 10, name: "Julio Enciso", role: "Winger"}, {num: 19, name: "Miguel Almirón", role: "Forward"}, {num: 15, name: "Gustavo Gómez", role: "Defender"}] }
+        { code: "USA", gd: 5, pts: 7 },
+        { code: "AUS", gd: 1, pts: 5 },
+        { code: "TUR", gd: 0, pts: 4 },
+        { code: "PAR", gd: -6, pts: 0 }
       ],
       "Group E": [
-        { name: "Germany", code: "GER", tactical: "Vertical Overloads", form: ["W", "W", "D", "W", "W"], gd: 9, pts: 9, rating: 91, qual: 95, stats: { Attack: 92, Midfield: 93, Defense: 89 }, players: [{num: 10, name: "Jamal Musiala", role: "Attacking Mid"}, {num: 17, name: "Florian Wirtz", role: "Playmaker"}, {num: 21, name: "Ilkay Gündogan", role: "Midfielder"}] },
-        { name: "Ecuador", code: "ECU", tactical: "Fast Transitions", form: ["W", "D", "W", "L", "W"], gd: 2, pts: 6, rating: 80, qual: 78, stats: { Attack: 78, Midfield: 81, Defense: 82 }, players: [{num: 23, name: "Moisés Caicedo", role: "Defensive Mid"}, {num: 13, name: "Enner Valencia", role: "Striker"}, {num: 3, name: "Piero Hincapié", role: "Defender"}] },
-        { name: "Cote d'Ivoire", code: "CIV", tactical: "Physical Mid-Block", form: ["L", "W", "D", "W", "L"], gd: -2, pts: 3, rating: 78, qual: 55, stats: { Attack: 79, Midfield: 77, Defense: 77 }, players: [{num: 22, name: "Sébastien Haller", role: "Striker"}, {num: 4, name: "Franck Kessié", role: "Central Mid"}, {num: 7, name: "Simon Adingra", role: "Winger"}] },
-        { name: "Curaçao", code: "CUR", tactical: "Deep Zonal block", form: ["D", "L", "L", "W", "D"], gd: -9, pts: 0, rating: 66, qual: 14, stats: { Attack: 65, Midfield: 67, Defense: 66 }, players: [{num: 10, name: "Juninho Bacuna", role: "Midfielder"}, {num: 7, name: "Juriën Gaari", role: "Defender"}, {num: 9, name: "Rangelo Janga", role: "Striker"}] }
+        { code: "GER", gd: 9, pts: 9 },
+        { code: "ECU", gd: 2, pts: 6 },
+        { code: "CIV", gd: -2, pts: 3 },
+        { code: "CUR", gd: -9, pts: 0 }
       ],
       "Group F": [
-        { name: "Netherlands", code: "NED", tactical: "Total Football", form: ["W", "D", "W", "L", "W"], gd: 4, pts: 7, rating: 87, qual: 92, stats: { Attack: 86, Midfield: 88, Defense: 87 }, players: [{num: 4, name: "Virgil van Dijk", role: "Center Back"}, {num: 10, name: "Memphis Depay", role: "Striker"}, {num: 14, name: "Tijjani Reijnders", role: "Midfielder"}] },
-        { name: "Japan", code: "JPN", tactical: "High Intensity Press", form: ["W", "W", "D", "W", "D"], gd: 3, pts: 6, rating: 83, qual: 86, stats: { Attack: 84, Midfield: 83, Defense: 82 }, players: [{num: 14, name: "Junya Ito", role: "Winger"}, {num: 20, name: "Takefusa Kubo", role: "Forward"}, {num: 6, name: "Wataru Endo", role: "Defensive Mid"}] },
-        { name: "Sweden", code: "SWE", tactical: "Zonal Mid-Block", form: ["L", "W", "D", "W", "L"], gd: -1, pts: 4, rating: 78, qual: 58, stats: { Attack: 81, Midfield: 77, Defense: 76 }, players: [{num: 9, name: "Alexander Isak", role: "Striker"}, {num: 17, name: "Viktor Gyökeres", role: "Striker"}, {num: 10, name: "Dejan Kulusevski", role: "Attacking Mid"}] },
-        { name: "Tunisia", code: "TUN", tactical: "Deep Zonal block", form: ["L", "D", "W", "L", "L"], gd: -6, pts: 0, rating: 71, qual: 22, stats: { Attack: 69, Midfield: 72, Defense: 72 }, players: [{num: 10, name: "Hannibal Mejbri", role: "Midfielder"}, {num: 7, name: "Youssef Msakni", role: "Forward"}, {num: 4, name: "Yassine Meriah", role: "Center Back"}] }
+        { code: "NED", gd: 4, pts: 7 },
+        { code: "JPN", gd: 3, pts: 6 },
+        { code: "SWE", gd: -1, pts: 4 },
+        { code: "TUN", gd: -6, pts: 0 }
       ],
       "Group G": [
-        { name: "Belgium", code: "BEL", tactical: "Technical Possession", form: ["W", "W", "D", "L", "W"], gd: 4, pts: 7, rating: 86, qual: 89, stats: { Attack: 87, Midfield: 86, Defense: 84 }, players: [{num: 7, name: "Kevin De Bruyne", role: "Attacking Mid"}, {num: 10, name: "Romelu Lukaku", role: "Striker"}, {num: 11, name: "Jérémy Doku", role: "Winger"}] },
-        { name: "Egypt", code: "EGY", tactical: "Direct Wing Play", form: ["W", "D", "W", "W", "L"], gd: 2, pts: 6, rating: 80, qual: 78, stats: { Attack: 83, Midfield: 78, Defense: 79 }, players: [{num: 10, name: "Mohamed Salah", role: "Winger"}, {num: 7, name: "Trézéguet", role: "Winger"}, {num: 17, name: "Mohamed Elneny", role: "Defensive Mid"}] },
-        { name: "IR Iran", code: "IRN", tactical: "Compact Low Block", form: ["L", "W", "D", "D", "W"], gd: -2, pts: 3, rating: 74, qual: 42, stats: { Attack: 76, Midfield: 73, Defense: 74 }, players: [{num: 9, name: "Mehdi Taremi", role: "Striker"}, {num: 20, name: "Sardar Azmoun", role: "Forward"}, {num: 6, name: "Saeid Ezatolahi", role: "Midfielder"}] },
-        { name: "New Zealand", code: "NZL", tactical: "Physical Mid-Block", form: ["L", "D", "L", "W", "L"], gd: -4, pts: 1, rating: 68, qual: 16, stats: { Attack: 68, Midfield: 67, Defense: 69 }, players: [{num: 9, name: "Chris Wood", role: "Striker"}, {num: 6, name: "Joe Bell", role: "Central Mid"}, {num: 4, name: "Liberato Cacace", role: "Left Back"}] }
+        { code: "BEL", gd: 4, pts: 7 },
+        { code: "EGY", gd: 2, pts: 6 },
+        { code: "IRN", gd: -2, pts: 3 },
+        { code: "NZL", gd: -4, pts: 1 }
       ],
       "Group H": [
-        { name: "Spain", code: "ESP", tactical: "Tiki-Taka Overloads", form: ["W", "D", "W", "W", "L"], gd: 6, pts: 7, rating: 89, qual: 93, stats: { Attack: 88, Midfield: 92, Defense: 87 }, players: [{num: 16, name: "Rodri", role: "Defensive Mid"}, {num: 10, name: "Dani Olmo", role: "Attacking Mid"}, {num: 17, name: "Lamine Yamal", role: "Winger"}] },
-        { name: "Uruguay", code: "URU", tactical: "High Block Press", form: ["W", "W", "D", "W", "D"], gd: 3, pts: 6, rating: 84, qual: 88, stats: { Attack: 85, Midfield: 84, Defense: 83 }, players: [{num: 15, name: "Federico Valverde", role: "Box-to-box Mid"}, {num: 9, name: "Darwin Núñez", role: "Striker"}, {num: 4, name: "Ronald Araújo", role: "Defender"}] },
-        { name: "Saudi Arabia", code: "KSA", tactical: "Compact Low Block", form: ["L", "W", "D", "D", "W"], gd: -4, pts: 3, rating: 73, qual: 38, stats: { Attack: 72, Midfield: 74, Defense: 73 }, players: [{num: 10, name: "Salem Al-Dawsari", role: "Winger"}, {num: 9, name: "Firas Al-Buraikan", role: "Striker"}, {num: 12, name: "Saud Abdulhamid", role: "Right Back"}] },
-        { name: "Cabo Verde", code: "CPV", tactical: "Fast Transitions", form: ["L", "D", "L", "W", "L"], gd: -5, pts: 1, rating: 72, qual: 20, stats: { Attack: 73, Midfield: 71, Defense: 71 }, players: [{num: 7, name: "Garry Rodrigues", role: "Winger"}, {num: 10, name: "Jamiro Monteiro", role: "Midfielder"}, {num: 20, name: "Ryan Mendes", role: "Forward"}] }
+        { code: "ESP", gd: 6, pts: 7 },
+        { code: "URU", gd: 3, pts: 6 },
+        { code: "KSA", gd: -4, pts: 3 },
+        { code: "CPV", gd: -5, pts: 1 }
       ],
       "Group I": [
-        { name: "France", code: "FRA", tactical: "Vertical Transitions", form: ["W", "W", "L", "W", "W"], gd: 8, pts: 9, rating: 92, qual: 95, stats: { Attack: 94, Midfield: 91, Defense: 91 }, players: [{num: 10, name: "Kylian Mbappé", role: "Striker"}, {num: 7, name: "Antoine Griezmann", role: "Playmaker"}, {num: 4, name: "Aurélien Tchouaméni", role: "Defensive Mid"}] },
-        { name: "Senegal", code: "SEN", tactical: "Physical Low Block", form: ["W", "D", "W", "L", "W"], gd: 2, pts: 6, rating: 81, qual: 78, stats: { Attack: 80, Midfield: 81, Defense: 82 }, players: [{num: 10, name: "Sadio Mané", role: "Winger"}, {num: 26, name: "Nicolas Jackson", role: "Forward"}, {num: 3, name: "Kalidou Koulibaly", role: "Center Back"}] },
-        { name: "Norway", code: "NOR", tactical: "Direct Crosses", form: ["L", "W", "L", "W", "D"], gd: -3, pts: 3, rating: 79, qual: 48, stats: { Attack: 86, Midfield: 78, Defense: 73 }, players: [{num: 9, name: "Erling Haaland", role: "Striker"}, {num: 10, name: "Martin Ødegaard", role: "Playmaker"}, {num: 6, name: "Julian Ryerson", role: "Right Back"}] },
-        { name: "Iraq", code: "IRQ", tactical: "Deep Zonal block", form: ["L", "L", "W", "D", "L"], gd: -7, pts: 0, rating: 70, qual: 15, stats: { Attack: 70, Midfield: 69, Defense: 70 }, players: [{num: 10, name: "Mohanad Ali", role: "Striker"}, {num: 8, name: "Ibrahim Bayesh", role: "Midfielder"}, {num: 4, name: "Saad Natiq", role: "Defender"}] }
+        { code: "FRA", gd: 8, pts: 9 },
+        { code: "SEN", gd: 2, pts: 6 },
+        { code: "NOR", gd: -3, pts: 3 },
+        { code: "IRQ", gd: -7, pts: 0 }
       ],
       "Group J": [
-        { name: "Argentina", code: "ARG", tactical: "Tiki-Taka Overloads", form: ["W", "W", "W", "D", "W"], gd: 9, pts: 9, rating: 94, qual: 98, stats: { Attack: 93, Midfield: 96, Defense: 93 }, players: [{num: 10, name: "Lionel Messi", role: "Playmaker"}, {num: 24, name: "Enzo Fernández", role: "Central Mid"}, {num: 11, name: "Alexis Mac Allister", role: "Midfielder"}] },
-        { name: "Algeria", code: "ALG", tactical: "Technical Possession", form: ["L", "W", "D", "W", "W"], gd: 0, pts: 4, rating: 79, qual: 65, stats: { Attack: 81, Midfield: 78, Defense: 77 }, players: [{num: 7, name: "Riyad Mahrez", role: "Winger"}, {num: 9, name: "Baghdad Bounedjah", role: "Forward"}, {num: 10, name: "Sofiane Feghouli", role: "Midfielder"}] },
-        { name: "Austria", code: "AUT", tactical: "High Intensity Press", form: ["W", "D", "L", "L", "W"], gd: -2, pts: 3, rating: 80, qual: 58, stats: { Attack: 79, Midfield: 81, Defense: 80 }, players: [{num: 7, name: "Marcel Sabitzer", role: "Central Mid"}, {num: 10, name: "Konrad Laimer", role: "Attacking Mid"}, {num: 8, name: "David Alaba", role: "Center Back"}] },
-        { name: "Jordan", code: "JOR", tactical: "Deep Zonal block", form: ["L", "D", "L", "W", "L"], gd: -7, pts: 1, rating: 68, qual: 14, stats: { Attack: 68, Midfield: 67, Defense: 68 }, players: [{num: 10, name: "Musa Al-Taamari", role: "Winger"}, {num: 9, name: "Yazan Al-Naimat", role: "Striker"}, {num: 3, name: "Abdallah Nasib", role: "Defender"}] }
+        { code: "ARG", gd: 9, pts: 9 },
+        { code: "ALG", gd: 0, pts: 4 },
+        { code: "AUT", gd: -2, pts: 3 },
+        { code: "JOR", gd: -7, pts: 1 }
       ],
       "Group K": [
-        { name: "Portugal", code: "POR", tactical: "Technical Possession", form: ["W", "W", "D", "W", "W"], gd: 5, pts: 7, rating: 88, qual: 92, stats: { Attack: 89, Midfield: 88, Defense: 87 }, players: [{num: 7, name: "Cristiano Ronaldo", role: "Striker"}, {num: 8, name: "Bruno Fernandes", role: "Attacking Mid"}, {num: 10, name: "Bernardo Silva", role: "Playmaker"}] },
-        { name: "Colombia", code: "COL", tactical: "Fast Transitions", form: ["W", "W", "L", "D", "W"], gd: 3, pts: 6, rating: 82, qual: 84, stats: { Attack: 83, Midfield: 81, Defense: 82 }, players: [{num: 7, name: "Luis Díaz", role: "Winger"}, {num: 10, name: "James Rodríguez", role: "Playmaker"}, {num: 16, name: "Jefferson Lerma", role: "Defensive Mid"}] },
-        { name: "Uzbekistan", code: "UZB", tactical: "Compact Low Block", form: ["L", "W", "D", "W", "L"], gd: -3, pts: 3, rating: 73, qual: 35, stats: { Attack: 74, Midfield: 72, Defense: 73 }, players: [{num: 14, name: "Eldor Shomurodov", role: "Striker"}, {num: 7, name: "Otabek Shukurov", role: "Midfielder"}, {num: 4, name: "Husniddin Aliqulov", role: "Defender"}] },
-        { name: "Congo DR", code: "COD", tactical: "Physical Mid-Block", form: ["L", "D", "L", "W", "L"], gd: -5, pts: 1, rating: 71, qual: 25, stats: { Attack: 72, Midfield: 70, Defense: 71 }, players: [{num: 17, name: "Cédric Bakambu", role: "Striker"}, {num: 10, name: "Chancel Mbemba", role: "Defender"}, {num: 8, name: "Yoane Wissa", role: "Winger"}] }
+        { code: "POR", gd: 5, pts: 7 },
+        { code: "COL", gd: 3, pts: 6 },
+        { code: "UZB", gd: -3, pts: 3 },
+        { code: "COD", gd: -5, pts: 1 }
       ],
       "Group L": [
-        { name: "England", code: "ENG", tactical: "Balanced Possession", form: ["W", "D", "W", "W", "D"], gd: 5, pts: 7, rating: 89, qual: 93, stats: { Attack: 89, Midfield: 90, Defense: 88 }, players: [{num: 9, name: "Harry Kane", role: "Striker"}, {num: 10, name: "Jude Bellingham", role: "Attacking Mid"}, {num: 7, name: "Bukayo Saka", role: "Winger"}] },
-        { name: "Croatia", code: "CRO", tactical: "Technical Midfield Control", form: ["W", "D", "L", "W", "L"], gd: 3, pts: 6, rating: 83, qual: 86, stats: { Attack: 81, Midfield: 86, Defense: 82 }, players: [{num: 10, name: "Luka Modrić", role: "Playmaker"}, {num: 8, name: "Mateo Kovačić", role: "Midfielder"}, {num: 4, name: "Joško Gvardiol", role: "Center Back"}] },
-        { name: "Ghana", code: "GHA", tactical: "Fast Transitions", form: ["L", "W", "D", "W", "L"], gd: -2, pts: 3, rating: 76, qual: 48, stats: { Attack: 78, Midfield: 75, Defense: 75 }, players: [{num: 9, name: "Jordan Ayew", role: "Forward"}, {num: 20, name: "Mohammed Kudus", role: "Playmaker"}, {num: 4, name: "Thomas Partey", role: "Midfielder"}] },
-        { name: "Panama", code: "PAN", tactical: "Compact Low Block", form: ["L", "D", "L", "W", "L"], gd: -6, pts: 1, rating: 71, qual: 22, stats: { Attack: 70, Midfield: 71, Defense: 71 }, players: [{num: 18, name: "Cecilio Waterman", role: "Striker"}, {num: 10, name: "Edgar Bárcenas", role: "Winger"}, {num: 3, name: "Harold Cummings", role: "Center Back"}] }
+        { code: "ENG", gd: 5, pts: 7 },
+        { code: "CRO", gd: 3, pts: 6 },
+        { code: "GHA", gd: -2, pts: 3 },
+        { code: "PAN", gd: -6, pts: 1 }
       ]
     };
+
+    const result = {};
+    for (const groupName of Object.keys(standingsConfig)) {
+      result[groupName] = standingsConfig[groupName].map(item => {
+        const dbTeam = teamsDatabase[item.code];
+        if (!dbTeam) {
+          return {
+            name: item.code,
+            code: item.code,
+            tactical: "Balanced Possession",
+            form: [],
+            gd: item.gd,
+            pts: item.pts,
+            rating: 70,
+            qual: 50,
+            players: []
+          };
+        }
+
+        const qualPct = parseInt(dbTeam.qualProb) || 50;
+
+        return {
+          name: dbTeam.name,
+          code: item.code,
+          tactical: dbTeam.archetype,
+          form: dbTeam.form,
+          gd: item.gd,
+          pts: item.pts,
+          rating: dbTeam.rating,
+          qual: qualPct,
+          stats: {
+            Attack: dbTeam.metrics?.attack || 70,
+            Midfield: dbTeam.metrics?.control || 70,
+            Defense: dbTeam.metrics?.solidity || 70
+          },
+          players: (dbTeam.players || []).map((p, i) => ({
+            num: i === 0 ? 9 : (i === 1 ? 8 : 4),
+            name: p.name,
+            role: p.role?.split(' / ')[0] || p.role
+          }))
+        };
+      });
+    }
+    return result;
   }, []);
 
-  // 4. Dark Horse Predictions Data
+  // 4. Dark Horse Predictions Data (Updated to feature Norway, Japan, and USA)
   const darkHorsesData = [
     {
-      name: "Morocco",
-      code: "MAR",
-      upsetIndex: "88%",
-      style: "Compact Low Block",
-      qualProb: "82%",
-      advantage: "Elite Defensive Structure & Counter Transitions",
-      stadium: "att",
-      summary: "Following their historic semifinal run, Morocco's tactical structure remains one of the hardest blocks to penetrate. Deep defensive lines and explosive transition speeds make them a prime threat to elite favorites."
+      name: "Norway",
+      code: "NOR",
+      upsetIndex: "84%",
+      style: "Direct Attacking & Target Play",
+      qualProb: "48%",
+      advantage: "Haaland Elite Goal Threat & Ødegaard Playmaking",
+      stadium: "bela",
+      summary: "With the devastating goal-scoring threat of Erling Haaland and the creative mastery of Martin Ødegaard, Norway possesses the attacking potency to unlock any defense and orchestrate major tournament upsets."
     },
     {
       name: "Japan",
@@ -193,7 +238,7 @@ export default function Teams() {
     }
   ];
 
-  // Helper to find team data
+    // Helper to find team data
   const selectedTeam = useMemo(() => {
     if (!selectedTeamCode) return null;
     for (const groupName in groupsData) {
@@ -268,7 +313,7 @@ export default function Teams() {
       {/* Floating Particles Overlay Container */}
       <div className="teams-page-particles" id="particles-container">
         {particles.map((p, idx) => (
-          <div 
+          <div
             key={idx}
             className="floating-particle"
             style={{
@@ -293,7 +338,7 @@ export default function Teams() {
           <div className="slide" style={{ backgroundImage: `url(${teamWinning4})` }}></div>
           <div className="slide" style={{ backgroundImage: `url(${teamWinning5})` }}></div>
         </div>
-        
+
         <div className="teams-hero-glow"></div>
         <div className="section-container" style={{ position: 'relative', zIndex: 3 }}>
           <div className="hero-content" style={{ textAlign: 'left', maxWidth: '800px', margin: 0 }}>
@@ -340,24 +385,24 @@ export default function Teams() {
                   <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
                 </div>
               ) : (
-              powerRankingsData.map((team) => {
-                const isTopThree = team.rank <= 3 ? 'top-three' : '';
-                return (
-                  <div key={team.rank} className={`ranking-row ${isTopThree}`} onClick={() => handleOpenModal(team.code)} style={{ cursor: 'pointer' }}>
-                    <span className="ranking-num">{team.rank}</span>
-                    <div className="ranking-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
-                    <span className="ranking-name">{team.name}</span>
-                    <span className="ranking-score">{team.score}</span>
-                    <span className="ranking-prob">{team.prob}</span>
-                    <div><span className="ranking-identity">{team.style}</span></div>
-                    <div className="ranking-trend-container">
-                      {team.form.map((f, i) => (
-                        <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
-                      ))}
+                powerRankingsData.map((team) => {
+                  const isTopThree = team.rank <= 3 ? 'top-three' : '';
+                  return (
+                    <div key={team.rank} className={`ranking-row ${isTopThree}`} onClick={() => handleOpenModal(team.code)} style={{ cursor: 'pointer' }}>
+                      <span className="ranking-num">{team.rank}</span>
+                      <div className="ranking-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
+                      <span className="ranking-name">{team.name}</span>
+                      <span className="ranking-score">{team.score}</span>
+                      <span className="ranking-prob">{team.prob}</span>
+                      <div><span className="ranking-identity">{team.style}</span></div>
+                      <div className="ranking-trend-container">
+                        {team.form.map((f, i) => (
+                          <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                );
-              })
+                  );
+                })
               )}
             </div>
           </div>
@@ -369,7 +414,7 @@ export default function Teams() {
         <div className="section-container">
           <div className="section-header-left" style={{ marginBottom: '32px', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
             <h2 className="section-title" style={{ fontSize: '1.8rem', fontWeight: 800, color: '#fff', marginBottom: '8px', textAlign: 'left' }}>World Cup Groups & Standings</h2>
-            <p className="section-subtitle" style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: 0, textAlign: 'left' }}>Explore the qualification prospects, tactical configurations, and AI ratings for all 48 participating countries.</p>
+            <p className="section-subtitle" style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: 0, textAlign: 'left' }}>Explore the qualification prospects, predicted group results, tactical configurations, and AI ratings for all 48 participating countries.</p>
           </div>
 
           <div className="groups-grid" id="groups-grid-container">
@@ -404,7 +449,7 @@ export default function Teams() {
                               <span className="team-ai-pill">AI {team.rating}</span>
                             </div>
                           </div>
-                          
+
                           <div className="team-details-right">
                             <span className="team-metric-val">{w}</span>
                             <span className="team-metric-val">{d}</span>
@@ -412,7 +457,7 @@ export default function Teams() {
                             <span className="team-metric-val gd-val">{team.gd > 0 ? '+' + team.gd : team.gd}</span>
                             <span className="team-metric-val points-val">{team.pts}</span>
                             <span className="team-metric-val prob-val">{team.qual}%</span>
-                            
+
                             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                               <button className="btn-analyze-team" onClick={() => handleAnalyzeTeamDossier(team.code)}>
                                 <span className="btn-text">Analyze</span> <span>→</span>
@@ -442,27 +487,27 @@ export default function Teams() {
 
           <div className="dark-horse-grid" id="dark-horse-grid-container">
             {darkHorsesData.map((team) => (
-              <div 
-                key={team.code} 
+              <div
+                key={team.code}
                 className={`dark-horse-card stadium-${team.stadium}`}
                 onClick={() => handleOpenModal(team.code)}
                 style={{ cursor: 'pointer' }}
               >
                 <div className="card-stadium-bg"></div>
                 <div className="card-glow-overlay"></div>
-                
+
                 <div className="dh-header">
                   <div className="dh-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
                   <span className="dh-upset-badge">Upset potential</span>
                 </div>
-                
+
                 <div className="dh-title-row">
                   <h3 className="dh-name">{team.name}</h3>
                   <span className="dh-identity-label">{team.style}</span>
                 </div>
-                
+
                 <p className="dh-summary">{team.summary}</p>
-                
+
                 <div className="dh-metrics-stack">
                   <div className="dh-metric-item">
                     <span className="dh-metric-lbl">AI Upset Index</span>
@@ -487,8 +532,8 @@ export default function Teams() {
 
       {/* Dynamic Tactical Breakdown Modal */}
       {selectedTeam && (
-        <div 
-          className={`tactical-modal-overlay ${modalActive ? 'active' : ''}`} 
+        <div
+          className={`tactical-modal-overlay ${modalActive ? 'active' : ''}`}
           id="tactical-profile-modal"
           onClick={(e) => { if (e.target.id === 'tactical-profile-modal') handleCloseModal(); }}
         >
