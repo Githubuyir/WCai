@@ -842,13 +842,20 @@ a {
 
 /* Headline Animation & Underline */
 .headline-animated {
-  background: linear-gradient(90deg, #ffffff 40%, var(--primary-accent) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   display: inline-block;
   position: relative;
   padding-bottom: 8px;
+  color: #ffffff;
+}
+
+.title-text-white {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.highlight-cyan {
+  color: var(--primary-accent);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
 }
 
 .headline-animated::after {
@@ -7943,6 +7950,7 @@ a {
   /* Global Spacing & Padding resets */
   body {
     overflow-x: hidden;
+    font-size: 16px !important;
   }
 
   .section-container {
@@ -7990,13 +7998,55 @@ a {
   .tactical-trends-grid,
   .superlatives-grid,
   .narratives-grid,
-  .stats-grid,
   .dossier-hero-grid,
   .dossier-split-layout,
   .players-grid,
   .similar-grid {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  /* Reduce edge glows on mobile */
+  .hero-section::before {
+    box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.04) !important;
+  }
+
+  /* Left-align all headers, subtexts, and descriptions on mobile */
+  .hero-container,
+  .section-header,
+  .overview-header,
+  .intelligence-left,
+  .simulator-intro-header {
+    text-align: left !important;
+    align-items: flex-start !important;
+  }
+
+  .hero-content {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .hero-ctas {
+    justify-content: flex-start !important;
+  }
+
+  .hero-social-proof {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  .section-title,
+  .section-subtitle,
+  .intelligence-title,
+  .intelligence-subtitle,
+  .matches-hero-title,
+  .matches-hero-subtitle {
+    text-align: left !important;
   }
 
   /* Responsive Spacing & Gaps */
@@ -8016,8 +8066,8 @@ a {
   }
 
   .section-title {
-    font-size: clamp(24px, 6vw, 32px) !important;
-    line-height: 1.25 !important;
+    font-size: clamp(28px, 7vw, 36px) !important;
+    line-height: 1.1 !important;
   }
 
   .hero-description,
@@ -8044,16 +8094,19 @@ a {
     word-break: break-word !important;
   }
 
-  /* ---- Navbar / Header ---- */
   .header {
-    padding: 14px 16px !important;
-    background: rgba(5, 10, 48, 0.9) !important;
-    backdrop-filter: blur(15px) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
+    padding: 10px 16px !important;
+    background: rgba(5, 10, 48, 0.25) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.08) !important;
   }
 
   .header.scrolled {
-    padding: 10px 16px !important;
+    padding: 8px 16px !important;
+    background: rgba(5, 10, 48, 0.6) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
   }
 
   .logo {
@@ -8130,20 +8183,32 @@ a {
 
   /* ---- Featured Matches Carousel ---- */
   .carousel-track-container {
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%) !important;
   }
 
   .carousel-track {
-    flex-direction: column !important;
-    overflow-x: visible !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
     gap: 16px !important;
+    display: flex !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
-  .match-card {
-    flex: unset !important;
-    width: 100% !important;
-    max-width: 100% !important;
+  .carousel-track::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .carousel-track .match-card {
+    flex: 0 0 290px !important;
+    width: 290px !important;
+    max-width: 290px !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
   }
 
   .carousel-btn {
@@ -8199,23 +8264,28 @@ a {
   }
 
   .standings-table {
-    min-width: 580px !important;
+    min-width: 0 !important;
+    width: 100% !important;
   }
 
   .standings-table td, .standings-table th {
-    padding: 8px 6px !important;
-    font-size: 0.75rem !important;
+    padding: 6px 4px !important;
+    font-size: 0.72rem !important;
   }
 
   /* Teams Hub groups standings scroll */
   .group-card {
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: hidden !important;
   }
 
   .group-card-header,
   .group-teams-stack {
-    min-width: 580px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   /* ---- Vertical Bracket Simulator ---- */
@@ -8307,6 +8377,464 @@ a {
     gap: 12px !important;
     text-align: center !important;
   }
+
+  /* ==========================================================
+     NEW MOBILE OVERRIDES FOR GENERAL VIEW AUDIT & SPECIFIC BUGS
+     ========================================================== */
+
+  /* 1. Featured Match Cards mobile adjustments */
+  .carousel-track .match-card {
+    flex: 0 0 270px !important;
+    width: 270px !important;
+    max-width: 270px !important;
+    height: 380px !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+    box-sizing: border-box !important;
+  }
+  .carousel-track .match-card .flag-wrapper {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .carousel-track .match-card .team-name {
+    font-size: 0.8rem !important;
+  }
+  .carousel-track .match-card .teams-row {
+    margin: 6px 0 !important;
+  }
+  .carousel-track .match-card .ai-insight {
+    min-height: 52px !important;
+    padding: 8px 10px !important;
+    border-radius: 10px !important;
+    gap: 6px !important;
+  }
+  .carousel-track .match-card .insight-text {
+    font-size: 0.72rem !important;
+    line-height: 1.35 !important;
+  }
+  .carousel-track .match-card .prob-container {
+    gap: 6px !important;
+  }
+  .carousel-track .match-card .stats-row {
+    padding-top: 10px !important;
+  }
+  .carousel-track .match-card .stat-lbl {
+    font-size: 0.65rem !important;
+  }
+  .carousel-track .match-card .stat-val {
+    font-size: 0.8rem !important;
+  }
+  .carousel-track .match-card .btn-analyze {
+    height: 36px !important;
+    font-size: 0.75rem !important;
+    margin-top: auto !important;
+  }
+
+  /* 2. Predict section video background coverage */
+  .globe-video-wrapper {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    position: absolute !important;
+  }
+  .globe-video-container {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    display: block !important;
+  }
+  .globe-bg-video {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* 3. Home Hero height, spacing, alignment, and background overlays */
+  .hero-section {
+    padding: 130px 20px 60px !important;
+    min-height: 88vh !important;
+    height: auto !important;
+    max-height: none !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+  .hero-content {
+    align-items: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+  }
+  .hero-subtitle-tag {
+    font-size: 14px !important;
+    letter-spacing: 0.18em !important;
+    margin-bottom: 14px !important;
+  }
+  .hero-title,
+  .matches-hero-title,
+  .insights-hero-title {
+    font-size: clamp(32px, 7.8vw, 46px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.035em !important;
+    font-weight: 800 !important;
+    max-width: 92% !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    margin-top: 4px !important;
+    margin-bottom: 12px !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+  }
+  .hero-section .hero-title {
+    font-size: clamp(34px, 8vw, 48px) !important;
+    line-height: 1.04 !important;
+  }
+  .hero-description,
+  .matches-hero-subtitle,
+  .insights-hero-description {
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+    text-align: left !important;
+    margin-top: 16px !important;
+    margin-bottom: 24px !important;
+    max-width: 100% !important;
+    opacity: 0.92 !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
+  }
+  .hero-section .hero-description {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+    margin-top: 12px !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-ctas {
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 14px !important;
+    margin-top: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .hero-section .hero-ctas {
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-secondary {
+    height: 56px !important;
+    padding: 0 24px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+  .hero-bg-video {
+    object-fit: cover !important;
+    object-position: 72% bottom !important;
+    opacity: 0.82 !important;
+    filter: none !important;
+  }
+  .insights-hero-bg-video {
+    object-fit: cover !important;
+    object-position: 72% center !important;
+    opacity: 0.82 !important;
+    filter: none !important;
+  }
+  .video-overlay,
+  .insights-video-overlay {
+    opacity: 0.55 !important;
+  }
+  .headline-animated::after {
+    width: 80% !important;
+    height: 2px !important;
+    box-shadow: 0 0 4px rgba(0, 240, 255, 0.5) !important;
+    left: 10% !important;
+    animation: none !important;
+  }
+
+  /* 4. World Cup Overview Stats Grid (Dashboard Alignment) */
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+  .stat-mini-card {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: 138px !important;
+    min-height: 138px !important;
+    max-height: 138px !important;
+    padding: 16px !important;
+    border-radius: 20px !important;
+    box-sizing: border-box !important;
+  }
+  .press-leader-card {
+    display: none !important;
+  }
+  .mini-card-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .mini-label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+  }
+  .mini-value {
+    font-size: 30px !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 6px !important;
+  }
+  .mini-meta {
+    font-size: 13px !important;
+    color: var(--text-muted) !important;
+    font-weight: normal !important;
+  }
+  .mini-icon {
+    width: 18px !important;
+    height: 18px !important;
+    opacity: 0.8 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .mini-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .mini-chart {
+    display: none !important;
+  }
+
+  /* 5. Standings table hiding and CSS grid rows display */
+  .standings-table .form-col {
+    display: none !important;
+  }
+  .standings-table .w-col,
+  .standings-table .d-col,
+  .standings-table .l-col,
+  .standings-table .rating-col,
+  .standings-table .rating-header {
+    display: flex !important;
+  }
+  .standings-table {
+    display: block !important;
+    width: 100% !important;
+  }
+  .standings-table thead,
+  .standings-table tbody {
+    display: block !important;
+    width: 100% !important;
+  }
+  .standings-table tr {
+    display: grid !important;
+    grid-template-columns: 28px minmax(0, 1fr) 26px 26px 26px 26px 36px 36px 54px !important;
+    width: 100% !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+  }
+  .standings-table th, 
+  .standings-table td {
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px 4px !important;
+    font-size: 0.72rem !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+  .standings-table td:not(.team-col):not(.pos-col),
+  .standings-table th:not(:nth-child(2)):not(:first-child) {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .standings-table .team-col {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+  .table-team-name {
+    font-size: 0.72rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+  .table-flag-wrapper {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+  }
+  .standings-table .rating-pill {
+    padding: 2px 6px !important;
+    font-size: 0.72rem !important;
+    border-radius: 4px !important;
+  }
+
+  /* 7. Matches Page Hero spacing */
+  .matches-hero-header {
+    height: auto !important;
+    min-height: 180px !important;
+    padding-top: 110px !important;
+    padding-bottom: 40px !important;
+    margin-bottom: 24px !important;
+  }
+  .matches-hero-title {
+    font-size: clamp(2rem, 6vw, 2.5rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+  }
+  .matches-hero-subtitle {
+    font-size: 0.95rem !important;
+    line-height: 1.45 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .card-action-row {
+    justify-content: flex-end !important;
+  }
+
+  /* 8. Match Analysis Mobile Custom Layout classes */
+  .mobile-hero-matchup-container {
+    width: 100% !important;
+    margin: 8px 0 4px 0 !important;
+    padding: 0 !important;
+  }
+
+  .mobile-matchup-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .mobile-team-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    gap: 4px !important;
+  }
+
+  .mobile-team-block.left {
+    align-items: flex-start !important;
+  }
+
+  .mobile-team-block.right {
+    align-items: flex-end !important;
+  }
+
+  .mobile-flag-name-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    max-width: 100% !important;
+  }
+
+  .mobile-hero-flag {
+    width: 24px !important;
+    height: 16px !important;
+    border-radius: 2px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .mobile-hero-flag svg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .mobile-hero-team-name {
+    font-size: 21px !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 100% !important;
+  }
+
+  .mobile-fifa-rank {
+    font-size: 11px !important;
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+  }
+
+  .mobile-prob-val {
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+  }
+
+  .mobile-prob-val.cyan {
+    color: var(--primary-accent) !important;
+  }
+
+  .mobile-prob-val.white {
+    color: #ffffff !important;
+  }
+
+  .mobile-vs-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 60px !important;
+    flex-shrink: 0 !important;
+    gap: 2px !important;
+  }
+
+  .mobile-vs-text {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+    color: var(--text-muted) !important;
+  }
+
+  .mobile-draw-text {
+    font-size: 11px !important;
+    color: var(--text-muted) !important;
+    white-space: nowrap !important;
+  }
+
+  .hero-probability-interactive {
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+
+  .hero-inner-container {
+    gap: 12px !important;
+  }
 }
 
 /* ====== SMALL MOBILE SPECIFICS ====== */
@@ -8316,6 +8844,23 @@ a {
   .matches-hero-title,
   .dossier-team-name {
     font-size: clamp(28px, 9vw, 36px) !important;
+  }
+
+  .w-col,
+  .d-col,
+  .l-col {
+    display: none !important;
+  }
+  .standings-table th, 
+  .standings-table td {
+    padding: 6px 4px !important;
+    font-size: 0.7rem !important;
+  }
+  .table-team-name {
+    max-width: 70px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
   }
 
   .hero-subtitle-tag {
@@ -8328,11 +8873,11 @@ a {
   }
 
   .telemetry-cards-wrapper {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .stats-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   .standings-table td, .standings-table th {
@@ -8392,4 +8937,364 @@ html, body, #root {
 .table-scroll {
   min-width: 580px !important;
 }
+
+/* Mobile-specific adjustments and overrides */
+@media (max-width: 768px) {
+  /* Match center hero subtext and spacing */
+  .matches-hero-header {
+    padding-bottom: 28px !important;
+  }
+  .matches-hero-subtitle {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Compact Match Cards on Mobile */
+  .match-grid-card {
+    padding: 12px 14px !important;
+    gap: 12px !important;
+  }
+
+  /* Compact Hero in Match Analysis Page on Mobile */
+  .analysis-hero-section {
+    padding-top: 75px !important;
+    padding-bottom: 20px !important;
+    min-height: auto !important;
+  }
+  .hero-team {
+    gap: 8px !important;
+  }
+  .hero-flag {
+    width: 60px !important;
+    height: 40px !important;
+    border-radius: 4px !important;
+  }
+  .hero-team-name {
+    font-size: 1.25rem !important;
+  }
+  .hero-prob {
+    font-size: 1.45rem !important;
+  }
+  .vs-glow-circle {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 0.9rem !important;
+  }
+  .vs-draw-box {
+    padding: 3px 10px !important;
+    font-size: 0.72rem !important;
+  }
+
+  /* Compact Heatmaps and Pitches on Mobile */
+  .heatmap-pitch-small {
+    height: 140px !important;
+  }
+  .tactical-pitch-vertical-wrapper {
+    height: 400px !important;
+  }
+
+  /* Related Matches horizontal swiper */
+  .related-grid {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    display: flex !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .related-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .related-grid .match-grid-card {
+    flex: 0 0 280px !important;
+    width: 280px !important;
+    max-width: 280px !important;
+    scroll-snap-align: start !important;
+  }
+}
+
+/* Stadium background for analysis hero and grid cards (affects all devices) */
+.analysis-hero-section .card-stadium-bg {
+  opacity: 0.55 !important;
+  filter: brightness(0.65) saturate(1.2) !important; /* Not blurry */
+}
+.match-grid-card .card-stadium-bg {
+  opacity: 0.22 !important;
+  filter: brightness(0.65) saturate(1.1) !important; /* Not blurry */
+}
+
+/* ====== MOBILE TEAMS PAGE OVERRIDES ====== */
+@media (max-width: 768px) {
+  /* Ensure dark horse grid is a clean 2x2 layout on mobile */
+  .dark-horse-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .dark-horse-card {
+    padding: 12px !important;
+    border-radius: 10px !important;
+    min-height: auto !important;
+  }
+
+  .dh-name {
+    font-size: 0.95rem !important;
+    font-weight: 750 !important;
+  }
+
+  .dh-identity-label {
+    font-size: 0.62rem !important;
+    padding: 1px 4px !important;
+  }
+
+  .dh-summary {
+    font-size: 0.72rem !important;
+    line-height: 1.4 !important;
+    margin-top: 6px !important;
+    margin-bottom: 8px !important;
+    color: var(--text-secondary) !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  .dh-metrics-stack {
+    margin-top: 8px !important;
+    gap: 6px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding-top: 8px !important;
+  }
+
+  .dh-metric-item {
+    font-size: 0.7rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+  }
+
+  .dh-metric-lbl {
+    font-size: 0.6rem !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase !important;
+  }
+
+  .dh-metric-item .dh-metric-val {
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    text-align: left !important;
+    max-width: 100% !important;
+  }
+
+  .dh-flag-wrapper {
+    width: 24px !important;
+    height: 16px !important;
+  }
+
+  /* Group accordion spacing and full-width layout overrides */
+  .groups-section {
+    width: 100% !important;
+    padding: 32px 16px !important;
+    box-sizing: border-box !important;
+  }
+  .groups-section .section-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .groups-grid {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .group-card {
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 240, 255, 0.1) !important;
+    background: rgba(5, 10, 48, 0.35) !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-bottom: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-accordion-header {
+    background: rgba(0, 240, 255, 0.03) !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.08) !important;
+    transition: background 0.2s ease;
+  }
+
+  .mobile-accordion-header:active {
+    background: rgba(0, 240, 255, 0.08) !important;
+  }
+
+  /* Teams hero spacing fix on mobile to avoid header collision */
+  .teams-hero-section {
+    padding: 100px 20px 32px !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    box-sizing: border-box !important;
+  }
+  .teams-hero-section .hero-title {
+    font-size: clamp(36px, 7.2vw, 46px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    font-weight: 800 !important;
+    max-width: 90% !important;
+    text-align: left !important;
+    margin-bottom: 12px !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+  }
+  .teams-hero-section .hero-description {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+    max-width: 100% !important;
+    opacity: 0.9 !important;
+    margin-top: 16px !important;
+    text-align: left !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
+  }
+  .hero-slideshow .slide {
+    background-position: center center !important;
+    filter: blur(1px) brightness(0.55) saturate(0.9) !important;
+  }
+  .hero-slideshow::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(5, 10, 48, 0.35) 0%,
+      rgba(2, 4, 18, 0.6) 60%,
+      #020412 100%
+    ) !important;
+  }
+
+  .mobile-rank-card:active {
+    transform: scale(0.98) !important;
+    border-color: rgba(0, 240, 255, 0.4) !important;
+  }
+
+  /* Team Analysis mobile overrides */
+  .heatmap-pitch-small,
+  #dossier-heatmap-pitch {
+    aspect-ratio: auto !important;
+    height: 140px !important;
+  }
+  .tactical-dossier-details,
+  .key-players-section,
+  .related-teams-section,
+  .form-momentum-section {
+    margin-bottom: 24px !important;
+  }
+  .dossier-split-layout {
+    gap: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  .tactical-detail-block p {
+    margin-bottom: 8px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Insights Page mobile overrides */
+  .simulator-workspace-layout {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 24px !important;
+  }
+  .bracket-match-list {
+    max-height: 520px !important;
+    overflow-y: auto !important;
+  }
+  .mobile-round-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+  .mobile-round-tabs {
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .trending-carousel-track {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 12px !important;
+    padding-bottom: 12px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .trending-carousel-track::-webkit-scrollbar {
+    display: none !important;
+  }
+  .trending-feed-card {
+    flex: 0 0 240px !important;
+    width: 240px !important;
+    max-width: 240px !important;
+    scroll-snap-align: start !important;
+    background: rgba(5, 10, 48, 0.45) !important;
+    border: 1px solid rgba(0, 240, 255, 0.12) !important;
+    border-radius: 12px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Swipable Matchup Intelligence Cards */
+  .superlatives-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 12px !important;
+  }
+  .superlatives-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+  .superlatives-grid .superlative-card {
+    flex: 0 0 280px !important;
+    width: 280px !important;
+    max-width: 280px !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Insights Page Hero refinements */
+  .insights-hero-description {
+    font-size: 16px !important;
+    line-height: 1.45 !important;
+  }
+  .telemetry-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    height: auto !important;
+  }
+  .telemetry-card {
+    position: relative !important;
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    width: 100% !important;
+    padding: 10px 12px !important;
+    gap: 8px !important;
+    border-radius: 12px !important;
+  }
+  .telemetry-icon {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+  }
+  .telemetry-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .telemetry-val {
+    font-size: 1.1rem !important;
+  }
+  .telemetry-lbl {
+    font-size: 0.72rem !important;
+  }
+}
+
 

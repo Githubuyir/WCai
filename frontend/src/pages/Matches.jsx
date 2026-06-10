@@ -14,6 +14,13 @@ export default function Matches() {
   const [currentSort, setCurrentSort] = useState('latest');
   const [visibleLimit, setVisibleLimit] = useState(12);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Fetch matches from API with local fallback
   useEffect(() => {
     setLoading(true);
@@ -202,7 +209,7 @@ export default function Matches() {
       </section>
 
       {/* Top Featured Match Banner (Renders dynamically) */}
-      {featuredMatch && (
+      {featuredMatch && !isMobile && (
         <section className="featured-match-section">
           <div className="section-container" id="featured-match-container">
             <div className={`featured-match-card stadium-${featuredMatch.stadiumAtmosphere}`}>
@@ -332,7 +339,7 @@ export default function Matches() {
                 return (
                   <div 
                     key={match.id}
-                    className="match-grid-card in-view"
+                    className={`match-grid-card in-view stadium-${match.stadiumAtmosphere}`}
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <div className="card-stadium-bg"></div>
@@ -383,10 +390,12 @@ export default function Matches() {
                     </div>
 
                     {/* Progress probability line */}
-                    <div className="card-probability-line">
-                      <div className="prob-fill-left" style={{ width: `${match.team1.prob}%` }}></div>
-                      <div className="prob-fill-draw" style={{ left: `${match.team1.prob}%`, width: `${match.drawProb}%` }}></div>
-                    </div>
+                    {!isMobile && (
+                      <div className="card-probability-line">
+                        <div className="prob-fill-left" style={{ width: `${match.team1.prob}%` }}></div>
+                        <div className="prob-fill-draw" style={{ left: `${match.team1.prob}%`, width: `${match.drawProb}%` }}></div>
+                      </div>
+                    )}
 
                     {/* Metrics Row */}
                     <div className="card-metrics-grid">
@@ -406,18 +415,20 @@ export default function Matches() {
 
                     {/* Card Footer Action */}
                     <div className="card-action-row">
-                      <div className="form-rows-wrapper">
-                        <div className="form-row">
-                          {match.form1.map((f, i) => (
-                            <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
-                          ))}
+                      {!isMobile && (
+                        <div className="form-rows-wrapper">
+                          <div className="form-row">
+                            {match.form1.map((f, i) => (
+                              <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
+                            ))}
+                          </div>
+                          <div className="form-row">
+                            {match.form2.map((f, i) => (
+                              <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
+                            ))}
+                          </div>
                         </div>
-                        <div className="form-row">
-                          {match.form2.map((f, i) => (
-                            <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
-                          ))}
-                        </div>
-                      </div>
+                      )}
                       <button className="btn-grid-analyze" onClick={() => handleAnalyzeMatch(match.id)}>
                         Analyze Match →
                       </button>

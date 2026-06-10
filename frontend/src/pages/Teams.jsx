@@ -32,6 +32,24 @@ export default function Teams() {
   const [rankingsLoading, setRankingsLoading] = useState(true);
   const [rankingsError, setRankingsError] = useState(null);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [expandedGroups, setExpandedGroups] = useState({
+    "Group A": true
+  });
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleGroup = (groupName) => {
+    setExpandedGroups(prev => ({
+      ...prev,
+      [groupName]: !prev[groupName]
+    }));
+  };
+
   // Standings page setup
   useEffect(() => {
     document.body.className = 'teams-body-page';
@@ -204,7 +222,7 @@ export default function Teams() {
     return result;
   }, []);
 
-  // 4. Dark Horse Predictions Data (Updated to feature Norway, Japan, and USA)
+  // 4. Dark Horse Predictions Data (Updated to feature Norway, Japan, USA, and Türkiye)
   const darkHorsesData = [
     {
       name: "Norway",
@@ -214,7 +232,7 @@ export default function Teams() {
       qualProb: "48%",
       advantage: "Haaland Elite Goal Threat & Ødegaard Playmaking",
       stadium: "bela",
-      summary: "With the devastating goal-scoring threat of Erling Haaland and the creative mastery of Martin Ødegaard, Norway possesses the attacking potency to unlock any defense and orchestrate major tournament upsets."
+      summary: "With Erling Haaland's devastating goal threat and Martin Ødegaard's elite playmaking, Norway has the firepower to break down elite defenses and orchestrate surprise victories in knockout rounds."
     },
     {
       name: "Japan",
@@ -224,7 +242,7 @@ export default function Teams() {
       qualProb: "86%",
       advantage: "Unmatched Pressing Recovery Rates & Tactical Discipline",
       stadium: "sofi",
-      summary: "Japan's tactical evolution features a relentless, synchronized counter-pressing block. Their squad's physical capacity to recover and strike in transitional spaces represents a huge tactical headache for possession-heavy favorites."
+      summary: "Japan's high-intensity counter-pressing and elite fitness allow them to recover possession rapidly in the final third, creating severe tactical disruptions for possession-oriented tournament favorites."
     },
     {
       name: "USA",
@@ -234,7 +252,17 @@ export default function Teams() {
       qualProb: "90%",
       advantage: "Home Pitch Advantage & High Intensity Wing Play",
       stadium: "lumen",
-      summary: "Playing on home turf in Seattle and California, the USA's technical core is structured around rapid vertical switches. Direct overloading on the flanks gives them highly explosive match dynamics."
+      summary: "Playing in front of energetic home crowds, the USA combines aggressive vertical transitions with high flank overloads, making their matches highly explosive and difficult to control."
+    },
+    {
+      name: "Türkiye",
+      code: "TUR",
+      upsetIndex: "81%",
+      style: "Technical Possession & Wing Press",
+      qualProb: "62%",
+      advantage: "Dynamic Wing Inversions & Midfield Aggression",
+      stadium: "akron",
+      summary: "Türkiye is primed for upsets thanks to high transition speed and technical playmakers who exploit spaces between opponent central defensive pairs."
     }
   ];
 
@@ -362,17 +390,8 @@ export default function Teams() {
             </div>
           </div>
 
-          <div className="rankings-glass-card">
-            <div className="rankings-header-row">
-              <span>Rank</span>
-              <span>Flag</span>
-              <span>Nation</span>
-              <span>AI Rating</span>
-              <span>Title Prob</span>
-              <span>Tactical Style</span>
-              <span>Recent Form</span>
-            </div>
-            <div className="rankings-list" id="rankings-list-container">
+          {isMobile ? (
+            <div className="mobile-rankings-container" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {rankingsError && (
                 <div style={{ padding: '8px 14px', marginBottom: '8px', borderRadius: '8px', background: 'rgba(255,180,0,0.08)', border: '1px solid rgba(255,180,0,0.15)', color: 'rgba(255,200,50,0.8)', fontSize: '0.78rem', textAlign: 'center' }}>
                   ⚠ {rankingsError}
@@ -382,30 +401,86 @@ export default function Teams() {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 0', gap: '12px' }}>
                   <div style={{ width: '32px', height: '32px', border: '3px solid rgba(0,255,255,0.12)', borderTop: '3px solid var(--primary-accent, #00e5ff)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }}></div>
                   <span style={{ color: 'var(--text-secondary)', fontSize: '0.82rem' }}>Loading Power Rankings...</span>
-                  <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
                 </div>
               ) : (
-                powerRankingsData.map((team) => {
-                  const isTopThree = team.rank <= 3 ? 'top-three' : '';
-                  return (
-                    <div key={team.rank} className={`ranking-row ${isTopThree}`} onClick={() => handleOpenModal(team.code)} style={{ cursor: 'pointer' }}>
-                      <span className="ranking-num">{team.rank}</span>
-                      <div className="ranking-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
-                      <span className="ranking-name">{team.name}</span>
-                      <span className="ranking-score">{team.score}</span>
-                      <span className="ranking-prob">{team.prob}</span>
-                      <div><span className="ranking-identity">{team.style}</span></div>
-                      <div className="ranking-trend-container">
+                powerRankingsData.map((team) => (
+                  <div key={team.rank} className="mobile-rank-card" onClick={() => handleOpenModal(team.code)} style={{ background: 'rgba(5, 10, 48, 0.45)', border: '1px solid rgba(0, 240, 255, 0.15)', borderRadius: '12px', padding: '14px', cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--primary-accent)' }}>#{team.rank}</span>
+                        <div style={{ width: '28px', height: '18px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
+                        <span style={{ fontSize: '1rem', fontWeight: 750, color: '#fff' }}>{team.name}</span>
+                      </div>
+                      <span className="rating-pill" style={{ background: 'rgba(0, 209, 255, 0.1)', border: '1px solid rgba(0, 209, 255, 0.25)', color: 'var(--primary-accent)', padding: '2px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 800 }}>AI: {team.score}</span>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '8px', fontSize: '0.82rem', borderTop: '1px solid rgba(255,255,255,0.03)', paddingTop: '8px' }}>
+                      <div>
+                        <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Tactical Style</div>
+                        <div style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>{team.style}</div>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Title Prob</div>
+                        <div style={{ color: 'var(--secondary-accent)', fontWeight: 800 }}>{team.prob}</div>
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.82rem' }}>
+                      <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', width: '38px' }}>Form</span>
+                      <div style={{ display: 'flex', gap: '4px' }}>
                         {team.form.map((f, i) => (
-                          <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
+                          <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '18px', height: '18px', borderRadius: '3px', fontSize: '0.65rem', fontWeight: 800 }}>{f}</span>
                         ))}
                       </div>
                     </div>
-                  );
-                })
+                  </div>
+                ))
               )}
             </div>
-          </div>
+          ) : (
+            <div className="rankings-glass-card">
+              <div className="rankings-header-row">
+                <span>Rank</span>
+                <span>Flag</span>
+                <span>Nation</span>
+                <span>AI Rating</span>
+                <span>Title Prob</span>
+                <span>Tactical Style</span>
+                <span>Recent Form</span>
+              </div>
+              <div className="rankings-list" id="rankings-list-container">
+                {rankingsError && (
+                  <div style={{ padding: '8px 14px', marginBottom: '8px', borderRadius: '8px', background: 'rgba(255,180,0,0.08)', border: '1px solid rgba(255,180,0,0.15)', color: 'rgba(255,200,50,0.8)', fontSize: '0.78rem', textAlign: 'center' }}>
+                    ⚠ {rankingsError}
+                  </div>
+                )}
+                {rankingsLoading ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 0', gap: '12px' }}>
+                    <div style={{ width: '32px', height: '32px', border: '3px solid rgba(0,255,255,0.12)', borderTop: '3px solid var(--primary-accent, #00e5ff)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }}></div>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.82rem' }}>Loading Power Rankings...</span>
+                    <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+                  </div>
+                ) : (
+                  powerRankingsData.map((team) => {
+                    const isTopThree = team.rank <= 3 ? 'top-three' : '';
+                    return (
+                      <div key={team.rank} className={`ranking-row ${isTopThree}`} onClick={() => handleOpenModal(team.code)} style={{ cursor: 'pointer' }}>
+                        <span className="ranking-num">{team.rank}</span>
+                        <div className="ranking-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
+                        <span className="ranking-name">{team.name}</span>
+                        <span className="ranking-score">{team.score}</span>
+                        <span className="ranking-prob">{team.prob}</span>
+                        <div><span className="ranking-identity">{team.style}</span></div>
+                        <div className="ranking-trend-container">
+                          {team.form.map((f, i) => (
+                            <span key={i} className={`mini-form-badge m-badge-${f.toLowerCase()}`}>{f}</span>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -423,51 +498,109 @@ export default function Teams() {
 
               return (
                 <div key={groupName} className="group-card">
-                  <div className="group-card-header">
-                    <h3 className="group-title-name">{groupName}</h3>
-                    <div className="group-meta-stats">
-                      <span>W</span>
-                      <span>D</span>
-                      <span>L</span>
-                      <span>GD</span>
-                      <span>Pts</span>
-                      <span className="qual-header">Q%</span>
-                      <span style={{ textAlign: 'right' }}>Tactics</span>
+                  {isMobile ? (
+                    <div 
+                      className="group-card-header mobile-accordion-header" 
+                      onClick={() => toggleGroup(groupName)}
+                      style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px' }}
+                    >
+                      <h3 className="group-title-name" style={{ margin: 0, fontSize: '1rem' }}>{groupName}</h3>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--primary-accent)', fontWeight: 800 }}>
+                        {expandedGroups[groupName] ? '▲' : '▼'}
+                      </span>
                     </div>
-                  </div>
-                  <div className="group-teams-stack">
-                    {teams.map((team, index) => {
-                      const isProjectedQualify = index < 2 ? 'projected-qualify' : '';
-                      const { w, d, l } = getWDL(team.pts);
+                  ) : (
+                    <div className="group-card-header">
+                      <h3 className="group-title-name">{groupName}</h3>
+                      <div className="group-meta-stats">
+                        <span>W</span>
+                        <span>D</span>
+                        <span>L</span>
+                        <span>GD</span>
+                        <span>Pts</span>
+                        <span className="qual-header">Q%</span>
+                        <span style={{ textAlign: 'right' }}>Tactics</span>
+                      </div>
+                    </div>
+                  )}
 
-                      return (
-                        <div key={team.code} className={`team-row-card ${isProjectedQualify}`}>
-                          <div className="team-info-left" onClick={() => handleOpenModal(team.code)} style={{ cursor: 'pointer' }}>
-                            <div className="team-flag-holder" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
-                            <div className="team-name-wrapper">
-                              <span className="team-display-name">{team.name}</span>
-                              <span className="team-ai-pill">AI {team.rating}</span>
-                            </div>
+                  {(!isMobile || expandedGroups[groupName]) && (
+                    <div className="group-teams-stack" style={{ transition: 'all 0.3s ease' }}>
+                      {isMobile ? (
+                        <div className="mobile-teams-table" style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 26px 26px 26px 36px 36px 44px', padding: '8px 4px', fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-muted)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                            <span>Team</span>
+                            <span style={{ textAlign: 'center' }}>W</span>
+                            <span style={{ textAlign: 'center' }}>D</span>
+                            <span style={{ textAlign: 'center' }}>L</span>
+                            <span style={{ textAlign: 'center' }}>GD</span>
+                            <span style={{ textAlign: 'center' }}>Pts</span>
+                            <span style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>More</span>
                           </div>
-
-                          <div className="team-details-right">
-                            <span className="team-metric-val">{w}</span>
-                            <span className="team-metric-val">{d}</span>
-                            <span className="team-metric-val">{l}</span>
-                            <span className="team-metric-val gd-val">{team.gd > 0 ? '+' + team.gd : team.gd}</span>
-                            <span className="team-metric-val points-val">{team.pts}</span>
-                            <span className="team-metric-val prob-val">{team.qual}%</span>
-
-                            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                              <button className="btn-analyze-team" onClick={() => handleAnalyzeTeamDossier(team.code)}>
-                                <span className="btn-text">Analyze</span> <span>→</span>
-                              </button>
-                            </div>
-                          </div>
+                          {teams.map((team, index) => {
+                            const isProjectedQualify = index < 2 ? 'projected-qualify' : '';
+                            const { w: winVal, d: drawVal, l: lossVal } = getWDL(team.pts);
+                            return (
+                              <div key={team.code} className={`team-row-card ${isProjectedQualify}`} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 26px 26px 26px 36px 36px 44px', alignItems: 'center', padding: '8px 4px', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', minWidth: 0 }} onClick={() => handleOpenModal(team.code)}>
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
+                                    <div style={{ width: '18px', height: '12px', borderRadius: '1px', overflow: 'hidden', display: 'inline-flex', justifyContent: 'center', alignItems: 'center', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
+                                    <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{team.name}</span>
+                                  </div>
+                                  <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)', marginLeft: '24px' }}>AI {team.rating} / Q {team.qual}%</span>
+                                </div>
+                                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textAlign: 'center' }}>{winVal}</span>
+                                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textAlign: 'center' }}>{drawVal}</span>
+                                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', textAlign: 'center' }}>{lossVal}</span>
+                                <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-secondary)', textAlign: 'center' }}>{team.gd > 0 ? '+' + team.gd : team.gd}</span>
+                                <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#fff', textAlign: 'center' }}>{team.pts}</span>
+                                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                  <span 
+                                    onClick={() => handleAnalyzeTeamDossier(team.code)}
+                                    style={{ color: 'var(--primary-accent)', fontSize: '1rem', fontWeight: 800, cursor: 'pointer', display: 'inline-flex', width: '34px', height: '34px', alignItems: 'center', justifyContent: 'center', background: 'rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.12)', borderRadius: '50%' }}
+                                  >
+                                    →
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
-                      );
-                    })}
-                  </div>
+                      ) : (
+                        teams.map((team, index) => {
+                          const isProjectedQualify = index < 2 ? 'projected-qualify' : '';
+                          const { w, d, l } = getWDL(team.pts);
+
+                          return (
+                            <div key={team.code} className={`team-row-card ${isProjectedQualify}`}>
+                              <div className="team-info-left" onClick={() => handleOpenModal(team.code)} style={{ cursor: 'pointer' }}>
+                                <div className="team-flag-holder" dangerouslySetInnerHTML={{ __html: generateFlagSVG(team.code) }}></div>
+                                <div className="team-name-wrapper">
+                                  <span className="team-display-name">{team.name}</span>
+                                  <span className="team-ai-pill">AI {team.rating}</span>
+                                </div>
+                              </div>
+
+                              <div className="team-details-right">
+                                <span className="team-metric-val">{w}</span>
+                                <span className="team-metric-val">{d}</span>
+                                <span className="team-metric-val">{l}</span>
+                                <span className="team-metric-val gd-val">{team.gd > 0 ? '+' + team.gd : team.gd}</span>
+                                <span className="team-metric-val points-val">{team.pts}</span>
+                                <span className="team-metric-val prob-val">{team.qual}%</span>
+
+                                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                  <button className="btn-analyze-team" onClick={() => handleAnalyzeTeamDossier(team.code)}>
+                                    <span className="btn-text">Analyze</span> <span>→</span>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })
+                      )}
+                    </div>
+                  )}
                 </div>
               );
             })}

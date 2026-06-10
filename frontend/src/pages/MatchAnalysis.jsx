@@ -22,6 +22,28 @@ export default function MatchAnalysis() {
   const [relatedMatches, setRelatedMatches] = useState([]);
   const [sliderVal, setSliderVal] = useState(50);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [sliderExpanded, setSliderExpanded] = useState(false);
+  const [showStickyHeader, setShowStickyHeader] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        setShowStickyHeader(window.scrollY > 420);
+      } else {
+        setShowStickyHeader(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Fetch match details and related matches
   useEffect(() => {
     getMatchById(matchId)
@@ -195,6 +217,29 @@ export default function MatchAnalysis() {
 
   return (
     <main className="analysis-page-content" id="analysis-main-container">
+      {/* Sticky Mini Match Header */}
+      {showStickyHeader && (
+        <div className="sticky-mini-header" style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1000, background: 'rgba(5, 10, 48, 0.95)', borderBottom: '1px solid rgba(0, 240, 255, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 16px', gap: '8px', backdropFilter: 'blur(10px)', animation: 'slideDown 0.25s ease-out' }}>
+          <style>{`
+            @keyframes slideDown {
+              from { transform: translateY(-100%); }
+              to { transform: translateY(0); }
+            }
+          `}</style>
+          <div className="sticky-team left" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ width: '24px', height: '16px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#fff' }}>{match.team1.name}</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 950, color: 'var(--primary-accent)' }}>{sliderVal}%</span>
+          </div>
+          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>vs</span>
+          <div className="sticky-team right" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 950, color: 'var(--secondary-accent)' }}>{team2Percentage}%</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 800, color: '#fff' }}>{match.team2.name}</span>
+            <span style={{ width: '24px', height: '16px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }} dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></span>
+          </div>
+        </div>
+      )}
+
       {/* Cinematic Hero Section */}
       <section className={`analysis-hero-section stadium-${match.stadiumAtmosphere}`} id="hero-bg-container">
         <div className="card-stadium-bg" id="hero-stadium-bg"></div>
@@ -214,27 +259,59 @@ export default function MatchAnalysis() {
           </div>
 
           {/* Main Teams Matchup Row */}
-          <div className="hero-teams-row">
-            {/* Team 1 */}
-            <div className="hero-team left">
-              <div className="hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
-              <h1 className="hero-team-name">{match.team1.name} (#{FIFA_RANKS[match.team1.code] || '—'})</h1>
-              <span className="hero-prob">{sliderVal}%</span>
-            </div>
+          {isMobile ? (
+            <div className="mobile-hero-matchup-container">
+              <div className="mobile-matchup-row">
+                {/* Left Team block */}
+                <div className="mobile-team-block left">
+                  <div className="mobile-flag-name-row">
+                    <div className="mobile-hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
+                    <span className="mobile-hero-team-name">{match.team1.name}</span>
+                    <span className="mobile-fifa-rank">#{FIFA_RANKS[match.team1.code] || '—'}</span>
+                  </div>
+                  <span className="mobile-prob-val cyan">{sliderVal}%</span>
+                </div>
 
-            {/* VS Middle Centerpiece */}
-            <div className="hero-vs-center">
-              <div className="vs-glow-circle">VS</div>
-              <div className="vs-draw-box">Draw: {drawPercentage}%</div>
-            </div>
+                {/* VS Block */}
+                <div className="mobile-vs-block">
+                  <div className="mobile-vs-text">VS</div>
+                  <div className="mobile-draw-text">Draw {drawPercentage}%</div>
+                </div>
 
-            {/* Team 2 */}
-            <div className="hero-team right">
-              <div className="hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
-              <h1 className="hero-team-name">{match.team2.name} (#{FIFA_RANKS[match.team2.code] || '—'})</h1>
-              <span className="hero-prob">{team2Percentage}%</span>
+                {/* Right Team block */}
+                <div className="mobile-team-block right">
+                  <div className="mobile-flag-name-row">
+                    <span className="mobile-fifa-rank">#{FIFA_RANKS[match.team2.code] || '—'}</span>
+                    <span className="mobile-hero-team-name">{match.team2.name}</span>
+                    <div className="mobile-hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
+                  </div>
+                  <span className="mobile-prob-val white">{team2Percentage}%</span>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="hero-teams-row">
+              {/* Team 1 */}
+              <div className="hero-team left">
+                <div className="hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
+                <h1 className="hero-team-name">{match.team1.name} (#{FIFA_RANKS[match.team1.code] || '—'})</h1>
+                <span className="hero-prob">{sliderVal}%</span>
+              </div>
+
+              {/* VS Middle Centerpiece */}
+              <div className="hero-vs-center">
+                <div className="vs-glow-circle">VS</div>
+                <div className="vs-draw-box">Draw: {drawPercentage}%</div>
+              </div>
+
+              {/* Team 2 */}
+              <div className="hero-team right">
+                <div className="hero-flag" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
+                <h1 className="hero-team-name">{match.team2.name} (#{FIFA_RANKS[match.team2.code] || '—'})</h1>
+                <span className="hero-prob">{team2Percentage}%</span>
+              </div>
+            </div>
+          )}
 
           {/* Interactive Win Balance Progress Track Slider */}
           <div className="hero-probability-interactive">
@@ -242,22 +319,53 @@ export default function MatchAnalysis() {
               <div className="hero-prob-fill-left" style={{ width: `${sliderVal}%` }}></div>
               <div className="hero-prob-fill-draw" style={{ left: `${sliderVal}%`, width: `${drawPercentage}%` }}></div>
             </div>
-            <div className="interactive-slider-wrapper">
-              <label htmlFor="prob-balance-slider" className="slider-label">Simulate Interactive Match Balance (Tweak Probability)</label>
-              <input
-                type="range"
-                id="prob-balance-slider"
-                min="10"
-                max="90"
-                value={sliderVal}
-                className="hero-slider"
-                onChange={(e) => setSliderVal(parseInt(e.target.value))}
-              />
-              <div className="slider-legend">
-                <span>{match.team1.name} Win %</span>
-                <span>{match.team2.name} Win %</span>
+            {isMobile ? (
+              <div className="mobile-slider-collapse-container" style={{ width: '100%' }}>
+                <button 
+                  className="btn-slider-toggle" 
+                  onClick={() => setSliderExpanded(!sliderExpanded)}
+                  style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(5, 10, 48, 0.45)', border: '1px solid rgba(0, 240, 255, 0.18)', borderRadius: '10px', padding: '10px 14px', color: '#fff', fontSize: '0.85rem', cursor: 'pointer', marginTop: '10px', outline: 'none' }}
+                >
+                  <span style={{ fontWeight: 700 }}>{sliderExpanded ? '▼' : '▶'} Interactive Simulator</span>
+                  <span style={{ fontSize: '0.7rem', opacity: 0.65 }}>Tap to expand</span>
+                </button>
+                {sliderExpanded && (
+                  <div className="interactive-slider-wrapper" style={{ marginTop: '14px' }}>
+                    <label htmlFor="prob-balance-slider" className="slider-label">Simulate Interactive Match Balance (Tweak Probability)</label>
+                    <input
+                      type="range"
+                      id="prob-balance-slider"
+                      min="10"
+                      max="90"
+                      value={sliderVal}
+                      className="hero-slider"
+                      onChange={(e) => setSliderVal(parseInt(e.target.value))}
+                    />
+                    <div className="slider-legend">
+                      <span>{match.team1.name} Win %</span>
+                      <span>{match.team2.name} Win %</span>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+            ) : (
+              <div className="interactive-slider-wrapper">
+                <label htmlFor="prob-balance-slider" className="slider-label">Simulate Interactive Match Balance (Tweak Probability)</label>
+                <input
+                  type="range"
+                  id="prob-balance-slider"
+                  min="10"
+                  max="90"
+                  value={sliderVal}
+                  className="hero-slider"
+                  onChange={(e) => setSliderVal(parseInt(e.target.value))}
+                />
+                <div className="slider-legend">
+                  <span>{match.team1.name} Win %</span>
+                  <span>{match.team2.name} Win %</span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Hero Venue & DateTime details row */}
@@ -303,16 +411,42 @@ export default function MatchAnalysis() {
                   AI Tactical Simulation Report
                 </h3>
                 <div className="report-content-box">
-                  <p>
-                    Our neural network's deep-tactical engine has compiled a projected match simulation outline.
-                    In this matchup, <strong>{match.team1.name}</strong> will confront <strong>{match.team2.name}</strong> at <strong>{match.stadium.split(',')[0]}</strong> under advanced strategic profiles.
-                    <br /><br />
-                    <strong>Pressing Intensity:</strong> AI simulations predict a pressing intensity rating of <strong>{match.intensity}%</strong>. {match.team1.name} is forecast to implement a high-block recovery press, locking central passing corridors. In response, {match.team2.name}'s transition schemes will rely heavily on lateral switching networks to bypass central congestion.
-                    <br /><br />
-                    <strong>Transition Behaviors:</strong> Expected goals metrics highlight an anticipated scoreline value of <strong>{match.xG1}</strong> to <strong>{match.xG2}</strong>. The attacking structures emphasize wing usage and quick vertical transitions. If {match.team2.name} can successfully navigate the defensive line during transition phases, the likelihood of counter-attacks on target increases by 24.5%.
-                    <br /><br />
-                    <strong>Defensive Structures:</strong> Tactical modeling expects {match.team1.name} to shape up in a compact mid-block defensive block to control space. {match.team2.name} is predicted to adopt a zonal containment strategy, aiming to force errors in wide areas and launch quick counters.
-                  </p>
+                  {isMobile ? (
+                    <div className="mobile-report-cards" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                      <div className="report-card" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', padding: '12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                          <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Pressing Intensity</span>
+                          <span style={{ fontSize: '1rem', fontWeight: 900, color: 'var(--primary-accent)' }}>{match.intensity}%</span>
+                        </div>
+                        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>{match.team1.name} expected to dominate high recoveries.</p>
+                      </div>
+                      <div className="report-card" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', padding: '12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                          <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Transition Play</span>
+                          <span style={{ fontSize: '1rem', fontWeight: 900, color: 'var(--primary-accent)' }}>{match.xG1} - {match.xG2} xG</span>
+                        </div>
+                        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>Attacking structures emphasize rapid vertical transitions.</p>
+                      </div>
+                      <div className="report-card" style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', padding: '12px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                          <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>Defensive Shape</span>
+                          <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#fff' }}>Compact</span>
+                        </div>
+                        <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', margin: 0 }}>{match.team1.name} mid-block vs {match.team2.name} zonal containment.</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <p>
+                      Our neural network's deep-tactical engine has compiled a projected match simulation outline.
+                      In this matchup, <strong>{match.team1.name}</strong> will confront <strong>{match.team2.name}</strong> at <strong>{match.stadium.split(',')[0]}</strong> under advanced strategic profiles.
+                      <br /><br />
+                      <strong>Pressing Intensity:</strong> AI simulations predict a pressing intensity rating of <strong>{match.intensity}%</strong>. {match.team1.name} is forecast to implement a high-block recovery press, locking central passing corridors. In response, {match.team2.name}'s transition schemes will rely heavily on lateral switching networks to bypass central congestion.
+                      <br /><br />
+                      <strong>Transition Behaviors:</strong> Expected goals metrics highlight an anticipated scoreline value of <strong>{match.xG1}</strong> to <strong>{match.xG2}</strong>. The attacking structures emphasize wing usage and quick vertical transitions. If {match.team2.name} can successfully navigate the defensive line during transition phases, the likelihood of counter-attacks on target increases by 24.5%.
+                      <br /><br />
+                      <strong>Defensive Structures:</strong> Tactical modeling expects {match.team1.name} to shape up in a compact mid-block defensive block to control space. {match.team2.name} is predicted to adopt a zonal containment strategy, aiming to force errors in wide areas and launch quick counters.
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -327,57 +461,101 @@ export default function MatchAnalysis() {
                   <span className="vs-text">VS</span>
                   <span className="formation-t-name right-align">{match.team2.name} ({team2Formation})</span>
                 </div>
-                <div className="pitch-visualization-container">
-                  <div className="pitch-border">
-                    <div className="pitch-center-circle"></div>
-                    <div className="pitch-center-line"></div>
-                    <div className="pitch-penalty-left"></div>
-                    <div className="pitch-penalty-right"></div>
-                    {/* Dynamic players nodes */}
-                    <div className="pitch-players-field">
+                {isMobile ? (
+                  <div className="tactical-pitch-vertical-wrapper" style={{ position: 'relative', width: '100%', height: '480px', background: 'rgba(5,10,48,0.25)', border: '1.5px solid rgba(255,255,255,0.06)', borderRadius: '12px', overflow: 'hidden', backdropFilter: 'blur(5px)', margin: '10px 0' }}>
+                    <div className="pitch-center-circle-vertical" style={{ position: 'absolute', top: '50%', left: '50%', width: '90px', height: '90px', border: '1.5px solid rgba(255,255,255,0.05)', borderRadius: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'none' }}></div>
+                    <div className="pitch-center-line-vertical" style={{ position: 'absolute', top: '50%', left: 0, width: '100%', height: 0, borderTop: '1.5px solid rgba(255,255,255,0.05)', pointerEvents: 'none' }}></div>
+                    
+                    {/* Penalty Area Top */}
+                    <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '160px', height: '65px', border: '1.5px solid rgba(255,255,255,0.05)', borderTop: 'none', pointerEvents: 'none' }}></div>
+                    {/* Penalty Area Bottom */}
+                    <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '160px', height: '65px', border: '1.5px solid rgba(255,255,255,0.05)', borderBottom: 'none', pointerEvents: 'none' }}></div>
+                    
+                    {/* Player nodes container */}
+                    <div className="pitch-players-vertical-container" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 5 }}>
+                      {/* Team 1: Home team starting from TOP (GK at top, attacks downward) */}
                       {team1XI.map((p, index) => {
-                        // Map vertical (x, y) to horizontal pitch left side
-                        const left = 8 + (88 - p.y) / 72 * 37;
-                        const top = p.x;
+                        const left = p.x;
+                        const top = 6 + ((88 - p.y) / 72) * 38;
                         return (
                           <div
                             key={`t1-${index}`}
-                            className="player-node-horizontal"
-                            style={{ left: `${left}%`, top: `${top}%` }}
+                            className="pitch-player-node"
+                            style={{ position: 'absolute', left: `${left}%`, top: `${top}%`, transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 10 }}
                           >
-                            <div className="player-dot p-team1">
-                              <span className="player-pulse"></span>
-                            </div>
-                            <div className="player-label-horizontal left-team">
-                              <span className="p-name">{p.name}</span>
-                              <span className="p-role">{p.role}</span>
-                            </div>
+                            <div className="player-dot" style={{ position: 'relative', width: '8px', height: '8px', background: 'var(--primary-accent)', border: '1px solid #fff', borderRadius: '50%', boxShadow: '0 0 6px var(--primary-accent)' }}></div>
+                            <span style={{ fontSize: '0.58rem', fontWeight: 800, color: '#fff', textShadow: '0 1px 3px #000', marginTop: '2px', whiteSpace: 'nowrap' }}>{p.name.split(' ').pop()}</span>
                           </div>
                         );
                       })}
+                      {/* Team 2: Away team starting from BOTTOM (GK at bottom, attacks upward) */}
                       {team2XI.map((p, index) => {
-                        // Map vertical (x, y) to horizontal pitch right side
-                        const left = 55 + (p.y - 16) / 72 * 37;
-                        const top = p.x;
+                        const left = p.x;
+                        const top = 56 + ((p.y - 16) / 72) * 38;
                         return (
                           <div
                             key={`t2-${index}`}
-                            className="player-node-horizontal"
-                            style={{ left: `${left}%`, top: `${top}%` }}
+                            className="pitch-player-node"
+                            style={{ position: 'absolute', left: `${left}%`, top: `${top}%`, transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 10 }}
                           >
-                            <div className="player-dot p-team2">
-                              <span className="player-pulse"></span>
-                            </div>
-                            <div className="player-label-horizontal right-team">
-                              <span className="p-name">{p.name}</span>
-                              <span className="p-role">{p.role}</span>
-                            </div>
+                            <div className="player-dot" style={{ position: 'relative', width: '8px', height: '8px', background: '#ffffff', border: '1px solid var(--primary-accent)', borderRadius: '50%', boxShadow: '0 0 6px rgba(255,255,255,0.4)' }}></div>
+                            <span style={{ fontSize: '0.58rem', fontWeight: 800, color: '#fff', textShadow: '0 1px 3px #000', marginTop: '2px', whiteSpace: 'nowrap' }}>{p.name.split(' ').pop()}</span>
                           </div>
                         );
                       })}
                     </div>
                   </div>
-                </div>
+                ) : (
+                  <div className="pitch-visualization-container">
+                    <div className="pitch-border">
+                      <div className="pitch-center-circle"></div>
+                      <div className="pitch-center-line"></div>
+                      <div className="pitch-penalty-left"></div>
+                      <div className="pitch-penalty-right"></div>
+                      {/* Dynamic players nodes */}
+                      <div className="pitch-players-field">
+                        {team1XI.map((p, index) => {
+                          const left = 8 + (88 - p.y) / 72 * 37;
+                          const top = p.x;
+                          return (
+                            <div
+                              key={`t1-${index}`}
+                              className="player-node-horizontal"
+                              style={{ left: `${left}%`, top: `${top}%` }}
+                            >
+                              <div className="player-dot p-team1">
+                                <span className="player-pulse"></span>
+                              </div>
+                              <div className="player-label-horizontal left-team">
+                                <span className="p-name">{p.name}</span>
+                                <span className="p-role">{p.role}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                        {team2XI.map((p, index) => {
+                          const left = 55 + (p.y - 16) / 72 * 37;
+                          const top = p.x;
+                          return (
+                            <div
+                              key={`t2-${index}`}
+                              className="player-node-horizontal"
+                              style={{ left: `${left}%`, top: `${top}%` }}
+                            >
+                              <div className="player-dot p-team2">
+                                <span className="player-pulse"></span>
+                              </div>
+                              <div className="player-label-horizontal right-team">
+                                <span className="p-name">{p.name}</span>
+                                <span className="p-role">{p.role}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <div className="pitch-legend">
                   <span className="legend-dot color-team1"></span> {match.team1.name} Players
                   <span className="legend-dot color-team2" style={{ marginLeft: '20px' }}></span> {match.team2.name} Players
@@ -631,37 +809,66 @@ export default function MatchAnalysis() {
               Side-by-Side Tactical Matrix Ratings
             </h3>
 
-            <div className="ratings-comparison-stack">
-              {tacticalMatrix.map((cat, i) => {
-                const val1 = Math.round(cat.t1);
-                const val2 = Math.round(cat.t2);
-
-                return (
-                  <div key={i} className="rating-comparison-row">
-                    <div className="team-rating-lbl text-left">{match.team1.name}</div>
-                    <div className="matrix-mid-bar-layout">
-                      <div className="matrix-label-heading">{cat.name}</div>
-                      <div className="matrix-double-track">
-                        {/* Left Team Bar */}
-                        <div className="matrix-half-track left-side">
-                          <div className="matrix-fill fill-cyan" style={{ width: `${val1}%` }}></div>
-                        </div>
-                        <div className="matrix-divider"></div>
-                        {/* Right Team Bar */}
-                        <div className="matrix-half-track right-side">
-                          <div className="matrix-fill fill-white" style={{ width: `${val2}%` }}></div>
+            {isMobile ? (
+              <div className="mobile-matrix-stack" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {tacticalMatrix.map((cat, i) => {
+                  const val1 = Math.round(cat.t1);
+                  const val2 = Math.round(cat.t2);
+                  const metricNameShort = cat.name.replace(" Rating", "").replace(" Strength", "").replace(" Control", "").replace(" Efficiency", "").replace(" Speed", "").replace(" Dominance", "");
+                  return (
+                    <div key={i} className="mobile-matrix-row" style={{ display: 'flex', flexDirection: 'column', gap: '4px', borderBottom: '1px solid rgba(255,255,255,0.03)', paddingBottom: '10px' }}>
+                      <div className="mobile-matrix-label" style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-secondary)' }}>{metricNameShort}</div>
+                      <div className="mobile-matrix-team-bar" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span className="bar-team-code" style={{ fontSize: '0.7rem', fontWeight: 700, width: '30px', color: 'var(--text-muted)' }}>{match.team1.code}</span>
+                        <span className="bar-team-val cyan" style={{ fontSize: '0.78rem', fontWeight: 800, width: '24px', color: 'var(--primary-accent)' }}>{val1}</span>
+                        <div className="mini-bar-track" style={{ flex: 1, height: '4px', background: 'rgba(255,255,255,0.04)', borderRadius: '2px', overflow: 'hidden' }}>
+                          <div className="mini-bar-fill fill-cyan" style={{ height: '100%', background: 'var(--primary-accent)', width: `${val1}%` }}></div>
                         </div>
                       </div>
-                      <div className="matrix-values-row">
-                        <span className="text-cyan font-sans" style={{ fontWeight: 700 }}>{val1}</span>
-                        <span className="text-secondary font-sans" style={{ fontWeight: 700 }}>{val2}</span>
+                      <div className="mobile-matrix-team-bar" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span className="bar-team-code" style={{ fontSize: '0.7rem', fontWeight: 700, width: '30px', color: 'var(--text-muted)' }}>{match.team2.code}</span>
+                        <span className="bar-team-val white" style={{ fontSize: '0.78rem', fontWeight: 800, width: '24px', color: '#fff' }}>{val2}</span>
+                        <div className="mini-bar-track" style={{ flex: 1, height: '4px', background: 'rgba(255,255,255,0.04)', borderRadius: '2px', overflow: 'hidden' }}>
+                          <div className="mini-bar-fill fill-white" style={{ height: '100%', background: '#fff', width: `${val2}%` }}></div>
+                        </div>
                       </div>
                     </div>
-                    <div className="team-rating-lbl text-right">{match.team2.name}</div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="ratings-comparison-stack">
+                {tacticalMatrix.map((cat, i) => {
+                  const val1 = Math.round(cat.t1);
+                  const val2 = Math.round(cat.t2);
+
+                  return (
+                    <div key={i} className="rating-comparison-row">
+                      <div className="team-rating-lbl text-left">{match.team1.name}</div>
+                      <div className="matrix-mid-bar-layout">
+                        <div className="matrix-label-heading">{cat.name}</div>
+                        <div className="matrix-double-track">
+                          {/* Left Team Bar */}
+                          <div className="matrix-half-track left-side">
+                            <div className="matrix-fill fill-cyan" style={{ width: `${val1}%` }}></div>
+                          </div>
+                          <div className="matrix-divider"></div>
+                          {/* Right Team Bar */}
+                          <div className="matrix-half-track right-side">
+                            <div className="matrix-fill fill-white" style={{ width: `${val2}%` }}></div>
+                          </div>
+                        </div>
+                        <div className="matrix-values-row">
+                          <span className="text-cyan font-sans" style={{ fontWeight: 700 }}>{val1}</span>
+                          <span className="text-secondary font-sans" style={{ fontWeight: 700 }}>{val2}</span>
+                        </div>
+                      </div>
+                      <div className="team-rating-lbl text-right">{match.team2.name}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -13,6 +13,13 @@ export default function Home() {
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Fetch matches from API with local fallback
   useEffect(() => {
     getMatches()
@@ -236,9 +243,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <main className="hero-section">
-        <video className="hero-bg-video" autoPlay loop muted playsInline>
-          <source src="https://res.cloudinary.com/dgj2wznuq/video/upload/v178004095/wc_video_final_vxouo0.mp4" type="video/mp4" />
-        </video>
+        <video key={isMobile ? 'mobile-hero' : 'desktop-hero'} className="hero-bg-video" autoPlay loop muted playsInline src={isMobile ? "https://res.cloudinary.com/dgj2wznuq/video/upload/v1781028068/3_zw3ga4.mp4" : "https://res.cloudinary.com/dgj2wznuq/video/upload/v178004095/wc_video_final_vxouo0.mp4"} />
         <div className="video-overlay"></div>
         <div className="watermark-mask"></div>
 
@@ -247,7 +252,10 @@ export default function Home() {
             <div className="hero-subtitle-tag">PREDICT - ANALYZE - SIMULATE</div>
             <h1 className="hero-title">
               AI Intelligence For The<br />
-              <span className="headline-animated">World’s Biggest Stage.</span>
+              <span className="headline-animated">
+                <span className="title-text-white">World’s Biggest </span>
+                <span className="highlight-cyan">Stage.</span>
+              </span>
             </h1>
             <p className="hero-description">
               Experience the 2026 World Cup through AI-powered tactical insights, simulations, and predictive analysis.
@@ -383,9 +391,7 @@ export default function Home() {
       <section className="ai-intelligence-section" id="how-it-works">
         <div className="globe-video-wrapper">
           <div className="globe-video-container">
-            <video className="globe-bg-video" autoPlay loop muted playsInline>
-              <source src="https://res.cloudinary.com/dgj2wznuq/video/upload/v1780053756/wc_globe_video_lgqdos.mp4" type="video/mp4" />
-            </video>
+            <video key={isMobile ? 'mobile-globe' : 'desktop-globe'} className="globe-bg-video" autoPlay loop muted playsInline src={isMobile ? "https://res.cloudinary.com/dgj2wznuq/video/upload/v1781026254/2_yy2q6e.mp4" : "https://res.cloudinary.com/dgj2wznuq/video/upload/v1780053756/wc_globe_video_lgqdos.mp4"} />
             <div className="globe-watermark-mask"></div>
           </div>
           <div className="globe-video-overlay"></div>
@@ -516,7 +522,7 @@ export default function Home() {
                 {/* Stats Card 1: Matches Played */}
                 <div className="stat-mini-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Matches Completed</span>
+                    <span className="mini-label">Matches</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -533,10 +539,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Stats Card 2: Highest Scoring Team */}
+                {/* Stats Card 2: Highest Scoring */}
                 <div className="stat-mini-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Highest Scoring Team</span>
+                    <span className="mini-label">Highest Scoring</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
@@ -554,7 +560,7 @@ export default function Home() {
                 {/* Stats Card 3: Highest Win Probability */}
                 <div className="stat-mini-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Highest Win Prob.</span>
+                    <span className="mini-label">Win Prob.</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -570,10 +576,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Stats Card 4: Dark Horse Prediction */}
+                {/* Stats Card 4: Dark Horse */}
                 <div className="stat-mini-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Dark Horse Prediction</span>
+                    <span className="mini-label">Dark Horse</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -588,10 +594,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Stats Card 5: Avg Goals Per Match */}
+                {/* Stats Card 5: Avg Goals */}
                 <div className="stat-mini-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Avg Goals Per Match</span>
+                    <span className="mini-label">Avg Goals</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -607,10 +613,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Stats Card 6: Most Aggressive Press */}
-                <div className="stat-mini-card">
+                {/* Stats Card 6: Aggressive Press */}
+                <div className="stat-mini-card press-leader-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Most Aggressive Press</span>
+                    <span className="mini-label">Press Leader</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -625,10 +631,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Stats Card 7: Top Goalscorer */}
+                {/* Stats Card 7: Top Scorer */}
                 <div className="stat-mini-card">
                   <div className="mini-card-header">
-                    <span className="mini-label">Top Goalscorer</span>
+                    <span className="mini-label">Top Scorer</span>
                     <div className="mini-icon">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -713,13 +719,13 @@ export default function Home() {
                         <th>#</th>
                         <th>Team</th>
                         <th>P</th>
-                        <th>W</th>
-                        <th>D</th>
-                        <th>L</th>
+                        <th className="w-col">W</th>
+                        <th className="d-col">D</th>
+                        <th className="l-col">L</th>
                         <th>GD</th>
-                        <th>Pts</th>
-                        <th>Form</th>
-                        <th className="rating-header">AI Rating</th>
+                        <th className="pts-col">Pts</th>
+                        <th className="form-col">Form</th>
+                        <th className="rating-header rating-col">AI Rating</th>
                       </tr>
                     </thead>
                     <tbody
@@ -744,12 +750,12 @@ export default function Home() {
                               <span className="table-team-name">{team.team}</span>
                             </td>
                             <td>{team.p}</td>
-                            <td>{team.w}</td>
-                            <td>{team.d}</td>
-                            <td>{team.l}</td>
+                            <td className="w-col">{team.w}</td>
+                            <td className="d-col">{team.d}</td>
+                            <td className="l-col">{team.l}</td>
                             <td>{team.gd}</td>
                             <td className="pts-col">{team.pts}</td>
-                            <td>
+                            <td className="form-col">
                               <div className="form-row">
                                 {team.form.map((f, i) => {
                                   let fClass = 'form-d';

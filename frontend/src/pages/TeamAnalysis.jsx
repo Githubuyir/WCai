@@ -38,6 +38,14 @@ export default function TeamAnalysis() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const teamCode = (searchParams.get('team') || 'BRA').toUpperCase();
 
   // Helper: Find team group
@@ -196,6 +204,76 @@ export default function TeamAnalysis() {
     }
   }, [teamCode]);
 
+  const renderRecentForm = (showMobileVersion) => {
+    return (
+      <section className="form-momentum-section" style={{ marginBottom: '40px' }}>
+        <div className="analysis-card">
+          <h3 className="card-heading" style={{ marginBottom: '24px' }}>
+            <svg className="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            Recent Form & AI Momentum Analysis
+          </h3>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: showMobileVersion ? '1fr' : '1.1fr 0.9fr', gap: showMobileVersion ? '20px' : '40px' }} className="dossier-split-layout">
+            
+            {/* Left: Match history metrics */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <span style={{ fontSize: '0.95rem', fontWeight: 750, color: '#fff' }}>Last 5 Matches:</span>
+                <div id="dossier-form-badges" style={{ display: 'flex', gap: '6px' }}>
+                  {teamData.form.map((f, idx) => (
+                    <span key={idx} className={`mini-form-badge m-badge-${f.toLowerCase()}`} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 800 }}>{f}</span>
+                  ))}
+                </div>
+              </div>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+                <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 800 }}>GOALS SCORED</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 850, color: '#fff' }} id="form-goals-scored">
+                    {teamData.goalsScored}
+                  </div>
+                </div>
+                <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 800 }}>GOALS CONCEDED</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 850, color: 'var(--text-secondary)' }} id="form-goals-conceded">
+                    {teamData.goalsConceded}
+                  </div>
+                </div>
+                <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 800 }}>CLEAN SHEETS</div>
+                  <div style={{ fontSize: '1.75rem', fontWeight: 850, color: 'var(--secondary-accent)' }} id="form-clean-sheets">
+                    {teamData.cleanSheets}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Momentum trend line SVG */}
+            {!showMobileVersion && (
+              <div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 750, color: '#fff', marginBottom: '12px' }}>AI Momentum Trend Timeline:</div>
+                <div style={{ height: '120px', background: 'rgba(5,10,48,0.2)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '8px', overflow: 'hidden', padding: '12px 0' }}>
+                  <svg viewBox="0 0 400 100" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
+                    <defs>
+                      <linearGradient id="momentum-fade" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#00D1FF" stopOpacity="0.2"/>
+                        <stop offset="100%" stopColor="#00D1FF" stopOpacity="0"/>
+                      </linearGradient>
+                    </defs>
+                    <path id="dossier-momentum-area" d={momentumPaths.areaD} fill="url(#momentum-fade)"></path>
+                    <path id="dossier-momentum-line" d={momentumPaths.lineD} fill="none" stroke="#00D1FF" strokeWidth="2"></path>
+                    <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(255,255,255,0.04)" strokeDasharray="4"></line>
+                  </svg>
+                </div>
+              </div>
+            )}
+
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   if (!teamData) {
     return (
       <main className="analysis-page-content" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'var(--bg-primary)', color: '#fff' }}>
@@ -246,12 +324,14 @@ export default function TeamAnalysis() {
                     {teamData.fifaRank}
                   </div>
                 </div>
-                <div className="hero-meta-stat">
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 800, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>AI POWER RANK</div>
-                  <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--primary-accent)', textShadow: '0 1px 4px rgba(0,0,0,0.5)' }} id="hero-ai-rank">
-                    {teamData.powerRank ? `#${teamData.powerRank}` : 'N/A'}
+                {teamData.powerRank && teamData.powerRank <= 10 && (
+                  <div className="hero-meta-stat">
+                    <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 800, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>AI POWER RANK</div>
+                    <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--primary-accent)', textShadow: '0 1px 4px rgba(0,0,0,0.5)' }} id="hero-ai-rank">
+                      #{teamData.powerRank}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
 
               <div style={{ borderLeft: '2.5px solid var(--primary-accent)', paddingLeft: '16px' }}>
@@ -304,6 +384,8 @@ export default function TeamAnalysis() {
 
       {/* Main Dossier Content Layout */}
       <div className="section-container" style={{ marginTop: '40px' }}>
+
+        {isMobile && renderRecentForm(true)}
 
         {/* Two Column Layout: Pitch & Tactical Stats */}
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginBottom: '72px' }} className="dossier-split-layout">
@@ -512,70 +594,7 @@ export default function TeamAnalysis() {
           </div>
         </section>
 
-        {/* Recent Form & Momentum */}
-        <section className="form-momentum-section" style={{ marginBottom: '40px' }}>
-          <div className="analysis-card">
-            <h3 className="card-heading" style={{ marginBottom: '24px' }}>
-              <svg className="heading-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-              Recent Form & AI Momentum Analysis
-            </h3>
-            
-            <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '40px' }} className="dossier-split-layout">
-              
-              {/* Left: Match history metrics */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 750, color: '#fff' }}>Last 5 Matches:</span>
-                  <div id="dossier-form-badges" style={{ display: 'flex', gap: '6px' }}>
-                    {teamData.form.map((f, idx) => (
-                      <span key={idx} className={`mini-form-badge m-badge-${f.toLowerCase()}`} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 800 }}>{f}</span>
-                    ))}
-                  </div>
-                </div>
-                
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
-                  <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 800 }}>GOALS SCORED</div>
-                    <div style={{ fontSize: '1.75rem', fontWeight: 850, color: '#fff' }} id="form-goals-scored">
-                      {teamData.goalsScored}
-                    </div>
-                  </div>
-                  <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 800 }}>GOALS CONCEDED</div>
-                    <div style={{ fontSize: '1.75rem', fontWeight: 850, color: 'var(--text-secondary)' }} id="form-goals-conceded">
-                      {teamData.goalsConceded}
-                    </div>
-                  </div>
-                  <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.04)', padding: '16px', borderRadius: '8px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 800 }}>CLEAN SHEETS</div>
-                    <div style={{ fontSize: '1.75rem', fontWeight: 850, color: 'var(--secondary-accent)' }} id="form-clean-sheets">
-                      {teamData.cleanSheets}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Momentum trend line SVG */}
-              <div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 750, color: '#fff', marginBottom: '12px' }}>AI Momentum Trend Timeline:</div>
-                <div style={{ height: '120px', background: 'rgba(5,10,48,0.2)', border: '1px solid rgba(255,255,255,0.04)', borderRadius: '8px', overflow: 'hidden', padding: '12px 0' }}>
-                  <svg viewBox="0 0 400 100" preserveAspectRatio="none" style={{ width: '100%', height: '100%' }}>
-                    <defs>
-                      <linearGradient id="momentum-fade" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#00D1FF" stopOpacity="0.2"/>
-                        <stop offset="100%" stopColor="#00D1FF" stopOpacity="0"/>
-                      </linearGradient>
-                    </defs>
-                    <path id="dossier-momentum-area" d={momentumPaths.areaD} fill="url(#momentum-fade)"></path>
-                    <path id="dossier-momentum-line" d={momentumPaths.lineD} fill="none" stroke="#00D1FF" strokeWidth="2"></path>
-                    <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(255,255,255,0.04)" strokeDasharray="4"></line>
-                  </svg>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        {!isMobile && renderRecentForm(false)}
 
         {/* Related Teams Section */}
         <section className="related-teams-section" style={{ marginBottom: '80px' }}>
