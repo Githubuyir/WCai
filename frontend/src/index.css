@@ -8564,23 +8564,27 @@ a {
 
   /* 4. World Cup Overview Stats Grid (Dashboard Alignment) */
   .stats-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 14px !important;
+    gap: 10px !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
   .stat-mini-card {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
+    align-items: stretch !important;
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
-    height: 138px !important;
-    min-height: 138px !important;
-    max-height: 138px !important;
-    padding: 16px !important;
-    border-radius: 20px !important;
+    height: 110px !important;
+    min-height: 110px !important;
+    max-height: 110px !important;
+    padding: 12px 14px !important;
+    border-radius: 16px !important;
     box-sizing: border-box !important;
+    overflow: hidden !important;
   }
   .press-leader-card {
     display: none !important;
@@ -8588,45 +8592,107 @@ a {
   .mini-card-header {
     display: flex !important;
     justify-content: space-between !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     width: 100% !important;
+    min-width: 0 !important;
+    gap: 4px !important;
   }
   .mini-label {
-    font-size: 14px !important;
+    font-size: 11px !important;
     font-weight: 600 !important;
     color: var(--text-muted) !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    flex: 1 !important;
+    min-width: 0 !important;
   }
   .mini-value {
-    font-size: 30px !important;
+    font-size: 20px !important;
     font-weight: 800 !important;
-    color: #fff !important;
-    margin: 0 !important;
+    color: #ffffff !important;
+    line-height: 1.1 !important;
+    margin-top: auto !important;
+    margin-bottom: 2px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    min-width: 0 !important;
     display: flex !important;
     align-items: baseline !important;
-    gap: 6px !important;
+    gap: 4px !important;
   }
   .mini-meta {
-    font-size: 13px !important;
+    font-size: 11px !important;
     color: var(--text-muted) !important;
-    font-weight: normal !important;
+    font-weight: 500 !important;
+  }
+  .mini-total {
+    font-size: 11px !important;
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
   }
   .mini-icon {
-    width: 18px !important;
-    height: 18px !important;
-    opacity: 0.8 !important;
+    width: 14px !important;
+    height: 14px !important;
+    flex-shrink: 0 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    color: var(--primary-accent) !important;
   }
   .mini-icon svg {
-    width: 18px !important;
-    height: 18px !important;
+    width: 14px !important;
+    height: 14px !important;
   }
   .mini-chart {
     display: none !important;
   }
 
   /* 5. Standings table hiding and CSS grid rows display */
+  .standings-card {
+    padding: 12px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+  .table-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .groups-tabs {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding-bottom: 6px !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  .groups-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+  .group-tab {
+    flex: 0 0 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    font-size: 0.72rem !important;
+  }
   .standings-table .form-col {
     display: none !important;
   }
@@ -8648,7 +8714,7 @@ a {
   }
   .standings-table tr {
     display: grid !important;
-    grid-template-columns: 28px minmax(0, 1fr) 26px 26px 26px 26px 36px 36px 54px !important;
+    grid-template-columns: 18px minmax(0, 1.2fr) 20px 18px 18px 18px 24px 26px 42px !important;
     width: 100% !important;
     align-items: center !important;
     box-sizing: border-box !important;
@@ -8657,8 +8723,8 @@ a {
   .standings-table td {
     display: flex !important;
     align-items: center !important;
-    padding: 8px 4px !important;
-    font-size: 0.72rem !important;
+    padding: 6px 2px !important;
+    font-size: 0.68rem !important;
     box-sizing: border-box !important;
     min-width: 0 !important;
     overflow: hidden !important;
@@ -8678,7 +8744,7 @@ a {
     justify-content: flex-start !important;
   }
   .table-team-name {
-    font-size: 0.72rem !important;
+    font-size: 0.68rem !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -8690,9 +8756,22 @@ a {
     flex-shrink: 0 !important;
   }
   .standings-table .rating-pill {
-    padding: 2px 6px !important;
-    font-size: 0.72rem !important;
+    background: rgba(0, 240, 255, 0.1) !important;
+    border: 1px solid rgba(0, 240, 255, 0.25) !important;
+    color: var(--primary-accent) !important;
+    padding: 2px 4px !important;
+    font-size: 0.68rem !important;
     border-radius: 4px !important;
+    font-weight: 700 !important;
+  }
+  .standings-legend {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    padding-top: 10px !important;
+    margin-top: 6px !important;
+  }
+  .legend-item {
+    font-size: 0.68rem !important;
   }
 
   /* 7. Matches Page Hero spacing */
@@ -8726,43 +8805,53 @@ a {
   }
 
   .mobile-matchup-row {
-    display: flex !important;
-    justify-content: space-between !important;
+    display: grid !important;
+    grid-template-columns: 1fr auto 1fr !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 12px !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .mobile-team-block {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important;
-    flex: 1 !important;
     min-width: 0 !important;
-    gap: 4px !important;
+    width: 100% !important;
   }
 
   .mobile-team-block.left {
     align-items: flex-start !important;
+    text-align: left !important;
   }
 
   .mobile-team-block.right {
     align-items: flex-end !important;
+    text-align: right !important;
   }
 
   .mobile-flag-name-row {
     display: flex !important;
     align-items: center !important;
     gap: 6px !important;
-    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .mobile-team-block.left .mobile-flag-name-row {
+    justify-content: flex-start !important;
+  }
+
+  .mobile-team-block.right .mobile-flag-name-row {
+    justify-content: flex-end !important;
   }
 
   .mobile-hero-flag {
-    width: 24px !important;
-    height: 16px !important;
+    width: 22px !important;
+    height: 14px !important;
     border-radius: 2px !important;
     overflow: hidden !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3) !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -8776,25 +8865,37 @@ a {
   }
 
   .mobile-hero-team-name {
-    font-size: 21px !important;
+    font-size: 15px !important;
     font-weight: 800 !important;
-    color: #fff !important;
+    color: #ffffff !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
-    max-width: 100% !important;
+    flex: 1 !important;
+    min-width: 0 !important;
   }
 
   .mobile-fifa-rank {
     font-size: 11px !important;
     color: var(--text-muted) !important;
     font-weight: 500 !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
   }
 
   .mobile-prob-val {
-    font-size: 28px !important;
+    font-size: 24px !important;
     font-weight: 800 !important;
-    line-height: 1 !important;
+    line-height: 1.2 !important;
+    margin-top: 4px !important;
+  }
+
+  .mobile-team-block.left .mobile-prob-val {
+    padding-left: 28px !important;
+  }
+
+  .mobile-team-block.right .mobile-prob-val {
+    padding-right: 28px !important;
   }
 
   .mobile-prob-val.cyan {
@@ -8810,19 +8911,21 @@ a {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    text-align: center !important;
     min-width: 60px !important;
     flex-shrink: 0 !important;
     gap: 2px !important;
   }
 
   .mobile-vs-text {
-    font-size: 14px !important;
-    font-weight: 900 !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
     color: var(--text-muted) !important;
   }
 
   .mobile-draw-text {
-    font-size: 11px !important;
+    font-size: 10px !important;
     color: var(--text-muted) !important;
     white-space: nowrap !important;
   }
@@ -8846,23 +8949,6 @@ a {
     font-size: clamp(28px, 9vw, 36px) !important;
   }
 
-  .w-col,
-  .d-col,
-  .l-col {
-    display: none !important;
-  }
-  .standings-table th, 
-  .standings-table td {
-    padding: 6px 4px !important;
-    font-size: 0.7rem !important;
-  }
-  .table-team-name {
-    max-width: 70px !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
-  }
-
   .hero-subtitle-tag {
     font-size: 0.7rem !important;
     letter-spacing: 0.1em !important;
@@ -8878,11 +8964,6 @@ a {
 
   .stats-grid {
     grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .standings-table td, .standings-table th {
-    padding: 6px 4px !important;
-    font-size: 0.7rem !important;
   }
 
   .rankings-glass-card .rankings-header-row,
