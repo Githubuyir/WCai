@@ -9366,10 +9366,31 @@ html, body, #root {
   }
 
   /* Team Analysis mobile overrides */
-  .heatmap-pitch-small,
-  #dossier-heatmap-pitch {
+  .heatmap-pitch-small {
     aspect-ratio: auto !important;
     height: 140px !important;
+  }
+  #dossier-heatmap-pitch {
+    aspect-ratio: auto !important;
+    height: 220px !important;
+    min-height: 220px !important;
+    display: block !important;
+    position: relative !important;
+    background: rgba(5, 10, 48, 0.4) !important;
+    border: 1px solid rgba(0, 240, 255, 0.15) !important;
+  }
+  #dossier-heatmap-pitch .heatmap-small-vertical {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  #dossier-heatmap-pitch .heatmap-small-vertical > div {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+  }
+  #dossier-heatmap-pitch .heat-spot-node {
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.45) 0%, transparent 70%) !important;
   }
   .tactical-dossier-details,
   .key-players-section,
@@ -9483,6 +9504,28 @@ html, body, #root {
   }
   .telemetry-lbl {
     font-size: 0.72rem !important;
+  }
+
+  /* Simulation Metrics mobile overrides */
+  .telemetry-three-stats {
+    gap: 6px !important;
+  }
+  .panel-stat-box {
+    padding: 6px 4px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .panel-stat-box .stat-lbl {
+    font-size: 0.6rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: 100% !important;
+    margin-bottom: 2px !important;
+  }
+  .panel-stat-box .stat-num {
+    font-size: 1.05rem !important;
+    white-space: nowrap !important;
   }
 }
 
