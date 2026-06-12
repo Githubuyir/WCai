@@ -58,7 +58,7 @@ export default function Matches() {
     } else if (currentFilter === 'upcoming') {
       items = items.filter((m) => m.status === 'Upcoming');
     } else if (currentFilter === 'completed') {
-      items = [];
+      items = items.filter((m) => m.status === 'Completed' || m.status === 'Full Time');
     } else if (currentFilter === 'top') {
       items = items.filter((m) => m.isTopGame);
     }
@@ -84,7 +84,7 @@ export default function Matches() {
   // Featured Match: first top game, or first match overall in the filtered list
   const featuredMatch = useMemo(() => {
     if (filteredMatches.length === 0) return null;
-    return filteredMatches.find((m) => m.isTopGame) || filteredMatches[0];
+    return filteredMatches.find((m) => m.isTopGame && m.status === 'Upcoming') || filteredMatches.find((m) => m.isTopGame) || filteredMatches[0];
   }, [filteredMatches]);
 
   const isSearching = searchQuery.trim().length > 0;
@@ -329,93 +329,165 @@ export default function Matches() {
               </div>
             ) : (
               displayMatches.map((match, index) => {
+                const isCompleted = match.status === 'Completed' || match.status === 'Full Time';
                 const dateParts = match.date.split(' - ');
                 const dateString = dateParts[0];
-                const timeString = dateParts[1];
+                const timeString = dateParts[1] ? dateParts[1].replace(' (IST)', '') : '';
                 const stadiumParts = match.stadium.split(',');
                 const stadiumNameShort = stadiumParts[0];
                 const city = stadiumParts[1] || '';
 
+                // For completed card top-left: "Jun 12 Fri · 00:30"
+                let completedDateStr = dateString;
+                if (isCompleted) {
+                  const matchDateMatch = dateString.match(/([a-zA-Z]+ \d+)\s+\d+,\s+([a-zA-Z]+)/);
+                  if (matchDateMatch) {
+                    completedDateStr = `${matchDateMatch[1]} ${matchDateMatch[2]} · ${timeString}`;
+                  } else {
+                    completedDateStr = `${dateString.replace(' 2026,', '')} · ${timeString}`;
+                  }
+                }
+
                 return (
                   <div 
                     key={match.id}
-                    className={`match-grid-card in-view stadium-${match.stadiumAtmosphere}`}
+                    className={`match-grid-card in-view stadium-${match.stadiumAtmosphere} ${isCompleted ? 'completed' : ''}`}
                     style={{ animationDelay: `${index * 0.05}s` }}
                   >
                     <div className="card-stadium-bg"></div>
                     <div className="card-glow-overlay"></div>
                     
                     <div className="card-header-row">
-                      <span className="card-date-badge">{dateString}</span>
+                      <span className="card-date-badge">{isCompleted ? completedDateStr : dateString}</span>
                       <span className="card-group">{match.group}</span>
                     </div>
 
-                    <div className="card-teams-layout">
-                      {/* Team 1 */}
-                      <div className="card-team-box">
-                        <div className="card-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
-                        <span className="card-team-name">{match.team1.name}</span>
-                        <span className="card-team-prob">{match.team1.prob}%</span>
+                    {isCompleted ? (
+                      /* Completed Match Result Area */
+                      <div className="card-completed-layout" style={{ padding: '20px 0 10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                        <div className="completed-teams-score-row" style={{ display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center', margin: '10px 0' }}>
+                          {/* Team 1 */}
+                          <div className="completed-team-box" style={{ display: 'flex', flex: 1, flexDirection: 'column', alignItems: 'center', textAlign: 'center', minWidth: 0 }}>
+                            <div className="card-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
+                            <span className="card-team-name" style={{ fontSize: '0.9rem', fontWeight: 800, marginTop: '8px', color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>{match.team1.name}</span>
+                          </div>
+
+                          {/* Score */}
+                          <div className="completed-score-box" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 15px' }}>
+                            <span className="completed-score-text" style={{ fontSize: '1.75rem', fontWeight: 900, color: 'var(--primary-accent)', letterSpacing: '2px' }}>
+                              {match.goals1} - {match.goals2}
+                            </span>
+                            <span className="full-time-badge" style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.6)', background: 'rgba(255, 255, 255, 0.08)', padding: '2px 8px', borderRadius: '4px', marginTop: '6px', letterSpacing: '0.5px' }}>
+                              Full Time
+                            </span>
+                          </div>
+
+                          {/* Team 2 */}
+                          <div className="completed-team-box" style={{ display: 'flex', flex: 1, flexDirection: 'column', alignItems: 'center', textAlign: 'center', minWidth: 0 }}>
+                            <div className="card-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
+                            <span className="card-team-name" style={{ fontSize: '0.9rem', fontWeight: 800, marginTop: '8px', color: '#fff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', width: '100%' }}>{match.team2.name}</span>
+                          </div>
+                        </div>
+
+                        {/* Goalscorers Section */}
+                        <div className="completed-scorers-section" style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', width: '100%', alignItems: 'start', fontSize: '0.75rem', color: 'var(--text-secondary)', borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '10px', marginTop: '8px' }}>
+                          <div className="scorers-left" style={{ textAlign: 'right', paddingRight: '8px' }}>
+                            {(match.scorers1 || []).map((scorer, i) => (
+                              <div key={i} style={{ padding: '2px 0' }}>{scorer}</div>
+                            ))}
+                          </div>
+                          <div className="scorers-icon-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-muted)', width: '24px' }}>
+                            <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px' }}>
+                              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                              <circle cx="12" cy="12" r="4"></circle>
+                            </svg>
+                          </div>
+                          <div className="scorers-right" style={{ textAlign: 'left', paddingLeft: '8px' }}>
+                            {(match.scorers2 || []).map((scorer, i) => (
+                              <div key={i} style={{ padding: '2px 0' }}>{scorer}</div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Key Match Note */}
+                        {match.matchNote && (
+                          <div className="completed-match-note" style={{ background: 'rgba(0, 240, 255, 0.03)', borderLeft: '3px solid var(--primary-accent)', padding: '10px 12px', borderRadius: '4px', margin: '14px 0 0', width: '100%', boxSizing: 'border-box' }}>
+                            <span style={{ display: 'block', fontSize: '0.62rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--primary-accent)', marginBottom: '4px', letterSpacing: '0.5px' }}>Key Match Note</span>
+                            <p style={{ fontSize: '0.75rem', lineHeight: 1.4, color: 'var(--text-secondary)', margin: 0 }}>{match.matchNote}</p>
+                          </div>
+                        )}
                       </div>
+                    ) : (
+                      /* Upcoming Match layout */
+                      <>
+                        <div className="card-teams-layout">
+                          {/* Team 1 */}
+                          <div className="card-team-box">
+                            <div className="card-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team1.code) }}></div>
+                            <span className="card-team-name">{match.team1.name}</span>
+                            <span className="card-team-prob">{match.team1.prob}%</span>
+                          </div>
 
-                      {/* Divider VS */}
-                      <div className="card-vs-divider">
-                        <span className="vs-inner-text">VS</span>
-                        <span className="vs-draw-percent">{match.drawProb}% Draw</span>
-                      </div>
+                          {/* Divider VS */}
+                          <div className="card-vs-divider">
+                            <span className="vs-inner-text">VS</span>
+                            <span className="vs-draw-percent">{match.drawProb}% Draw</span>
+                          </div>
 
-                      {/* Team 2 */}
-                      <div className="card-team-box">
-                        <div className="card-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
-                        <span className="card-team-name">{match.team2.name}</span>
-                        <span className="card-team-prob">{match.team2.prob}%</span>
-                      </div>
-                    </div>
+                          {/* Team 2 */}
+                          <div className="card-team-box">
+                            <div className="card-flag-wrapper" dangerouslySetInnerHTML={{ __html: generateFlagSVG(match.team2.code) }}></div>
+                            <span className="card-team-name">{match.team2.name}</span>
+                            <span className="card-team-prob">{match.team2.prob}%</span>
+                          </div>
+                        </div>
 
-                    {/* Authentic Stadium Venue Bar */}
-                    <div className="card-venue-bar">
-                      <svg className="venue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                      </svg>
-                      <span className="card-venue-text">
-                        {stadiumNameShort}{city ? ',' + city : ''} • {timeString}
-                      </span>
-                    </div>
+                        {/* Authentic Stadium Venue Bar */}
+                        <div className="card-venue-bar">
+                          <svg className="venue-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                          </svg>
+                          <span className="card-venue-text">
+                            {stadiumNameShort}{city ? ',' + city : ''} • {timeString}
+                          </span>
+                        </div>
 
-                    {/* Tiny AI Insight */}
-                    <div className="card-mini-insight">
-                      <span className="insight-label">AI Tactical Predictor</span>
-                      <p className="insight-content">“{match.insight}”</p>
-                    </div>
+                        {/* Tiny AI Insight */}
+                        <div className="card-mini-insight">
+                          <span className="insight-label">AI Tactical Predictor</span>
+                          <p className="insight-content">“{match.insight}”</p>
+                        </div>
 
-                    {/* Progress probability line */}
-                    {!isMobile && (
-                      <div className="card-probability-line">
-                        <div className="prob-fill-left" style={{ width: `${match.team1.prob}%` }}></div>
-                        <div className="prob-fill-draw" style={{ left: `${match.team1.prob}%`, width: `${match.drawProb}%` }}></div>
-                      </div>
+                        {/* Progress probability line */}
+                        {!isMobile && (
+                          <div className="card-probability-line">
+                            <div className="prob-fill-left" style={{ width: `${match.team1.prob}%` }}></div>
+                            <div className="prob-fill-draw" style={{ left: `${match.team1.prob}%`, width: `${match.drawProb}%` }}></div>
+                          </div>
+                        )}
+
+                        {/* Metrics Row */}
+                        <div className="card-metrics-grid">
+                          <div className="metric-col">
+                            <span className="m-lbl">xG Est.</span>
+                            <span className="m-val">{match.xG1} - {match.xG2}</span>
+                          </div>
+                          <div className="metric-col">
+                            <span className="m-lbl">AI Conf.</span>
+                            <span className="m-val text-cyan">{match.aiConfidence}%</span>
+                          </div>
+                          <div className="metric-col">
+                            <span className="m-lbl">Intensity</span>
+                            <span className="m-val">{match.intensity}%</span>
+                          </div>
+                        </div>
+                      </>
                     )}
 
-                    {/* Metrics Row */}
-                    <div className="card-metrics-grid">
-                      <div className="metric-col">
-                        <span className="m-lbl">xG Est.</span>
-                        <span className="m-val">{match.xG1} - {match.xG2}</span>
-                      </div>
-                      <div className="metric-col">
-                        <span className="m-lbl">AI Conf.</span>
-                        <span className="m-val text-cyan">{match.aiConfidence}%</span>
-                      </div>
-                      <div className="metric-col">
-                        <span className="m-lbl">Intensity</span>
-                        <span className="m-val">{match.intensity}%</span>
-                      </div>
-                    </div>
-
                     {/* Card Footer Action */}
-                    <div className="card-action-row">
-                      {!isMobile && (
+                    <div className="card-action-row" style={{ marginTop: isCompleted ? '14px' : '0' }}>
+                      {!isMobile && !isCompleted && (
                         <div className="form-rows-wrapper">
                           <div className="form-row">
                             {match.form1.map((f, i) => (
@@ -429,9 +501,15 @@ export default function Matches() {
                           </div>
                         </div>
                       )}
-                      <button className="btn-grid-analyze" onClick={() => handleAnalyzeMatch(match.id)}>
-                        Analyze Match →
-                      </button>
+                      {isCompleted ? (
+                        <button className="btn-grid-analyze" style={{ marginLeft: 'auto', width: isMobile ? '100%' : 'auto' }} onClick={() => handleAnalyzeMatch(match.id)}>
+                          Match Review →
+                        </button>
+                      ) : (
+                        <button className="btn-grid-analyze" onClick={() => handleAnalyzeMatch(match.id)}>
+                          Analyze Match →
+                        </button>
+                      )}
                     </div>
                   </div>
                 );

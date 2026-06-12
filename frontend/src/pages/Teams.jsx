@@ -104,76 +104,76 @@ export default function Teams() {
   const groupsData = useMemo(() => {
     const standingsConfig = {
       "Group A": [
-        { code: "MEX", gd: 4, pts: 7 },
-        { code: "KOR", gd: 2, pts: 5 },
-        { code: "RSA", gd: 1, pts: 4 },
-        { code: "CZE", gd: -7, pts: 1 }
+        { code: "MEX", gd: 2, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "KOR", gd: 1, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "CZE", gd: -1, pts: 0, w: 0, d: 0, l: 1 },
+        { code: "RSA", gd: -2, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group B": [
-        { code: "SUI", gd: 5, pts: 7 },
-        { code: "CAN", gd: 2, pts: 6 },
-        { code: "BIH", gd: -1, pts: 3 },
-        { code: "QAT", gd: -6, pts: 1 }
+        { code: "SUI", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "CAN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "BIH", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "QAT", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group C": [
-        { code: "BRA", gd: 8, pts: 9 },
-        { code: "MAR", gd: 3, pts: 6 },
-        { code: "SCO", gd: -3, pts: 3 },
-        { code: "HAI", gd: -8, pts: 0 }
+        { code: "BRA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "MAR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "SCO", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "HAI", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group D": [
-        { code: "USA", gd: 5, pts: 7 },
-        { code: "AUS", gd: 1, pts: 5 },
-        { code: "TUR", gd: 0, pts: 4 },
-        { code: "PAR", gd: -6, pts: 0 }
+        { code: "USA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "AUS", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "TUR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "PAR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group E": [
-        { code: "GER", gd: 9, pts: 9 },
-        { code: "ECU", gd: 2, pts: 6 },
-        { code: "CIV", gd: -2, pts: 3 },
-        { code: "CUR", gd: -9, pts: 0 }
+        { code: "GER", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "ECU", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "CIV", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "CUR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group F": [
-        { code: "NED", gd: 4, pts: 7 },
-        { code: "JPN", gd: 3, pts: 6 },
-        { code: "SWE", gd: -1, pts: 4 },
-        { code: "TUN", gd: -6, pts: 0 }
+        { code: "NED", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "JPN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "SWE", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "TUN", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group G": [
-        { code: "BEL", gd: 4, pts: 7 },
-        { code: "EGY", gd: 2, pts: 6 },
-        { code: "IRN", gd: -2, pts: 3 },
-        { code: "NZL", gd: -4, pts: 1 }
+        { code: "BEL", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "EGY", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "IRN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "NZL", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group H": [
-        { code: "ESP", gd: 6, pts: 7 },
-        { code: "URU", gd: 3, pts: 6 },
-        { code: "KSA", gd: -4, pts: 3 },
-        { code: "CPV", gd: -5, pts: 1 }
+        { code: "ESP", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "URU", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "KSA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "CPV", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group I": [
-        { code: "FRA", gd: 8, pts: 9 },
-        { code: "SEN", gd: 2, pts: 6 },
-        { code: "NOR", gd: -3, pts: 3 },
-        { code: "IRQ", gd: -7, pts: 0 }
+        { code: "FRA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "SEN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "NOR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "IRQ", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group J": [
-        { code: "ARG", gd: 9, pts: 9 },
-        { code: "ALG", gd: 0, pts: 4 },
-        { code: "AUT", gd: -2, pts: 3 },
-        { code: "JOR", gd: -7, pts: 1 }
+        { code: "ARG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "ALG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "AUT", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "JOR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group K": [
-        { code: "POR", gd: 5, pts: 7 },
-        { code: "COL", gd: 3, pts: 6 },
-        { code: "UZB", gd: -3, pts: 3 },
-        { code: "COD", gd: -5, pts: 1 }
+        { code: "POR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "COL", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "UZB", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "COD", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group L": [
-        { code: "ENG", gd: 5, pts: 7 },
-        { code: "CRO", gd: 3, pts: 6 },
-        { code: "GHA", gd: -2, pts: 3 },
-        { code: "PAN", gd: -6, pts: 1 }
+        { code: "ENG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "CRO", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "GHA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "PAN", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ]
     };
 
@@ -189,6 +189,9 @@ export default function Teams() {
             form: [],
             gd: item.gd,
             pts: item.pts,
+            w: item.w,
+            d: item.d,
+            l: item.l,
             rating: 70,
             qual: 50,
             players: []
@@ -204,6 +207,9 @@ export default function Teams() {
           form: dbTeam.form,
           gd: item.gd,
           pts: item.pts,
+          w: item.w,
+          d: item.d,
+          l: item.l,
           rating: dbTeam.rating,
           qual: qualPct,
           stats: {
@@ -276,18 +282,6 @@ export default function Teams() {
     return null;
   }, [selectedTeamCode, groupsData]);
 
-  // Helper to calculate W, D, L from points
-  const getWDL = (pts) => {
-    if (pts === 9) return { w: 3, d: 0, l: 0 };
-    if (pts === 7) return { w: 2, d: 1, l: 0 };
-    if (pts === 6) return { w: 2, d: 0, l: 1 };
-    if (pts === 5) return { w: 1, d: 2, l: 0 };
-    if (pts === 4) return { w: 1, d: 1, l: 1 };
-    if (pts === 3) return { w: 1, d: 0, l: 2 };
-    if (pts === 2) return { w: 0, d: 2, l: 1 };
-    if (pts === 1) return { w: 0, d: 1, l: 2 };
-    return { w: 0, d: 0, l: 3 };
-  };
 
   const handleOpenModal = (code) => {
     setSelectedTeamCode(code);
@@ -539,7 +533,9 @@ export default function Teams() {
                           </div>
                           {teams.map((team, index) => {
                             const isProjectedQualify = index < 2 ? 'projected-qualify' : '';
-                            const { w: winVal, d: drawVal, l: lossVal } = getWDL(team.pts);
+                            const winVal = team.w;
+                            const drawVal = team.d;
+                            const lossVal = team.l;
                             return (
                               <div key={team.code} className={`team-row-card ${isProjectedQualify}`} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 26px 26px 26px 36px 36px 44px', alignItems: 'center', padding: '8px 4px', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', minWidth: 0 }} onClick={() => handleOpenModal(team.code)}>
@@ -569,7 +565,9 @@ export default function Teams() {
                       ) : (
                         teams.map((team, index) => {
                           const isProjectedQualify = index < 2 ? 'projected-qualify' : '';
-                          const { w, d, l } = getWDL(team.pts);
+                          const w = team.w;
+                          const d = team.d;
+                          const l = team.l;
 
                           return (
                             <div key={team.code} className={`team-row-card ${isProjectedQualify}`}>

@@ -106,6 +106,21 @@ const MatchSchema = new mongoose.Schema({
   simulationEngine: { type: mongoose.Schema.Types.Mixed, default: null },
   isTopMatch: { type: Boolean, default: false },
 
+  // ── Completed Match Data fields ──
+  goals1: { type: Number, default: null },
+  goals2: { type: Number, default: null },
+  scorers1: { type: [String], default: [] },
+  scorers2: { type: [String], default: [] },
+  matchNote: { type: String, default: '' },
+  predictionVsReality: { type: mongoose.Schema.Types.Mixed, default: null },
+  summaryText: { type: String, default: '' },
+  timelineEvents: { type: mongoose.Schema.Types.Mixed, default: null },
+  statsDetails: { type: mongoose.Schema.Types.Mixed, default: null },
+  lineupDetails: { type: mongoose.Schema.Types.Mixed, default: null },
+  substitutesList: { type: mongoose.Schema.Types.Mixed, default: null },
+  playerOfTheMatch: { type: mongoose.Schema.Types.Mixed, default: null },
+  tacticalReviews: { type: mongoose.Schema.Types.Mixed, default: null },
+
   // ── Raw API data for debugging ──
   rawApiData: { type: mongoose.Schema.Types.Mixed, default: null },
   lastSyncedAt: { type: Date, default: null }

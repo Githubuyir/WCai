@@ -1771,9 +1771,9 @@ export const PRE_AUTHORED_TEAMS = {
           weakness: "Can exhaust energy in later stages of matches due to high-intensity pressing requirements."
         },
         players: [
-          { name: "Santiago Giménez", role: "Striker (Goal Finisher)", score: 84, impact: "Provides clinical box finishing, clever runs in behind, and high-energy defensive pressure on opposition CBs." },
+          { name: "Raul Gimenez", role: "Striker (Goal Finisher)", score: 84, impact: "Provides clinical box finishing, clever runs in behind, and high-energy defensive pressure on opposition CBs." },
           { name: "Edson Álvarez", role: "Defensive Mid (Center Anchor)", score: 85, impact: "Protects the backline, interrupts opposition counters, and coordinates build-up under pressure." },
-          { name: "Hirving Lozano", role: "Winger (Speed Threat)", score: 83, impact: "Generates high pace on the left flank, creating shooting opportunities and cutting in behind." }
+          { name: "Quinones", role: "Winger (Speed Threat)", score: 83, impact: "Generates high pace on the left flank, creating shooting opportunities and cutting in behind." }
         ],
         form: ["W", "W", "W", "D", "W"],
         goalsScored: 7,

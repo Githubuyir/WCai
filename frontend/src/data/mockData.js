@@ -1,4 +1,4 @@
-  export const matchesData = [
+export const matchesData = [
     {
       id: 1,
       date: "Jun 12 2026, Fri - 00:30 (IST)",
@@ -16,7 +16,123 @@
       form2: ["L", "W", "D", "D", "W"],
       insight: "Mexico's high press at altitude expected to disrupt South Africa's midfield build-up.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 2,
+      goals2: 0,
+      scorers1: ["Quiñones 9'", "Jiménez 67'"],
+      scorers2: [],
+      matchNote: "Mexico made light work of a lacklustre South Africa in the opening game of the 2026 World Cup, which featured three straight red cards.",
+      predictionVsReality: {
+        probabilities: { homeWin: 52, draw: 13, awayWin: 35 },
+        aiOutcome: "Prediction Correct",
+        why: "Mexico’s pressing advantage and attacking efficiency matched the pre-match model expectation."
+      },
+      summaryText: "Mexico opened their World Cup campaign with a composed 2-0 win over South Africa. Their defensive shape stayed compact throughout the match, while quick transitions and wide attacking movements created the decisive moments.",
+      timelineEvents: [
+        { minute: "9'", type: "goal", team: "MEX", player: "Julián Quiñones", detail: "Goal — Mexico" },
+        { minute: "50'", type: "red_card", team: "RSA", player: "Yaya Sithole", detail: "Red Card — South Africa" },
+        { minute: "67'", type: "goal", team: "MEX", player: "Raúl Jiménez", detail: "Goal — Mexico" },
+        { minute: "84'", type: "red_card", team: "RSA", player: "Themba Zwane", detail: "Red Card — South Africa" },
+        { minute: "90+2'", type: "red_card", team: "MEX", player: "César Montes", detail: "Red Card — Mexico" },
+        { minute: "FT", type: "full_time", score: "Mexico 2-0 South Africa", detail: "FT — Mexico 2-0 South Africa" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "60%", team2: "40%", ratio1: 60, ratio2: 40 },
+        { name: "Expected Goals (xG)", team1: "1.46", team2: "0.07", ratio1: 95, ratio2: 5 },
+        { name: "Total Shots", team1: "16", team2: "3", ratio1: 84, ratio2: 16 },
+        { name: "Shots on Target", team1: "4", team2: "2", ratio1: 67, ratio2: 33 },
+        { name: "Touches in Opposition Box", team1: "20", team2: "2", ratio1: 91, ratio2: 9 },
+        { name: "Big Chances", team1: "2", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Big Chances Missed", team1: "0", team2: "0", ratio1: 50, ratio2: 50 },
+        { name: "Accurate Passes", team1: "467 (90%)", team2: "272 (81%)", ratio1: 63, ratio2: 37 },
+        { name: "Yellow Cards", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Corners", team1: "3", team2: "1", ratio1: 75, ratio2: 25 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Mexico",
+          formation: "4-1-4-1",
+          coach: "Javier Aguirre",
+          players: [
+            { number: 1, name: "Rangel", rating: 7.5, events: [] },
+            { number: 15, name: "Reyes", rating: 7.4, events: [] },
+            { number: 3, name: "Montes", rating: 6.1, isCaptain: true, events: [{ type: "red_card", minute: "90+2'" }] },
+            { number: 5, name: "Vásquez", rating: 7.2, events: [] },
+            { number: 23, name: "Gallardo", rating: 7.2, events: [] },
+            { number: 6, name: "Lira", rating: 7.9, events: [{ type: "sub_off", minute: "76'" }] },
+            { number: 25, name: "Alvarado", rating: 8.2, events: [] },
+            { number: 26, name: "Gutiérrez", rating: 6.7, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "66'" }] },
+            { number: 8, name: "Fidalgo", rating: 7.2, events: [{ type: "sub_off", minute: "66'" }] },
+            { number: 16, name: "Quiñones", rating: 8.8, isPotm: true, events: [{ type: "goal", minute: "9'" }, { type: "sub_off", minute: "79'" }] },
+            { number: 9, name: "Jiménez", rating: 8.0, events: [{ type: "goal", minute: "67'" }, { type: "sub_off", minute: "76'" }] }
+          ]
+        },
+        team2: {
+          name: "South Africa",
+          formation: "5-3-2",
+          coach: "Hugo Broos",
+          players: [
+            { number: 1, name: "Williams", rating: 6.2, isCaptain: true, events: [] },
+            { number: 6, name: "Modiba", rating: 5.9, events: [{ type: "sub_off", minute: "76'" }] },
+            { number: 14, name: "Mbokazi", rating: 6.1, events: [] },
+            { number: 21, name: "Okon", rating: 6.0, events: [] },
+            { number: 19, name: "Sibisi", rating: 5.8, events: [{ type: "yellow_card" }] },
+            { number: 20, name: "Mudau", rating: 6.5, events: [] },
+            { number: 23, name: "Adams", rating: 6.2, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 13, name: "Sithole", rating: 3.5, events: [{ type: "red_card", minute: "50'" }] },
+            { number: 4, name: "Mokoena", rating: 6.5, events: [{ type: "yellow_card" }] },
+            { number: 9, name: "Foster", rating: 5.6, events: [{ type: "sub_off", minute: "56'" }] },
+            { number: 15, name: "Rayners", rating: 5.5, events: [{ type: "sub_off", minute: "76'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 19, name: "Gilberto Mora", rating: 6.3, role: "Midfielder", minute: "66'", events: [] },
+          { number: 24, name: "Luis Chávez", rating: 6.5, role: "Midfielder", minute: "66'", events: [] },
+          { number: 4, name: "Edson Álvarez", rating: 6.6, role: "Midfielder", minute: "76'", events: [] },
+          { number: 14, name: "Armando González", rating: 5.9, role: "Attacker", minute: "76'", events: [] },
+          { number: 10, name: "Alexis Vega", rating: 6.0, role: "Attacker", minute: "79'", events: [] }
+        ],
+        team2: [
+          { number: 5, name: "Thalente Mbatha", rating: 6.2, role: "Midfielder", minute: "56'", events: [] },
+          { number: 11, name: "Themba Zwane", rating: 4.9, role: "Midfielder", minute: "61'", events: [{ type: "red_card" }] },
+          { number: 17, name: "Evidence Makgopa", rating: 6.3, role: "Attacker", minute: "76'", events: [] },
+          { number: 7, name: "Oswin Appollis", rating: 6.3, role: "Attacker", minute: "76'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Julián Quiñones",
+        rating: 8.8,
+        reason: "Goal Scored, Took the most shots (5), Completed the most dribbles (5)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Mexico: Solid But Proved Inconsistent Against a Low Block",
+          positives: [
+            "Coached by Javier Aguirre, Mexico controlled possession and looked incredibly dangerous in transition, particularly through Quiñones, who earned Man of the Match honors with 5 shots and 5 successful dribbles.",
+            "The early goal was crucial in settling the team’s nerves on opening night."
+          ],
+          improvements: [
+            "Despite enjoying a significant statistical advantage and playing with an extra man for much of the second half, Mexico’s buildup play occasionally lacked creativity against South Africa’s 5-back system.",
+            "The attack looked stagnant in patches before Jiménez finally sealed the result.",
+            "Furthermore, captain César Montes’ late red card for a reckless challenge deprives the squad of a key defensive starter for their next fixture against South Korea."
+          ]
+        },
+        team2: {
+          title: "South Africa: Overwhelmed by Self-Inflicted Errors",
+          positives: [
+            "South Africa showed defensive resilience in stretches by deploying a five-man backline, which temporarily slowed Mexico’s momentum in the first half.",
+            "However, attacking threats were nearly nonexistent as they struggled to test Mexican goalkeeper Raúl Rangel."
+          ],
+          negatives: [
+            "Bafana Bafana was heavily criticized for sloppiness and ill-discipline.",
+            "Sithole struggled significantly, turning the ball over for the first goal and later taking a red card as the last defender in the 49th minute.",
+            "Themba Zwane was also dismissed late in the game after a VAR review for violent conduct.",
+            "Finishing with nine men means South Africa will be critically short-handed for their next game against Czechia."
+          ]
+        }
+      }
     },
     {
       id: 2,
@@ -35,7 +151,125 @@
       form2: ["D", "L", "W", "W", "D"],
       insight: "High-intensity wing transitions from Korea will test Czech Republic's central low block.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 2,
+      goals2: 1,
+      scorers1: ["I. Hwang 67'", "Oh 80'"],
+      scorers2: ["Krejčí 59'"],
+      matchNote: "South Korea 2-1 Czechia: Oh and Hwang strike in impressive comeback win.",
+      predictionVsReality: {
+        probabilities: { homeWin: 48, draw: 24, awayWin: 28 },
+        aiOutcome: "Prediction Correct",
+        why: "Korea Republic’s superior possession control, midfield progression, and late attacking substitutions matched the pre-match model’s expectation of a Korean advantage."
+      },
+      summaryText: "South Korea rallied to defeat the Czech Republic 2-1 in their opening match of the FIFA World Cup. Czech captain Ladislav Krejčí opened the scoring against the run of play in the 59th minute, but Hwang In-beom equalized for South Korea shortly after. Substitute Oh Hyeon-gyu then netted the decisive winner in the 80th minute to secure all three points.",
+      timelineEvents: [
+        { minute: "59'", type: "goal", team: "CZE", player: "Ladislav Krejčí", detail: "Goal — Czech Republic" },
+        { minute: "67'", type: "goal", team: "KOR", player: "Hwang In-beom", detail: "Goal — Korea Republic" },
+        { minute: "80'", type: "goal", team: "KOR", player: "Oh Hyeon-gyu", detail: "Goal — Korea Republic" },
+        { minute: "FT", type: "full_time", score: "Korea Republic 2-1 Czech Republic", detail: "FT — Korea Republic 2-1 Czech Republic" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "62%", team2: "38%", ratio1: 62, ratio2: 38 },
+        { name: "Expected Goals (xG)", team1: "2.30", team2: "0.83", ratio1: 73, ratio2: 27 },
+        { name: "Total Shots", team1: "15", team2: "7", ratio1: 68, ratio2: 32 },
+        { name: "Shots on Target", team1: "6", team2: "4", ratio1: 60, ratio2: 40 },
+        { name: "Touches in Opposition Box", team1: "24", team2: "12", ratio1: 67, ratio2: 33 },
+        { name: "Big Chances", team1: "4", team2: "1", ratio1: 80, ratio2: 20 },
+        { name: "Big Chances Missed", team1: "2", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Accurate Passes", team1: "469 (87%)", team2: "230 (70%)", ratio1: 67, ratio2: 33 },
+        { name: "Yellow Cards", team1: "1", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "4", team2: "5", ratio1: 44, ratio2: 56 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Korea Republic",
+          formation: "4-2-3-1",
+          coach: "Myung-Bo Hong",
+          players: [
+            { number: 1, name: "Kim", rating: 7.7, events: [] },
+            { number: 4, name: "Kim", rating: 7.4, events: [] },
+            { number: 22, name: "Seol", rating: 6.9, events: [] },
+            { number: 2, name: "Lee", rating: 7.1, events: [] },
+            { number: 3, name: "Lee", rating: 7.6, events: [{ type: "yellow_card" }] },
+            { number: 13, name: "Lee", rating: null, events: [{ type: "sub_off", minute: "69'" }] },
+            { number: 10, name: "Lee", rating: 7.4, events: [{ type: "sub_off", minute: "62'" }] },
+            { number: 8, name: "Paik", rating: 7.3, events: [{ type: "sub_off", minute: "84'" }] },
+            { number: 6, name: "Hwang", rating: 8.9, isPotm: true, events: [{ type: "goal", minute: "67'" }, { type: "assist" }, { type: "sub_off", minute: "84'" }] },
+            { number: 7, name: "Son", rating: 6.9, isCaptain: true, events: [] },
+            { number: 19, name: "Lee", rating: 8.4, events: [] }
+          ]
+        },
+        team2: {
+          name: "Czech Republic",
+          formation: "3-4-2-1",
+          coach: "Miroslav Koubek",
+          players: [
+            { number: 1, name: "Kovář", rating: 6.8, events: [] },
+            { number: 4, name: "Hranáč", rating: 5.7, events: [] },
+            { number: 6, name: "Chaloupek", rating: 5.7, events: [] },
+            { number: 5, name: "Coufal", rating: 6.9, events: [{ type: "assist" }] },
+            { number: 17, name: "Provod", rating: 6.8, events: [{ type: "sub_off", minute: "63'" }] },
+            { number: 22, name: "Souček", rating: 6.1, events: [] },
+            { number: 24, name: "Sojka", rating: 6.6, events: [{ type: "sub_off", minute: "84'" }] },
+            { number: 20, name: "Zelený", rating: 6.8, events: [] },
+            { number: 15, name: "Šulc", rating: 7.2, events: [{ type: "sub_off", minute: "63'" }] },
+            { number: 10, name: "Schick", rating: 5.9, events: [{ type: "sub_off", minute: "63'" }] },
+            { number: 7, name: "Krejčí", rating: 7.4, isCaptain: true, events: [{ type: "goal", minute: "59'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 11, name: "Hee-Chan Hwang", rating: 6.5, role: "Attacker", minute: "62'", events: [] },
+          { number: 18, name: "Hyun-Gyu Oh", rating: 7.5, role: "Attacker", minute: "69'", events: [{ type: "goal", minute: "80'" }] },
+          { number: 25, name: "Ji-Sung Eom", rating: 6.6, role: "Attacker", minute: "69'", events: [] },
+          { number: 24, name: "Jin-Gyu Kim", rating: null, role: "Midfielder", minute: "84'", events: [] },
+          { number: 16, name: "Jin-Seob Park", rating: null, role: "Midfielder", minute: "84'", events: [] }
+        ],
+        team2: [
+          { number: 9, name: "Adam Hložek", rating: 6.1, role: "Midfielder", minute: "63'", events: [] },
+          { number: 18, name: "Michal Sadílek", rating: 6.0, role: "Midfielder", minute: "63'", events: [] },
+          { number: 19, name: "Tomáš Chorý", rating: 5.9, role: "Attacker", minute: "63'", events: [] },
+          { number: 13, name: "Mojmír Chytil", rating: null, role: "Attacker", minute: "84'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "In-Beom Hwang",
+        rating: 8.9,
+        reason: "A goal and an assist, joint-most touches in the opposition box (5), and the most touches overall (93)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Korea Republic: Creative Resilience Overcomes Physical Strain",
+          positives: [
+            "Coached by Hong Myung-bo, Korea Republic showed strong emotional and structural discipline after falling behind against a highly physical Czech side.",
+            "They dominated possession with 62% and looked secure building through the lines, supported by a controlled midfield structure.",
+            "Hwang In-beom was the catalyst, scoring the equalizer and delivering the decisive assist.",
+            "Hong Myung-bo’s decision to bring on Oh Hyeon-gyu proved decisive, as his fresh vertical runs disrupted a tiring Czech defence and produced the winning goal."
+          ],
+          improvements: [
+            "Despite controlling the tempo, Korea Republic struggled against physical and direct aerial sequences.",
+            "The back line looked uncomfortable during chaotic second-ball situations inside their own box.",
+            "The starting front line lacked vertical penetration for long periods, with Son Heung-min heavily marked and isolated before the second-half tactical changes opened the game."
+          ]
+        },
+        team2: {
+          title: "Czech Republic: Rigid and Direct But Lacked Late-Game Adaptability",
+          positives: [
+            "Coached by Ivan Hašek, Czech Republic executed a disciplined defensive plan for the first hour.",
+            "They clogged central channels effectively and limited Korea Republic’s attacking rhythm early in the match.",
+            "Their direct aerial approach paid off in the 59th minute when Ladislav Krejčí scored from a Coufal long-throw sequence.",
+            "The midfield structure led by Tomáš Souček and Alexandr Sojka was effective early at disrupting central transitions and winning second balls."
+          ],
+          improvements: [
+            "Once Korea Republic equalized, Czech Republic lacked technical nuance and alternative tactical ideas.",
+            "Their heavy reliance on direct long balls left Patrik Schick isolated and limited their attacking quality.",
+            "As the match progressed, the wing-backs failed to sustain pressure and the defensive line dropped too deep.",
+            "Korea Republic’s late substitutes exploited the deeper block and changed the rhythm of the match."
+          ]
+        }
+      }
     },
     {
       id: 3,
