@@ -59,9 +59,9 @@ export default function Home() {
       { team: 'South Africa', code: 'RSA', p: 1, w: 0, d: 0, l: 1, gd: -2, pts: 0, form: ['L'], rating: '6.5' }
     ],
     B: [
-      { team: 'Canada', code: 'CAN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '8.2' },
+      { team: 'Canada', code: 'CAN', p: 1, w: 0, d: 1, l: 0, gd: 0, pts: 1, form: ['D'], rating: '8.2' },
+      { team: 'Bosnia', code: 'BIH', p: 1, w: 0, d: 1, l: 0, gd: 0, pts: 1, form: ['D'], rating: '7.1' },
       { team: 'Switzerland', code: 'SUI', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '8.0' },
-      { team: 'Bosnia', code: 'BIH', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.1' },
       { team: 'Qatar', code: 'QAT', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '6.4' }
     ],
     C: [
@@ -71,10 +71,10 @@ export default function Home() {
       { team: 'Haiti', code: 'HAI', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '6.0' }
     ],
     D: [
-      { team: 'United States', code: 'USA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '8.5' },
+      { team: 'United States', code: 'USA', p: 1, w: 1, d: 0, l: 0, gd: 3, pts: 3, form: ['W'], rating: '8.5' },
       { team: 'Australia', code: 'AUS', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.7' },
       { team: 'Türkiye', code: 'TUR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.5' },
-      { team: 'Paraguay', code: 'PAR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '6.9' }
+      { team: 'Paraguay', code: 'PAR', p: 1, w: 0, d: 0, l: 1, gd: -3, pts: 0, form: ['L'], rating: '6.9' }
     ],
     E: [
       { team: 'Germany', code: 'GER', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '8.7' },
@@ -536,7 +536,7 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">2 <span className="mini-total">/ 104</span></div>
+                  <div className="mini-value">4 <span className="mini-total">/ 104</span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
                       <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
@@ -554,7 +554,7 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">Mexico</div>
+                  <div className="mini-value">USA</div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
                       <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
@@ -610,7 +610,7 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">2.5</div>
+                  <div className="mini-value">3</div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
                       <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
@@ -650,8 +650,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="mini-value" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div className="table-flag-wrapper" style={{ width: '20px', height: '14px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG('KOR') }} />
-                    <span>Hwang IB</span>
+                    <div className="table-flag-wrapper" style={{ width: '20px', height: '14px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG('USA') }} />
+                    <span>Balogun</span>
                   </div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
@@ -673,8 +673,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="mini-value" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div className="table-flag-wrapper" style={{ width: '20px', height: '14px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG('CZE') }} />
-                    <span>V. Coufal</span>
+                    <div className="table-flag-wrapper" style={{ width: '20px', height: '14px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG('MEX') }} />
+                    <span>Alvarado</span>
                   </div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">

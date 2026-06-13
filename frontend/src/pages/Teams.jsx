@@ -110,9 +110,9 @@ export default function Teams() {
         { code: "RSA", gd: -2, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group B": [
+        { code: "CAN", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "BIH", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
         { code: "SUI", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "CAN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "BIH", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "QAT", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group C": [
@@ -122,10 +122,10 @@ export default function Teams() {
         { code: "HAI", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group D": [
-        { code: "USA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "USA", gd: 3, pts: 3, w: 1, d: 0, l: 0 },
         { code: "AUS", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "TUR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "PAR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "PAR", gd: -3, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group E": [
         { code: "GER", gd: 0, pts: 0, w: 0, d: 0, l: 0 },

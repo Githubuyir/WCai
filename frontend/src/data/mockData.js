@@ -280,15 +280,135 @@ export const matchesData = [
       team1: { name: "Canada", code: "CAN", prob: 45 },
       team2: { name: "Bosnia and Herzegovina", code: "BIH", prob: 31 },
       drawProb: 24,
-      xG1: 1.4,
-      xG2: 1.1,
+      xG1: 1.23,
+      xG2: 0.96,
       aiConfidence: 65,
       intensity: 79,
       form1: ["L", "W", "W", "D", "L"],
       form2: ["W", "L", "D", "L", "W"],
       insight: "Canada's home support and direct vertical attacking lines favor their opening match.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 1,
+      goals2: 1,
+      scorers1: ["Larin 78'"],
+      scorers2: ["Lukić 21'"],
+      matchNote: "Canada have avoided defeat for the first time at the World Cup, with super-sub Cyle Larin getting the equaliser against Bosnia-Herzegovina.",
+      predictionVsReality: {
+        probabilities: { homeWin: 45, draw: 24, awayWin: 31 },
+        aiOutcome: "Close Prediction",
+        why: "Canada’s territorial dominance matched the model’s expectation, but Bosnia & Herzegovina’s set-piece threat and compact defensive shape turned the match into a balanced result."
+      },
+      summaryText: "Co-host Canada salvaged a 1-1 draw against Bosnia and Herzegovina in their opening Group B match in Toronto, securing the country's first-ever point in a World Cup finals. Bosnia took the lead in the 21st minute with a Jovo Lukić header, but Canadian substitute Cyle Larin quickly found the equalizer in the 78th minute.",
+      timelineEvents: [
+        { minute: "21'", type: "goal", team: "BIH", player: "Jovo Lukić", detail: "Goal — Bosnia & Herzegovina" },
+        { minute: "78'", type: "goal", team: "CAN", player: "Cyle Larin", detail: "Goal — Canada" },
+        { minute: "FT", type: "full_time", score: "Canada 1-1 Bosnia & Herzegovina", detail: "FT — Canada 1-1 Bosnia & Herzegovina" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "61%", team2: "39%", ratio1: 61, ratio2: 39 },
+        { name: "Expected Goals (xG)", team1: "1.23", team2: "0.96", ratio1: 56, ratio2: 44 },
+        { name: "Total Shots", team1: "13", team2: "8", ratio1: 62, ratio2: 38 },
+        { name: "Shots on Target", team1: "4", team2: "3", ratio1: 57, ratio2: 43 },
+        { name: "Touches in Opposition Box", team1: "37", team2: "15", ratio1: 71, ratio2: 29 },
+        { name: "Big Chances", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Big Chances Missed", team1: "2", team2: "1", ratio1: 67, ratio2: 33 },
+        { name: "Accurate Passes", team1: "310 (74%)", team2: "172 (63%)", ratio1: 64, ratio2: 36 },
+        { name: "Yellow Cards", team1: "2", team2: "3", ratio1: 40, ratio2: 60 },
+        { name: "Corners", team1: "9", team2: "4", ratio1: 69, ratio2: 31 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Canada",
+          formation: "4-4-2",
+          coach: "Jesse Marsch",
+          players: [
+            { number: 16, name: "Crépeau", rating: 7.5, events: [] },
+            { number: 2, name: "Johnston", rating: 7.2, events: [{ type: "yellow_card" }] },
+            { number: 4, name: "De Fougerolles", rating: 7.1, events: [{ type: "yellow_card" }] },
+            { number: 13, name: "Cornelius", rating: 7.4, events: [] },
+            { number: 22, name: "Laryea", rating: 8.2, events: [] },
+            { number: 17, name: "Buchanan", rating: 5.7, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 8, name: "Koné", rating: 6.0, events: [] },
+            { number: 7, name: "Eustaquio", rating: 7.5, isCaptain: true, events: [{ type: "sub_off", minute: "90'" }] },
+            { number: 11, name: "Millar", rating: 6.8, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 10, name: "David", rating: 6.6, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 12, name: "Oluwaseyi", rating: 6.6, events: [{ type: "sub_off", minute: "76'" }] }
+          ]
+        },
+        team2: {
+          name: "Bosnia & Herzegovina",
+          formation: "4-4-2",
+          coach: "Sergej Barbarez",
+          players: [
+            { number: 1, name: "Vasilj", rating: 6.8, events: [] },
+            { number: 5, name: "Kolašinac", rating: 8.0, isCaptain: true, events: [{ type: "injury" }, { type: "sub_off", minute: "83'" }] },
+            { number: 15, name: "Memić", rating: 6.1, events: [{ type: "sub_off", minute: "74'" }] },
+            { number: 4, name: "Muharemović", rating: 8.3, events: [] },
+            { number: 18, name: "Katić", rating: 8.4, events: [{ type: "yellow_card" }] },
+            { number: 13, name: "Bašić", rating: 7.2, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "61'" }] },
+            { number: 6, name: "Tahirović", rating: 6.6, events: [] },
+            { number: 25, name: "Lukić", rating: 8.0, events: [{ type: "goal", minute: "21'" }, { type: "yellow_card" }] },
+            { number: 10, name: "Demirović", rating: 6.6, events: [{ type: "yellow_card" }] },
+            { number: 20, name: "Bajraktarević", rating: 6.3, events: [{ type: "sub_off", minute: "74'" }] },
+            { number: 7, name: "Dedić", rating: 7.0, events: [] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 20, name: "Ali Ahmed", rating: 6.2, role: "Attacker", minute: "61'", events: [] },
+          { number: 14, name: "Jacob Shaffelburg", rating: 6.1, role: "Attacker", minute: "61'", events: [] },
+          { number: 24, name: "Promise David", rating: 6.6, role: "Attacker", minute: "61'", events: [{ type: "assist" }] },
+          { number: 9, name: "Cyle Larin", rating: 7.5, role: "Attacker", minute: "76'", events: [{ type: "goal", minute: "78'" }] },
+          { number: 21, name: "Jonathan Osorio", rating: null, role: "Midfielder", minute: "90'", events: [] }
+        ],
+        team2: [
+          { number: 8, name: "Armin Gigović", rating: 6.9, role: "Midfielder", minute: "61'", events: [] },
+          { number: 9, name: "Samed Baždar", rating: 6.0, role: "Attacker", minute: "61'", events: [] },
+          { number: 14, name: "Ivan Šunjić", rating: 6.2, role: "Midfielder", minute: "74'", events: [] },
+          { number: 19, name: "Kerim Alajbegović", rating: 6.3, role: "Attacker", minute: "74'", events: [] },
+          { number: 17, name: "Dženis Burnić", rating: null, role: "Midfielder", minute: "83'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Ismael Koné",
+        rating: 7.0,
+        reason: "Completed the joint-most passes (50) and showed impressive midfield control."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Canada: High-Octane Press Rescues Historic Point Under Heavy Strain",
+          positives: [
+            "Coached by Jesse Marsch, Canada displayed remarkable grit to bounce back from an early deficit and claim the first World Cup point in their men's program history.",
+            "Operating in an aggressive 4-4-2 setup, they dominated territory with 61% possession and pinned the visitors back with an intense front-foot pressing style.",
+            "The second-half tactical switches completely changed the match, with Promise David adding directness and Cyle Larin scoring the historic equalizer shortly after coming on."
+          ],
+          improvements: [
+            "Despite the energized home crowd at Toronto Stadium, Canada’s tactical setup looked compromised without the vertical pace of the injured Alphonso Davies.",
+            "Tajon Buchanan and Liam Millar struggled to break down Bosnia’s rigid low block, often funnelling play into crowded central zones.",
+            "Jonathan David was starved of clean service for long stretches.",
+            "Defensively, Canada looked vulnerable from static situations, losing markers on the short-corner sequence that led to Bosnia’s opening goal.",
+            "Canada also failed to capitalize on nine corner kicks, showing a clear need to improve offensive dead-ball execution."
+          ]
+        },
+        team2: {
+          title: "Bosnia & Herzegovina: Rigid, Direct, and Relentless Set-Piece Engineers",
+          positives: [
+            "Coached by Sergej Barbarez, Bosnia & Herzegovina executed a strong blueprint for frustrating a tournament co-host on opening night.",
+            "Their disciplined and compact 4-4-2 shape narrowed the pitch, forced Canada into low-percentage wide areas, and limited central transition threats.",
+            "Their physical aerial plan paid off in the 21st minute when Sead Kolašinac met an Ivan Bašić corner with a near-post flick, allowing Jovo Lukić to head home from close range.",
+            "Benjamin Tahirović was excellent at anchoring the midfield pivot and breaking up waves of Canadian buildup."
+          ],
+          improvements: [
+            "Bosnia lacked the tactical flexibility and technical nuance to relieve pressure once Canada began overloading the half-spaces.",
+            "Their reliance on bypass-midfield long balls left Ermedin Demirović isolated for long stretches.",
+            "They generated almost no sustained possession phases in the final hour.",
+            "As fatigue set in during the final 20 minutes, the side dropped into a desperate, reactive low block.",
+            "The injury to captain Sead Kolašinac further weakened the defensive structure and opened space for Canada’s late equalizer."
+          ]
+        }
+      }
     },
     {
       id: 4,
@@ -307,7 +427,130 @@ export const matchesData = [
       form2: ["D", "D", "L", "W", "L"],
       insight: "USA's fluid front three and progressive counter-press expected to dominate Paraguay.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 4,
+      goals2: 1,
+      scorers1: ["Bobadilla 7' (OG)", "Balogun 31'", "Balogun 45+5'", "Reyna 90+8'"],
+      scorers2: ["Mauricio 73'"],
+      matchNote: "Balogun stars as Pochettino's men produce statement win against Paraguay. It was a perfect start for the US campaign.",
+      predictionVsReality: {
+        probabilities: { homeWin: 62, draw: 20, awayWin: 18 },
+        aiOutcome: "Prediction Correct",
+        why: "USA’s pressing intensity, midfield control, and attacking depth matched the pre-match model’s expectation of a strong American advantage."
+      },
+      summaryText: "The United States men's national team dominated Paraguay with a 4-1 victory in their opening match of the 2026 FIFA World Cup. A relentless first half saw the U.S. take an early lead via a Paraguay own goal, followed by a brace from striker Folarin Balogun. Paraguay substitute Mauricio clawed a goal back in the second half, but Gio Reyna capped off the dream performance with a stoppage-time strike to seal the win.",
+      timelineEvents: [
+        { minute: "7'", type: "goal", team: "USA", player: "Bobadilla (OG)", detail: "Goal — USA — Bobadilla own goal" },
+        { minute: "31'", type: "goal", team: "USA", player: "Folarin Balogun", detail: "Goal — USA — Balogun" },
+        { minute: "45+5'", type: "goal", team: "USA", player: "Folarin Balogun", detail: "Goal — USA — Balogun" },
+        { minute: "73'", type: "goal", team: "PAR", player: "Mauricio", detail: "Goal — Paraguay — Mauricio" },
+        { minute: "90+8'", type: "goal", team: "USA", player: "Giovanni Reyna", detail: "Goal — USA — Reyna" },
+        { minute: "FT", type: "full_time", score: "USA 4-1 Paraguay", detail: "FT — USA 4-1 Paraguay" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "65%", team2: "35%", ratio1: 65, ratio2: 35 },
+        { name: "Expected Goals (xG)", team1: "1.34", team2: "0.47", ratio1: 74, ratio2: 26 },
+        { name: "Total Shots", team1: "16", team2: "9", ratio1: 64, ratio2: 36 },
+        { name: "Shots on Target", team1: "6", team2: "1", ratio1: 86, ratio2: 14 },
+        { name: "Touches in Opposition Box", team1: "53", team2: "9", ratio1: 85, ratio2: 15 },
+        { name: "Big Chances", team1: "4", team2: "1", ratio1: 80, ratio2: 20 },
+        { name: "Big Chances Missed", team1: "2", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Accurate Passes", team1: "510 (85%)", team2: "230 (72%)", ratio1: 69, ratio2: 31 },
+        { name: "Yellow Cards", team1: "1", team2: "5", ratio1: 17, ratio2: 83 },
+        { name: "Corners", team1: "3", team2: "1", ratio1: 75, ratio2: 25 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "USA",
+          formation: "4-2-3-1",
+          coach: "Mauricio Pochettino",
+          players: [
+            { number: 24, name: "Freese", rating: 6.2, events: [] },
+            { number: 16, name: "Freeman", rating: 8.1, events: [{ type: "assist" }] },
+            { number: 3, name: "Richards", rating: 7.2, events: [] },
+            { number: 13, name: "Ream", rating: 7.5, isCaptain: true, events: [] },
+            { number: 5, name: "Robinson", rating: 7.5, events: [] },
+            { number: 4, name: "Adams", rating: 7.8, events: [{ type: "yellow_card" }] },
+            { number: 8, name: "McKennie", rating: 7.4, events: [] },
+            { number: 17, name: "Tillman", rating: 8.1, events: [{ type: "assist" }, { type: "sub_off", minute: "82'" }] },
+            { number: 10, name: "Pulisic", rating: 7.8, events: [{ type: "assist" }, { type: "sub_off", minute: "46'" }] },
+            { number: 20, name: "Balogun", rating: 8.9, isPotm: true, events: [{ type: "goal", minute: "31'" }, { type: "goal", minute: "45+5'" }, { type: "injury" }, { type: "sub_off", minute: "72'" }] },
+            { number: 2, name: "Dest", rating: 6.9, events: [{ type: "sub_off", minute: "72'" }] }
+          ]
+        },
+        team2: {
+          name: "Paraguay",
+          formation: "4-2-3-1",
+          coach: "Gustavo Alfaro",
+          players: [
+            { number: 12, name: "Gill", rating: 5.5, events: [] },
+            { number: 6, name: "Alonso", rating: 5.3, events: [{ type: "yellow_card" }] },
+            { number: 3, name: "Alderete", rating: 5.5, events: [] },
+            { number: 15, name: "Gómez", rating: 5.2, isCaptain: true, events: [] },
+            { number: 4, name: "Cáceres", rating: 6.3, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "79'" }] },
+            { number: 8, name: "Gómez", rating: 6.5, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "80'" }] },
+            { number: 14, name: "Cubas", rating: 6.3, events: [] },
+            { number: 10, name: "Almirón", rating: 7.1, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "79'" }] },
+            { number: 16, name: "Bobadilla", rating: 4.9, events: [{ type: "own_goal", minute: "7'" }, { type: "sub_off", minute: "46'" }] },
+            { number: 19, name: "Enciso", rating: 7.8, events: [{ type: "assist" }] },
+            { number: 9, name: "Sanabria", rating: 5.7, events: [{ type: "sub_off", minute: "62'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 14, name: "Sebastian Berhalter", rating: 6.7, role: "Midfielder", minute: "46'", events: [] },
+          { number: 21, name: "Timothy Weah", rating: 6.2, role: "Midfielder", minute: "72'", events: [] },
+          { number: 9, name: "Ricardo Pepi", rating: 6.1, role: "Attacker", minute: "72'", events: [] },
+          { number: 7, name: "Giovanni Reyna", rating: null, role: "Midfielder", minute: "82'", events: [{ type: "goal", minute: "90+8'" }] }
+        ],
+        team2: [
+          { number: 11, name: "Mauricio", rating: 7.6, role: "Midfielder", minute: "46'", events: [{ type: "goal", minute: "73'" }] },
+          { number: 18, name: "Álex Arce", rating: 5.9, role: "Attacker", minute: "62'", events: [{ type: "yellow_card" }] },
+          { number: 2, name: "Gustavo Velázquez", rating: 6.0, role: "Defender", minute: "79'", events: [] },
+          { number: 7, name: "Ramón Sosa", rating: 6.3, role: "Attacker", minute: "79'", events: [] },
+          { number: 17, name: "Alejandro Romero", rating: 6.2, role: "Midfielder", minute: "80'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "F. Balogun",
+        rating: 8.9,
+        reason: "Scored two goals, had the most touches in the opposition box (11), and took the joint-most shots (5)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "USA: Overwhelming Press Blunts South American Counter-Threat",
+          positives: [
+            "Coached by Mauricio Pochettino, the United States opened their campaign with a dominant 4-1 victory, executing a high-octane tactical blueprint that overwhelmed Paraguay early.",
+            "Operating in a fluid 4-2-3-1 system, USA aggressively forced central turnovers through Tyler Adams and Weston McKennie, cutting off Paraguay’s supply lines.",
+            "The relentless mid-block press forced an own goal inside seven minutes and allowed Christian Pulisic to drop deep, drag double-teams, and expose Paraguay’s defensive line.",
+            "Folarin Balogun showed elite off-the-ball spatial intelligence, scoring a superb first-half brace by finding pockets between the centre-backs.",
+            "Pochettino’s substitutions helped maintain late-game momentum, ending with Gio Reyna’s stoppage-time goal."
+          ],
+          improvements: [
+            "Despite an assertive statistical display with 65% possession, the American backline showed brief signs of complacency during sustained defensive transitions.",
+            "In the second half, Chris Richards and Tim Ream struggled to handle secondary movements after dropping deep, allowing Paraguay to pull a goal back in the 73rd minute.",
+            "Managing high-friction physical altercations remains a discipline concern, as late emotional flare-ups occasionally distracted the tactical block.",
+            "Against stronger opponents, similar moments could create structural errors and unnecessary pressure."
+          ]
+        },
+        team2: {
+          title: "Paraguay: Structural Breakdown Exposed by Direct Mobility",
+          positives: [
+            "Coached by Gustavo Alfaro, Paraguay initially tried to absorb possession and transition quickly through Julio Enciso and Miguel Almirón.",
+            "Tactical changes at half-time briefly stabilized the team after a difficult opening period.",
+            "Introducing Maurício added direct vertical running and changed the rhythm of the attack.",
+            "The shift paid off in the 73rd minute when Enciso played a line-breaking pass for Maurício to finish clinically.",
+            "Goalkeeper Orlando Gill fought hard under pressure, making key saves to prevent the scoreline from becoming even heavier."
+          ],
+          negatives: [
+            "Paraguay’s low-block plan backfired almost immediately as the midfield double-pivot failed to track lateral movement, creating chaos before the early own goal.",
+            "Antonio Sanabria was isolated as a lone target man and was cut off by the American press.",
+            "The back four lacked the mobility to handle quick transitions, repeatedly giving Pulisic and Tillman space between the lines.",
+            "The team lacked late-game stamina and discipline, collecting five yellow cards and losing structure in stoppage time."
+          ]
+        }
+      }
     },
     {
       id: 5,
@@ -1672,6 +1915,9 @@ export const matchesData = [
     }
     if (code === 'ENG') {
       return `<svg viewBox="0 0 100 100" class="flag-svg"><circle cx="50" cy="50" r="50" fill="#FFFFFF" /><rect x="42" y="0" width="16" height="100" fill="#E60000" /><rect x="0" y="42" width="100" height="16" fill="#E60000" /></svg>`;
+    }
+    if (code === 'USA') {
+      return `<svg viewBox="0 0 100 100" class="flag-svg"><clipPath id="${clipId}"><circle cx="50" cy="50" r="50" /></clipPath><g clip-path="url(#${clipId})"><rect x="0" y="0" width="100" height="100" fill="#FFFFFF" /><rect x="0" y="0" width="100" height="7.69" fill="#B22234" /><rect x="0" y="15.38" width="100" height="7.69" fill="#B22234" /><rect x="0" y="30.77" width="100" height="7.69" fill="#B22234" /><rect x="0" y="46.15" width="100" height="7.69" fill="#B22234" /><rect x="0" y="61.54" width="100" height="7.69" fill="#B22234" /><rect x="0" y="76.92" width="100" height="7.69" fill="#B22234" /><rect x="0" y="92.31" width="100" height="7.69" fill="#B22234" /><rect x="0" y="0" width="45" height="53.85" fill="#3C3B6E" /><circle cx="9" cy="11" r="1.5" fill="#FFFFFF" /><circle cx="22" cy="11" r="1.5" fill="#FFFFFF" /><circle cx="35" cy="11" r="1.5" fill="#FFFFFF" /><circle cx="15" cy="22" r="1.5" fill="#FFFFFF" /><circle cx="29" cy="22" r="1.5" fill="#FFFFFF" /><circle cx="9" cy="33" r="1.5" fill="#FFFFFF" /><circle cx="22" cy="33" r="1.5" fill="#FFFFFF" /><circle cx="35" cy="33" r="1.5" fill="#FFFFFF" /><circle cx="15" cy="44" r="1.5" fill="#FFFFFF" /><circle cx="29" cy="44" r="1.5" fill="#FFFFFF" /></g></svg>`;
     }
     
     if (colors.length === 2) {

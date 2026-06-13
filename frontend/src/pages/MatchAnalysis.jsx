@@ -511,6 +511,12 @@ export default function MatchAnalysis() {
                                   <circle cx="12" cy="12" r="4"></circle>
                                 </svg>
                               )}
+                              {evt.type === 'own_goal' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px', color: '#ff4d4d', background: '#fff', borderRadius: '50%' }}>
+                                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                  <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                              )}
                               {evt.type === 'red_card' && (
                                 <div style={{ width: '10px', height: '14px', background: '#ff3333', borderRadius: '1.5px', boxShadow: '0 0 5px rgba(255, 51, 51, 0.5)' }}></div>
                               )}
@@ -612,6 +618,92 @@ export default function MatchAnalysis() {
                             </span>
                           )}
 
+                          {/* Top-Left: Substitution Minute & Arrow */}
+                          {p.events.find(e => e.type === 'sub_off') && (
+                            <span className="completed-player-sub-minute-badge" style={{
+                              position: 'absolute',
+                              top: '-12px',
+                              left: '-16px',
+                              background: 'rgba(5, 10, 48, 0.95)',
+                              color: '#fff',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              padding: '2px 5px',
+                              borderRadius: '10px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px',
+                              boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                              zIndex: 4,
+                              border: '1.5px solid rgba(255, 255, 255, 0.15)'
+                            }}>
+                              <span style={{
+                                width: '9px',
+                                height: '9px',
+                                background: '#ff3333',
+                                borderRadius: '50%',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '1px'
+                              }}>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="4" style={{ width: '100%', height: '100%' }}>
+                                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                              </span>
+                              {p.events.find(e => e.type === 'sub_off').minute}
+                            </span>
+                          )}
+
+                          {/* Bottom-Left: Captain & Injury */}
+                          <div className="completed-player-left-extra-icons" style={{
+                            position: 'absolute',
+                            bottom: '-6px',
+                            left: '-6px',
+                            display: 'flex',
+                            gap: '2px',
+                            zIndex: 3
+                          }}>
+                            {p.isCaptain && (
+                              <span className="player-captain-badge" style={{
+                                width: '12px',
+                                height: '12px',
+                                background: 'rgba(255, 255, 255, 0.95)',
+                                color: '#000',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.55rem',
+                                fontWeight: 950,
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.4)',
+                                border: '1px solid rgba(0,0,0,0.15)'
+                              }}>
+                                C
+                              </span>
+                            )}
+                            {p.events.find(e => e.type === 'injury') && (
+                              <span className="player-injury-badge" style={{
+                                width: '12px',
+                                height: '12px',
+                                background: 'rgba(255, 255, 255, 0.95)',
+                                color: '#ff3333',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.4)',
+                                border: '1px solid rgba(0,0,0,0.15)'
+                              }}>
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '8px', height: '8px' }}>
+                                  <path d="M19 10.5h-5.5V5h-3v5.5H5v3h5.5V19h3v-5.5H19v-3z" />
+                                </svg>
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Bottom-Right: Goals, Cards, Assists */}
                           <div className="completed-player-event-icons">
                             {p.events.map((evt, idx) => (
                               <React.Fragment key={idx}>
@@ -621,17 +713,22 @@ export default function MatchAnalysis() {
                                     <circle cx="12" cy="12" r="4"></circle>
                                   </svg>
                                 )}
+                                {evt.type === 'own_goal' && (
+                                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '11px', height: '11px', color: '#ff4d4d', background: '#fff', borderRadius: '50%' }}>
+                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                  </svg>
+                                )}
+                                {evt.type === 'assist' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ width: '11px', height: '11px', color: '#00ff88', background: '#000', borderRadius: '50%', padding: '1px' }}>
+                                    <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M4 12h16M16 8l4 4-4 4" />
+                                  </svg>
+                                )}
                                 {evt.type === 'red_card' && (
                                   <div style={{ width: '8px', height: '11px', background: '#ff3333', borderRadius: '1px' }}></div>
                                 )}
                                 {evt.type === 'yellow_card' && (
                                   <div style={{ width: '8px', height: '11px', background: '#ffcc00', borderRadius: '1px' }}></div>
-                                )}
-                                {evt.type === 'sub_off' && (
-                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ width: '10px', height: '10px', color: '#ff3333', background: '#000', borderRadius: '50%', padding: '1px' }}>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                  </svg>
                                 )}
                               </React.Fragment>
                             ))}
@@ -676,6 +773,92 @@ export default function MatchAnalysis() {
                             </span>
                           )}
 
+                          {/* Top-Left: Substitution Minute & Arrow */}
+                          {p.events.find(e => e.type === 'sub_off') && (
+                            <span className="completed-player-sub-minute-badge" style={{
+                              position: 'absolute',
+                              top: '-12px',
+                              left: '-16px',
+                              background: 'rgba(5, 10, 48, 0.95)',
+                              color: '#fff',
+                              fontSize: '0.62rem',
+                              fontWeight: 900,
+                              padding: '2px 5px',
+                              borderRadius: '10px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '3px',
+                              boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                              zIndex: 4,
+                              border: '1.5px solid rgba(255, 255, 255, 0.15)'
+                            }}>
+                              <span style={{
+                                width: '9px',
+                                height: '9px',
+                                background: '#ff3333',
+                                borderRadius: '50%',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '1px'
+                              }}>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="4" style={{ width: '100%', height: '100%' }}>
+                                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                                  <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                              </span>
+                              {p.events.find(e => e.type === 'sub_off').minute}
+                            </span>
+                          )}
+
+                          {/* Bottom-Left: Captain & Injury */}
+                          <div className="completed-player-left-extra-icons" style={{
+                            position: 'absolute',
+                            bottom: '-6px',
+                            left: '-6px',
+                            display: 'flex',
+                            gap: '2px',
+                            zIndex: 3
+                          }}>
+                            {p.isCaptain && (
+                              <span className="player-captain-badge" style={{
+                                width: '12px',
+                                height: '12px',
+                                background: 'rgba(255, 255, 255, 0.95)',
+                                color: '#000',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.55rem',
+                                fontWeight: 950,
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.4)',
+                                border: '1px solid rgba(0,0,0,0.15)'
+                              }}>
+                                C
+                              </span>
+                            )}
+                            {p.events.find(e => e.type === 'injury') && (
+                              <span className="player-injury-badge" style={{
+                                width: '12px',
+                                height: '12px',
+                                background: 'rgba(255, 255, 255, 0.95)',
+                                color: '#ff3333',
+                                borderRadius: '50%',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                boxShadow: '0 1px 3px rgba(0,0,0,0.4)',
+                                border: '1px solid rgba(0,0,0,0.15)'
+                              }}>
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '8px', height: '8px' }}>
+                                  <path d="M19 10.5h-5.5V5h-3v5.5H5v3h5.5V19h3v-5.5H19v-3z" />
+                                </svg>
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Bottom-Right: Goals, Cards, Assists */}
                           <div className="completed-player-event-icons">
                             {p.events.map((evt, idx) => (
                               <React.Fragment key={idx}>
@@ -685,17 +868,22 @@ export default function MatchAnalysis() {
                                     <circle cx="12" cy="12" r="4"></circle>
                                   </svg>
                                 )}
+                                {evt.type === 'own_goal' && (
+                                  <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '11px', height: '11px', color: '#ff4d4d', background: '#fff', borderRadius: '50%' }}>
+                                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                  </svg>
+                                )}
+                                {evt.type === 'assist' && (
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ width: '11px', height: '11px', color: '#00ff88', background: '#000', borderRadius: '50%', padding: '1px' }}>
+                                    <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M4 12h16M16 8l4 4-4 4" />
+                                  </svg>
+                                )}
                                 {evt.type === 'red_card' && (
                                   <div style={{ width: '8px', height: '11px', background: '#ff3333', borderRadius: '1px' }}></div>
                                 )}
                                 {evt.type === 'yellow_card' && (
                                   <div style={{ width: '8px', height: '11px', background: '#ffcc00', borderRadius: '1px' }}></div>
-                                )}
-                                {evt.type === 'sub_off' && (
-                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ width: '10px', height: '10px', color: '#ff3333', background: '#000', borderRadius: '50%', padding: '1px' }}>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                  </svg>
                                 )}
                               </React.Fragment>
                             ))}
@@ -753,6 +941,33 @@ export default function MatchAnalysis() {
                           </div>
                         </div>
                         <div className="sub-player-right-events">
+                          {sub.events && sub.events.map((evt, idx) => (
+                            <React.Fragment key={idx}>
+                              {evt.type === 'goal' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px', color: '#fff', marginRight: '6px' }}>
+                                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                  <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                              )}
+                              {evt.type === 'own_goal' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px', color: '#ff4d4d', background: '#fff', borderRadius: '50%', marginRight: '6px' }}>
+                                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                  <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                              )}
+                              {evt.type === 'assist' && (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ width: '12px', height: '12px', color: '#00ff88', marginRight: '6px' }}>
+                                  <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M4 12h16M16 8l4 4-4 4" />
+                                </svg>
+                              )}
+                              {evt.type === 'yellow_card' && (
+                                <div style={{ width: '10px', height: '14px', background: '#ffcc00', borderRadius: '1.5px', marginRight: '6px', boxShadow: '0 0 5px rgba(255, 204, 0, 0.5)' }}></div>
+                              )}
+                              {evt.type === 'red_card' && (
+                                <div style={{ width: '10px', height: '14px', background: '#ff3333', borderRadius: '1.5px', marginRight: '6px', boxShadow: '0 0 5px rgba(255, 51, 51, 0.5)' }}></div>
+                              )}
+                            </React.Fragment>
+                          ))}
                           <span className="sub-in-minute-badge">{sub.minute}</span>
                         </div>
                       </div>
@@ -768,8 +983,6 @@ export default function MatchAnalysis() {
                   </div>
                   {(substitutesList.team2 || []).map((sub, i) => {
                     const ratingColor = getRatingColor(sub.rating);
-                    const isRed = sub.events.some(e => e.type === 'red_card');
-
                     return (
                       <div key={i} className="sub-player-card-row">
                         <div className="sub-player-left">
@@ -785,9 +998,33 @@ export default function MatchAnalysis() {
                           </div>
                         </div>
                         <div className="sub-player-right-events">
-                          {isRed && (
-                            <div style={{ width: '10px', height: '14px', background: '#ff3333', borderRadius: '1.5px', marginRight: '6px', boxShadow: '0 0 5px rgba(255, 51, 51, 0.5)' }}></div>
-                          )}
+                          {sub.events && sub.events.map((evt, idx) => (
+                            <React.Fragment key={idx}>
+                              {evt.type === 'goal' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px', color: '#fff', marginRight: '6px' }}>
+                                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                  <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                              )}
+                              {evt.type === 'own_goal' && (
+                                <svg viewBox="0 0 24 24" fill="currentColor" style={{ width: '12px', height: '12px', color: '#ff4d4d', background: '#fff', borderRadius: '50%', marginRight: '6px' }}>
+                                  <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"></circle>
+                                  <circle cx="12" cy="12" r="4"></circle>
+                                </svg>
+                              )}
+                              {evt.type === 'assist' && (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" style={{ width: '12px', height: '12px', color: '#00ff88', marginRight: '6px' }}>
+                                  <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M4 12h16M16 8l4 4-4 4" />
+                                </svg>
+                              )}
+                              {evt.type === 'yellow_card' && (
+                                <div style={{ width: '10px', height: '14px', background: '#ffcc00', borderRadius: '1.5px', marginRight: '6px', boxShadow: '0 0 5px rgba(255, 204, 0, 0.5)' }}></div>
+                              )}
+                              {evt.type === 'red_card' && (
+                                <div style={{ width: '10px', height: '14px', background: '#ff3333', borderRadius: '1.5px', marginRight: '6px', boxShadow: '0 0 5px rgba(255, 51, 51, 0.5)' }}></div>
+                              )}
+                            </React.Fragment>
+                          ))}
                           <span className="sub-in-minute-badge rsa-sub">{sub.minute}</span>
                         </div>
                       </div>
