@@ -569,7 +569,130 @@ export const matchesData = [
       form2: ["W", "W", "D", "W", "D"],
       insight: "Switzerland's disciplined zonal structure should stifle Qatar's central counters.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 1,
+      goals2: 1,
+      scorers1: ["Muheim 90+4' (OG)"],
+      scorers2: ["Embolo 17' (Pen)"],
+      matchNote: "Qatar have won their first point at the World Cup, clinching a draw against Switzerland. Khoukhi snatches dramatic equaliser in stoppage time.",
+      predictionVsReality: {
+        probabilities: { homeWin: 25, draw: 20, awayWin: 55 },
+        aiOutcome: "Prediction Missed",
+        why: "Switzerland’s dominance matched the model’s expectation, but Qatar’s defensive resilience and late set-piece pressure turned the match into a draw."
+      },
+      summaryText: "Switzerland heavily dominated possession and took a 17th-minute lead through a Breel Embolo penalty. Despite waves of Swiss attacks, Qatar stayed resilient and struck a shocking equaliser in the 94th minute. The late goal—initially credited to captain Boualem Khoukhi's header but later confirmed as a Miro Muheim own goal—secured Qatar's first-ever World Cup point.",
+      timelineEvents: [
+        { minute: "17'", type: "goal", team: "SUI", player: "Breel Embolo", detail: "Goal — Switzerland — Embolo penalty" },
+        { minute: "90+4'", type: "own_goal", team: "QAT", player: "Miro Muheim", detail: "Goal — Qatar — Muheim own goal" },
+        { minute: "FT", type: "full_time", score: "Qatar 1-1 Switzerland", detail: "FT — Qatar 1-1 Switzerland" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "32%", team2: "68%", ratio1: 32, ratio2: 68 },
+        { name: "Expected Goals (xG)", team1: "0.60", team2: "3.20", ratio1: 16, ratio2: 84 },
+        { name: "Total Shots", team1: "6", team2: "26", ratio1: 19, ratio2: 81 },
+        { name: "Shots on Target", team1: "3", team2: "7", ratio1: 30, ratio2: 70 },
+        { name: "Touches in Opposition Box", team1: "8", team2: "42", ratio1: 16, ratio2: 84 },
+        { name: "Big Chances", team1: "1", team2: "6", ratio1: 14, ratio2: 86 },
+        { name: "Big Chances Missed", team1: "1", team2: "5", ratio1: 17, ratio2: 83 },
+        { name: "Accurate Passes", team1: "200 (72%)", team2: "527 (91%)", ratio1: 28, ratio2: 72 },
+        { name: "Yellow Cards", team1: "2", team2: "1", ratio1: 67, ratio2: 33 },
+        { name: "Corners", team1: "3", team2: "10", ratio1: 23, ratio2: 77 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Qatar",
+          formation: "4-3-3",
+          coach: "Tintín Márquez",
+          players: [
+            { number: 1, name: "Abunada", rating: 7.7, events: [{ type: "yellow_card" }] },
+            { number: 13, name: "Al Oui", rating: 6.4, events: [{ type: "sub_off", minute: "60'" }] },
+            { number: 2, name: "Miguel", rating: 7.3, events: [] },
+            { number: 16, name: "Khoukhi", rating: 6.9, isCaptain: true, events: [] },
+            { number: 14, name: "Elamin", rating: 7.2, events: [] },
+            { number: 23, name: "Madibo", rating: 6.4, events: [{ type: "sub_off", minute: "78'" }] },
+            { number: 5, name: "Gaber", rating: 6.1, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "60'" }] },
+            { number: 8, name: "Junior", rating: 6.3, events: [{ type: "sub_off", minute: "88'" }] },
+            { number: 4, name: "Laye", rating: 6.8, events: [] },
+            { number: 11, name: "Afif", rating: 6.9, events: [] },
+            { number: 15, name: "Abdurisag", rating: 6.8, events: [{ type: "sub_off", minute: "60'" }] }
+          ]
+        },
+        team2: {
+          name: "Switzerland",
+          formation: "3-4-2-1",
+          coach: "Murat Yakin",
+          players: [
+            { number: 1, name: "Kobel", rating: 7.5, events: [] },
+            { number: 5, name: "Akanji", rating: 7.4, events: [] },
+            { number: 4, name: "Elvedi", rating: 7.3, events: [] },
+            { number: 11, name: "Ndoye", rating: 7.2, events: [{ type: "sub_off", minute: "65'" }] },
+            { number: 20, name: "Aebischer", rating: 7.2, events: [{ type: "sub_off", minute: "65'" }] },
+            { number: 10, name: "Xhaka", rating: 7.3, isCaptain: true, events: [] },
+            { number: 8, name: "Freuler", rating: 7.1, events: [{ type: "sub_off", minute: "89'" }] },
+            { number: 13, name: "Rodríguez", rating: 7.8, events: [{ type: "sub_off", minute: "89'" }] },
+            { number: 17, name: "Vargas", rating: 8.1, isHighlight: true, events: [{ type: "sub_off", minute: "79'" }] },
+            { number: 7, name: "Embolo", rating: 8.0, events: [{ type: "goal", minute: "17'" }] },
+            { number: 6, name: "Zakaria", rating: 7.5, events: [{ type: "yellow_card" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 20, name: "Ahmed Fathi", rating: 6.9, role: "Midfielder", minute: "60'", events: [] },
+          { number: 12, name: "Karim Boudiaf", rating: 6.3, role: "Midfielder", minute: "60'", events: [] },
+          { number: 7, name: "Ahmed Alaaeldin", rating: 6.4, role: "Attacker", minute: "60'", events: [] },
+          { number: 26, name: "Mohamed Al Mannai", rating: 5.9, role: "Midfielder", minute: "78'", events: [] },
+          { number: 10, name: "Hassan Al Haidos", rating: null, role: "Attacker", minute: "88'", events: [] }
+        ],
+        team2: [
+          { number: 22, name: "Fabian Rieder", rating: 6.1, role: "Midfielder", minute: "65'", events: [] },
+          { number: 9, name: "Johan Manzambi", rating: 5.9, role: "Midfielder", minute: "65'", events: [] },
+          { number: 23, name: "Zeki Amdouni", rating: 6.6, role: "Attacker", minute: "79'", events: [] },
+          { number: 14, name: "Ardon Jashari", rating: null, role: "Midfielder", minute: "89'", events: [] },
+          { number: 2, name: "Miro Muheim", rating: null, role: "Midfielder", minute: "89'", events: [{ type: "own_goal", minute: "90+4'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Mahmud Abunada",
+        rating: 7.7,
+        reason: "Top saves and solid goalkeeping under heavy Swiss pressure."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Qatar: Resolute Low Block Secures a Historic Stoppage-Time Point",
+          positives: [
+            "Coached by Tintín Márquez, Qatar executed a disciplined “hang around” game plan that ultimately secured the nation’s first-ever FIFA World Cup point.",
+            "Set up in a defensively minded 4-2-3-1 / 4-3-3 shape, Qatar absorbed a relentless wave of Swiss pressure while staying compact.",
+            "Goalkeeper Mahmud Abunada recovered strongly after conceding an early penalty, producing crucial saves to keep Qatar within reach.",
+            "Pedro Miguel and Ayoub Al-Oui repeatedly protected the box, with Qatar’s defensive unit blocking wave after wave of Swiss attacks.",
+            "The dramatic equaliser arrived in stoppage time after late pressure from Qatar forced Switzerland into a costly own goal."
+          ],
+          improvements: [
+            "Qatar’s defensive resilience was impressive, but their tactical setup left them suffocated for long stretches.",
+            "They registered only 32% possession and six total shots compared to Switzerland’s 26, struggling to progress the ball beyond their own half.",
+            "Akram Afif was forced too deep to support the defensive shell, limiting his influence in the final third.",
+            "Qatar’s transition play lacked speed and accuracy, with rare attacking chances not converted cleanly.",
+            "They will need a more reliable outlet if they want to compete against stronger pressing sides in the next fixtures."
+          ]
+        },
+        team2: {
+          title: "Switzerland: Utter Positional Dominance Unraveled by Wayward Finishing",
+          positives: [
+            "Coached by Murat Yakin, Switzerland dictated the entire match through an aggressive, fluid 3-4-3 structure.",
+            "They dominated the ball with 68% possession and produced 26 total shots with a massive 3.20 xG.",
+            "Granit Xhaka controlled the tempo from deep, while Dan Ndoye and Rubén Vargas repeatedly attacked wide channels and overloaded the box.",
+            "Switzerland’s pressing paid off early when Breel Embolo converted a 17th-minute penalty.",
+            "Manuel Akanji and Nico Elvedi stepped high to prevent Qatar from building sustained counterattacks."
+          ],
+          improvements: [
+            "Switzerland’s inability to kill off a match they dominated is a major warning sign.",
+            "Despite creating several premium chances, their finishing was wasteful and allowed Qatar to stay alive.",
+            "The tempo dropped late in the match, with Switzerland becoming too casual instead of pushing for a second goal.",
+            "Under the late pressure, the defensive structure switched off at the back post.",
+            "Miro Muheim’s own goal in stoppage time turned a dominant performance into two dropped points."
+          ]
+        }
+      }
     },
     {
       id: 6,
@@ -588,7 +711,128 @@ export const matchesData = [
       form2: ["W", "D", "L", "W", "W"],
       insight: "Brazil's overload in the half-spaces will challenge Morocco's organized double pivot.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 1,
+      goals2: 1,
+      scorers1: ["Vinícius 32'"],
+      scorers2: ["Saibari 21'"],
+      matchNote: "Ismael Saibari and Vinicius Junior traded first-half goals, but it was a late Alisson intervention that ensured the points were shared.",
+      predictionVsReality: {
+        probabilities: { homeWin: 71, draw: 15, awayWin: 14 },
+        aiOutcome: "Prediction Missed",
+        why: "Brazil’s individual attacking quality matched the model’s expectation, but Morocco’s aggressive pressing, midfield intensity, and disciplined defensive phases made the result far more balanced."
+      },
+      summaryText: "Brazil and Morocco fought to a hard-earned 1-1 draw in their opening Group C match of the 2026 FIFA World Cup at MetLife Stadium. Ismael Saibari opened the scoring for Morocco in the 21st minute after capitalizing on a defensive error. Vinícius Júnior equalized for Brazil before halftime with a spectacular solo strike, and both teams ultimately shared the points after a tight, cautious second half.",
+      timelineEvents: [
+        { minute: "21'", type: "goal", team: "MAR", player: "Ismael Saibari", detail: "Goal — Morocco — Saibari" },
+        { minute: "32'", type: "goal", team: "BRA", player: "Vinícius Júnior", detail: "Goal — Brazil — Vinícius" },
+        { minute: "FT", type: "full_time", score: "Brazil 1-1 Morocco", detail: "FT — Brazil 1-1 Morocco" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "51%", team2: "49%", ratio1: 51, ratio2: 49 },
+        { name: "Expected Goals (xG)", team1: "1.26", team2: "1.37", ratio1: 48, ratio2: 52 },
+        { name: "Total Shots", team1: "12", team2: "14", ratio1: 46, ratio2: 54 },
+        { name: "Shots on Target", team1: "5", team2: "3", ratio1: 63, ratio2: 37 },
+        { name: "Touches in Opposition Box", team1: "22", team2: "13", ratio1: 63, ratio2: 37 },
+        { name: "Big Chances", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Big Chances Missed", team1: "1", team2: "1", ratio1: 50, ratio2: 50 },
+        { name: "Accurate Passes", team1: "449 (87%)", team2: "419 (86%)", ratio1: 52, ratio2: 48 },
+        { name: "Yellow Cards", team1: "2", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "6", team2: "2", ratio1: 75, ratio2: 25 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Brazil",
+          formation: "4-3-3",
+          coach: "Carlo Ancelotti",
+          players: [
+            { number: 1, name: "Alisson", rating: 6.5, events: [] },
+            { number: 24, name: "Ibañez", rating: 6.7, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "46'" }] },
+            { number: 4, name: "Marquinhos", rating: 6.9, isCaptain: true, events: [] },
+            { number: 3, name: "Gabriel", rating: 6.9, events: [] },
+            { number: 16, name: "Santos", rating: 7.7, events: [] },
+            { number: 5, name: "Casemiro", rating: 6.5, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "46'" }] },
+            { number: 20, name: "Paquetá", rating: 7.1, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 8, name: "Guimarães", rating: 7.0, events: [{ type: "assist" }, { type: "sub_off", minute: "80'" }] },
+            { number: 25, name: "Thiago", rating: 6.5, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 11, name: "Raphinha", rating: 6.8, events: [] },
+            { number: 7, name: "Vinícius", rating: 7.3, events: [{ type: "goal", minute: "32'" }] }
+          ]
+        },
+        team2: {
+          name: "Morocco",
+          formation: "3-4-2-1",
+          coach: "Tarik Sektioui",
+          players: [
+            { number: 1, name: "Bono", rating: 7.4, events: [] },
+            { number: 3, name: "Mazraoui", rating: 7.4, events: [{ type: "sub_off", minute: "80'" }] },
+            { number: 14, name: "Diop", rating: 6.6, events: [] },
+            { number: 8, name: "Ounahi", rating: 7.3, events: [{ type: "sub_off", minute: "64'" }] },
+            { number: 10, name: "Brahim Díaz", rating: 7.1, events: [{ type: "assist" }, { type: "sub_off", minute: "64'" }] },
+            { number: 24, name: "El Aynaoui", rating: 7.4, events: [] },
+            { number: 6, name: "Bouaddi", rating: 7.1, events: [] },
+            { number: 2, name: "Hakimi", rating: 7.5, isCaptain: true, events: [] },
+            { number: 23, name: "El Khannouss", rating: 7.6, events: [{ type: "sub_off", minute: "80'" }] },
+            { number: 11, name: "Saibari", rating: 7.7, isHighlight: true, events: [{ type: "goal", minute: "21'" }, { type: "sub_off", minute: "89'" }] },
+            { number: 18, name: "Riad", rating: 7.2, events: [] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 13, name: "Danilo", rating: 6.4, role: "Defender", minute: "46'", events: [] },
+          { number: 17, name: "Fabinho", rating: 6.3, role: "Midfielder", minute: "46'", events: [] },
+          { number: 21, name: "Luiz Henrique", rating: 6.5, role: "Attacker", minute: "61'", events: [] },
+          { number: 9, name: "Matheus Cunha", rating: 6.3, role: "Attacker", minute: "61'", events: [] },
+          { number: 18, name: "Danilo", rating: 6.1, role: "Midfielder", minute: "80'", events: [] }
+        ],
+        team2: [
+          { number: 15, name: "Samir El Mourabet", rating: 6.2, role: "Midfielder", minute: "64'", events: [] },
+          { number: 7, name: "Chemsdine Talbi", rating: 6.1, role: "Attacker", minute: "64'", events: [] },
+          { number: 26, name: "Anass Salah-Eddine", rating: 5.9, role: "Defender", minute: "80'", events: [] },
+          { number: 21, name: "Ayoube Amaimouni-Echghouyab", rating: 6.2, role: "Attacker", minute: "80'", events: [] },
+          { number: 9, name: "Soufiane Rahimi", rating: null, role: "Attacker", minute: "89'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Vinicius Junior",
+        rating: 7.3,
+        reason: "Goal scored and joint-most touches in the opposition box (5)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Brazil: Ragged Midfield Exposes Backline to Aggressive Pressing",
+          positives: [
+            "Coached by Carlo Ancelotti, Brazil showcased individual brilliance to rescue a 1-1 draw after a slow and uncomfortable start.",
+            "Vinícius Júnior provided the decisive spark, equalizing with a brilliant curling finish after sharp combination play with Bruno Guimarães.",
+            "After the hydration break and Ancelotti’s halftime change, with Casemiro removed for Fabinho, Brazil gained better structural balance.",
+            "The adjustment helped quiet central spaces, reduce Morocco’s counterattacking threat, and gave the Seleção stronger territorial control during the early second half."
+          ],
+          improvements: [
+            "Brazil’s initial 4-2-3-1 structure looked uncoordinated, with large gaps between Casemiro, Bruno Guimarães, and Lucas Paquetá.",
+            "The midfield failed to consistently win second balls, leaving Gabriel and Marquinhos exposed against direct Moroccan runners.",
+            "Raphinha was isolated on the right flank and often had to drop deep just to receive touches, reducing his final-third impact.",
+            "The lack of a true central focal point up front was clear, raising questions about why Endrick remained unused for the full match."
+          ]
+        },
+        team2: {
+          title: "Morocco: Fearless Intensity Stuns the Heavyweights Early",
+          positives: [
+            "Coached by Tarik Sektioui, Morocco showed that their 2022 World Cup run was no fluke, matching Brazil with a brave and high-energy tactical plan.",
+            "Their compact mid-block and aggressive central pressing dominated the opening spell, with Morocco producing five shots in the first ten minutes.",
+            "The pressure paid off in the 21st minute when Brahim Díaz won a loose midfield ball and slipped a line-breaking pass into Ismael Saibari, who finished calmly over Alisson.",
+            "Ayyoub Bouaddi was a major revelation in midfield, showing composure and defensive intelligence alongside Neil El Aynaoui.",
+            "Morocco’s intensity repeatedly disrupted Brazil’s passing rhythm and denied them easy central progression."
+          ],
+          improvements: [
+            "Morocco’s front-foot press created danger early, but the physical demands became clear after halftime.",
+            "Around the hour mark, they dropped into a reactive low block and surrendered more possession to Brazil.",
+            "Once fatigue set in, Morocco lacked the tactical flexibility to retain possession and control transitions.",
+            "After Brahim Díaz was substituted, the frontline became more isolated and less able to relieve pressure.",
+            "Late defensive substitutions helped stabilize the side, but Morocco still needed major saves from Bono in the final minutes to preserve the draw."
+          ]
+        }
+      }
     },
     {
       id: 7,
@@ -607,7 +851,126 @@ export const matchesData = [
       form2: ["W", "D", "W", "L", "D"],
       insight: "Scotland's physical aerial presence and crossing volume should overload Haiti's box defense.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 0,
+      goals2: 1,
+      scorers1: [],
+      scorers2: ["McGinn 29'"],
+      matchNote: "Scotland's first World Cup game since 1998 was far from straightforward, but they clung on to defeat Haiti 1-0 and go top of Group C.",
+      predictionVsReality: {
+        probabilities: { homeWin: 20, draw: 22, awayWin: 58 },
+        aiOutcome: "Prediction Correct",
+        why: "Scotland’s defensive structure and set-piece resilience matched the model’s expectation, but Haiti’s possession control and attacking pressure made the win far more difficult than predicted."
+      },
+      summaryText: "Scotland defeated Haiti 1-0 in their FIFA World Cup 2026 Group C opener in Boston. John McGinn scored the lone goal in the 28th minute via a deflected shot following a cross from Ben Doak. Despite relentless attacking pressure from Haiti and several late close calls, a disciplined Scottish defense held firm to secure their first World Cup win in 36 years.",
+      timelineEvents: [
+        { minute: "29'", type: "goal", team: "SCO", player: "John McGinn", detail: "Goal — Scotland — McGinn" },
+        { minute: "FT", type: "full_time", score: "Haiti 0-1 Scotland", detail: "FT — Haiti 0-1 Scotland" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "54%", team2: "46%", ratio1: 54, ratio2: 46 },
+        { name: "Expected Goals (xG)", team1: "1.05", team2: "1.05", ratio1: 50, ratio2: 50 },
+        { name: "Total Shots", team1: "15", team2: "9", ratio1: 63, ratio2: 37 },
+        { name: "Shots on Target", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Touches in Opposition Box", team1: "22", team2: "21", ratio1: 51, ratio2: 49 },
+        { name: "Big Chances", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Big Chances Missed", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Accurate Passes", team1: "367 (85%)", team2: "307 (82%)", ratio1: 54, ratio2: 46 },
+        { name: "Yellow Cards", team1: "1", team2: "3", ratio1: 25, ratio2: 75 },
+        { name: "Corners", team1: "4", team2: "3", ratio1: 57, ratio2: 43 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Haiti",
+          formation: "4-4-2",
+          coach: "Sébastien Migné",
+          players: [
+            { number: 1, name: "Placide", rating: 6.4, isCaptain: true, events: [] },
+            { number: 2, name: "Arcus", rating: 6.4, events: [] },
+            { number: 4, name: "Adé", rating: 6.7, events: [] },
+            { number: 5, name: "Delcroix", rating: 6.9, events: [] },
+            { number: 8, name: "Expérience", rating: 7.1, events: [] },
+            { number: 18, name: "Isidor", rating: 5.9, events: [{ type: "sub_off", minute: "75'" }] },
+            { number: 11, name: "Louicius", rating: 6.5, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 17, name: "Jacques", rating: 7.3, events: [] },
+            { number: 10, name: "Bellegarde", rating: 7.3, events: [{ type: "yellow_card" }] },
+            { number: 15, name: "Providence", rating: 6.5, events: [{ type: "sub_off", minute: "85'" }] },
+            { number: 20, name: "Pierrot", rating: 6.0, events: [] }
+          ]
+        },
+        team2: {
+          name: "Scotland",
+          formation: "3-4-2-1",
+          coach: "Steve Clarke",
+          players: [
+            { number: 1, name: "Gunn", rating: 7.7, events: [] },
+            { number: 13, name: "Hendry", rating: 6.8, events: [] },
+            { number: 5, name: "Hanley", rating: 6.8, events: [] },
+            { number: 2, name: "Hickey", rating: 7.3, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "75'" }] },
+            { number: 17, name: "Gannon-Doak", rating: 7.0, events: [{ type: "sub_off", minute: "75'" }] },
+            { number: 4, name: "McTominay", rating: 6.8, events: [] },
+            { number: 19, name: "Ferguson", rating: 7.3, events: [] },
+            { number: 7, name: "McGinn", rating: 7.8, isHighlight: true, events: [{ type: "goal", minute: "29'" }, { type: "sub_off", minute: "82'" }] },
+            { number: 20, name: "Shankland", rating: 6.8, events: [{ type: "sub_off", minute: "82'" }] },
+            { number: 10, name: "Adams", rating: 6.4, events: [{ type: "sub_off", minute: "75'" }] },
+            { number: 3, name: "Robertson", rating: 7.3, isCaptain: true, events: [] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 21, name: "Josué Casimir", rating: 6.2, role: "Midfielder", minute: "61'", events: [] },
+          { number: 16, name: "Lenny Joseph", rating: 6.0, role: "Attacker", minute: "75'", events: [] },
+          { number: 19, name: "Yassin Fortuné", rating: null, role: "Attacker", minute: "85'", events: [] }
+        ],
+        team2: [
+          { number: 22, name: "Nathan Patterson", rating: 6.2, role: "Defender", minute: "75'", events: [] },
+          { number: 11, name: "Ryan Christie", rating: 6.4, role: "Midfielder", minute: "75'", events: [] },
+          { number: 9, name: "Lyndon Dykes", rating: 6.1, role: "Attacker", minute: "75'", events: [] },
+          { number: 25, name: "Findlay Curtis", rating: null, role: "Midfielder", minute: "82'", events: [{ type: "yellow_card" }] },
+          { number: 23, name: "Kenny McLean", rating: null, role: "Midfielder", minute: "82'", events: [{ type: "yellow_card" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "J. McGinn",
+        rating: 7.8,
+        reason: "Scored the only goal."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Haiti: Courageous and Fluid Progressions Ruined by Wayward Finishing",
+          positives: [
+            "Coached by Sébastien Migné, Haiti challenged expectations with a brave, high-energy 4-4-2 setup that out-possessed and out-shot Scotland.",
+            "Jean-Ricner Bellegarde and Danley Jean Jacques dominated midfield phases in the second half, helping Haiti reach 85% passing accuracy.",
+            "Frantzdy Pierrot was a constant physical threat, using his aerial strength to create pressure and unsettle the Scottish backline.",
+            "Hannes Delcroix was excellent in individual defensive duels, cutting out central transitions before they reached danger zones.",
+            "Haiti showed strong territorial dominance and technical confidence despite the narrow defeat."
+          ],
+          improvements: [
+            "Haiti’s final-third execution was poor despite their territorial control and attacking volume.",
+            "Their crossing accuracy was weak, and too many shot attempts missed the target.",
+            "Louicius Deedson and Ruben Providence repeatedly beat defenders but failed to deliver the final ball with enough quality.",
+            "A single defensive lapse around Scotland’s goal punished them heavily.",
+            "The match showed that at World Cup level, execution matters as much as tactical bravery."
+          ]
+        },
+        team2: {
+          title: "Scotland: Historical Result Masked by Passive Terrorball",
+          positives: [
+            "Coached by Steve Clarke, Scotland earned a historic 1-0 victory in Boston, marking their first FIFA World Cup win since 1990.",
+            "Operating in a structured 4-4-2 framework, Scotland’s main attacking spark came through John McGinn, whose left-sided positioning produced the decisive goal.",
+            "Grant Hanley and Jack Hendry were immense in traditional defensive metrics, absorbing repeated late pressure and winning key aerial duels.",
+            "Ben Doak’s first-half burst down the right showed how Scotland’s youth can stretch defensive lines when given space to attack vertically."
+          ],
+          improvements: [
+            "Despite the win, Scotland’s second-half display became extremely passive, dropping into a nervous block and surrendering 54% possession to Haiti.",
+            "Scott McTominay and Lewis Ferguson lost control of the match tempo after the break, struggling with Haiti’s physical transition sequences.",
+            "Ché Adams and Lawrence Shankland were starved of service because of poor final-third distribution.",
+            "Scotland were fortunate to survive a major 79th-minute handball appeal against Hanley that was not penalized.",
+            "Against stronger opponents, this level of passivity could become a major tactical weakness."
+          ]
+        }
+      }
     },
     {
       id: 8,
@@ -616,7 +979,7 @@ export const matchesData = [
       stadium: "BC Place, Vancouver",
       stadiumAtmosphere: "bcplace",
       team1: { name: "Australia", code: "AUS", prob: 40 },
-      team2: { name: "Turkey", code: "TUR", prob: 36 },
+      team2: { name: "Turkiye", code: "TUR", prob: 36 },
       drawProb: 24,
       xG1: 1.3,
       xG2: 1.2,
@@ -626,7 +989,130 @@ export const matchesData = [
       form2: ["L", "W", "W", "D", "L"],
       insight: "A highly competitive physical contest expected; Turkey's technical depth vs Australia's endurance.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 2,
+      goals2: 0,
+      scorers1: ["Irankunda 27'", "Metcalfe 75'"],
+      scorers2: [],
+      matchNote: "Australia caused an upset at the World Cup on Saturday, beating Turkiye 2-0 scoring stunners, to join the United States on three points at the top of Group D.",
+      predictionVsReality: {
+        probabilities: { homeWin: 40, draw: 24, awayWin: 36 },
+        aiOutcome: "Prediction Correct",
+        why: "Turkiye controlled possession and chance volume as expected, but Australia’s compact defensive block, clinical transitions, and decisive finishing completely changed the outcome."
+      },
+      summaryText: "Australia stunned Türkiye with a 2-0 victory in their opening 2026 FIFA World Cup Group D match in Vancouver. Nestory Irankunda opened the scoring with a brilliant first-half breakaway goal, and Connor Metcalfe secured the win with a powerful long-range strike in the second half. Goalkeeper Patrick Beach was named the player of the match, making crucial saves to preserve a clean sheet against intense Turkish pressure.",
+      timelineEvents: [
+        { minute: "27'", type: "goal", team: "AUS", player: "Nestory Irankunda", detail: "Goal — Australia — Irankunda" },
+        { minute: "75'", type: "goal", team: "AUS", player: "Connor Metcalfe", detail: "Goal — Australia — Metcalfe" },
+        { minute: "FT", type: "full_time", score: "Australia 2-0 Turkiye", detail: "FT — Australia 2-0 Turkiye" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "28%", team2: "72%", ratio1: 28, ratio2: 72 },
+        { name: "Expected Goals (xG)", team1: "1.18", team2: "1.36", ratio1: 46, ratio2: 54 },
+        { name: "Total Shots", team1: "9", team2: "30", ratio1: 23, ratio2: 77 },
+        { name: "Shots on Target", team1: "4", team2: "8", ratio1: 33, ratio2: 67 },
+        { name: "Touches in Opposition Box", team1: "18", team2: "51", ratio1: 26, ratio2: 74 },
+        { name: "Big Chances", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Big Chances Missed", team1: "0", team2: "2", ratio1: 0, ratio2: 100 },
+        { name: "Accurate Passes", team1: "201 (74%)", team2: "635 (90%)", ratio1: 24, ratio2: 76 },
+        { name: "Yellow Cards", team1: "0", team2: "1", ratio1: 0, ratio2: 100 },
+        { name: "Corners", team1: "5", team2: "8", ratio1: 38, ratio2: 62 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Australia",
+          formation: "5-4-1",
+          coach: "Tony Popovic",
+          players: [
+            { number: 18, name: "Beach", rating: 8.9, isHighlight: true, events: [] },
+            { number: 4, name: "Italiano", rating: 7.1, events: [{ type: "sub_off", minute: "74'" }] },
+            { number: 3, name: "Circati", rating: 7.2, events: [] },
+            { number: 21, name: "Burgess", rating: 7.3, events: [] },
+            { number: 5, name: "Bos", rating: 6.8, events: [{ type: "sub_off", minute: "83'" }] },
+            { number: 19, name: "Souttar", rating: 7.8, isCaptain: true, events: [] },
+            { number: 8, name: "Metcalfe", rating: 8.0, events: [{ type: "goal", minute: "75'" }] },
+            { number: 13, name: "O'Neill", rating: 7.4, events: [] },
+            { number: 24, name: "Okon-Engstler", rating: 8.1, events: [{ type: "assist" }, { type: "sub_off", minute: "83'" }] },
+            { number: 17, name: "Irankunda", rating: 7.6, events: [{ type: "goal", minute: "27'" }, { type: "sub_off", minute: "61'" }] },
+            { number: 9, name: "Touré", rating: 6.6, events: [{ type: "sub_off", minute: "74'" }] }
+          ]
+        },
+        team2: {
+          name: "Turkiye",
+          formation: "3-4-2-1",
+          coach: "Vincenzo Montella",
+          players: [
+            { number: 23, name: "Çakir", rating: 6.0, events: [] },
+            { number: 3, name: "Demiral", rating: 6.5, events: [] },
+            { number: 14, name: "Bardakci", rating: 7.0, events: [] },
+            { number: 20, name: "Kadioglu", rating: 7.6, events: [] },
+            { number: 8, name: "Güler", rating: 7.4, events: [] },
+            { number: 16, name: "Yüksek", rating: 7.0, events: [{ type: "sub_off", minute: "81'" }] },
+            { number: 6, name: "Kökçü", rating: 6.9, events: [{ type: "sub_off", minute: "62'" }] },
+            { number: 2, name: "Çelik", rating: 6.4, events: [{ type: "sub_off", minute: "81'" }] },
+            { number: 21, name: "Yilmaz", rating: 5.6, events: [{ type: "sub_off", minute: "46'" }] },
+            { number: 7, name: "Aktürkoglu", rating: 6.1, events: [{ type: "sub_off", minute: "85'" }] },
+            { number: 10, name: "Çalhanoğlu", rating: 7.4, isCaptain: true, events: [] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 23, name: "Nishan Velupillay", rating: 6.1, role: "Attacker", minute: "61'", events: [] },
+          { number: 6, name: "Jason Geria", rating: 6.4, role: "Defender", minute: "74'", events: [] },
+          { number: 26, name: "Tete Yengi", rating: 6.2, role: "Attacker", minute: "74'", events: [] },
+          { number: 16, name: "Aziz Behich", rating: null, role: "Defender", minute: "83'", events: [] },
+          { number: 22, name: "Jackson Irvine", rating: null, role: "Midfielder", minute: "83'", events: [] }
+        ],
+        team2: [
+          { number: 11, name: "Kenan Yildiz", rating: 7.2, role: "Midfielder", minute: "46'", events: [] },
+          { number: 19, name: "Yunus Akgün", rating: 6.6, role: "Midfielder", minute: "62'", events: [{ type: "yellow_card" }] },
+          { number: 18, name: "Mert Müldür", rating: null, role: "Defender", minute: "81'", events: [] },
+          { number: 5, name: "Salih Özcan", rating: null, role: "Midfielder", minute: "81'", events: [] },
+          { number: 9, name: "Deniz Gül", rating: null, role: "Attacker", minute: "85'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "N. Irankunda",
+        rating: 7.6,
+        reason: "Scored a goal."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Australia: Gritty Haramball and Lethal Counters Stage a Massive Upset",
+          positives: [
+            "Coached by Tony Popovic, Australia produced the biggest tactical shock of the opening round by leaning into pure efficiency to beat a heavily favored Turkiye side.",
+            "Popovic made a bold selection call by starting 22-year-old Patrick Beach in goal, and the goalkeeper responded with a heroic 8-save clean-sheet performance.",
+            "Australia’s rigid 5-4-1 defensive block crowded central lanes and forced Turkiye into wide areas and low-probability shooting zones.",
+            "In transition, Australia were ruthless. A superb ball over the top from Paul Okon-Engstler released Nestory Irankunda, who used his pace to score a clinical opener.",
+            "After the second-half break, Connor Metcalfe sealed the win with a powerful low strike from the edge of the box."
+          ],
+          improvements: [
+            "Although the tactical plan worked, Australia survived on a very thin margin statistically.",
+            "They allowed 30 total shots and 8 shots on target, showing that the defensive block was frequently bypassed.",
+            "The central midfield had very little presence in possession, with Australia holding only 28% of the ball and completing just 201 accurate passes.",
+            "Mohamed Touré was isolated for long periods, receiving almost no progressive service.",
+            "Against a more clinical elite opponent, conceding this much territory and box pressure could become unsustainable."
+          ]
+        },
+        team2: {
+          title: "Turkiye: Dominant Passing Suffocated by Arrogance and Wasteful Execution",
+          positives: [
+            "Coached by Vincenzo Montella, Turkiye controlled the geography of the match through a fluid 4-2-3-1 structure.",
+            "They dominated possession with 72%, completed 635 accurate passes, and produced 30 total shots.",
+            "Arda Güler was a constant creative threat, drifting between the lines and influencing the final third.",
+            "Hakan Çalhanoğlu controlled possession from deep and repeatedly recycled play into wide areas.",
+            "Their territorial press was effective in preventing standard Australian buildup from progressing beyond midfield."
+          ],
+          improvements: [
+            "Turkiye’s dominance was undone by tactical hubris and poor execution in the final third.",
+            "Their possession lacked enough lateral speed to disorganize Australia’s compact five-back defensive shell.",
+            "Too many attacks ended in predictable crosses or shots that suited Australia’s defensive strengths.",
+            "Defensive transition tracking was poor, with the back line caught sleeping on the direct sequence that led to Australia’s opener.",
+            "Despite creating high shot volume, Turkiye’s finishing was toothless, leaving their highly rated squad empty-handed on opening night."
+          ]
+        }
+      }
     },
     {
       id: 9,
@@ -635,7 +1121,7 @@ export const matchesData = [
       stadium: "NRG Stadium, Houston, Texas",
       stadiumAtmosphere: "nrg",
       team1: { name: "Germany", code: "GER", prob: 78 },
-      team2: { name: "Curacao", code: "CUR", prob: 8 },
+      team2: { name: "Curaçao", code: "CUR", prob: 8 },
       drawProb: 14,
       xG1: 2.8,
       xG2: 0.5,
@@ -645,7 +1131,133 @@ export const matchesData = [
       form2: ["D", "L", "L", "W", "D"],
       insight: "Germany's vertical overload and ball-recovery speeds will keep Curacao in their defensive third.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 7,
+      goals2: 1,
+      scorers1: ["Nmecha 6'", "Schlotterbeck 38'", "Havertz 45+5' (Pen)", "Musiala 47'", "Brown 68'", "Undav 78'", "Havertz 88'"],
+      scorers2: ["Comenencia 21'"],
+      matchNote: "Germany made a statement in their World Cup opener, registering their biggest win at the tournament since the 2014 semi-final versus Brazil.",
+      predictionVsReality: {
+        probabilities: { homeWin: 78, draw: 14, awayWin: 8 },
+        aiOutcome: "Prediction Correct",
+        why: "Germany's attacking depth, positional rotations, and final-third efficiency matched the pre-match model's expectation of a dominant German win."
+      },
+      summaryText: "Germany comfortably routed World Cup debutants Curaçao 7-1 in their opening Group E match at Houston Stadium. Felix Nmecha opened the scoring early, but Curaçao briefly shocked the Germans when Livano Comenencia equalized to score his country's first-ever tournament goal. From there, Germany relentlessly took control with a header from Nico Schlotterbeck, two goals from Kai Havertz, and finishes by Jamal Musiala, Nathaniel Brown, and Deniz Undav to seal a comprehensive victory.",
+      timelineEvents: [
+        { minute: "6'", type: "goal", team: "GER", player: "Felix Nmecha", detail: "Goal — Germany — Nmecha" },
+        { minute: "21'", type: "goal", team: "CUR", player: "Livano Comenencia", detail: "Goal — Curaçao — Comenencia" },
+        { minute: "38'", type: "goal", team: "GER", player: "Nico Schlotterbeck", detail: "Goal — Germany — Schlotterbeck" },
+        { minute: "45+5'", type: "goal", team: "GER", player: "Kai Havertz", detail: "Goal — Germany — Havertz (Pen)" },
+        { minute: "47'", type: "goal", team: "GER", player: "Jamal Musiala", detail: "Goal — Germany — Musiala" },
+        { minute: "68'", type: "goal", team: "GER", player: "Nathaniel Brown", detail: "Goal — Germany — Brown" },
+        { minute: "78'", type: "goal", team: "GER", player: "Deniz Undav", detail: "Goal — Germany — Undav" },
+        { minute: "88'", type: "goal", team: "GER", player: "Kai Havertz", detail: "Goal — Germany — Havertz" },
+        { minute: "FT", type: "full_time", score: "Germany 7-1 Curaçao", detail: "FT — Germany 7-1 Curaçao" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "65%", team2: "35%", ratio1: 65, ratio2: 35 },
+        { name: "Expected Goals (xG)", team1: "4.22", team2: "0.41", ratio1: 91, ratio2: 9 },
+        { name: "Total Shots", team1: "26", team2: "8", ratio1: 76, ratio2: 24 },
+        { name: "Shots on Target", team1: "12", team2: "2", ratio1: 86, ratio2: 14 },
+        { name: "Touches in Opposition Box", team1: "63", team2: "10", ratio1: 86, ratio2: 14 },
+        { name: "Big Chances", team1: "6", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Big Chances Missed", team1: "2", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Accurate Passes", team1: "554 (87%)", team2: "282 (82%)", ratio1: 66, ratio2: 34 },
+        { name: "Corners", team1: "8", team2: "1", ratio1: 89, ratio2: 11 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Germany",
+          formation: "4-2-3-1",
+          coach: "Julian Nagelsmann",
+          players: [
+            { number: 1, name: "Neuer", rating: 6.6, events: [] },
+            { number: 4, name: "Tah", rating: 6.9, events: [{ type: "sub_off", minute: "72'" }] },
+            { number: 6, name: "Kimmich", rating: 8.8, isCaptain: true, events: [{ type: "assist" }, { type: "assist" }, { type: "sub_off", minute: "83'" }] },
+            { number: 15, name: "Schlotterbeck", rating: 8.9, isHighlight: true, events: [{ type: "goal", minute: "38'" }] },
+            { number: 5, name: "Pavlovic", rating: 7.6, events: [] },
+            { number: 23, name: "Nmecha", rating: 8.6, events: [{ type: "goal", minute: "6'" }, { type: "sub_off", minute: "72'" }] },
+            { number: 19, name: "Sané", rating: 7.2, events: [] },
+            { number: 10, name: "Musiala", rating: 8.3, events: [{ type: "goal", minute: "47'" }, { type: "sub_off", minute: "64'" }] },
+            { number: 17, name: "Wirtz", rating: 8.4, events: [] },
+            { number: 7, name: "Havertz", rating: 8.9, events: [{ type: "goal", minute: "45+5'" }, { type: "goal", minute: "88'" }] },
+            { number: 18, name: "Brown", rating: 8.5, events: [{ type: "goal", minute: "68'" }, { type: "assist" }, { type: "sub_off", minute: "72'" }] }
+          ]
+        },
+        team2: {
+          name: "Curaçao",
+          formation: "4-2-3-1",
+          coach: "Dick Advocaat",
+          players: [
+            { number: 1, name: "Room", rating: 4.1, events: [] },
+            { number: 24, name: "Fonville", rating: 4.8, events: [] },
+            { number: 18, name: "Obispo", rating: 5.3, events: [] },
+            { number: 23, name: "Bazoer", rating: 4.1, events: [] },
+            { number: 5, name: "Floranus", rating: 4.9, events: [] },
+            { number: 7, name: "Bacuna", rating: 7.4, events: [] },
+            { number: 10, name: "Bacuna", rating: 5.8, isCaptain: true, events: [] },
+            { number: 21, name: "Chong", rating: 7.0, events: [{ type: "sub_off", minute: "82'" }] },
+            { number: 8, name: "Comenencia", rating: 8.1, events: [{ type: "goal", minute: "21'" }, { type: "sub_off", minute: "65'" }] },
+            { number: 9, name: "Locadia", rating: 6.0, events: [{ type: "sub_off", minute: "65'" }] },
+            { number: 12, name: "Hansen", rating: 6.6, events: [{ type: "sub_off", minute: "46'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 26, name: "Deniz Undav", rating: 8.8, role: "Attacker", minute: "64'", events: [{ type: "goal", minute: "78'" }, { type: "assist" }, { type: "assist" }] },
+          { number: 2, name: "Antonio Rüdiger", rating: 6.3, role: "Defender", minute: "72'", events: [] },
+          { number: 22, name: "David Raum", rating: 6.3, role: "Defender", minute: "72'", events: [] },
+          { number: 8, name: "Leon Goretzka", rating: 6.0, role: "Midfielder", minute: "72'", events: [] },
+          { number: 3, name: "Waldemar Anton", rating: null, role: "Defender", minute: "83'", events: [] }
+        ],
+        team2: [
+          { number: 11, name: "Jeremy Antonisse", rating: 6.4, role: "Attacker", minute: "46'", events: [] },
+          { number: 16, name: "Jearl Margaritha", rating: 5.8, role: "Attacker", minute: "65'", events: [] },
+          { number: 19, name: "Gervane Kastaneer", rating: null, role: "Attacker", minute: "82'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Kai Havertz",
+        rating: 8.9,
+        reason: "Scored two goals, had the most touches in the opposition box (11), and took the joint-most shots (4)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Germany: Ruthless Attacking Machine Marred by Transition Flaws",
+          positives: [
+            "Coached by Julian Nagelsmann, Germany launched their Group E campaign with a resounding 7-1 demolition at Houston Stadium.",
+            "Operating in a creative 4-2-3-1 setup, Germany overwhelmed Curaçao through a fluid narrow attacking midfield line where Florian Wirtz and Jamal Musiala rotated constantly to create central pockets.",
+            "Kai Havertz led the attack with a clinical brace, including a penalty and a late finish.",
+            "Nathaniel Brown produced a sensational breakout performance, contributing with aggressive overlapping runs, a goal, and an assist from a corner.",
+            "Nagelsmann's tactical flexibility stood out during the first-half hydration break, as Joshua Kimmich was adjusted into a right-sided center-half role to stabilize defensive geometry and reduce counters."
+          ],
+          improvements: [
+            "Despite the seven-goal output, Germany's ultra-high defensive line and incomplete counter-press exposed dangerous transition gaps.",
+            "The counter-press took too long to recover loose balls, leaving large spaces behind the backline.",
+            "Curaçao's equalizer in the 21st minute came from one of their first real attacking phases, showing how quickly Germany can be punished when their structure opens up.",
+            "The asymmetric midfield shape left an empty defensive pocket on the right side of the pitch that stronger opponents could exploit.",
+            "Against elite sides, Germany must tighten their rest defence and improve recovery speed after turnovers."
+          ]
+        },
+        team2: {
+          title: "Curaçao: Historic Moment Erased by Late-Game Physical Collapse",
+          positives: [
+            "Coached by Dick Advocaat, Curaçao played with bravery and aggression early despite facing one of the tournament's strongest teams.",
+            "Their narrow 4-2-3-1 counter-attacking shape refused to sit passively and tried to attack Germany's wide spaces through Tahith Chong and Juninho Bacuna.",
+            "The approach produced a historic moment in the 21st minute when Livano Comenencia scored Curaçao's first-ever World Cup goal.",
+            "Goalkeeper Eloy Room showed individual resilience under heavy pressure, making key saves during Germany's early barrage.",
+            "For the first half-hour, Curaçao's boldness caused Germany real defensive discomfort."
+          ],
+          improvements: [
+            "Curaçao's attempt to play an open front-foot game against Germany became physically unsustainable.",
+            "Their aggressive structure created early promise but collapsed badly once fatigue set in.",
+            "Around the hour mark, the defensive lines dropped into an unorganized low block and surrendered 65% possession.",
+            "They struggled to track Germany's lateral movement and repeatedly lost marking assignments on set pieces and central combinations.",
+            "The match showed that tactical bravery must be supported by endurance, compactness, and better defensive discipline across 90 minutes."
+          ]
+        }
+      }
     },
     {
       id: 10,
@@ -664,30 +1276,136 @@ export const matchesData = [
       form2: ["W", "W", "D", "W", "D"],
       insight: "Netherlands' possession control vs Japan's high-efficiency counter-pressing system.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 2,
+      goals2: 2,
+      scorers1: ["van Dijk 50'", "Summerville 64'"],
+      scorers2: ["Nakamura 57'", "Kamada 88'"],
+      matchNote: "Netherlands looked set to clinch all three points in their World Cup opener, but Daichi Kamada and Japan had other ideas.",
+      predictionVsReality: {
+        probabilities: { homeWin: 54, draw: 24, awayWin: 22 },
+        aiOutcome: "Prediction Missed",
+        why: "Netherlands controlled possession and created strong phases as expected, but Japan's tactical discipline, substitutions, and late set-piece pressure turned the match into a draw."
+      },
+      summaryText: "The Netherlands and Japan played out an entertaining 2-2 draw in their opening Group F match of the 2026 FIFA World Cup. Virgil van Dijk and Crysencio Summerville scored for the Dutch, but the Samurai Blue showed great resilience, equalizing twice through Keito Nakamura and a late Daichi Kamada deflection.",
+      timelineEvents: [
+        { minute: "50'", type: "goal", team: "NED", player: "Virgil van Dijk", detail: "Goal — Netherlands — van Dijk" },
+        { minute: "57'", type: "goal", team: "JPN", player: "Keito Nakamura", detail: "Goal — Japan — Nakamura" },
+        { minute: "64'", type: "goal", team: "NED", player: "Crysencio Summerville", detail: "Goal — Netherlands — Summerville" },
+        { minute: "88'", type: "goal", team: "JPN", player: "Daichi Kamada", detail: "Goal — Japan — Kamada" },
+        { minute: "FT", type: "full_time", score: "Netherlands 2-2 Japan", detail: "FT — Netherlands 2-2 Japan" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "60%", team2: "40%", ratio1: 60, ratio2: 40 },
+        { name: "Expected Goals (xG)", team1: "0.78", team2: "0.59", ratio1: 57, ratio2: 43 },
+        { name: "Total Shots", team1: "10", team2: "10", ratio1: 50, ratio2: 50 },
+        { name: "Shots on Target", team1: "6", team2: "3", ratio1: 67, ratio2: 33 },
+        { name: "Touches in Opposition Box", team1: "33", team2: "19", ratio1: 63, ratio2: 37 },
+        { name: "Big Chances", team1: "0", team2: "0", ratio1: 50, ratio2: 50 },
+        { name: "Big Chances Missed", team1: "0", team2: "0", ratio1: 50, ratio2: 50 },
+        { name: "Accurate Passes", team1: "463 (88%)", team2: "286 (84%)", ratio1: 62, ratio2: 38 },
+        { name: "Yellow Cards", team1: "3", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "5", team2: "4", ratio1: 56, ratio2: 44 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Netherlands",
+          formation: "4-3-3",
+          coach: "Ronald Koeman",
+          players: [
+            { number: 1, name: "Verbruggen", rating: 5.8, events: [] },
+            { number: 22, name: "Dumfries", rating: 6.7, events: [] },
+            { number: 6, name: "van Hecke", rating: 7.3, events: [] },
+            { number: 4, name: "van Dijk", rating: 7.9, isCaptain: true, events: [{ type: "goal", minute: "50'" }] },
+            { number: 15, name: "Van de Ven", rating: 6.6, events: [{ type: "yellow_card" }] },
+            { number: 8, name: "Gravenberch", rating: 8.4, isHighlight: true, events: [{ type: "assist" }, { type: "assist" }, { type: "sub_off", minute: "81'" }] },
+            { number: 21, name: "de Jong", rating: 7.9, events: [] },
+            { number: 14, name: "Reijnders", rating: 6.8, events: [{ type: "sub_off", minute: "70'" }] },
+            { number: 24, name: "Summerville", rating: 7.8, events: [{ type: "goal", minute: "64'" }, { type: "yellow_card" }, { type: "sub_off", minute: "70'" }] },
+            { number: 18, name: "Malen", rating: 6.8, events: [{ type: "sub_off", minute: "70'" }] },
+            { number: 11, name: "Gakpo", rating: 7.2, events: [{ type: "sub_off", minute: "84'" }] }
+          ]
+        },
+        team2: {
+          name: "Japan",
+          formation: "3-4-2-1",
+          coach: "Hajime Moriyasu",
+          players: [
+            { number: 1, name: "Suzuki", rating: 6.7, events: [] },
+            { number: 21, name: "Ito", rating: 5.8, events: [] },
+            { number: 3, name: "Taniguchi", rating: 6.7, events: [] },
+            { number: 10, name: "Doan", rating: 6.4, isCaptain: true, events: [{ type: "sub_off", minute: "75'" }] },
+            { number: 13, name: "Nakamura", rating: 8.1, events: [{ type: "goal", minute: "57'" }] },
+            { number: 24, name: "Sano", rating: 6.2, events: [] },
+            { number: 15, name: "Kamada", rating: 8.1, events: [{ type: "goal", minute: "88'" }] },
+            { number: 11, name: "Maeda", rating: 6.0, events: [{ type: "sub_off", minute: "66'" }] },
+            { number: 8, name: "Kubo", rating: 7.2, events: [{ type: "assist" }, { type: "sub_off", minute: "75'" }] },
+            { number: 18, name: "Ueda", rating: 6.5, events: [{ type: "sub_off", minute: "84'" }] },
+            { number: 16, name: "Watanabe", rating: 6.6, events: [{ type: "sub_off", minute: "75'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 26, name: "Quinten Timber", rating: 6.5, role: "Midfielder", minute: "70'", events: [] },
+          { number: 20, name: "Teun Koopmeiners", rating: 6.1, role: "Midfielder", minute: "70'", events: [] },
+          { number: 10, name: "Memphis Depay", rating: 6.1, role: "Attacker", minute: "70'", events: [{ type: "yellow_card" }] },
+          { number: 5, name: "Nathan Aké", rating: null, role: "Defender", minute: "81'", events: [] },
+          { number: 19, name: "Brian Brobbey", rating: null, role: "Attacker", minute: "84'", events: [] }
+        ],
+        team2: [
+          { number: 14, name: "Junya Ito", rating: 6.7, role: "Attacker", minute: "66'", events: [] },
+          { number: 22, name: "Takehiro Tomiyasu", rating: 6.4, role: "Defender", minute: "75'", events: [] },
+          { number: 2, name: "Yukinari Sugawara", rating: 6.5, role: "Defender", minute: "75'", events: [] },
+          { number: 19, name: "Koki Ogawa", rating: 6.8, role: "Attacker", minute: "75'", events: [{ type: "assist" }] },
+          { number: 26, name: "Kento Shiogai", rating: null, role: "Attacker", minute: "84'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Virgil van Dijk",
+        rating: 7.9,
+        reason: "Scored a goal, had the joint-most defensive contributions (9), and had the most touches (114)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Netherlands: Dominant Possession Undone by Static Tempo and Lead Management",
+          positives: [
+            "Coached by Ronald Koeman, the Netherlands controlled the baseline geography of their Group F opener by commanding 60% possession and pinning Japan back for long stretches.",
+            "Operating in a fluid 4-1-2-3 shape, the Dutch used their physical profile to create direct chances and aerial threat.",
+            "Ryan Gravenberch's accurate delivery helped Virgil van Dijk power home a commanding header.",
+            "Crysencio Summerville provided electric individual quality from the wing, cutting inside the box and curling home a superb second-half goal.",
+            "Frenkie de Jong stabilized deep recycling phases and allowed the full-backs to push high."
+          ],
+          improvements: [
+            "Despite twice taking the lead, the Dutch approach was hurt by slow, sterile possession and poor lead management.",
+            "The central midfield lacked quick lateral circulation, often reducing final-third attacks to predictable wing sequences.",
+            "Jan Paul van Hecke and Virgil van Dijk looked uncoordinated against Japan's swift low-to-the-ground transitions.",
+            "The defensive line failed to close down the edge of the box for Japan's first equalizer.",
+            "Late substitutions disrupted defensive shape, with the team dropping too deep and losing a crucial back-post assignment during Japan's late equalizer."
+          ]
+        },
+        team2: {
+          title: "Japan: Exceptional Tactical Solidarity and Clutch In-Game Adjustments",
+          positives: [
+            "Coached by Hajime Moriyasu, Japan again showed their elite giant-killing reputation through technical discipline and tactical resilience.",
+            "Their organized 3-4-3 defensive structure kept the central block compact while waiting patiently for transition triggers.",
+            "Japan responded immediately after falling behind, with Takefusa Kubo releasing Keito Nakamura for a brilliant low finish.",
+            "Moriyasu's second-half game management was excellent, using bold substitutions to completely alter Japan's movement patterns.",
+            "The late equalizer came from tactical bravery, as Junya Ito's corner created the decisive deflection involving Koki Ogawa and Daichi Kamada."
+          ],
+          improvements: [
+            "Japan's initial passivity forced them to operate on very fine margins for long stretches.",
+            "By surrendering midfield control early and holding only 40% possession, Ayase Ueda was left isolated without reliable service.",
+            "The back three struggled with the Dutch frontline's physical size during aerial and static situations.",
+            "Wide defenders had difficulty managing inside-out movement, leaving half-spaces open for Dutch attackers.",
+            "Japan will need more sustained possession phases if they want to avoid constantly chasing matches against elite teams."
+          ]
+        }
+      }
     },
     {
       id: 11,
       date: "Jun 15 2026, Mon - 04:30 (IST)",
-      group: "Group E",
-      stadium: "Lincoln Financial Field, Philadelphia",
-      stadiumAtmosphere: "lincoln",
-      team1: { name: "Cote d'Ivoire", code: "CIV", prob: 38 },
-      team2: { name: "Ecuador", code: "ECU", prob: 36 },
-      drawProb: 26,
-      xG1: 1.2,
-      xG2: 1.2,
-      aiConfidence: 58,
-      intensity: 80,
-      form1: ["W", "L", "W", "D", "L"],
-      form2: ["D", "W", "L", "W", "W"],
-      insight: "Tactical battle in midfield; Ecuador's athletic pressing vs Cote d'Ivoire's individual flair.",
-      isTopGame: false,
-      status: "Upcoming"
-    },
-    {
-      id: 12,
-      date: "Jun 15 2026, Mon - 07:30 (IST)",
       group: "Group F",
       stadium: "Estadio BBVA, Guadalupe",
       stadiumAtmosphere: "bbva",
@@ -702,7 +1420,273 @@ export const matchesData = [
       form2: ["L", "W", "D", "L", "W"],
       insight: "Sweden's set-piece designs and structural defensive width should limit Tunisia's key avenues.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 5,
+      goals2: 1,
+      scorers1: ["Ayari 7'", "Isak 30'", "Gyökeres 59'", "Svanberg 84'", "Ayari 90+6'"],
+      scorers2: ["Rekik 43'"],
+      matchNote: "Sweden got their World Cup campaign off to an emphatic start as they dispatched Tunisia in Group F, with their star strikers on target.",
+      predictionVsReality: {
+        probabilities: { homeWin: 50, draw: 25, awayWin: 25 },
+        aiOutcome: "Prediction Correct",
+        why: "Sweden's attacking efficiency, direct transition threat, and striker movement matched the pre-match model's expectation of a Swedish advantage."
+      },
+      summaryText: "Sweden thrashed Tunisia 5-1 at Estadio Monterrey to take early control of Group F in their opening match of the FIFA World Cup 2026. Midfielder Yasin Ayari stole the headlines by scoring two spectacular long-range goals against his father's native country. Sweden's star attacking duo of Alexander Isak and Viktor Gyökeres combined brilliantly, each scoring a goal and providing assists, while Mattias Svanberg added a fifth goal just 16 seconds after coming on as a substitute. Tunisia's solitary response came from an Omar Rekik header right before halftime, which briefly cut the deficit to 2-1 before Sweden completely dominated the second half.",
+      timelineEvents: [
+        { minute: "7'", type: "goal", team: "SWE", player: "Yasin Ayari", detail: "Goal — Sweden — Ayari" },
+        { minute: "30'", type: "goal", team: "SWE", player: "Alexander Isak", detail: "Goal — Sweden — Isak" },
+        { minute: "43'", type: "goal", team: "TUN", player: "Omar Rekik", detail: "Goal — Tunisia — Rekik" },
+        { minute: "59'", type: "goal", team: "SWE", player: "Viktor Gyökeres", detail: "Goal — Sweden — Gyökeres" },
+        { minute: "84'", type: "goal", team: "SWE", player: "Mattias Svanberg", detail: "Goal — Sweden — Svanberg" },
+        { minute: "90+6'", type: "goal", team: "SWE", player: "Yasin Ayari", detail: "Goal — Sweden — Ayari" },
+        { minute: "FT", type: "full_time", score: "Sweden 5-1 Tunisia", detail: "FT — Sweden 5-1 Tunisia" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "49%", team2: "51%", ratio1: 49, ratio2: 51 },
+        { name: "Expected Goals (xG)", team1: "1.33", team2: "0.28", ratio1: 83, ratio2: 17 },
+        { name: "Total Shots", team1: "13", team2: "6", ratio1: 68, ratio2: 32 },
+        { name: "Shots on Target", team1: "7", team2: "2", ratio1: 78, ratio2: 22 },
+        { name: "Touches in Opposition Box", team1: "22", team2: "10", ratio1: 69, ratio2: 31 },
+        { name: "Big Chances", team1: "4", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Big Chances Missed", team1: "2", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Accurate Passes", team1: "278 (78%)", team2: "292 (79%)", ratio1: 49, ratio2: 51 },
+        { name: "Yellow Cards", team1: "0", team2: "1", ratio1: 0, ratio2: 100 },
+        { name: "Corners", team1: "4", team2: "2", ratio1: 67, ratio2: 33 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Sweden",
+          formation: "3-4-1-2",
+          coach: "Graham Potter",
+          players: [
+            { number: 23, name: "Nordfeldt", rating: 6.3, events: [] },
+            { number: 2, name: "Lagerbielke", rating: 6.7, events: [] },
+            { number: 4, name: "Hien", rating: 7.1, events: [] },
+            { number: 3, name: "Lindelöf", rating: 7.0, isCaptain: true, events: [] },
+            { number: 21, name: "Bernhardsson", rating: 6.9, events: [{ type: "sub_off", minute: "90'" }] },
+            { number: 16, name: "Karlström", rating: 6.9, events: [{ type: "sub_off", minute: "84'" }] },
+            { number: 10, name: "Nygren", rating: 6.7, events: [{ type: "sub_off", minute: "64'" }] },
+            { number: 18, name: "Ayari", rating: 8.9, isHighlight: true, events: [{ type: "goal", minute: "7'" }, { type: "goal", minute: "90+6'" }] },
+            { number: 5, name: "Gudmundsson", rating: 7.2, events: [{ type: "sub_off", minute: "64'" }] },
+            { number: 17, name: "Gyökeres", rating: 8.7, events: [{ type: "goal", minute: "59'" }, { type: "assist" }] },
+            { number: 9, name: "Isak", rating: 8.8, events: [{ type: "goal", minute: "30'" }, { type: "assist" }, { type: "assist" }, { type: "sub_off", minute: "90'" }] }
+          ]
+        },
+        team2: {
+          name: "Tunisia",
+          formation: "4-2-3-1",
+          coach: "Sabri Lamouchi",
+          players: [
+            { number: 1, name: "Chamakh", rating: 1.9, events: [] },
+            { number: 2, name: "Abdi", rating: 4.6, events: [] },
+            { number: 3, name: "Talbi", rating: 5.4, events: [] },
+            { number: 4, name: "Rekik", rating: 6.1, events: [{ type: "goal", minute: "43'" }] },
+            { number: 17, name: "Skhiri", rating: 5.8, isCaptain: true, events: [] },
+            { number: 13, name: "Khedira", rating: 5.7, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "84'" }] },
+            { number: 25, name: "Ben Slimane", rating: 6.4, events: [{ type: "sub_off", minute: "84'" }] },
+            { number: 10, name: "Hannibal", rating: 8.0, events: [{ type: "assist" }] },
+            { number: 21, name: "Ben Hamida", rating: 6.0, events: [] },
+            { number: 8, name: "Saad", rating: 6.3, events: [{ type: "sub_off", minute: "72'" }] },
+            { number: 20, name: "Valery", rating: 5.4, events: [{ type: "sub_off", minute: "72'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 24, name: "Elliot Stroud", rating: 6.2, role: "Midfielder", minute: "64'", events: [] },
+          { number: 7, name: "Lucas Bergvall", rating: 7.4, role: "Midfielder", minute: "64'", events: [{ type: "assist" }] },
+          { number: 19, name: "Mattias Svanberg", rating: null, role: "Midfielder", minute: "84'", events: [{ type: "goal", minute: "84'" }] },
+          { number: 8, name: "Daniel Svensson", rating: null, role: "Midfielder", minute: "90'", events: [] },
+          { number: 11, name: "Anthony Elanga", rating: null, role: "Attacker", minute: "90'", events: [] }
+        ],
+        team2: [
+          { number: 7, name: "Elias Achouri", rating: 6.2, role: "Midfielder", minute: "72'", events: [] },
+          { number: 15, name: "Hadj Mahmoud", rating: 6.5, role: "Midfielder", minute: "72'", events: [] },
+          { number: 26, name: "Sebastian Tounekti", rating: 5.8, role: "Attacker", minute: "72'", events: [] },
+          { number: 11, name: "Ismaël Gharbi", rating: null, role: "Midfielder", minute: "84'", events: [] },
+          { number: 19, name: "Firas Chaouat", rating: null, role: "Attacker", minute: "84'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Alexander Isak",
+        rating: 8.8,
+        reason: "One goal and two assists."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Sweden: Ruthless Efficiency and Direct Striking Synergy",
+          positives: [
+            "Coached by Graham Potter, Sweden surged to the top of Group F with an emphatic 5-1 win at Estadio Monterrey.",
+            "Operating from a fluid 3-4-1-2 shape, Sweden maximized space by bypassing unnecessary midfield circulation and attacking directly through transition moments.",
+            "Yasin Ayari was the catalyst, opening and closing the scoring with two spectacular long-range strikes.",
+            "Alexander Isak and Viktor Gyökeres combined brilliantly, with both forwards constantly stretching Tunisia through physicality, movement, and overlapping runs.",
+            "Potter's late introduction of Mattias Svanberg paid off immediately, with the substitute scoring almost instantly after entering the pitch."
+          ],
+          improvements: [
+            "Despite the five-goal margin, Sweden's defensive unit showed vulnerability against static crosses and aerial set-piece sequences.",
+            "The back three briefly switched off before halftime, allowing Omar Rekik to head Tunisia back into the match.",
+            "Sweden sacrificed sustained possession for verticality, finishing with only 49% possession.",
+            "The central midfield occasionally looked overrun during middle phases of the first half.",
+            "Against elite possession-heavy teams, surrendering the engine room could expose the backline more severely."
+          ]
+        },
+        team2: {
+          title: "Tunisia: Catastrophic Defensive Blunders Undo Set-Piece Resilience",
+          positives: [
+            "Coached by Sabri Lamouchi, Tunisia showed brief competitive fire during the closing stages of the first half.",
+            "Their midfield line, led by Hannibal Mejbri and Anis Ben Slimane, helped Tunisia edge possession with 51%.",
+            "Tunisia's set-piece focus produced their only goal, with Hannibal delivering a dangerous free-kick for Omar Rekik to head home in the 43rd minute.",
+            "That goal briefly cut the deficit to 2-1 and gave Tunisia momentum heading into halftime."
+          ],
+          improvements: [
+            "Tunisia's defensive discipline collapsed under Sweden's direct and relentless attacking pressure.",
+            "The team committed damaging errors in their own defensive third, especially before Sweden's third goal.",
+            "Ellyes Skhiri was caught over-dribbling near his own box, allowing Isak to win possession and set up Gyökeres.",
+            "After the third goal, Tunisia's 4-2-3-1 structure disintegrated badly.",
+            "The backline lacked the pace and tracking discipline to handle Sweden's vertical runners, while the forward line received very little clean service."
+          ]
+        }
+      }
+    },
+    {
+      id: 12,
+      date: "Jun 15 2026, Mon - 07:30 (IST)",
+      group: "Group E",
+      stadium: "Lincoln Financial Field, Philadelphia",
+      stadiumAtmosphere: "lincoln",
+      team1: { name: "Cote d'Ivoire", code: "CIV", prob: 38 },
+      team2: { name: "Ecuador", code: "ECU", prob: 36 },
+      drawProb: 26,
+      xG1: 1.2,
+      xG2: 1.2,
+      aiConfidence: 58,
+      intensity: 80,
+      form1: ["W", "L", "W", "D", "L"],
+      form2: ["D", "W", "L", "W", "W"],
+      insight: "Tactical battle in midfield; Ecuador's athletic pressing vs Cote d'Ivoire's individual flair.",
+      isTopGame: false,
+      status: "Completed",
+      goals1: 1,
+      goals2: 0,
+      scorers1: ["Amad 90'"],
+      scorers2: [],
+      matchNote: "Ivory Coast and Ecuador looked set for a point apiece in their Group E opener at the 2026 World Cup, but super sub Amad Diallo had other ideas.",
+      predictionVsReality: {
+        probabilities: { homeWin: 38, draw: 26, awayWin: 36 },
+        aiOutcome: "Prediction Correct",
+        why: "Ivory Coast’s physical resilience, late substitution impact, and transition threat ultimately outweighed Ecuador’s possession control and early territorial dominance."
+      },
+      summaryText: "Amad Diallo scored a dramatic 90th-minute winner to give the Ivory Coast a 1-0 victory over Ecuador in their opening 2026 World Cup Group E match in Philadelphia. Ecuador dominated large stretches of the game but was denied multiple times by the woodwork. A strong run and cross from Wilfried Singo ultimately set up the late breakthrough to seal the vital points for the West Africans.",
+      timelineEvents: [
+        { minute: "90'", type: "goal", team: "CIV", player: "Amad", detail: "Goal — Ivory Coast — Amad" },
+        { minute: "FT", type: "full_time", score: "Ivory Coast 1-0 Ecuador", detail: "FT — Ivory Coast 1-0 Ecuador" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "48%", team2: "52%", ratio1: 48, ratio2: 52 },
+        { name: "Expected Goals (xG)", team1: "1.52", team2: "1.01", ratio1: 60, ratio2: 40 },
+        { name: "Total Shots", team1: "15", team2: "12", ratio1: 56, ratio2: 44 },
+        { name: "Shots on Target", team1: "4", team2: "1", ratio1: 80, ratio2: 20 },
+        { name: "Touches in Opposition Box", team1: "39", team2: "16", ratio1: 71, ratio2: 29 },
+        { name: "Big Chances", team1: "2", team2: "1", ratio1: 67, ratio2: 33 },
+        { name: "Big Chances Missed", team1: "2", team2: "1", ratio1: 67, ratio2: 33 },
+        { name: "Accurate Passes", team1: "397 (84%)", team2: "419 (85%)", ratio1: 49, ratio2: 51 },
+        { name: "Yellow Cards", team1: "3", team2: "1", ratio1: 75, ratio2: 25 },
+        { name: "Corners", team1: "3", team2: "5", ratio1: 38, ratio2: 62 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Cote d'Ivoire",
+          formation: "4-4-2",
+          coach: "Emerse Faé",
+          players: [
+            { number: 1, name: "Fofana", rating: 7.6, events: [] },
+            { number: 17, name: "Doué", rating: 7.6, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "89'" }] },
+            { number: 20, name: "Agbadou", rating: 7.7, events: [] },
+            { number: 3, name: "Konan", rating: 7.0, events: [] },
+            { number: 5, name: "Singo", rating: 8.3, isHighlight: true, events: [{ type: "assist" }] },
+            { number: 8, name: "Kessié", rating: 7.5, isCaptain: true, events: [{ type: "yellow_card" }] },
+            { number: 6, name: "Fofana", rating: 6.9, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "77'" }] },
+            { number: 11, name: "Diomandé", rating: 8.3, events: [] },
+            { number: 24, name: "Touré", rating: 6.2, events: [{ type: "sub_off", minute: "56'" }] },
+            { number: 19, name: "Pépé", rating: 6.7, events: [{ type: "sub_off", minute: "77'" }] },
+            { number: 12, name: "Wahi", rating: 6.6, events: [{ type: "sub_off", minute: "56'" }] }
+          ]
+        },
+        team2: {
+          name: "Ecuador",
+          formation: "3-5-2",
+          coach: "Sebastián Beccacece",
+          players: [
+            { number: 1, name: "Galíndez", rating: 6.5, events: [] },
+            { number: 3, name: "Hincapié", rating: 6.5, events: [] },
+            { number: 6, name: "Pacho", rating: 6.9, events: [] },
+            { number: 4, name: "Ordóñez", rating: 6.9, events: [] },
+            { number: 14, name: "Minda", rating: 6.6, events: [{ type: "sub_off", minute: "56'" }] },
+            { number: 15, name: "Vite", rating: 7.3, events: [] },
+            { number: 23, name: "Caicedo", rating: 6.9, events: [] },
+            { number: 21, name: "Franco", rating: 6.9, events: [{ type: "sub_off", minute: "62'" }] },
+            { number: 9, name: "Yeboah", rating: 6.9, events: [{ type: "sub_off", minute: "62'" }] },
+            { number: 19, name: "Plata", rating: 7.3, events: [] },
+            { number: 13, name: "Valencia", rating: 6.6, isCaptain: true, events: [{ type: "sub_off", minute: "77'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 15, name: "Amad Diallo", rating: 8.1, role: "Midfielder", minute: "56'", events: [{ type: "goal", minute: "90'" }] },
+          { number: 9, name: "Ange-Yoan Bonny", rating: 6.3, role: "Attacker", minute: "56'", events: [] },
+          { number: 26, name: "Christ Inao Oulaï", rating: 6.6, role: "Midfielder", minute: "77'", events: [] },
+          { number: 18, name: "Ibrahim Sangaré", rating: 6.3, role: "Midfielder", minute: "77'", events: [] },
+          { number: 7, name: "Odilon Kossounou", rating: null, role: "Defender", minute: "89'", events: [] }
+        ],
+        team2: [
+          { number: 20, name: "Nilson Angulo", rating: 6.1, role: "Attacker", minute: "56'", events: [] },
+          { number: 25, name: "Jackson Porozo", rating: 5.8, role: "Defender", minute: "62'", events: [{ type: "yellow_card" }] },
+          { number: 17, name: "Ángelo Preciado", rating: 6.0, role: "Midfielder", minute: "62'", events: [] },
+          { number: 11, name: "Kevin Rodríguez", rating: 5.7, role: "Attacker", minute: "77'", events: [] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Yan Diomandé",
+        rating: 8.3,
+        reason: "Created the most chances (5) and had the most touches in the opposition box (12)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Ivory Coast: Elite Substitution Strategy and Physical Resilience Wear Down the Opposition",
+          positives: [
+            "Coached by Emerse Faé, Ivory Coast marked their World Cup return with a dramatic 1-0 last-gasp triumph at Philadelphia Stadium.",
+            "Operating in a balanced 4-4-2 block, the Elephants showed maturity by absorbing heavy early pressure without breaking.",
+            "Franck Kessié and Seko Fofana anchored midfield with physical authority, limiting central entries and buying time for the backline.",
+            "Faé’s second-half adjustments were decisive, with Amad Diallo introduced as a super-sub to increase vertical threat and change the rhythm of the match.",
+            "The winning goal arrived in the 90th minute after Wilfried Singo launched a powerful transition run and cut the ball back for Amad to finish first time."
+          ],
+          improvements: [
+            "Despite the win, Ivory Coast’s first-half structure was vulnerable to rapid lateral ball movement.",
+            "The wide defensive pairings allowed early crosses and box entries that repeatedly threatened the back line.",
+            "Possession phases in the first hour were sluggish and lacked vertical progression.",
+            "The starting strike duo of Elye Wahi and Nicolas Pépé were largely starved of clean central service.",
+            "Early yellow cards to Seko Fofana, Kessié, and Guéla Doué forced the defensive block to play with restricted aggression for long periods."
+          ]
+        },
+        team2: {
+          title: "Ecuador: Intense Strategic Pressing Ruined by Fatal Woodwork Woes",
+          positives: [
+            "Coached by Sebastián Beccacece, Ecuador dominated the tactical script for much of the first half with an aggressive, fluid 3-5-2 system.",
+            "Their front-foot counter-press unsettled Ivory Coast, with Moisés Caicedo recycling loose balls and controlling midfield tempo.",
+            "John Yeboah and Alan Minda were livewires early on, repeatedly attacking the flanks and creating dangerous moments.",
+            "The back three, led by Willian Pacho and Piero Hincapié, stayed strong inside the box for almost the entire match.",
+            "Ecuador’s defensive structure neutralized Ivory Coast’s physical target play for long stretches."
+          ],
+          improvements: [
+            "Ecuador’s biggest failure was converting territorial dominance into clinical finishing.",
+            "Despite creating quality shooting volume, they struggled to register meaningful shots on target.",
+            "The woodwork denied them multiple times, but their final-third execution still lacked killer instinct.",
+            "Substituting Enner Valencia in the 77th minute removed their main focal outlet and reduced attacking presence.",
+            "Late fatigue caused tracking discipline from the wing-backs to collapse, leaving space at the edge of the box for Amad’s decisive winner."
+          ]
+        }
+      }
     },
     {
       id: 13,
@@ -721,7 +1705,130 @@ export const matchesData = [
       form2: ["W", "L", "D", "W", "L"],
       insight: "Spain's positional play and high passing accuracy will restrict Cabo Verde's possession options.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 0,
+      goals2: 0,
+      scorers1: ["No scorers"],
+      scorers2: ["No scorers"],
+      matchNote: "Despite 65 places separating them in the world rankings, Vozinha helped Cape Verde mark their World Cup debut by holding tournament favourites Spain.",
+      predictionVsReality: {
+        probabilities: { homeWin: 74, draw: 16, awayWin: 10 },
+        aiOutcome: "Upset",
+        why: "Spain dominated possession, territory, and shot volume as expected, but Cabo Verde’s compact defensive block and Vozinha’s elite goalkeeping turned the match into a historic draw."
+      },
+      summaryText: "Tournament favorites Spain were held to a shocking 0-0 draw by World Cup debutants Cape Verde in their opening Group H match. Despite registering 27 shots and dominating possession, Spain was continually denied by a resolute defensive line and a spectacular string of saves from 40-year-old Cape Verde goalkeeper Vozinha.",
+      timelineEvents: [
+        { minute: "Info", type: "info", detail: "No goals scored" },
+        { minute: "Highlight", type: "highlight", detail: "Player Highlight — Vozinha preserves clean sheet" },
+        { minute: "FT", type: "full_time", detail: "Spain held to 0-0 by Cabo Verde" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "74%", team2: "26%", ratio1: 74, ratio2: 26 },
+        { name: "Expected Goals (xG)", team1: "2.10", team2: "0.20", ratio1: 91, ratio2: 9 },
+        { name: "Total Shots", team1: "27", team2: "6", ratio1: 82, ratio2: 18 },
+        { name: "Shots on Target", team1: "7", team2: "1", ratio1: 88, ratio2: 12 },
+        { name: "Touches in Opposition Box", team1: "51", team2: "6", ratio1: 89, ratio2: 11 },
+        { name: "Big Chances", team1: "2", team2: "1", ratio1: 67, ratio2: 33 },
+        { name: "Big Chances Missed", team1: "2", team2: "1", ratio1: 67, ratio2: 33 },
+        { name: "Accurate Passes", team1: "734 (92%)", team2: "205 (74%)", ratio1: 78, ratio2: 22 },
+        { name: "Yellow Cards", team1: "1", team2: "1", ratio1: 50, ratio2: 50 },
+        { name: "Corners", team1: "11", team2: "1", ratio1: 92, ratio2: 8 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Spain",
+          formation: "4-1-2-3",
+          coach: "Luis de la Fuente",
+          players: [
+            { number: 23, name: "Simón", rating: 7.4, events: [] },
+            { number: 5, name: "Llorente", rating: 7.9, events: [] },
+            { number: 22, name: "Cubarsí", rating: 7.9, events: [] },
+            { number: 14, name: "Laporte", rating: 7.5, events: [] },
+            { number: 24, name: "Cucurella", rating: 7.4, events: [] },
+            { number: 16, name: "Rodri", rating: 7.8, isCaptain: true, events: [{ type: "sub_off", minute: "87'" }] },
+            { number: 8, name: "Ruiz", rating: 7.5, events: [{ type: "sub_off", minute: "71'" }] },
+            { number: 20, name: "Pedri", rating: 8.6, events: [{ type: "yellow_card" }] },
+            { number: 7, name: "Ferran", rating: 6.6, events: [{ type: "sub_off", minute: "81'" }] },
+            { number: 21, name: "Oyarzabal", rating: 6.2, events: [] },
+            { number: 9, name: "Gavi", rating: 6.8, events: [{ type: "sub_off", minute: "71'" }] }
+          ]
+        },
+        team2: {
+          name: "Cabo Verde",
+          formation: "4-2-3-1",
+          coach: "Bubista",
+          players: [
+            { number: 1, name: "Vozinha", rating: 9.0, isHighlight: true, events: [] },
+            { number: 13, name: "Cabral", rating: 7.2, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "76'" }] },
+            { number: 3, name: "Borges", rating: 7.8, events: [] },
+            { number: 4, name: "Lopes", rating: 7.1, events: [] },
+            { number: 22, name: "Moreira", rating: 6.5, events: [] },
+            { number: 20, name: "Mendes", rating: 6.5, isCaptain: true, events: [] },
+            { number: 15, name: "Duarte", rating: 6.0, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 6, name: "Pina", rating: 6.7, events: [] },
+            { number: 7, name: "Cabral", rating: 7.0, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 19, name: "Livramento", rating: 6.0, events: [{ type: "sub_off", minute: "61'" }] },
+            { number: 10, name: "Monteiro", rating: 7.2, events: [{ type: "sub_off", minute: "79'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 6, name: "Mikel Merino", rating: 6.7, role: "Midfielder", minute: "71'", events: [{ type: "sub_on", minute: "71'" }] },
+          { number: 19, name: "Lamine Yamal", rating: 6.4, role: "Attacker", minute: "71'", events: [{ type: "sub_on", minute: "71'" }] },
+          { number: 10, name: "Dani Olmo", rating: null, role: "Midfielder", minute: "81'", events: [{ type: "sub_on", minute: "81'" }] },
+          { number: 17, name: "Nico Williams", rating: null, role: "Attacker", minute: "87'", events: [{ type: "sub_on", minute: "87'" }] }
+        ],
+        team2: [
+          { number: 14, name: "Deroy Duarte", rating: 6.6, role: "Midfielder", minute: "61'", events: [{ type: "sub_on", minute: "61'" }] },
+          { number: 21, name: "Nuno da Costa", rating: 6.1, role: "Attacker", minute: "61'", events: [{ type: "sub_on", minute: "61'" }] },
+          { number: 17, name: "Willy Semedo", rating: 5.9, role: "Attacker", minute: "61'", events: [{ type: "sub_on", minute: "61'" }] },
+          { number: 8, name: "João Paulo", rating: 6.6, role: "Midfielder", minute: "76'", events: [{ type: "sub_on", minute: "76'" }] },
+          { number: 18, name: "Telmo Arcanjo", rating: 6.3, role: "Attacker", minute: "79'", events: [{ type: "sub_on", minute: "79'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Vozinha",
+        rating: 9.0,
+        reason: "Made 7 saves to keep Spain scoreless."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Spain: Suffocating Possession Stagnates Against a Resolute Wall",
+          positives: [
+            "Coached by Luis de la Fuente, Spain completely controlled the geographical boundaries of their Group H opener, dictating the game with 74% possession.",
+            "Operating in a fluid 4-1-2-3 base shape, Spain’s counter-press was effective and restricted Cabo Verde to just one shot on target.",
+            "Rodri and Pedri recycled possession cleanly, allowing Spain to sustain pressure for long periods.",
+            "Pau Cubarsí and Aymeric Laporte maintained an aggressive defensive line past halfway to choke out early counterattacks.",
+            "Lamine Yamal’s late introduction changed Spain’s attacking profile, adding vertical dynamism and isolation threat in the final twenty minutes."
+          ],
+          improvements: [
+            "Spain’s decision to bench starting wingers Lamine Yamal and Nico Williams backfired, exposing a lack of penetration and lateral ball speed.",
+            "Ferran Torres and Mikel Oyarzabal struggled to create separation against Cabo Verde’s dense defensive crowd.",
+            "The system lacked a clear Plan B, with limited long-range shooting variation and predictable crossing phases.",
+            "When premium chances arrived, Spain lacked the clinical accuracy needed to break the deadlock.",
+            "Their immense passing volume did not translate into enough ruthless final-third execution against a compact low block."
+          ]
+        },
+        team2: {
+          title: "Cabo Verde: Immaculate Low Block Script Generates Historic Shock",
+          positives: [
+            "Coached by Bubista, Cabo Verde produced one of the great tactical shocks by securing a historic debut 0-0 draw against tournament favourites Spain.",
+            "Their ultra-disciplined 4-2-3-1 defensive shape conceded wide territory while protecting the central corridors.",
+            "Kevin Pina and Deroy Duarte worked tirelessly to cut off vertical passing lanes into Pedri and Gavi.",
+            "Vozinha delivered a historic goalkeeping performance, making seven saves and denying Spain repeatedly.",
+            "The backline, led by Roberto Lopes and Diney Borges, stayed composed under heavy pressure and built an unbreakable defensive wall."
+          ],
+          improvements: [
+            "Cabo Verde’s defensive execution was excellent, but their extreme passivity made it very difficult to relieve pressure.",
+            "They held only 26% possession and completed just 205 accurate passes, surrendering the central transition zones.",
+            "Dailon Livramento was isolated for most of the match with very little forward support.",
+            "Ryan Mendes and Jovane Cabral were forced so deep that Cabo Verde offered minimal vertical counterattacking threat.",
+            "As fatigue increased late on, the defensive block dropped dangerously close to the six-yard box.",
+            "A rare late corner chance could have turned the draw into an even greater shock, but the finish lacked conviction."
+          ]
+        }
+      }
     },
     {
       id: 14,
@@ -740,7 +1847,130 @@ export const matchesData = [
       form2: ["W", "W", "L", "D", "W"],
       insight: "Belgium's dynamic attacking lines vs Egypt's high defensive line marshaled by veteran structure.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 1,
+      goals2: 1,
+      scorers1: ["Hany 66' (OG)"],
+      scorers2: ["Ashour 19'"],
+      matchNote: "Egypt looked set to win their first-ever match at the World Cup, but the introduction of Romelu Lukaku salvaged a point for Belgium.",
+      predictionVsReality: {
+        probabilities: { homeWin: 66, draw: 18, awayWin: 16 },
+        aiOutcome: "Upset",
+        why: "Belgium controlled longer possession phases as expected, but Egypt’s compact defensive structure, Salah-led transition threat, and disciplined midfield pressure made the match far more balanced."
+      },
+      summaryText: "Egypt and Belgium played to a hard-fought 1-1 draw in their opening Group G match of the 2026 FIFA World Cup. Emam Ashour opened the scoring for Egypt in the first half following a brilliant assist from Mohamed Salah. Belgium salvaged a point in the second half when substitute Romelu Lukaku forced a Mohamed Hany own goal.",
+      timelineEvents: [
+        { minute: "19'", type: "goal", team: "EGY", player: "Emam Ashour", detail: "Goal — Egypt" },
+        { minute: "66'", type: "own_goal", team: "BEL", player: "Mohamed Hany", detail: "Own Goal — Belgium — Hany own goal" },
+        { minute: "FT", type: "full_time", detail: "FT — Belgium 1-1 Egypt" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "54%", team2: "46%", ratio1: 54, ratio2: 46 },
+        { name: "Expected Goals (xG)", team1: "1.35", team2: "1.08", ratio1: 56, ratio2: 44 },
+        { name: "Total Shots", team1: "15", team2: "14", ratio1: 52, ratio2: 48 },
+        { name: "Shots on Target", team1: "3", team2: "3", ratio1: 50, ratio2: 50 },
+        { name: "Touches in Opposition Box", team1: "31", team2: "27", ratio1: 53, ratio2: 47 },
+        { name: "Big Chances", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Big Chances Missed", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Accurate Passes", team1: "391 (86%)", team2: "323 (81%)", ratio1: 55, ratio2: 45 },
+        { name: "Yellow Cards", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Corners", team1: "2", team2: "7", ratio1: 22, ratio2: 78 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Belgium",
+          formation: "4-2-3-1",
+          coach: "Domenico Tedesco",
+          players: [
+            { number: 1, name: "Courtois", rating: 7.0, events: [] },
+            { number: 15, name: "Meunier", rating: 6.3, events: [] },
+            { number: 25, name: "Ngoy", rating: 7.4, events: [] },
+            { number: 4, name: "Mechele", rating: 7.6, events: [] },
+            { number: 21, name: "Castagne", rating: 7.5, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "56'" }] },
+            { number: 24, name: "Onana", rating: 6.9, events: [{ type: "sub_off", minute: "56'" }] },
+            { number: 8, name: "Tielemans", rating: 7.5, isCaptain: true, events: [] },
+            { number: 7, name: "De Bruyne", rating: 7.0, events: [{ type: "sub_off", minute: "85'" }] },
+            { number: 10, name: "Trossard", rating: 6.7, events: [] },
+            { number: 11, name: "Doku", rating: 6.4, events: [{ type: "sub_off", minute: "85'" }] },
+            { number: 17, name: "De Ketelaere", rating: 7.5, events: [{ type: "sub_off", minute: "66'" }] }
+          ]
+        },
+        team2: {
+          name: "Egypt",
+          formation: "4-2-3-1",
+          coach: "Hossam Hassan",
+          players: [
+            { number: 23, name: "Shobeir", rating: 7.7, events: [] },
+            { number: 13, name: "El Fotouh", rating: 6.8, events: [{ type: "yellow_card" }, { type: "sub_off", minute: "88'" }] },
+            { number: 14, name: "Fathi", rating: 7.1, events: [{ type: "sub_off", minute: "88'" }] },
+            { number: 2, name: "Ibrahim", rating: 6.7, events: [] },
+            { number: 3, name: "Hany", rating: 6.5, events: [{ type: "own_goal", minute: "66'" }] },
+            { number: 19, name: "Ateya", rating: 6.9, events: [{ type: "yellow_card" }] },
+            { number: 10, name: "Salah", rating: 7.2, isCaptain: true, events: [{ type: "assist" }] },
+            { number: 8, name: "Ashour", rating: 7.9, isHighlight: true, events: [{ type: "goal", minute: "19'" }, { type: "sub_off", minute: "71'" }] },
+            { number: 17, name: "Lasheen", rating: 7.5, events: [] },
+            { number: 11, name: "Ziko", rating: 6.1, events: [{ type: "sub_off", minute: "76'" }] },
+            { number: 22, name: "Marmoush", rating: 7.2, events: [] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 5, name: "Maxim De Cuyper", rating: 6.7, role: "Defender", minute: "56'", events: [{ type: "sub_on", minute: "56'" }, { type: "yellow_card" }] },
+          { number: 23, name: "Nicolas Raskin", rating: 6.8, role: "Midfielder", minute: "56'", events: [{ type: "sub_on", minute: "56'" }] },
+          { number: 9, name: "Romelu Lukaku", rating: 5.8, role: "Attacker", minute: "66'", events: [{ type: "sub_on", minute: "66'" }] },
+          { number: 20, name: "Hans Vanaken", rating: null, role: "Midfielder", minute: "85'", events: [{ type: "sub_on", minute: "85'" }] },
+          { number: 26, name: "Matias Fernandez-Pardo", rating: null, role: "Attacker", minute: "85'", events: [{ type: "sub_on", minute: "85'" }] }
+        ],
+        team2: [
+          { number: 5, name: "Rami Rabia", rating: 6.7, role: "Defender", minute: "71'", events: [{ type: "sub_on", minute: "71'" }] },
+          { number: 9, name: "Hamza Abdelkarim", rating: 6.1, role: "Attacker", minute: "76'", events: [{ type: "sub_on", minute: "76'" }] },
+          { number: 25, name: "Zizo", rating: 5.7, role: "Attacker", minute: "76'", events: [{ type: "sub_on", minute: "76'" }] },
+          { number: 15, name: "Karim Hafez", rating: null, role: "Defender", minute: "88'", events: [{ type: "sub_on", minute: "88'" }] },
+          { number: 20, name: "Ibrahim Adel", rating: null, role: "Attacker", minute: "88'", events: [{ type: "sub_on", minute: "88'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Emam Ashour",
+        rating: 7.9,
+        reason: "Scored a goal."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Belgium: Sterile Midfield Dominance Stagnates Before a Substitute Rescue",
+          positives: [
+            "Coached by Domenico Tedesco, Belgium controlled the flow of their Group G opener at Seattle Stadium, using 54% possession to dictate the match’s baseline rhythm.",
+            "Youri Tielemans recycled possession cleanly in deeper phases, helping Belgium sustain pressure.",
+            "Jérémy Doku offered individual isolation threat on the flank and attempted to stretch Egypt’s compact defensive block.",
+            "Tedesco’s second-half management rescued the match, with Romelu Lukaku introduced to give Belgium a true physical focal point.",
+            "Lukaku’s presence in the six-yard box immediately disrupted Egypt’s backline and forced the Mohamed Hany own goal that salvaged the draw."
+          ],
+          improvements: [
+            "Belgium’s starting 4-2-3-1 structure looked uncoordinated and lacked spatial urgency.",
+            "The midfield pairing of Amadou Onana and Tielemans struggled to move the ball laterally at the speed required to disorganize Egypt.",
+            "Kevin De Bruyne was often isolated and starved of clean service in dangerous central zones.",
+            "The centre-back pairing of Nathan Ngoy and Brandon Mechele looked vulnerable to vertical transition patterns.",
+            "Belgium’s high full-back positioning left large spaces behind the backline that a sharper opponent could have punished more severely."
+          ]
+        },
+        team2: {
+          title: "Egypt: Disciplined Counter-Press and Tactical Bravery Shock the Favorites",
+          positives: [
+            "Coached by Hossam Hassan, Egypt executed a strong tactical blueprint for unsettling a heavyweight opponent on opening night.",
+            "Their compact 4-2-3-1 structure closed central lanes and limited Belgium to just three shots on target.",
+            "Mohamed Salah’s intelligence created the breakthrough, dragging pressure before threading a clever pass into Emam Ashour.",
+            "Ashour finished clinically in the 19th minute to give Egypt a historic first-half lead.",
+            "Marwan Attia and Mohanad Lasheen worked tirelessly in midfield to disrupt Belgium’s passing rhythm, while Mostafa Shobeir produced important saves."
+          ],
+          improvements: [
+            "Egypt’s defensive organization was strong for an hour, but they struggled to adapt once Belgium changed their frontline profile.",
+            "As fatigue set in late, the side dropped into a reactive low block and surrendered too much pressure.",
+            "The backline lost marking assignments on a basic lateral cross, triggering the own goal from Mohamed Hany.",
+            "Egypt completely surrendered midfield possession phases in the final stretch.",
+            "Omar Marmoush became isolated as the outlet forward, leaving Egypt unable to relieve pressure in the dying minutes."
+          ]
+        }
+      }
     },
     {
       id: 15,
@@ -759,7 +1989,132 @@ export const matchesData = [
       form2: ["W", "W", "D", "W", "L"],
       insight: "Uruguay's intense physical counter-pressing and box strikers are heavily favored.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 1,
+      goals2: 1,
+      scorers1: ["Al Amri 41'"],
+      scorers2: ["Araújo 80'"],
+      matchNote: "Uruguay's persistence paid off at Miami Stadium as Bielsa's men earned a draw in their World Cup opener against Saudi Arabia.",
+      predictionVsReality: {
+        probabilities: { homeWin: 22, draw: 22, awayWin: 56 },
+        aiOutcome: "Upset",
+        why: "Uruguay’s possession dominance and attacking volume matched the model’s expectation, but Saudi Arabia’s compact defensive block, set-piece threat, and elite goalkeeping turned the match into a draw."
+      },
+      summaryText: "Saudi Arabia and Uruguay battled to a hard-fought 1-1 draw in their opening Group H match. Abdulelah Al-Amri opened the scoring for Saudi Arabia in the first half, but Maxi Araujo salvaged a point for Uruguay in the 80th minute. The result was largely defined by a heroic performance from Saudi goalkeeper Mohammed Al-Owais, who made eight crucial saves to frustrate the South Americans.",
+      timelineEvents: [
+        { minute: "41'", type: "goal", team: "KSA", player: "Abdulelah Al-Amri", detail: "Goal — Saudi Arabia" },
+        { minute: "80'", type: "goal", team: "URU", player: "Maxi Araujo", detail: "Goal — Uruguay" },
+        { minute: "FT", type: "full_time", detail: "FT — Saudi Arabia 1-1 Uruguay" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "33%", team2: "67%", ratio1: 33, ratio2: 67 },
+        { name: "Expected Goals (xG)", team1: "0.66", team2: "1.72", ratio1: 28, ratio2: 72 },
+        { name: "Total Shots", team1: "7", team2: "27", ratio1: 21, ratio2: 79 },
+        { name: "Shots on Target", team1: "3", team2: "10", ratio1: 23, ratio2: 77 },
+        { name: "Touches in Opposition Box", team1: "10", team2: "41", ratio1: 20, ratio2: 80 },
+        { name: "Big Chances", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Big Chances Missed", team1: "0", team2: "1", ratio1: 0, ratio2: 100 },
+        { name: "Accurate Passes", team1: "236 (73%)", team2: "540 (88%)", ratio1: 30, ratio2: 70 },
+        { name: "Yellow Cards", team1: "1", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "4", team2: "14", ratio1: 22, ratio2: 78 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Saudi Arabia",
+          formation: "4-4-2",
+          coach: "Georgios Donis",
+          players: [
+            { number: 21, name: "Al Owais", rating: 7.4, events: [] },
+            { number: 12, name: "Abdulhamid", rating: 6.9, events: [{ type: "sub_off", minute: "90'" }] },
+            { number: 4, name: "Al Amri", rating: 8.0, events: [{ type: "goal", minute: "41'" }, { type: "yellow_card" }] },
+            { number: 5, name: "Al Tambakti", rating: 6.3, events: [] },
+            { number: 24, name: "Al-Harbi", rating: 7.0, events: [{ type: "sub_off", minute: "90'" }] },
+            { number: 26, name: "Al Shamat", rating: 6.3, events: [{ type: "sub_off", minute: "81'" }] },
+            { number: 23, name: "Kanno", rating: 7.3, events: [] },
+            { number: 15, name: "Alkhaibari", rating: 6.5, events: [] },
+            { number: 10, name: "Al-Dawsari", rating: 6.4, isCaptain: true, events: [] },
+            { number: 7, name: "Al-Juwayr", rating: 6.8, events: [{ type: "sub_off", minute: "63'" }] },
+            { number: 9, name: "Al-Buraikan", rating: 6.4, events: [{ type: "sub_off", minute: "90'" }] }
+          ]
+        },
+        team2: {
+          name: "Uruguay",
+          formation: "4-4-2",
+          coach: "Marcelo Bielsa",
+          players: [
+            { number: 23, name: "Muslera", rating: 5.6, events: [] },
+            { number: 17, name: "Viña", rating: 6.4, events: [{ type: "sub_off", minute: "46'" }] },
+            { number: 16, name: "Olivera", rating: 7.9, events: [] },
+            { number: 3, name: "Cáceres", rating: 6.9, events: [] },
+            { number: 13, name: "Varela", rating: 7.5, events: [] },
+            { number: 6, name: "Bentancur", rating: 8.0, events: [] },
+            { number: 5, name: "Ugarte", rating: 7.1, events: [{ type: "sub_off", minute: "72'" }] },
+            { number: 20, name: "Araújo", rating: 8.1, isHighlight: true, events: [{ type: "goal", minute: "80'" }, { type: "sub_off", minute: "81'" }] },
+            { number: 8, name: "Valverde", rating: 6.8, isCaptain: true, events: [] },
+            { number: 9, name: "Núñez", rating: 6.3, events: [{ type: "sub_off", minute: "46'" }] },
+            { number: 21, name: "Viñas", rating: 6.9, events: [{ type: "sub_off", minute: "90'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 6, name: "Nasser Al-Dawsari", rating: 6.5, role: "Midfielder", minute: "63'", events: [{ type: "sub_on", minute: "63'" }] },
+          { number: 13, name: "Nawaf Al-Boushail", rating: null, role: "Defender", minute: "81'", events: [{ type: "sub_on", minute: "81'" }] },
+          { number: 3, name: "Ali Lajami", rating: null, role: "Defender", minute: "90'", events: [{ type: "sub_on", minute: "90'" }] },
+          { number: 18, name: "Alaa Hajji", rating: null, role: "Midfielder", minute: "90'", events: [{ type: "sub_on", minute: "90'" }] },
+          { number: 19, name: "Abdullah Al-Hamdan", rating: null, role: "Attacker", minute: "90'", events: [{ type: "sub_on", minute: "90'" }] }
+        ],
+        team2: [
+          { number: 25, name: "Juan Sanabria", rating: 6.7, role: "Defender", minute: "46'", events: [{ type: "sub_on", minute: "46'" }] },
+          { number: 14, name: "Agustín Canobbio", rating: 6.6, role: "Attacker", minute: "46'", events: [{ type: "sub_on", minute: "46'" }] },
+          { number: 7, name: "Nicolás de la Cruz", rating: 7.2, role: "Midfielder", minute: "72'", events: [{ type: "sub_on", minute: "72'" }] },
+          { number: 18, name: "Brian Rodríguez", rating: null, role: "Attacker", minute: "81'", events: [{ type: "sub_on", minute: "81'" }] },
+          { number: 19, name: "Rodrigo Aguirre", rating: null, role: "Attacker", minute: "90'", events: [{ type: "sub_on", minute: "90'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "F. Valverde",
+        rating: 7.0,
+        reason: "Had the joint-most touches in the opposition box (7)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Saudi Arabia: Dogged Low Block and Lethal Set-Pieces Stun the Heavyweights",
+          positives: [
+            "Coached by Georgios Donis, Saudi Arabia produced a disciplined defensive masterclass to hold Uruguay to a 1-1 draw at Miami Stadium.",
+            "Operating in a compact 4-4-2 block, the Green Falcons crowded central channels and forced Uruguay into lower-percentage crossing phases.",
+            "Mohammed Al-Owais delivered a heroic goalkeeping display, repeatedly denying Uruguay’s high-volume attack.",
+            "Donis’ set-piece emphasis paid off in the 41st minute when Abdulelah Al-Amri reacted quickest after a chaotic corner sequence to score the opener.",
+            "Saud Abdulhamid and Moteb Al-Harbi showed strong recovery speed in wide areas, helping Saudi Arabia survive early transition pressure."
+          ],
+          improvements: [
+            "Saudi Arabia survived on a very thin margin by retreating into a passive defensive shell after halftime.",
+            "They held only 33% possession and offered very little attacking threat in the second half.",
+            "Mohamed Kanno and Abdullah Al-Khaibari lost control of midfield tempo as Uruguay increased pressure.",
+            "Firas Al-Buraikan became isolated without progressive service.",
+            "The side eventually cracked in the 80th minute after a back-post marking error during a chaotic rebound phase."
+          ]
+        },
+        team2: {
+          title: "Uruguay: Relentless Second-Half Barrage Marred by Wasteful Early Hubris",
+          positives: [
+            "Coached by Marcelo Bielsa, Uruguay showed their fighting spirit by producing a relentless second-half barrage to rescue a group-stage point.",
+            "Bielsa’s halftime adjustments added verticality through Agustín Canobbio and Juan Sanabria.",
+            "Uruguay shifted into a hyper-pressing 4-4-2 / 4-3-3 shape, suffocating Saudi Arabia for long spells.",
+            "They dominated the match with 67% possession, 27 total shots, and 14 corners.",
+            "Their pressure finally broke through in the 80th minute when Maximiliano Araújo reacted sharply to a rebound and finished clinically.",
+            "Federico Valverde helped orchestrate deep recycling phases and kept Saudi Arabia pinned back."
+          ],
+          improvements: [
+            "Uruguay lacked urgency in the first half and allowed Saudi Arabia to grow into the match.",
+            "Their lateral ball circulation was too slow early on, playing directly into Saudi Arabia’s compact low block.",
+            "Darwin Núñez and Federico Viñas looked uncoordinated when attacking central channels.",
+            "Uruguay wasted too many premium shooting opportunities and repeatedly fired straight at Al-Owais.",
+            "Defensively, the backline switched off during the 41st-minute corner sequence and conceded an avoidable opener.",
+            "Turning 27 total shots into only one goal is a warning sign for future fixtures."
+          ]
+        }
+      }
     },
     {
       id: 16,
@@ -778,7 +2133,133 @@ export const matchesData = [
       form2: ["L", "D", "W", "L", "W"],
       insight: "Iran's tactical maturity and physical defense give them the edge over New Zealand's aerial targets.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 2,
+      goals2: 2,
+      scorers1: ["Rezaeian 32'", "Mohebi 64'"],
+      scorers2: ["Just 7'", "Just 54'"],
+      matchNote: "All four teams in Group G at the World Cup are level on one point, after New Zealand were twice pegged back by Iran in a 2-2 draw.",
+      predictionVsReality: {
+        probabilities: { homeWin: 45, draw: 27, awayWin: 28 },
+        aiOutcome: "Close Prediction",
+        why: "Iran’s attacking responses matched the model’s expectation of strong final-third threat, but New Zealand’s direct target-man mechanics and clinical transitions made the match far more balanced."
+      },
+      summaryText: "Iran and New Zealand played out a thrilling 2-2 draw in their opening FIFA World Cup 2026 Group G match in Los Angeles. New Zealand took the lead twice through an Elijah Just brace, but Iran responded immediately each time with goals from Ramin Rezaeian and Mohammad Mohebbi to secure a well-deserved point.",
+      timelineEvents: [
+        { minute: "7'", type: "goal", team: "NZL", player: "Elijah Just", detail: "Goal — New Zealand" },
+        { minute: "32'", type: "goal", team: "IRN", player: "Ramin Rezaeian", detail: "Goal — Iran" },
+        { minute: "54'", type: "goal", team: "NZL", player: "Elijah Just", detail: "Goal — New Zealand" },
+        { minute: "64'", type: "goal", team: "IRN", player: "Mohammad Mohebi", detail: "Goal — Iran" },
+        { minute: "FT", type: "full_time", detail: "FT — Iran 2-2 New Zealand" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "48%", team2: "52%", ratio1: 48, ratio2: 52 },
+        { name: "Expected Goals (xG)", team1: "1.50", team2: "1.24", ratio1: 55, ratio2: 45 },
+        { name: "Total Shots", team1: "17", team2: "14", ratio1: 55, ratio2: 45 },
+        { name: "Shots on Target", team1: "4", team2: "8", ratio1: 33, ratio2: 67 },
+        { name: "Touches in Opposition Box", team1: "25", team2: "21", ratio1: 54, ratio2: 46 },
+        { name: "Big Chances", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Big Chances Missed", team1: "0", team2: "0", ratio1: 0, ratio2: 0 },
+        { name: "Accurate Passes", team1: "314 (77%)", team2: "376 (84%)", ratio1: 45, ratio2: 55 },
+        { name: "Yellow Cards", team1: "1", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "4", team2: "1", ratio1: 80, ratio2: 20 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Iran",
+          formation: "4-4-2",
+          coach: "Amir Ghalenoei",
+          players: [
+            { number: 1, name: "Beiranvand", rating: 6.1, events: [] },
+            { number: 23, name: "Rezaeian", rating: 8.6, events: [{ type: "goal", minute: "32'" }, { type: "assist" }] },
+            { number: 4, name: "Khalilzadeh", rating: 6.4, events: [] },
+            { number: 19, name: "Nemati", rating: 6.4, events: [] },
+            { number: 5, name: "Mohammadi", rating: 6.0, events: [] },
+            { number: 8, name: "Mohebi", rating: 8.0, events: [{ type: "goal", minute: "64'" }] },
+            { number: 14, name: "Ghoddos", rating: 7.3, events: [{ type: "sub_off", minute: "65'" }] },
+            { number: 6, name: "Ezatolahi", rating: 7.1, events: [] },
+            { number: 17, name: "Yousefi", rating: 6.5, events: [{ type: "sub_off", minute: "46'" }] },
+            { number: 20, name: "Moghanlou", rating: 7.2, events: [{ type: "sub_off", minute: "53'" }] },
+            { number: 9, name: "Taremi", rating: 7.5, isCaptain: true, events: [{ type: "sub_off", minute: "80'" }] }
+          ]
+        },
+        team2: {
+          name: "New Zealand",
+          formation: "4-2-3-1",
+          coach: "Darren Bazeley",
+          players: [
+            { number: 1, name: "Crocombe", rating: 6.1, events: [] },
+            { number: 13, name: "Cacace", rating: 6.3, events: [{ type: "sub_off", minute: "68'" }] },
+            { number: 5, name: "Boxall", rating: 6.3, events: [] },
+            { number: 16, name: "Surman", rating: 7.1, events: [] },
+            { number: 2, name: "Payne", rating: 6.3, events: [{ type: "sub_off", minute: "77'" }] },
+            { number: 8, name: "Stamenic", rating: 6.4, events: [{ type: "sub_off", minute: "90'" }] },
+            { number: 6, name: "Bell", rating: 6.8, events: [] },
+            { number: 20, name: "McCowatt", rating: 7.2, events: [{ type: "sub_off", minute: "68'" }] },
+            { number: 10, name: "Singh", rating: 6.9, events: [{ type: "sub_off", minute: "90'" }] },
+            { number: 11, name: "Just", rating: 8.9, isHighlight: true, events: [{ type: "goal", minute: "7'" }, { type: "goal", minute: "54'" }] },
+            { number: 9, name: "Wood", rating: 8.2, isCaptain: true, events: [{ type: "assist" }, { type: "assist" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 10, name: "Mehdi Ghayedi", rating: 6.1, role: "Attacker", minute: "46'", events: [{ type: "sub_on", minute: "46'" }] },
+          { number: 11, name: "Ali Alipour", rating: 6.4, role: "Attacker", minute: "53'", events: [{ type: "sub_on", minute: "53'" }] },
+          { number: 3, name: "Ehsan Haji Safi", rating: 6.1, role: "Defender", minute: "65'", events: [{ type: "sub_on", minute: "65'" }, { type: "yellow_card" }] },
+          { number: 18, name: "Amirhossein Hosseinzadeh", rating: 6.3, role: "Attacker", minute: "80'", events: [{ type: "sub_on", minute: "80'" }] }
+        ],
+        team2: [
+          { number: 19, name: "Benjamin Old", rating: 5.9, role: "Defender", minute: "68'", events: [{ type: "sub_on", minute: "68'" }] },
+          { number: 23, name: "Ryan Thomas", rating: 5.8, role: "Midfielder", minute: "68'", events: [{ type: "sub_on", minute: "68'" }] },
+          { number: 24, name: "Callan Elliot", rating: 6.3, role: "Defender", minute: "77'", events: [{ type: "sub_on", minute: "77'" }] },
+          { number: 4, name: "Tyler Bindon", rating: null, role: "Defender", minute: "90'", events: [{ type: "sub_on", minute: "90'" }] },
+          { number: 21, name: "Jesse Randall", rating: null, role: "Attacker", minute: "90'", events: [{ type: "sub_on", minute: "90'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "R. Rezaeian",
+        rating: 8.6,
+        reason: "Scored one goal and provided one assist."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Iran: Dynamic Response Rescues Political and Structural Fragility",
+          positives: [
+            "Coached by Amir Ghalenoei, Iran showed strong character and mental resilience to fight back from behind twice and secure a 2-2 draw in Los Angeles.",
+            "Operating from a traditional 4-4-2 base shape, Iran’s immediate attacking responses after conceding were impressive.",
+            "Ramin Rezaeian delivered a tactical masterclass from right-back, equalizing with an outside-of-the-foot finish and later assisting the second equalizer.",
+            "Mohammad Mohebi timed his box entry perfectly to power home Iran’s second goal off the inside of the post.",
+            "Mehdi Taremi’s spatial movement dragged centre-backs away and opened lanes for late midfield runners."
+          ],
+          improvements: [
+            "Iran’s defensive coordination was chaotic and will concern Ghalenoei.",
+            "The backline switched off badly for New Zealand’s early opener after just seven minutes.",
+            "Shojae Khalilzadeh and Ali Nemati repeatedly struggled to track blind-side runs and simple direct combinations.",
+            "Iran’s possession phases were often slow horizontally, limiting their ability to control tempo.",
+            "The aging profile of the starting XI meant their pressing intensity faded badly after the 70-minute mark.",
+            "Shahriyar Moghanlou looked uncoordinated alongside Taremi, often occupying the same spaces before being replaced early."
+          ]
+        },
+        team2: {
+          title: "New Zealand: Efficient Target-Man Mechanics Shock the Heavyweights",
+          positives: [
+            "Coached by Darren Bazeley, New Zealand executed a direct and effective tactical blueprint that pushed Iran to the limit.",
+            "Their disciplined 4-2-3-1 counter-attacking structure bypassed midfield congestion and maximized physical advantages up front.",
+            "Elijah Just was the star, scoring a brilliant brace by exploiting spaces behind Iran’s trailing full-backs.",
+            "Captain Chris Wood delivered a textbook target-man performance, assisting both goals through hold-up play and clever line-breaking passes.",
+            "Joe Bell and Marko Stamenić screened the backline aggressively and forced Iran wide for long spells."
+          ],
+          improvements: [
+            "New Zealand’s direct transitional threat was strong, but they struggled badly to manage leads.",
+            "After both goals, the All Whites dropped into a passive low block and invited sustained Iranian pressure.",
+            "The back four lacked communication when defending crosses, with both Iranian equalizers coming from wide deliveries.",
+            "Full-backs Tim Payne and Liberato Cacace failed to stop crosses or track runners at the back post.",
+            "Their heavy reliance on long balls left Sarpreet Singh and Callum McCowatt chasing second balls rather than creating sustained combinations.",
+            "New Zealand need better possession control if they want to protect advantages against stronger opponents."
+          ]
+        }
+      }
     },
     {
       id: 17,

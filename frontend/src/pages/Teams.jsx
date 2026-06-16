@@ -110,68 +110,68 @@ export default function Teams() {
         { code: "RSA", gd: -2, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group B": [
-        { code: "CAN", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
         { code: "BIH", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
-        { code: "SUI", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "QAT", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "CAN", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "QAT", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "SUI", gd: 0, pts: 1, w: 0, d: 1, l: 0 }
       ],
       "Group C": [
-        { code: "BRA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "MAR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "SCO", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "HAI", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "SCO", gd: 1, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "BRA", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "MAR", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "HAI", gd: -1, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group D": [
         { code: "USA", gd: 3, pts: 3, w: 1, d: 0, l: 0 },
-        { code: "AUS", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "TUR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "AUS", gd: 2, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "TUR", gd: -2, pts: 0, w: 0, d: 0, l: 1 },
         { code: "PAR", gd: -3, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group E": [
-        { code: "GER", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "ECU", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "CIV", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "CUR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "GER", gd: 6, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "CIV", gd: 1, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "ECU", gd: -1, pts: 0, w: 0, d: 0, l: 1 },
+        { code: "CUR", gd: -6, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group F": [
-        { code: "NED", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "JPN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "SWE", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "TUN", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "SWE", gd: 4, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "JPN", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "NED", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "TUN", gd: -4, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group G": [
-        { code: "BEL", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "EGY", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "IRN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "NZL", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "IRN", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "NZL", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "BEL", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "EGY", gd: 0, pts: 1, w: 0, d: 1, l: 0 }
       ],
       "Group H": [
-        { code: "ESP", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "URU", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "KSA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "CPV", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "KSA", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "URU", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "CPV", gd: 0, pts: 1, w: 0, d: 1, l: 0 },
+        { code: "ESP", gd: 0, pts: 1, w: 0, d: 1, l: 0 }
       ],
       "Group I": [
         { code: "FRA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "SEN", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "IRQ", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "NOR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "IRQ", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "SEN", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group J": [
-        { code: "ARG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "ALG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "ARG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "AUT", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "JOR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group K": [
-        { code: "POR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "COL", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "UZB", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "COD", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "COD", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "POR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "UZB", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ],
       "Group L": [
-        { code: "ENG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "CRO", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
+        { code: "ENG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "GHA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
         { code: "PAN", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
       ]
