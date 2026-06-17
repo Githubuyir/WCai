@@ -152,16 +152,16 @@ export default function Teams() {
         { code: "ESP", gd: 0, pts: 1, w: 0, d: 1, l: 0 }
       ],
       "Group I": [
-        { code: "FRA", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "IRQ", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "NOR", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "SEN", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "NOR", gd: 3, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "FRA", gd: 2, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "SEN", gd: -2, pts: 0, w: 0, d: 0, l: 1 },
+        { code: "IRQ", gd: -3, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group J": [
-        { code: "ALG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "ARG", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "AUT", gd: 0, pts: 0, w: 0, d: 0, l: 0 },
-        { code: "JOR", gd: 0, pts: 0, w: 0, d: 0, l: 0 }
+        { code: "ARG", gd: 3, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "AUT", gd: 2, pts: 3, w: 1, d: 0, l: 0 },
+        { code: "ALG", gd: -3, pts: 0, w: 0, d: 0, l: 1 },
+        { code: "JOR", gd: -2, pts: 0, w: 0, d: 0, l: 1 }
       ],
       "Group K": [
         { code: "COL", gd: 0, pts: 0, w: 0, d: 0, l: 0 },

@@ -2278,7 +2278,128 @@ export const matchesData = [
       form2: ["W", "D", "W", "L", "D"],
       insight: "France's speed on the wings will challenge Senegal's defensive shifting mechanisms.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 3,
+      goals2: 1,
+      scorers1: ["Mbappé 66'", "Barcola 82'", "Mbappé 90+6'"],
+      scorers2: ["Mbaye 90+5'"],
+      matchNote: "Kylian Mbappe has written his name into France's history books, with his double against Senegal breaking another couple of records.",
+      predictionVsReality: {
+        probabilities: { homeWin: 68, draw: 18, awayWin: 14 },
+        aiOutcome: "Prediction Correct",
+        why: "France’s superior attacking quality and second-half tactical adjustments matched the pre-match model expectation, with Mbappé’s central movement and late finishing deciding the match."
+      },
+      summaryText: "France defeated Senegal 3-1 in their opening FIFA World Cup match, overcoming a resilient first-half defensive effort. Captain Kylian Mbappé broke the deadlock and later sealed the win with a stunning stoppage-time strike, becoming France’s all-time leading scorer with 58 goals. Substitute Bradley Barcola added a second for Les Bleus, while Ibrahim Mbaye netted a late consolation goal for Senegal.",
+      timelineEvents: [
+        { minute: "66'", type: "goal", team: "FRA", player: "Mbappé", detail: "Goal — France" },
+        { minute: "82'", type: "goal", team: "FRA", player: "Barcola", detail: "Goal — France" },
+        { minute: "90+5'", type: "goal", team: "SEN", player: "Mbaye", detail: "Goal — Senegal" },
+        { minute: "90+6'", type: "goal", team: "FRA", player: "Mbappé", detail: "Goal — France" },
+        { minute: "FT", type: "full_time", detail: "FT — France 3-1 Senegal" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "53%", team2: "47%", ratio1: 53, ratio2: 47 },
+        { name: "Expected Goals (xG)", team1: "1.79", team2: "0.53", ratio1: 77, ratio2: 23 },
+        { name: "Total Shots", team1: "11", team2: "6", ratio1: 65, ratio2: 35 },
+        { name: "Shots on Target", team1: "8", team2: "2", ratio1: 80, ratio2: 20 },
+        { name: "Touches in Opposition Box", team1: "19", team2: "13", ratio1: 59, ratio2: 41 },
+        { name: "Big Chances", team1: "4", team2: "2", ratio1: 67, ratio2: 33 },
+        { name: "Big Chances Missed", team1: "2", team2: "2", ratio1: 50, ratio2: 50 },
+        { name: "Accurate Passes", team1: "505 (88%)", team2: "430 (86%)", ratio1: 54, ratio2: 46 },
+        { name: "Corners", team1: "6", team2: "4", ratio1: 60, ratio2: 40 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "France",
+          formation: "4-2-3-1",
+          coach: "Didier Deschamps",
+          players: [
+            { number: 16, name: "Maignan", rating: 6.2, events: [] },
+            { number: 5, name: "Koundé", rating: 7.4, events: [] },
+            { number: 4, name: "Upamecano", rating: 8.2, events: [] },
+            { number: 17, name: "Saliba", rating: 7.0, events: [] },
+            { number: 19, name: "Hernández", rating: 6.9, events: [] },
+            { number: 8, name: "Tchouaméni", rating: 7.5, events: [] },
+            { number: 14, name: "Rabiot", rating: 7.7, events: [{ type: "assist" }] },
+            { number: 11, name: "Olise", rating: 8.3, events: [{ type: "assist" }] },
+            { number: 7, name: "Dembélé", rating: 7.1, events: [{ type: "sub_off", minute: "80'" }] },
+            { number: 20, name: "Doué", rating: 7.4, events: [{ type: "sub_off", minute: "87'" }] },
+            { number: 10, name: "Mbappé", rating: 9.0, isCaptain: true, isHighlight: true, events: [{ type: "goal", minute: "66'" }, { type: "goal", minute: "90+6'" }] }
+          ]
+        },
+        team2: {
+          name: "Senegal",
+          formation: "4-3-3",
+          coach: "Pape Thiaw",
+          players: [
+            { number: 16, name: "Mendy", rating: 5.5, events: [] },
+            { number: 25, name: "Diouf", rating: 6.0, events: [] },
+            { number: 19, name: "Niakhaté", rating: 5.6, events: [] },
+            { number: 3, name: "Koulibaly", rating: 6.0, isCaptain: true, events: [] },
+            { number: 15, name: "Diatta", rating: 6.9, events: [] },
+            { number: 26, name: "Gueye", rating: 6.2, events: [{ type: "sub_off", minute: "83'" }] },
+            { number: 5, name: "Gueye", rating: 6.3, events: [{ type: "sub_off", minute: "88'" }] },
+            { number: 8, name: "Camara", rating: 6.0, events: [{ type: "sub_off", minute: "75'" }] },
+            { number: 18, name: "Sarr", rating: 6.2, events: [{ type: "sub_off", minute: "75'" }] },
+            { number: 10, name: "Mané", rating: 6.4, events: [] },
+            { number: 11, name: "Jackson", rating: 6.2, events: [{ type: "sub_off", minute: "83'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 12, name: "Bradley Barcola", rating: 7.4, role: "Attacker", minute: "80'", events: [{ type: "sub_on", minute: "80'" }, { type: "goal", minute: "82'" }] },
+          { number: 24, name: "Rayan Cherki", rating: null, role: "Midfielder", minute: "87'", events: [{ type: "sub_on", minute: "87'" }] }
+        ],
+        team2: [
+          { number: 21, name: "Habib Diarra", rating: 6.1, role: "Midfielder", minute: "75'", events: [{ type: "sub_on", minute: "75'" }] },
+          { number: 20, name: "Ibrahim Mbaye", rating: 7.1, role: "Attacker", minute: "75'", events: [{ type: "sub_on", minute: "75'" }, { type: "goal", minute: "90+5'" }] },
+          { number: 9, name: "Bamba Dieng", rating: null, role: "Attacker", minute: "83'", events: [{ type: "sub_on", minute: "83'" }] },
+          { number: 13, name: "Iliman Ndiaye", rating: null, role: "Attacker", minute: "83'", events: [{ type: "sub_on", minute: "83'" }, { type: "assist" }] },
+          { number: 6, name: "Pathé Ciss", rating: null, role: "Midfielder", minute: "88'", events: [{ type: "sub_on", minute: "88'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "M. Olise",
+        rating: 8.3,
+        reason: "Provided an assist and created the most chances (4)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "France: Tactical Adjustments and Individual Brilliance Rescue a Sluggish Start",
+          positives: [
+            "Coached by Didier Deschamps, France recovered from a passive opening period to begin their Group I campaign with a 3-1 win at the New York New Jersey Stadium.",
+            "France initially operated in a flexible 4-2-3-1 structure but improved significantly after second-half tactical adjustments.",
+            "Moving Kylian Mbappé into more central pockets allowed him to exploit gaps and take control of the decisive attacking phases.",
+            "Mbappé opened the scoring in the 66th minute from a precise Michael Olise through ball before sealing the win with a stoppage-time strike.",
+            "Deschamps’ substitution strategy worked perfectly, with Bradley Barcola adding immediate verticality and scoring shortly after entering the match."
+          ],
+          improvements: [
+            "France’s first half was flat and uncoordinated, with the midfield struggling to generate rhythm.",
+            "Aurélien Tchouaméni and Adrien Rabiot did not circulate the ball quickly enough to break Senegal’s compact structure early.",
+            "Désiré Doué was isolated for long spells, while Mbappé had to drop too deep to influence play.",
+            "The high defensive line looked vulnerable to long balls over the top, especially during Senegal’s early transition chances.",
+            "Late tracking discipline from the full-backs dropped, allowing Senegal to score a 90+5' consolation goal and deny France a clean sheet."
+          ]
+        },
+        team2: {
+          title: "Senegal: High-Intensity Transition Game Erased by Finishing Woes",
+          positives: [
+            "Coached by Pape Thiaw, Senegal executed a fearless and organized plan for the first hour, matching France physically and tactically.",
+            "Their aggressive 4-3-3 structure used central pressing traps to disrupt French progression lines.",
+            "Lamine Camara, Idrissa Gueye, and Pape Gueye won several early second-ball phases and fed vertical transitions.",
+            "Sadio Mané and Ismaïla Sarr gave Senegal direct outlets in transition and repeatedly threatened France’s high defensive line.",
+            "Substitute Ibrahim Mbaye showed sharp movement in stoppage time, attacking the box and finishing Senegal’s late goal."
+          ],
+          improvements: [
+            "Senegal’s biggest issue was failing to convert first-half territorial dominance into goals.",
+            "The frontline wasted clear chances that could have changed the psychological momentum of the match.",
+            "Their high pressing became physically difficult to sustain after the 70th minute.",
+            "The back four dropped into a disorganized low block, leaving too much space at the edge of the area.",
+            "Individual marking assignments collapsed late, giving Mbappé and Barcola the openings needed to punish Senegal decisively."
+          ]
+        }
+      }
     },
     {
       id: 18,
@@ -2297,7 +2418,135 @@ export const matchesData = [
       form2: ["L", "W", "W", "L", "D"],
       insight: "Norway's physical forward power is expected to stretch Iraq's central defenders.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 1,
+      goals2: 4,
+      scorers1: ["Hussein 39'"],
+      scorers2: ["Haaland 29', 43'", "Østigard 76'", "Hussein 90+6' (OG)"],
+      matchNote: "Erling Haaland bags brace and was inevitably the star of the show in Norway's World Cup opener, helping secure a 4-1 win over Iraq at Boston Stadium.",
+      predictionVsReality: {
+        probabilities: { homeWin: 32, draw: 32, awayWin: 46 },
+        aiOutcome: "Prediction Correct",
+        why: "Norway’s vertical attacking threat, crossing overloads, and Haaland-led finishing matched the pre-match model expectation, while Iraq’s defensive errors widened the final margin."
+      },
+      summaryText: "Norway secured a dominant 4-1 victory over Iraq in their opening 2026 FIFA World Cup fixture. Erling Haaland starred with a brace, scoring either side of Aymen Hussein’s equalizer for Iraq. Second-half goals from Leo Østigård and an own goal from Hussein sealed all three points for the Norwegians.",
+      timelineEvents: [
+        { minute: "29'", type: "goal", team: "NOR", player: "Haaland", detail: "Goal — Norway" },
+        { minute: "39'", type: "goal", team: "IRQ", player: "Hussein", detail: "Goal — Iraq" },
+        { minute: "43'", type: "goal", team: "NOR", player: "Haaland", detail: "Goal — Norway" },
+        { minute: "76'", type: "goal", team: "NOR", player: "Østigard", detail: "Goal — Norway" },
+        { minute: "90+6'", type: "own_goal", team: "NOR", player: "Hussein", detail: "Goal — Norway — Hussein own goal" },
+        { minute: "FT", type: "full_time", detail: "FT — Iraq 1-4 Norway" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "39%", team2: "61%", ratio1: 39, ratio2: 61 },
+        { name: "Expected Goals (xG)", team1: "0.80", team2: "2.52", ratio1: 24, ratio2: 76 },
+        { name: "Total Shots", team1: "11", team2: "12", ratio1: 48, ratio2: 52 },
+        { name: "Shots on Target", team1: "1", team2: "5", ratio1: 17, ratio2: 83 },
+        { name: "Touches in Opposition Box", team1: "18", team2: "25", ratio1: 42, ratio2: 58 },
+        { name: "Big Chances", team1: "1", team2: "5", ratio1: 17, ratio2: 83 },
+        { name: "Big Chances Missed", team1: "1", team2: "2", ratio1: 33, ratio2: 67 },
+        { name: "Accurate Passes", team1: "271 (81%)", team2: "477 (89%)", ratio1: 36, ratio2: 64 },
+        { name: "Yellow Cards", team1: "1", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "2", team2: "5", ratio1: 29, ratio2: 71 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Iraq",
+          formation: "4-4-2",
+          coach: "Graham Arnold",
+          players: [
+            { number: 12, name: "Hassan", rating: 5.2, isCaptain: true, events: [] },
+            { number: 3, name: "Ali", rating: 5.7, events: [{ type: "sub_off", minute: "73'" }] },
+            { number: 4, name: "Tahseen", rating: 3.6, events: [{ type: "yellow_card" }] },
+            { number: 5, name: "Hashem", rating: 5.5, events: [] },
+            { number: 23, name: "Doski", rating: 6.4, events: [] },
+            { number: 8, name: "Bayesh", rating: 6.7, events: [{ type: "sub_off", minute: "78'" }] },
+            { number: 24, name: "Ismael", rating: 6.6, events: [{ type: "sub_off", minute: "59'" }] },
+            { number: 16, name: "Al-Ammari", rating: 6.9, events: [{ type: "assist" }] },
+            { number: 17, name: "Jasim", rating: 6.6, events: [{ type: "injury" }, { type: "sub_off", minute: "73'" }] },
+            { number: 9, name: "Al Hamadi", rating: 6.9, events: [{ type: "sub_off", minute: "59'" }] },
+            { number: 18, name: "Hussein", rating: 6.2, events: [{ type: "goal", minute: "39'" }, { type: "own_goal", minute: "90+6'" }] }
+          ]
+        },
+        team2: {
+          name: "Norway",
+          formation: "4-3-3",
+          coach: "Ståle Solbakken",
+          players: [
+            { number: 1, name: "Nyland", rating: 6.5, events: [] },
+            { number: 5, name: "Møller Wolfe", rating: 7.3, events: [{ type: "assist" }, { type: "sub_off", minute: "73'" }] },
+            { number: 17, name: "Heggem", rating: 7.2, events: [] },
+            { number: 3, name: "Ajer", rating: 7.2, events: [] },
+            { number: 26, name: "Ryerson", rating: 7.5, events: [] },
+            { number: 14, name: "Aursnes", rating: 6.8, events: [{ type: "sub_off", minute: "73'" }] },
+            { number: 8, name: "Berge", rating: 7.7, events: [] },
+            { number: 20, name: "Nusa", rating: 6.7, events: [{ type: "sub_off", minute: "73'" }] },
+            { number: 10, name: "Ødegaard", rating: 7.5, isCaptain: true, events: [{ type: "assist" }, { type: "sub_off", minute: "81'" }] },
+            { number: 7, name: "Sørloth", rating: 6.4, events: [{ type: "sub_off", minute: "73'" }] },
+            { number: 9, name: "Haaland", rating: 9.2, isHighlight: true, events: [{ type: "goal", minute: "29'" }, { type: "goal", minute: "43'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 14, name: "Zidane Iqbal", rating: 6.4, role: "Midfielder", minute: "59'", events: [{ type: "sub_on", minute: "59'" }] },
+          { number: 21, name: "Marko Lawk Farji", rating: 6.4, role: "Attacker", minute: "59'", events: [{ type: "sub_on", minute: "59'" }] },
+          { number: 25, name: "Mustafa Saadoun", rating: 6.2, role: "Defender", minute: "73'", events: [{ type: "sub_on", minute: "73'" }] },
+          { number: 11, name: "Ahmed Qasem", rating: 6.1, role: "Midfielder", minute: "73'", events: [{ type: "sub_on", minute: "73'" }] },
+          { number: 10, name: "Mohanad Ali", rating: 6.0, role: "Attacker", minute: "78'", events: [{ type: "sub_on", minute: "78'" }] }
+        ],
+        team2: [
+          { number: 4, name: "Leo Østigard", rating: 7.3, role: "Defender", minute: "73'", events: [{ type: "sub_on", minute: "73'" }, { type: "goal", minute: "76'" }] },
+          { number: 18, name: "Kristian Thorstvedt", rating: 6.2, role: "Midfielder", minute: "73'", events: [{ type: "sub_on", minute: "73'" }] },
+          { number: 21, name: "Andreas Schjelderup", rating: 6.1, role: "Attacker", minute: "73'", events: [{ type: "sub_on", minute: "73'" }] },
+          { number: 22, name: "Oscar Bobb", rating: 6.3, role: "Attacker", minute: "73'", events: [{ type: "sub_on", minute: "73'" }] },
+          { number: 6, name: "Patrick Berg", rating: null, role: "Midfielder", minute: "81'", events: [{ type: "sub_on", minute: "81'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "E. Haaland",
+        rating: 9.2,
+        reason: "Scored two goals, had the most touches in the opposition box (7), and took the most shots (5)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Iraq: Valiant Aerial Resilience Ruined by Catastrophic Defensive Blunders",
+          positives: [
+            "Coached by Graham Arnold, Iraq showed courage and organization despite facing a major technical gap.",
+            "Their narrow 4-4-2 block aimed to congest central zones and launch rapid direct counters.",
+            "The target-man plan worked in the 39th minute when Amir Al-Ammari delivered a looping cross for Aymen Hussein to power home the equalizer.",
+            "Merchas Doski was strong in defensive containment phases, helping limit Norway’s wide channel attacks for stretches.",
+            "Iraq’s physical approach gave them a brief foothold before Norway’s individual quality and pressing forced mistakes."
+          ],
+          improvements: [
+            "Iraq’s execution was ultimately undone by catastrophic self-inflicted errors.",
+            "Goalkeeper Jalal Hassan’s hesitation before Norway’s second goal allowed Haaland to press and score directly.",
+            "After that psychological blow, Iraq dropped too deep and surrendered territory.",
+            "The second-half introduction of Zidane Iqbal did not establish midfield control.",
+            "Iraq’s zonal set-piece structure failed badly for Norway’s third goal, leaving Østigard completely free.",
+            "A late stoppage-time tracking collapse ended with an unfortunate Hussein own goal, making the final scoreline even harsher."
+          ]
+        },
+        team2: {
+          title: "Norway: Lethal Vertical Mechanics and Crossing Overloads Crush the Underdogs",
+          positives: [
+            "Coached by Ståle Solbakken, Norway made a roaring return to the global stage with a dominant 4-1 victory at Boston Stadium.",
+            "Operating in a fluid 4-3-3 shape, Norway leaned on crossing overloads, vertical pressing lanes, and fast box occupation.",
+            "Erling Haaland was the crown jewel of the blueprint, marking his World Cup debut with a ruthless first-half brace.",
+            "Haaland finished a 14-pass move initiated by David Møller Wolfe before later punishing a goalkeeper error for his second goal.",
+            "Solbakken’s late tactical changes worked perfectly, with Leo Østigard coming on and scoring from a Martin Ødegaard corner.",
+            "Antonio Nusa delivered strong left-sided spatial threat, repeatedly pulling defenders out of shape with his movement and footwork."
+          ],
+          improvements: [
+            "Despite the comfortable scoreline, Norway’s defensive unit showed tracking issues that could become dangerous against stronger teams.",
+            "Torbjørn Heggem and Kristoffer Ajer looked uncoordinated early when defending direct aerial sequences.",
+            "The backline failed to close the wide half-space before Iraq’s equalizer, allowing a routine cross to become a major threat.",
+            "Before the hydration break, Sander Berge and Fredrik Aursnes operated with a passive midfield tempo.",
+            "Norway must improve early urgency and defensive recovery speed if they want to avoid giving better opponents easy transition openings."
+          ]
+        }
+      }
     },
     {
       id: 19,
@@ -2316,7 +2565,133 @@ export const matchesData = [
       form2: ["D", "W", "L", "W", "D"],
       insight: "Argentina's fluid central rotations will challenge Algeria's narrow compact shape.",
       isTopGame: true,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 3,
+      goals2: 0,
+      scorers1: ["Messi 17', 60', 76'"],
+      scorers2: [],
+      matchNote: "Lionel Messi's marvellous hat-trick, his first at a World Cup, propelled reigning champions Argentina to an emphatic victory over Algeria. Magical Messi matches Klose's record of most goals scored.",
+      predictionVsReality: {
+        probabilities: { homeWin: 72, draw: 16, awayWin: 12 },
+        aiOutcome: "Prediction Correct",
+        why: "Argentina’s superior individual quality, central control, and Messi-led attacking efficiency matched the pre-match model expectation, turning a balanced possession game into a comfortable win."
+      },
+      summaryText: "Argentina kicked off their 2026 FIFA World Cup campaign with a commanding 3-0 victory over Algeria in their Group J opener in Kansas City. Lionel Messi was the undisputed star, scoring his first-ever World Cup hat-trick with clinical finishes in the 17th, 60th, and 76th minutes. Despite Algeria seeing plenty of possession, their attack lacked penetration and they failed to break down a solid Argentine defense. The dominant result gave the defending champions a perfect start to the tournament while allowing Messi to tie Miroslav Klose's all-time record of 16 World Cup goals.",
+      timelineEvents: [
+        { minute: "17'", type: "goal", team: "ARG", player: "Messi", detail: "Goal — Argentina" },
+        { minute: "60'", type: "goal", team: "ARG", player: "Messi", detail: "Goal — Argentina" },
+        { minute: "76'", type: "goal", team: "ARG", player: "Messi", detail: "Goal — Argentina" },
+        { minute: "FT", type: "full_time", detail: "FT — Argentina 3-0 Algeria" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "48%", team2: "52%", ratio1: 48, ratio2: 52 },
+        { name: "Expected Goals (xG)", team1: "1.26", team2: "0.32", ratio1: 80, ratio2: 20 },
+        { name: "Total Shots", team1: "10", team2: "7", ratio1: 59, ratio2: 41 },
+        { name: "Shots on Target", team1: "6", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Touches in Opposition Box", team1: "12", team2: "14", ratio1: 46, ratio2: 54 },
+        { name: "Big Chances", team1: "1", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Big Chances Missed", team1: "0", team2: "0", ratio1: 0, ratio2: 0 },
+        { name: "Accurate Passes", team1: "504 (90%)", team2: "563 (92%)", ratio1: 47, ratio2: 53 },
+        { name: "Corners", team1: "2", team2: "2", ratio1: 50, ratio2: 50 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Argentina",
+          formation: "4-3-3",
+          coach: "Lionel Scaloni",
+          players: [
+            { number: 23, name: "Martínez", rating: 7.0, events: [] },
+            { number: 4, name: "Montiel", rating: 6.8, events: [{ type: "sub_off", minute: "46'" }] },
+            { number: 13, name: "Romero", rating: 7.2, events: [{ type: "sub_off", minute: "80'" }] },
+            { number: 6, name: "Martínez", rating: 7.7, events: [] },
+            { number: 25, name: "Medina", rating: 7.2, events: [] },
+            { number: 7, name: "De Paul", rating: 8.1, events: [{ type: "assist" }] },
+            { number: 20, name: "Mac Allister", rating: 7.2, events: [] },
+            { number: 24, name: "Fernández", rating: 7.6, events: [] },
+            { number: 16, name: "Almada", rating: 7.0, events: [{ type: "sub_off", minute: "55'" }] },
+            { number: 22, name: "Martínez", rating: 6.5, events: [{ type: "sub_off", minute: "55'" }] },
+            { number: 10, name: "Messi", rating: 9.7, isCaptain: true, isHighlight: true, events: [{ type: "goal", minute: "17'" }, { type: "goal", minute: "60'" }, { type: "goal", minute: "76'" }, { type: "sub_off", minute: "80'" }] }
+          ]
+        },
+        team2: {
+          name: "Algeria",
+          formation: "4-3-3",
+          coach: "Vladimir Petković",
+          players: [
+            { number: 23, name: "Zidane", rating: 5.5, events: [] },
+            { number: 15, name: "Aït Nouri", rating: 6.3, events: [] },
+            { number: 21, name: "Bensebaini", rating: 6.5, events: [] },
+            { number: 2, name: "Mandi", rating: 6.5, isCaptain: true, events: [] },
+            { number: 17, name: "Belghali", rating: 6.1, events: [] },
+            { number: 10, name: "Chaïbi", rating: 6.6, events: [] },
+            { number: 19, name: "Bentaleb", rating: 6.8, events: [{ type: "sub_off", minute: "82'" }] },
+            { number: 14, name: "Boudaoui", rating: 6.3, events: [{ type: "sub_off", minute: "64'" }] },
+            { number: 22, name: "Maza", rating: 6.3, events: [{ type: "sub_off", minute: "82'" }] },
+            { number: 11, name: "Hadj Moussa", rating: 6.2, events: [{ type: "sub_off", minute: "64'" }] },
+            { number: 9, name: "Gouiri", rating: 5.8, events: [{ type: "sub_off", minute: "64'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 26, name: "Nahuel Molina", rating: 7.0, role: "Defender", minute: "46'", events: [{ type: "sub_on", minute: "46'" }] },
+          { number: 15, name: "Nicolás González", rating: 7.1, role: "Midfielder", minute: "55'", events: [{ type: "sub_on", minute: "55'" }, { type: "assist" }] },
+          { number: 9, name: "Julián Álvarez", rating: 6.0, role: "Attacker", minute: "55'", events: [{ type: "sub_on", minute: "55'" }] },
+          { number: 19, name: "Nicolás Otamendi", rating: 6.7, role: "Defender", minute: "80'", events: [{ type: "sub_on", minute: "80'" }] },
+          { number: 18, name: "Nico Paz", rating: 6.2, role: "Midfielder", minute: "80'", events: [{ type: "sub_on", minute: "80'" }] }
+        ],
+        team2: [
+          { number: 8, name: "Houssem Aouar", rating: 6.0, role: "Midfielder", minute: "64'", events: [{ type: "sub_on", minute: "64'" }] },
+          { number: 18, name: "Mohamed Amoura", rating: 6.1, role: "Attacker", minute: "64'", events: [{ type: "sub_on", minute: "64'" }] },
+          { number: 7, name: "Riyad Mahrez", rating: 6.4, role: "Attacker", minute: "64'", events: [{ type: "sub_on", minute: "64'" }] },
+          { number: 6, name: "Ramiz Zerrouki", rating: null, role: "Midfielder", minute: "82'", events: [{ type: "sub_on", minute: "82'" }] },
+          { number: 20, name: "Adil Boulbina", rating: null, role: "Attacker", minute: "82'", events: [{ type: "sub_on", minute: "82'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "L. Messi",
+        rating: 9.7,
+        reason: "Scored a hat-trick and took the most shots (6)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Argentina: Masterclass in Direct Central Orchestration and Historic Efficiency",
+          positives: [
+            "Coached by Lionel Scaloni, the defending champions opened Group J with a commanding 3-0 victory at Kansas City Stadium.",
+            "Argentina operated in a fluid, possession-based 4-3-3 shape and used central channels through Rodrigo De Paul and Alexis Mac Allister to break down Algeria’s mid-block.",
+            "Lionel Messi was the undisputed protagonist, marking another historic night with a World Cup hat-trick.",
+            "Messi opened the scoring in the 17th minute with a long-range left-footed strike, added a clinical finish at the hour mark, and completed the hat-trick with a trademark curled effort.",
+            "Scaloni’s halftime adjustment helped stabilize the right flank, with Nahuel Molina coming on and Nicolás González later providing the cross for Messi’s second goal.",
+            "Cristian Romero and Lisandro Martínez were rock-solid defensively, helping restrict Algeria to zero shots on target."
+          ],
+          improvements: [
+            "Despite the clean scoreline, Argentina showed early rhythm-management issues.",
+            "In the opening 15 minutes, buildup looked sluggish and disconnected against Algeria’s compact central press.",
+            "Lautaro Martínez was isolated for long stretches and received limited clean service.",
+            "The high defensive line looked vulnerable to deep blind-side runs early on.",
+            "With Nicolás Tagliafico unavailable, Facundo Medina occasionally looked slow when tracking lateral transition patterns.",
+            "Against more clinical opponents, those wide half-space gaps could become dangerous."
+          ]
+        },
+        team2: {
+          title: "Algeria: Disciplined Low-Block Rigidity Evaporates Under Elite Pressure",
+          positives: [
+            "Coached by Vladimir Petković, Algeria showed bravery and organization during the early phases.",
+            "Their compact 4-3-3 counter-attacking framework created early central pressure and disrupted Argentina’s recycling rhythm.",
+            "Farès Chaïbi was lively in transition and delivered dangerous service during Algeria’s better spells.",
+            "Aissa Mandi marshaled the penalty box well aerially and helped Algeria stay competitive for long periods.",
+            "Goalkeeper Luca Zidane made important interventions to prevent the match from becoming even more one-sided."
+          ],
+          improvements: [
+            "Algeria’s biggest weakness was their inability to sustain focus after Messi’s opening goal.",
+            "The defensive line dropped too deep after the 17th-minute breakthrough and surrendered too much territory.",
+            "The midfield engine room faded badly after the hour mark, failing to track lateral Argentine movement.",
+            "Algeria managed possession volume but lacked penetration and failed to register a shot on target.",
+            "Amine Gouiri was neutralized by Romero and became isolated as the central forward.",
+            "Substitute Riyad Mahrez was unable to change the final-third rhythm after entering in the second half."
+          ]
+        }
+      }
     },
     {
       id: 20,
@@ -2335,7 +2710,136 @@ export const matchesData = [
       form2: ["D", "W", "L", "D", "L"],
       insight: "Austria's aggressive counter-pressing will limit Jordan's transition escape routes.",
       isTopGame: false,
-      status: "Upcoming"
+      status: "Completed",
+      goals1: 3,
+      goals2: 1,
+      scorers1: ["Schmid 20'", "Al-Arab 76' (OG)", "Arnautovic 90+12' (Pen)"],
+      scorers2: ["Olwan 50'"],
+      matchNote: "Jordan continued the trend of World Cup debutants impressing in 2026, but they were ultimately beaten 3-1 by Austria in Group J.",
+      predictionVsReality: {
+        probabilities: { homeWin: 52, draw: 26, awayWin: 22 },
+        aiOutcome: "Prediction Correct",
+        why: "Austria’s pressing structure, territorial control, and late set-piece pressure matched the pre-match model expectation, even though Jordan’s counter-attacking threat made the result competitive for long spells."
+      },
+      summaryText: "Austria defeated World Cup debutants Jordan 3-1 in their opening Group J match at the FIFA World Cup. Romano Schmid opened the scoring with a brilliant first-half strike, but Jordan equalized shortly after the break through Ali Olwan. Austria ultimately secured the win late in the game when a corner deflected in off Jordan's Yazan Al-Arab and substitute Marko Arnautovic converted a stoppage-time penalty.",
+      timelineEvents: [
+        { minute: "20'", type: "goal", team: "AUT", player: "Schmid", detail: "Goal — Austria" },
+        { minute: "50'", type: "goal", team: "JOR", player: "Olwan", detail: "Goal — Jordan" },
+        { minute: "76'", type: "goal", team: "AUT", player: "Al-Arab (OG)", detail: "Goal — Austria (Own Goal)" },
+        { minute: "90+12'", type: "goal", team: "AUT", player: "Arnautovic (Pen)", detail: "Goal — Austria (Penalty)" },
+        { minute: "FT", type: "full_time", detail: "FT — Austria 3-1 Jordan" }
+      ],
+      statsDetails: [
+        { name: "Ball Possession", team1: "63%", team2: "37%", ratio1: 63, ratio2: 37 },
+        { name: "Expected Goals (xG)", team1: "1.69", team2: "0.46", ratio1: 79, ratio2: 21 },
+        { name: "Total Shots", team1: "11", team2: "11", ratio1: 50, ratio2: 50 },
+        { name: "Shots on Target", team1: "4", team2: "4", ratio1: 50, ratio2: 50 },
+        { name: "Touches in Opposition Box", team1: "28", team2: "21", ratio1: 57, ratio2: 43 },
+        { name: "Big Chances", team1: "4", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Big Chances Missed", team1: "3", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Accurate Passes", team1: "487 (84%)", team2: "241 (73%)", ratio1: 67, ratio2: 33 },
+        { name: "Yellow Cards", team1: "1", team2: "0", ratio1: 100, ratio2: 0 },
+        { name: "Corners", team1: "4", team2: "3", ratio1: 57, ratio2: 43 }
+      ],
+      lineupDetails: {
+        team1: {
+          name: "Austria",
+          formation: "4-2-3-1",
+          coach: "Ralf Rangnick",
+          players: [
+            { number: 1, name: "Schlager", rating: 7.4, events: [] },
+            { number: 5, name: "Posch", rating: 6.8, events: [] },
+            { number: 15, name: "Lienhart", rating: 7.7, events: [] },
+            { number: 8, name: "Alaba", rating: 7.4, isCaptain: true, events: [{ type: "sub_off", minute: "59'" }] },
+            { number: 16, name: "Mwene", rating: 6.4, events: [{ type: "sub_off", minute: "59'" }] },
+            { number: 6, name: "Seiwald", rating: 7.5, events: [] },
+            { number: 20, name: "Laimer", rating: 6.7, events: [] },
+            { number: 18, name: "Schmid", rating: 7.6, events: [{ type: "goal", minute: "20'" }, { type: "sub_off", minute: "83'" }] },
+            { number: 4, name: "Schlager", rating: 8.0, isHighlight: true, events: [{ type: "assist" }, { type: "sub_off", minute: "59'" }] },
+            { number: 9, name: "Sabitzer", rating: 7.6, events: [{ type: "yellow_card" }] },
+            { number: 14, name: "Kalajdzic", rating: 6.5, events: [{ type: "sub_off", minute: "46'" }] }
+          ]
+        },
+        team2: {
+          name: "Jordan",
+          formation: "3-4-3",
+          coach: "Jamal Sellami",
+          players: [
+            { number: 1, name: "Abulaila", rating: 5.6, events: [] },
+            { number: 20, name: "Taha", rating: 7.2, events: [] },
+            { number: 5, name: "Al-Arab", rating: 6.5, events: [{ type: "own_goal", minute: "76'" }] },
+            { number: 3, name: "Nasib", rating: 6.4, events: [{ type: "injury" }, { type: "sub_off", minute: "81'" }] },
+            { number: 23, name: "Haddad", rating: 6.5, isCaptain: true, events: [{ type: "sub_off", minute: "81'" }] },
+            { number: 16, name: "Abualnadi", rating: 6.3, events: [{ type: "sub_off", minute: "72'" }] },
+            { number: 8, name: "Al-Rawabdeh", rating: 7.9, events: [{ type: "assist" }] },
+            { number: 21, name: "Al Rashdan", rating: 6.9, events: [] },
+            { number: 11, name: "Fakhouri", rating: 6.8, events: [{ type: "sub_off", minute: "88'" }] },
+            { number: 9, name: "Olwan", rating: 7.7, events: [{ type: "goal", minute: "50'" }] },
+            { number: 10, name: "Tamari", rating: 6.4, events: [{ type: "sub_off", minute: "88'" }] }
+          ]
+        }
+      },
+      substitutesList: {
+        team1: [
+          { number: 7, name: "Marko Arnautovic", rating: 7.6, role: "Attacker", minute: "46'", events: [{ type: "sub_on", minute: "46'" }, { type: "goal", minute: "90+12'" }] },
+          { number: 3, name: "Kevin Danso", rating: 6.8, role: "Defender", minute: "59'", events: [{ type: "sub_on", minute: "59'" }] },
+          { number: 17, name: "Carney Chukwuemeka", rating: 5.9, role: "Midfielder", minute: "59'", events: [{ type: "sub_on", minute: "59'" }] },
+          { number: 24, name: "Paul Wanner", rating: 6.4, role: "Midfielder", minute: "59'", events: [{ type: "sub_on", minute: "59'" }] },
+          { number: 21, name: "Patrick Wimmer", rating: null, role: "Attacker", minute: "83'", events: [{ type: "sub_on", minute: "83'" }] }
+        ],
+        team2: [
+          { number: 17, name: "Saleem Obaid", rating: 5.9, role: "Defender", minute: "72'", events: [{ type: "sub_on", minute: "72'" }] },
+          { number: 19, name: "Saed Al-Rosan", rating: null, role: "Defender", minute: "81'", events: [{ type: "sub_on", minute: "81'" }] },
+          { number: 13, name: "Mahmoud Al Mardi", rating: null, role: "Midfielder", minute: "81'", events: [{ type: "sub_on", minute: "81'" }] },
+          { number: 25, name: "Mohammad Al-Daoud", rating: null, role: "Midfielder", minute: "88'", events: [{ type: "sub_on", minute: "88'" }] },
+          { number: 24, name: "Ali Al-Azaizeh", rating: null, role: "Attacker", minute: "88'", events: [{ type: "sub_on", minute: "88'" }] }
+        ]
+      },
+      playerOfTheMatch: {
+        name: "Ali Olwan",
+        rating: 7.7,
+        reason: "Scored a goal and took the joint-most shots (4)."
+      },
+      tacticalReviews: {
+        team1: {
+          title: "Austria: Relentless Suffocation and Super-Sub Impact End a 36-Year Drought",
+          positives: [
+            "Coached by Ralf Rangnick, Austria marked their return to the global stage with a hard-fought 3-1 victory over tournament debutants Jordan.",
+            "Austria successfully unleashed their Gegenpressing identity through an intensive 4-2-3-1 framework.",
+            "They dominated territorial geography with 63% possession and compressed central avenues to choke Jordan’s early buildup phases.",
+            "The opening breakthrough in the 20th minute was excellent: Xaver Schlager split lines to feed Romano Schmid, who produced a curling long-range strike.",
+            "Rangnick’s halftime decision to introduce Marko Arnautović changed the physical dynamic of the match.",
+            "Arnautović pinned Jordan’s low block, disrupted defensive spacing, helped force late pressure, and converted a 90+12' penalty to seal the win."
+          ],
+          improvements: [
+            "Austria’s biggest concern was their vulnerability to sudden vertical counterattacks.",
+            "In the opening phase of the second half, Nicolas Seiwald and Xaver Schlager lacked structural positioning.",
+            "Jordan’s equalizer exposed Austria’s weak defensive transition tracking, especially in wide half-spaces.",
+            "Stefan Posch and Phillipp Mwene failed to contain the rapid lateral break before Ali Olwan’s goal.",
+            "Until late set-piece pressure tilted the game back in Austria’s favor, the starting frontline struggled to generate clear separation inside a crowded penalty area.",
+            "Saša Kalajdžić looked disconnected from Austria’s attacking rhythm before being replaced."
+          ]
+        },
+        team2: {
+          title: "Jordan: Brave Structural Low Block Ruined by Costly Dead-Ball Naivety",
+          positives: [
+            "Coached by Jamal Sellami, Jordan delivered a brave and organized performance on their historic World Cup debut.",
+            "Their 3-4-3 base shape shifted into a compact 5-4-1 defensive shell, forcing Austria into lower-percentage wide attacks.",
+            "Jordan restricted Austria’s dynamic midfield for long spells and stayed competitive beyond the hour mark.",
+            "Their counter-attacking plan paid off in the 50th minute after Noor Al-Rawabdeh helped launch a fast transition.",
+            "Ali Olwan produced a brilliant driving run into the penalty box and finished calmly to score Jordan’s historic equalizer.",
+            "Musa Al-Taamari was a dangerous vertical outlet early on, using acceleration to drag defenders out of position."
+          ],
+          improvements: [
+            "Jordan’s open-play defensive structure was strong, but set-piece defending ultimately cost them the match.",
+            "The key breakdown came in the 76th minute when their zonal corner-marking system failed and Yazan Al-Arab turned the ball into his own net.",
+            "As fatigue increased, the midfield pivot lost intensity and Jordan retreated too deep.",
+            "The team became passive inside their own box and invited repeated late pressure.",
+            "Defensive concentration dropped badly in stoppage time, leading to a reckless handball and Arnautović’s penalty.",
+            "Jordan showed promise, but must improve late-game stamina and dead-ball discipline to convert competitive performances into points."
+          ]
+        }
+      }
     },
     {
       id: 21,
@@ -2776,7 +3280,7 @@ export const matchesData = [
     },
     {
       id: 44,
-      date: "Jun 24 2026, Wed - 03:30 (IST)",
+      date: "Jun 18 2026, Thu - 01:30 (IST)",
       group: "Group L",
       stadium: "Mercedes-Benz Stadium, Atlanta, Georgia",
       stadiumAtmosphere: "mercedes",
@@ -2795,7 +3299,7 @@ export const matchesData = [
     },
     {
       id: 45,
-      date: "Jun 24 2026, Wed - 06:30 (IST)",
+      date: "Jun 18 2026, Thu - 04:30 (IST)",
       group: "Group L",
       stadium: "Lincoln Financial Field, Philadelphia",
       stadiumAtmosphere: "lincoln",
@@ -3251,7 +3755,7 @@ export const matchesData = [
     },
     {
       id: 69,
-      date: "Jun 30 2026, Tue - 06:30 (IST)",
+      date: "Jun 24 2026, Wed - 01:30 (IST)",
       group: "Group L",
       stadium: "Mercedes-Benz Stadium, Atlanta, Georgia",
       stadiumAtmosphere: "mercedes",
@@ -3270,7 +3774,7 @@ export const matchesData = [
     },
     {
       id: 70,
-      date: "Jun 30 2026, Tue - 09:30 (IST)",
+      date: "Jun 24 2026, Wed - 04:30 (IST)",
       group: "Group L",
       stadium: "Arrowhead Stadium, Kansas City, Missouri",
       stadiumAtmosphere: "arrowhead",
@@ -3289,7 +3793,7 @@ export const matchesData = [
     },
     {
       id: 71,
-      date: "Jul 01 2026, Wed - 00:30 (IST)",
+      date: "Jun 28 2026, Sun - 02:30 (IST)",
       group: "Group L",
       stadium: "SoFi Stadium, Inglewood, California",
       stadiumAtmosphere: "sofi",
@@ -3308,7 +3812,7 @@ export const matchesData = [
     },
     {
       id: 72,
-      date: "Jul 01 2026, Wed - 03:30 (IST)",
+      date: "Jun 28 2026, Sun - 05:30 (IST)",
       group: "Group L",
       stadium: "Lumen Field, Seattle, Washington",
       stadiumAtmosphere: "lumen",

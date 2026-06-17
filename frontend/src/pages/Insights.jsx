@@ -118,7 +118,7 @@ export default function Insights() {
     BEL: 86, URU: 84, MAR: 84, USA: 83, JPN: 83, CRO: 83, MEX: 82, COL: 82,
     SUI: 81, SEN: 81, ECU: 80, EGY: 80, AUT: 80, TUR: 79, NOR: 79, ALG: 79,
     KOR: 78, CIV: 78, SWE: 78, CAN: 77, GHA: 76, SCO: 75, AUS: 75, IRN: 74,
-    KSA: 73, UZB: 73, BIH: 72, RSA: 71
+    KSA: 73, UZB: 73, JOR: 73, BIH: 72, RSA: 71
   }), []);
 
   const teamNames = useMemo(() => ({
@@ -126,7 +126,7 @@ export default function Insights() {
     BEL: 'Belgium', URU: 'Uruguay', MAR: 'Morocco', USA: 'USA', JPN: 'Japan', CRO: 'Croatia', MEX: 'Mexico', COL: 'Colombia',
     SUI: 'Switzerland', SEN: 'Senegal', ECU: 'Ecuador', EGY: 'Egypt', AUT: 'Austria', TUR: 'Türkiye', NOR: 'Norway', ALG: 'Algeria',
     KOR: 'Korea Republic', CIV: 'Cote d\'Ivoire', SWE: 'Sweden', CAN: 'Canada', GHA: 'Ghana', SCO: 'Scotland', AUS: 'Australia', IRN: 'IR Iran',
-    KSA: 'Saudi Arabia', UZB: 'Uzbekistan', BIH: 'Bosnia & Herz.', RSA: 'South Africa'
+    KSA: 'Saudi Arabia', UZB: 'Uzbekistan', JOR: 'Jordan', BIH: 'Bosnia & Herz.', RSA: 'South Africa'
   }), []);
 
   const groupStandings = useMemo(() => ({
@@ -138,8 +138,8 @@ export default function Insights() {
     F: { winner: { code: 'NED', name: 'Netherlands' }, runnerUp: { code: 'JPN', name: 'Japan' }, third: { code: 'SWE', name: 'Sweden', rating: 78 } },
     G: { winner: { code: 'BEL', name: 'Belgium' }, runnerUp: { code: 'EGY', name: 'Egypt' }, third: { code: 'IRN', name: 'IR Iran', rating: 74 } },
     H: { winner: { code: 'ESP', name: 'Spain' }, runnerUp: { code: 'URU', name: 'Uruguay' }, third: { code: 'KSA', name: 'Saudi Arabia', rating: 73 } },
-    I: { winner: { code: 'FRA', name: 'France' }, runnerUp: { code: 'SEN', name: 'Senegal' }, third: { code: 'NOR', name: 'Norway', rating: 79 } },
-    J: { winner: { code: 'ARG', name: 'Argentina' }, runnerUp: { code: 'ALG', name: 'Algeria' }, third: { code: 'AUT', name: 'Austria', rating: 80 } },
+    I: { winner: { code: 'NOR', name: 'Norway' }, runnerUp: { code: 'FRA', name: 'France' }, third: { code: 'SEN', name: 'Senegal', rating: 81 } },
+    J: { winner: { code: 'ARG', name: 'Argentina' }, runnerUp: { code: 'AUT', name: 'Austria' }, third: { code: 'JOR', name: 'Jordan', rating: 73 } },
     K: { winner: { code: 'POR', name: 'Portugal' }, runnerUp: { code: 'COL', name: 'Colombia' }, third: { code: 'UZB', name: 'Uzbekistan', rating: 73 } },
     L: { winner: { code: 'ENG', name: 'England' }, runnerUp: { code: 'CRO', name: 'Croatia' }, third: { code: 'GHA', name: 'Ghana', rating: 76 } }
   }), []);

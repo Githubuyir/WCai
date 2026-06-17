@@ -73,7 +73,20 @@ export default function Matches() {
         return diffA - diffB;
       });
     } else if (currentSort === 'latest') {
-      items.sort((a, b) => a.id - b.id);
+      // Sort chronologically by date string, then by ID for same-date tiebreaker
+      items.sort((a, b) => {
+        const parseMatchDate = (dateStr) => {
+          // Format: "Jun 12 2026, Fri - 00:30 (IST)"
+          const parts = dateStr.split(' - ');
+          const datePart = parts[0].replace(/,\s*\w+$/, '').trim(); // "Jun 12 2026"
+          const timePart = parts[1] ? parts[1].replace(' (IST)', '').trim() : '00:00'; // "00:30"
+          return new Date(`${datePart} ${timePart}`);
+        };
+        const dateA = parseMatchDate(a.date);
+        const dateB = parseMatchDate(b.date);
+        if (dateA.getTime() !== dateB.getTime()) return dateA - dateB;
+        return a.id - b.id;
+      });
     } else if (currentSort === 'trending') {
       items.sort((a, b) => b.intensity - a.intensity);
     }

@@ -294,6 +294,70 @@ export default function MatchAnalysis() {
           ];
           return coords16[index] || [20, 50];
         }
+        if (match.id === 17) {
+          const coords17 = [
+            [8, 50],   // 0: GK (Maignan)
+            [20, 82],  // 1: RB (Koundé)
+            [20, 62],  // 2: RCB (Upamecano)
+            [20, 38],  // 3: LCB (Saliba)
+            [20, 18],  // 4: LB (Hernández)
+            [30, 62],  // 5: RDM (Tchouaméni)
+            [30, 38],  // 6: LDM (Rabiot)
+            [38, 82],  // 7: RW/RAM (Olise)
+            [38, 50],  // 8: CAM (Dembélé)
+            [38, 18],  // 9: LW/LAM (Doué)
+            [46, 50]   // 10: CF (Mbappé)
+          ];
+          return coords17[index] || [20, 50];
+        }
+        if (match.id === 18) {
+          const coords18 = [
+            [8, 50],   // 0: GK (Hassan)
+            [20, 82],  // 1: RB (Ali)
+            [20, 62],  // 2: RCB (Tahseen)
+            [20, 38],  // 3: LCB (Hashem)
+            [20, 18],  // 4: LB (Doski)
+            [38, 82],  // 5: RM (Bayesh)
+            [30, 62],  // 6: RCM (Ismael)
+            [30, 38],  // 7: LCM (Al-Ammari)
+            [38, 18],  // 8: LM (Jasim)
+            [44, 38],  // 9: LS (Al Hamadi)
+            [44, 62]   // 10: RS (Hussein)
+          ];
+          return coords18[index] || [20, 50];
+        }
+        if (match.id === 19) {
+          const coords19 = [
+            [8, 50],   // 0: GK (Martínez)
+            [20, 82],  // 1: RB (Montiel)
+            [20, 62],  // 2: RCB (Romero)
+            [20, 38],  // 3: LCB (Martínez)
+            [20, 18],  // 4: LB (Medina)
+            [30, 82],  // 5: RCM (De Paul)
+            [30, 38],  // 6: LCM (Mac Allister)
+            [30, 62],  // 7: DM (Fernández)
+            [38, 18],  // 8: RW (Almada)
+            [46, 50],  // 9: CF (Martínez)
+            [38, 82]   // 10: LW (Messi)
+          ];
+          return coords19[index] || [20, 50];
+        }
+        if (match.id === 20) {
+          const coords20 = [
+            [8, 50],   // 0: GK (Schlager)
+            [20, 82],  // 1: RB (Posch)
+            [20, 62],  // 2: RCB (Lienhart)
+            [20, 38],  // 3: LCB (Alaba)
+            [20, 18],  // 4: LB (Mwene)
+            [30, 62],  // 5: RDM (Seiwald)
+            [30, 38],  // 6: LDM (Laimer)
+            [38, 82],  // 7: RAM (Schmid)
+            [38, 50],  // 8: CAM (Schlager)
+            [38, 18],  // 9: LAM (Sabitzer)
+            [46, 50]   // 10: CF (Kalajdzic)
+          ];
+          return coords20[index] || [20, 50];
+        }
         const coords = [
           [8, 50],
           [20, 82],
@@ -404,6 +468,70 @@ export default function MatchAnalysis() {
             [54, 50]   // 10: CF (Wood)
           ];
           return coords16[index] || [80, 50];
+        }
+        if (match.id === 17) {
+          const coords17 = [
+            [92, 50],  // 0: GK (Mendy)
+            [80, 82],  // 1: RB (Diouf)
+            [80, 62],  // 2: RCB (Niakhaté)
+            [80, 38],  // 3: LCB (Koulibaly)
+            [80, 18],  // 4: LB (Diatta)
+            [70, 68],  // 5: RCM (26 Gueye)
+            [70, 32],  // 6: LCM (5 Gueye)
+            [72, 50],  // 7: DM (Camara)
+            [62, 82],  // 8: RW (Sarr)
+            [62, 18],  // 9: LW (Mané)
+            [54, 50]   // 10: CF (Jackson)
+          ];
+          return coords17[index] || [80, 50];
+        }
+        if (match.id === 18) {
+          const coords18 = [
+            [92, 50],  // 0: GK (Nyland)
+            [80, 82],  // 1: LB (Møller Wolfe)
+            [80, 62],  // 2: LCB (Heggem)
+            [80, 38],  // 3: RCB (Ajer)
+            [80, 18],  // 4: RB (Ryerson)
+            [70, 68],  // 5: LCM (Aursnes)
+            [72, 50],  // 6: CM (Berge)
+            [62, 82],  // 7: LW (Nusa)
+            [70, 32],  // 8: RCM (Ødegaard)
+            [62, 18],  // 9: RW (Sørloth)
+            [54, 50]   // 10: CF (Haaland)
+          ];
+          return coords18[index] || [80, 50];
+        }
+        if (match.id === 19) {
+          const coords19 = [
+            [92, 50],  // 0: GK (Zidane)
+            [80, 82],  // 1: LB (Aït Nouri)
+            [80, 62],  // 2: LCB (Bensebaini)
+            [80, 38],  // 3: RCB (Mandi)
+            [80, 18],  // 4: RB (Belghali)
+            [62, 82],  // 5: LW (Chaïbi)
+            [70, 68],  // 6: LCM (Bentaleb)
+            [70, 32],  // 7: RCM (Boudaoui)
+            [72, 50],  // 8: DM (Maza)
+            [62, 18],  // 9: RW (Hadj Moussa)
+            [54, 50]   // 10: CF (Gouiri)
+          ];
+          return coords19[index] || [80, 50];
+        }
+        if (match.id === 20) {
+          const coords20 = [
+            [92, 50],  // 0: GK (Abulaila)
+            [80, 25],  // 1: LCB (Taha)
+            [80, 50],  // 2: CB (Al-Arab)
+            [80, 75],  // 3: RCB (Nasib)
+            [70, 85],  // 4: RWB (Haddad)
+            [70, 15],  // 5: LWB (Abualnadi)
+            [70, 38],  // 6: LCM (Al-Rawabdeh)
+            [70, 62],  // 7: RCM (Al Rashdan)
+            [62, 25],  // 8: LF/LW (Fakhouri)
+            [54, 50],  // 9: CF (Olwan)
+            [62, 75]   // 10: RF/RW (Tamari)
+          ];
+          return coords20[index] || [80, 50];
         }
         const coords = [
           [92, 50],
@@ -520,6 +648,70 @@ export default function MatchAnalysis() {
           ];
           return coords16v[index] || [50, 20];
         }
+        if (match.id === 17) {
+          const coords17v = [
+            [50, 7],    // 0: GK (Maignan)
+            [80, 16],   // 1: RB (Koundé)
+            [60, 16],   // 2: RCB (Upamecano)
+            [40, 16],   // 3: LCB (Saliba)
+            [20, 16],   // 4: LB (Hernández)
+            [65, 28],   // 5: RDM (Tchouaméni)
+            [35, 28],   // 6: LDM (Rabiot)
+            [80, 44],   // 7: RW/RAM (Olise)
+            [50, 36],   // 8: CAM (Dembélé)
+            [20, 44],   // 9: LW/LAM (Doué)
+            [50, 44]    // 10: CF (Mbappé)
+          ];
+          return coords17v[index] || [50, 20];
+        }
+        if (match.id === 18) {
+          const coords18v = [
+            [50, 7],    // 0: GK (Hassan)
+            [80, 16],   // 1: RB (Ali)
+            [60, 16],   // 2: RCB (Tahseen)
+            [40, 16],   // 3: LCB (Hashem)
+            [20, 16],   // 4: LB (Doski)
+            [80, 30],   // 5: RM (Bayesh)
+            [60, 28],   // 6: RCM (Ismael)
+            [40, 28],   // 7: LCM (Al-Ammari)
+            [20, 30],   // 8: LM (Jasim)
+            [40, 44],   // 9: LS (Al Hamadi)
+            [60, 44]    // 10: RS (Hussein)
+          ];
+          return coords18v[index] || [50, 20];
+        }
+        if (match.id === 19) {
+          const coords19v = [
+            [50, 7],    // 0: GK (Martínez)
+            [80, 16],   // 1: RB (Montiel)
+            [60, 16],   // 2: RCB (Romero)
+            [40, 16],   // 3: LCB (Martínez)
+            [20, 16],   // 4: LB (Medina)
+            [65, 28],   // 5: RCM (De Paul)
+            [35, 28],   // 6: LCM (Mac Allister)
+            [50, 24],   // 7: DM (Fernández)
+            [80, 44],   // 8: RW (Almada)
+            [50, 44],   // 9: CF (Martínez)
+            [20, 44]    // 10: LW (Messi)
+          ];
+          return coords19v[index] || [50, 20];
+        }
+        if (match.id === 20) {
+          const coords20v = [
+            [50, 7],    // 0: GK (Schlager)
+            [80, 16],   // 1: RB (Posch)
+            [60, 16],   // 2: RCB (Lienhart)
+            [40, 16],   // 3: LCB (Alaba)
+            [20, 16],   // 4: LB (Mwene)
+            [60, 28],   // 5: RDM (Seiwald)
+            [40, 28],   // 6: LDM (Laimer)
+            [80, 36],   // 7: RAM (Schmid)
+            [50, 32],   // 8: CAM (Schlager)
+            [20, 36],   // 9: LAM (Sabitzer)
+            [50, 44]    // 10: CF (Kalajdzic)
+          ];
+          return coords20v[index] || [50, 20];
+        }
         const coords = [
           [50, 7],
           [80, 16],
@@ -614,6 +806,70 @@ export default function MatchAnalysis() {
             [50, 56]    // 10: CF (Wood)
           ];
           return coords16v[index] || [50, 80];
+        }
+        if (match.id === 17) {
+          const coords17v = [
+            [50, 93],   // 0: GK (Mendy)
+            [20, 84],   // 1: RB (Diouf)
+            [40, 84],   // 2: RCB (Niakhaté)
+            [60, 84],   // 3: LCB (Koulibaly)
+            [80, 84],   // 4: LB (Diatta)
+            [35, 72],   // 5: RCM (26 Gueye)
+            [65, 72],   // 6: LCM (5 Gueye)
+            [50, 76],   // 7: DM (Camara)
+            [20, 64],   // 8: RW (Sarr)
+            [80, 64],   // 9: LW (Mané)
+            [50, 56]    // 10: CF (Jackson)
+          ];
+          return coords17v[index] || [50, 80];
+        }
+        if (match.id === 18) {
+          const coords18v = [
+            [50, 93],   // 0: GK (Nyland)
+            [80, 84],   // 1: LB (Møller Wolfe)
+            [60, 84],   // 2: LCB (Heggem)
+            [40, 84],   // 3: RCB (Ajer)
+            [20, 84],   // 4: RB (Ryerson)
+            [65, 72],   // 5: LCM (Aursnes)
+            [50, 76],   // 6: CM (Berge)
+            [80, 64],   // 7: LW (Nusa)
+            [35, 72],   // 8: RCM (Ødegaard)
+            [20, 64],   // 9: RW (Sørloth)
+            [50, 56]    // 10: CF (Haaland)
+          ];
+          return coords18v[index] || [50, 80];
+        }
+        if (match.id === 19) {
+          const coords19v = [
+            [50, 93],   // 0: GK (Zidane)
+            [80, 84],   // 1: LB (Aït Nouri)
+            [60, 84],   // 2: LCB (Bensebaini)
+            [40, 84],   // 3: RCB (Mandi)
+            [20, 84],   // 4: RB (Belghali)
+            [80, 64],   // 5: LW (Chaïbi)
+            [65, 72],   // 6: LCM (Bentaleb)
+            [35, 72],   // 7: RCM (Boudaoui)
+            [50, 76],   // 8: DM (Maza)
+            [20, 64],   // 9: RW (Hadj Moussa)
+            [50, 56]    // 10: CF (Gouiri)
+          ];
+          return coords19v[index] || [50, 80];
+        }
+        if (match.id === 20) {
+          const coords20v = [
+            [50, 93],   // 0: GK (Abulaila)
+            [65, 84],   // 1: LCB (Taha)
+            [50, 84],   // 2: CB (Al-Arab)
+            [35, 84],   // 3: RCB (Nasib)
+            [20, 74],   // 4: RWB (Haddad)
+            [80, 74],   // 5: LWB (Abualnadi)
+            [60, 76],   // 6: LCM (Al-Rawabdeh)
+            [40, 76],   // 7: RCM (Al Rashdan)
+            [75, 62],   // 8: LF/LW (Fakhouri)
+            [50, 56],   // 9: CF (Olwan)
+            [25, 62]    // 10: RF/RW (Tamari)
+          ];
+          return coords20v[index] || [50, 80];
         }
         const coords = [
           [50, 93],

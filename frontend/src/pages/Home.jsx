@@ -101,16 +101,16 @@ export default function Home() {
       { team: 'Spain', code: 'ESP', p: 1, w: 0, d: 1, l: 0, gd: 0, pts: 1, form: ['D'], rating: '8.9' }
     ],
     I: [
-      { team: 'France', code: 'FRA', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '9.3' },
-      { team: 'Iraq', code: 'IRQ', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '6.5' },
-      { team: 'Norway', code: 'NOR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.8' },
-      { team: 'Senegal', code: 'SEN', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.9' }
+      { team: 'Norway', code: 'NOR', p: 1, w: 1, d: 0, l: 0, gd: 3, pts: 3, form: ['W'], rating: '7.8' },
+      { team: 'France', code: 'FRA', p: 1, w: 1, d: 0, l: 0, gd: 2, pts: 3, form: ['W'], rating: '9.3' },
+      { team: 'Senegal', code: 'SEN', p: 1, w: 0, d: 0, l: 1, gd: -2, pts: 0, form: ['L'], rating: '7.9' },
+      { team: 'Iraq', code: 'IRQ', p: 1, w: 0, d: 0, l: 1, gd: -3, pts: 0, form: ['L'], rating: '6.5' }
     ],
     J: [
-      { team: 'Algeria', code: 'ALG', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.6' },
-      { team: 'Argentina', code: 'ARG', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '9.4' },
-      { team: 'Austria', code: 'AUT', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '7.7' },
-      { team: 'Jordan', code: 'JOR', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '6.3' }
+      { team: 'Argentina', code: 'ARG', p: 1, w: 1, d: 0, l: 0, gd: 3, pts: 3, form: ['W'], rating: '9.4' },
+      { team: 'Austria', code: 'AUT', p: 1, w: 1, d: 0, l: 0, gd: 2, pts: 3, form: ['W'], rating: '7.7' },
+      { team: 'Jordan', code: 'JOR', p: 1, w: 0, d: 0, l: 1, gd: -2, pts: 0, form: ['L'], rating: '6.3' },
+      { team: 'Algeria', code: 'ALG', p: 1, w: 0, d: 0, l: 1, gd: -3, pts: 0, form: ['L'], rating: '7.6' }
     ],
     K: [
       { team: 'Colombia', code: 'COL', p: 0, w: 0, d: 0, l: 0, gd: 0, pts: 0, form: [], rating: '8.3' },
@@ -536,7 +536,7 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">16 <span className="mini-total">/ 104</span></div>
+                  <div className="mini-value">20 <span className="mini-total">/ 104</span></div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
                       <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
@@ -610,7 +610,7 @@ export default function Home() {
                       </svg>
                     </div>
                   </div>
-                  <div className="mini-value">2.88</div>
+                  <div className="mini-value">3.1</div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
                       <path d="M0,12 L100,12" fill="none" stroke="var(--primary-accent)" strokeWidth="2"></path>
@@ -650,8 +650,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="mini-value" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div className="table-flag-wrapper" style={{ width: '20px', height: '14px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG('USA') }} />
-                    <span>Balogun</span>
+                    <div className="table-flag-wrapper" style={{ width: '20px', height: '14px', borderRadius: '2px', overflow: 'hidden', display: 'inline-flex', flexShrink: 0 }} dangerouslySetInnerHTML={{ __html: generateFlagSVG('ARG') }} />
+                    <span>L. Messi</span>
                   </div>
                   <div className="mini-chart">
                     <svg viewBox="0 0 100 25" className="sparkline-mini">
